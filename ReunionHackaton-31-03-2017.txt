@@ -1,0 +1,11 @@
+-Mensajeria sin limites admin incluido.Resaltar mensajes de administrador
+-Comentarios->Usuarios y mascotas.
+-quiero que me cuiden el perro, fechas opcionales. 
+-Las offer no incluyen horas.
+-Cuidadoras como sponsor. pero con info de la cuidadora. Un solo banner. Contandor en el actor
+-Protectoras fuera.
+-A+ cerrado.
+-Banneos -> cuenta-> inhabilita el la cuenta.
+-Buscador de offers: por sitio y fecha.
+-Borrado:Borrado de mascotas sin offer, de offer sin apply aceptadas, borrado de mensajes, Comentarios No borrables.
+-Valoración como cuidador de animales.
