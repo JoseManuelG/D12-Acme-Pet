@@ -1,0 +1,15 @@
+-------------- POR HACER --------------
+- Meter reunión y tareas iniciales en redmine (javi).
+
+- Revisar en modelos multiplicidad 1 en actores (detectado en abusereport y mensajeria) (¿no debe ser 0..1 por si borran la cuenta?)
+- ¿Poner patron para el género? (en animaniacs y en pet)
+- ¿Cambiar 0..* a 0..* por una clase intermedia?
+- A typeName en Type le falta ser único.
+- A attribute en Attribute le falta una nota que indíque que es único para un mismo Type. 
+- Falta NotBlank o opcional en UML description en Petition, puesto notBlank en java (comprobar en requisitos).
+- Repartir en módulos.
+- Reordenar conceptual.
+- Sacar pdfs de requirements.
+
+
+---------------- HECHO ----------------
