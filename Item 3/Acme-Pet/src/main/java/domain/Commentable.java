@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Commentable {
+public class Commentable extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 

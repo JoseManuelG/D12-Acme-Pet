@@ -75,19 +75,19 @@ public class Petition extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Collection<Pet>	pet;	//TODO: Cambiar a tabla aparte?
+	private Collection<Pet>	pets;	//TODO: Cambiar a tabla aparte?
 
 
 	@NotNull
 	@NotEmpty
 	@Valid
 	@ManyToMany
-	public Collection<Pet> getPet() {
-		return this.pet;
+	public Collection<Pet> getPets() {
+		return this.pets;
 	}
 
-	public void setPet(final Collection<Pet> pet) {
-		this.pet = pet;
+	public void setPets(final Collection<Pet> pets) {
+		this.pets = pets;
 	}
 
 }

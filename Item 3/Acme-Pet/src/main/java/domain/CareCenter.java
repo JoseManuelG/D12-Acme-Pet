@@ -17,7 +17,7 @@ public class CareCenter extends Partner {
 
 	private String	description;
 	private String	link;
-	private String	addres;
+	private String	address;
 
 
 	@NotBlank
@@ -42,12 +42,12 @@ public class CareCenter extends Partner {
 
 	@NotBlank
 	@SafeHtml
-	public String getAddres() {
-		return this.addres;
+	public String getAddress() {
+		return this.address;
 	}
 
-	public void setAddres(final String addres) {
-		this.addres = addres;
+	public void setAddress(final String address) {
+		this.address = address;
 	}
 
 	// Relationships ----------------------------------------------------------

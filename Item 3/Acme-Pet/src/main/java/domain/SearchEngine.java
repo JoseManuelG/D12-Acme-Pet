@@ -59,19 +59,19 @@ public class SearchEngine extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Collection<Petition>	petition;	//TODO: ¿Cambiar a tabla aparte?
+	private Collection<Petition>	petitions;	//TODO: ¿Cambiar a tabla aparte?
 	private Animaniac				animaniac;
 
 
 	@NotNull
 	@Valid
 	@ManyToMany
-	public Collection<Petition> getPetition() {
-		return this.petition;
+	public Collection<Petition> getPetitions() {
+		return this.petitions;
 	}
 
-	public void setPetition(final Collection<Petition> petition) {
-		this.petition = petition;
+	public void setPetitions(final Collection<Petition> petitions) {
+		this.petitions = petitions;
 	}
 
 	@NotNull
