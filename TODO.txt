@@ -2,14 +2,15 @@
 - Meter reunión y tareas iniciales en redmine (javi).
 
 - Revisar en modelos multiplicidad 1 en actores (detectado en abusereport y mensajeria) (¿no debe ser 0..1 por si borran la cuenta?)
-- ¿Poner patron para el género? (en animaniacs y en pet)
-- ¿Cambiar 0..* a 0..* por una clase intermedia?
-- A typeName en Type le falta ser único.
-- A attribute en Attribute le falta una nota que indíque que es único para un mismo Type. 
-- Falta NotBlank o opcional en UML description en Petition, puesto notBlank en java (comprobar en requisitos).
+	->Pensandolo, mi opinion es que si el reportador se borra la cuenta el reporte se quede, pero si el reportado se borra la cuenta se borre el reporte.
+- ¿Cambiar 0..* a 0..* por una clase intermedia? (El unico que veo es el de search el cual no cambiaria)
+- A attribute en Attribute le falta una nota que indíque que es único para un mismo Type.(esto lo hace el admin, por lo que no creo que sea necesario hacer ese cambio, no es algo donde se vaya a trollear)
 - Repartir en módulos.
 - Reordenar conceptual.
 - Sacar pdfs de requirements.
 - Poner imagenes correctas en los banners del populate
 
 ---------------- HECHO ----------------
+- Falta NotBlank o opcional en UML description en Petition, puesto notBlank en java (comprobar en requisitos).DONE
+- ¿Poner patron para el género? (en animaniacs y en pet)DONE
+- A typeName en Type le falta ser único.no se puede poner, pork no podrias poner castrado para gato y para perro por ejemplo
