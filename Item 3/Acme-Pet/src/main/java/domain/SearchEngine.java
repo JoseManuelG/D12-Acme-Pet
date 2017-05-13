@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,7 +26,29 @@ public class SearchEngine extends DomainEntity {
 	private Date	startDate;
 	private Date	endDate;
 	private String	address;
+	private String	type;
+	private Date	searchMoment;
 
+
+	@NotNull
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(final String type) {
+		this.type = type;
+	}
+
+	@Past
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getSearchMoment() {
+		return this.searchMoment;
+	}
+
+	public void setSearchMoment(final Date searchMoment) {
+		this.searchMoment = searchMoment;
+	}
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -59,19 +82,19 @@ public class SearchEngine extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Collection<Petition>	petitions;	//TODO: ¿Cambiar a tabla aparte?
-	private Animaniac				animaniac;
+	private Collection<Request>	requests;
+	private Animaniac			animaniac;
 
 
 	@NotNull
 	@Valid
 	@ManyToMany
-	public Collection<Petition> getPetitions() {
-		return this.petitions;
+	public Collection<Request> getRequests() {
+		return this.requests;
 	}
 
-	public void setPetitions(final Collection<Petition> petitions) {
-		this.petitions = petitions;
+	public void setRequests(final Collection<Request> requests) {
+		this.requests = requests;
 	}
 
 	@NotNull

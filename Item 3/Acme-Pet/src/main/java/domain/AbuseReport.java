@@ -67,9 +67,8 @@ public class AbuseReport extends DomainEntity {
 		this.reported = reported;
 	}
 
-	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Animaniac getReporter() {
 		return this.reporter;
 	}

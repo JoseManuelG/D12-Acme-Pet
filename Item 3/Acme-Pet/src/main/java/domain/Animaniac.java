@@ -5,6 +5,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -23,9 +24,7 @@ public class Animaniac extends Actor {
 	private int		rate	= 0;
 
 
-	@NotBlank
-	@SafeHtml
-	//TODO: ¿Pattern?
+	@Pattern(regexp = "^male$|^female$)")
 	public String getGenre() {
 		return this.genre;
 	}

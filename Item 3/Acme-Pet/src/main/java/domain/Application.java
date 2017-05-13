@@ -5,6 +5,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -14,13 +16,27 @@ import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Access(AccessType.PROPERTY)
+@Table(uniqueConstraints = {
+	@UniqueConstraint(columnNames = {
+		"request_id", "animaniac_id"
+	})
+})
 public class Application extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
 	private String	description;
 	private String	state;
+	private boolean	rated;
 
+
+	public boolean getRated() {
+		return this.rated;
+	}
+
+	public void setRated(final boolean rated) {
+		this.rated = rated;
+	}
 
 	@NotBlank
 	@SafeHtml
@@ -44,19 +60,19 @@ public class Application extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Petition	petition;
+	private Request		request;
 	private Animaniac	animaniac;
 
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	public Petition getPetition() {
-		return this.petition;
+	public Request getRequest() {
+		return this.request;
 	}
 
-	public void setPetition(final Petition petition) {
-		this.petition = petition;
+	public void setRequest(final Request request) {
+		this.request = request;
 	}
 
 	@NotNull

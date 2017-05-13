@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Petition extends DomainEntity {
+public class Request extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
@@ -62,7 +62,7 @@ public class Petition extends DomainEntity {
 		this.address = address;
 	}
 
-	@NotBlank
+	@NotNull
 	@SafeHtml
 	public String getDescription() {
 		return this.description;

@@ -99,8 +99,6 @@ public class Message extends DomainEntity {
 	private Folder	folder;
 
 
-	//TODO: Optionals true o false?
-
 	@Valid
 	@ManyToOne(optional = true)
 	public Actor getSender() {

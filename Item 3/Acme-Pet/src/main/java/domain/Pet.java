@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -43,9 +44,7 @@ public class Pet extends Commentable {
 		this.weigth = weigth;
 	}
 
-	@NotBlank
-	@SafeHtml
-	//TODO: Patron?
+	@Pattern(regexp = "^male$|^female$)")
 	public String getGenre() {
 		return this.genre;
 	}
@@ -69,7 +68,18 @@ public class Pet extends Commentable {
 
 	private Animaniac	animaniac;
 	private Type		type;
+	private Vet			vet;
 
+
+	@Valid
+	@ManyToOne(optional = true)
+	public Vet getVet() {
+		return this.vet;
+	}
+
+	public void setVet(final Vet vet) {
+		this.vet = vet;
+	}
 
 	@NotNull
 	@Valid
