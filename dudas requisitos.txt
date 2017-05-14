@@ -1,0 +1,22 @@
+el genre de animaniac deberia ser gender (y tambien el de mascota?)
+Al rate de animaniac le falta por especificar que el rango irá entre -5 y 5
+cuando un animaniac es baneado se esconden sus peticiones y solicitudes no?
+
+
+--Los animaniacos podrán registrar peticiones sobre una o más de sus mascotas. Tendrán una fecha de inicio opcional y otra de fin, una dirección y una descripción.
+
+Actualmente en los diagramas la fecha de inicio no es opcional y la descripción sí, preguntar qué hay que cambiar y dónde.
+
+
+--Cada animaniaco tendrá un buscador en el que podrá buscar peticiones pudiendo filtrar por fechas o lugar.
+
+En la clase también aparece un tipo, qué indica ese tipo, si es descripción, hay que añadir la descripción a los criterios de búsqueda en el documento
+
+-- Los animaniacos podrán comentar en mascotas y animaniacos. Para cada comentario se deberá guardar un título, cuerpo, y fecha en la que se envió. En futuras versiones se podrán comentar otras entidades.
+
+Según el diagrama se puede comentar en todos los actores
+
+--Un actor autenticado como administrador deberá poder:
+Registrar  cuidadoras, publicistas y animaniacos.
+
+en realidad solo puede registrar asociados (partners) no?
