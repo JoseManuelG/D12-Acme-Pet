@@ -21,7 +21,7 @@ public class Animaniac extends Actor {
 	private String	address;
 	private String	picture;
 	private boolean	banned;
-	private int		rate	= 0;
+	private int		rate;
 
 
 	@Pattern(regexp = "^male$|^female$")
