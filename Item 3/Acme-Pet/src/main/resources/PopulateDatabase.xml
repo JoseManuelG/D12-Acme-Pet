@@ -363,7 +363,7 @@
 		<property name="surname" value="Animaniac5" />
 		<property name="email" value="animaniac5@acme.com" />
 		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountAnimaniac1" />
+		<property name="userAccount" ref="userAccountAnimaniac5" />
 		<property name="picture" value="https://image.freepik.com/iconos-gratis/avatar-de-usuario-de-esquema_318-34741.jpg" />
 		<property name="genre" value="female" />
 		<property name="address" value="Calle de los animales 5ºA" />
@@ -1461,6 +1461,7 @@
 		</property>
 		<property name="startDate" ><null/></property>
 		<property name="endDate" ><null/></property>
+		<property name="type" value="" />
 		<property name="address" value="nº1" />
 	</bean>	
 	
@@ -1473,6 +1474,7 @@
 		</property>
 		<property name="startDate" value="01/01/2018 00:00" />
 		<property name="endDate" value="02/10/2018 00:00" />
+		<property name="type" value="" />
 		<property name="address" value="" />
 	</bean>	
 	
@@ -1484,6 +1486,7 @@
 		</property>
 		<property name="startDate" ><null/></property>
 		<property name="endDate" ><null/></property>
+		<property name="type" value="" />
 		<property name="address" value="" />
 	</bean>	
 	
@@ -1495,6 +1498,7 @@
 		</property>
 		<property name="startDate" ><null/></property>
 		<property name="endDate" ><null/></property>
+		<property name="type" value="" />
 		<property name="address" value="" />
 	</bean>	
 	
@@ -1506,6 +1510,7 @@
 		</property>
 		<property name="startDate" ><null/></property>
 		<property name="endDate" ><null/></property>
+		<property name="type" value="" />
 		<property name="address" value="" />
 	</bean>	
 	
@@ -1517,6 +1522,7 @@
 		</property>
 		<property name="startDate" ><null/></property>
 		<property name="endDate" ><null/></property>
+		<property name="type" value="" />
 		<property name="address" value="" />
 	</bean>	
 	
@@ -1528,6 +1534,7 @@
 		</property>
 		<property name="startDate" ><null/></property>
 		<property name="endDate" ><null/></property>
+		<property name="type" value="" />
 		<property name="address" value="" />
 	</bean>	
 	
@@ -1539,6 +1546,7 @@
 		</property>
 		<property name="startDate" ><null/></property>
 		<property name="endDate" ><null/></property>
+		<property name="type" value="" />
 		<property name="address" value="" />
 	</bean>	
 		

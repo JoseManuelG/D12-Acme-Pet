@@ -53,7 +53,6 @@ public class Pet extends Commentable {
 		this.genre = genre;
 	}
 
-	@NotNull
 	@SafeHtml
 	public String getCertificateBy() {
 		return this.certificateBy;
