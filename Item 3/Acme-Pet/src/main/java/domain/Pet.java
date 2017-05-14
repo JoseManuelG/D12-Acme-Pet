@@ -44,7 +44,7 @@ public class Pet extends Commentable {
 		this.weigth = weigth;
 	}
 
-	@Pattern(regexp = "^male$|^female$)")
+	@Pattern(regexp = "^male$|^female$")
 	public String getGenre() {
 		return this.genre;
 	}

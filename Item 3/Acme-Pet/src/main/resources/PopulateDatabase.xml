@@ -135,157 +135,79 @@
 		</property>
 	</bean>
 	
-	<bean id="userAccountCareCenter1" class="security.UserAccount">
-		<property name="username" value="careCenter1" />
-		<property name="password" value="66fea4678516fe4e052170467bfe7e35" />
+	<bean id="userAccountPartner1" class="security.UserAccount">
+		<property name="username" value="partner1" />
+		<property name="password" value="ac7216c9d4d8ceded4b0095c33524eb3" />
 		<property name="enabled" value="true" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CARECENTER" />
+					<property name="authority" value="PARTNER" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="userAccountCareCenter2" class="security.UserAccount">
-		<property name="username" value="careCenter2" />
-		<property name="password" value="a2fee4985333df09edcf7f7f5d789b59" />
+	<bean id="userAccountPartner2" class="security.UserAccount">
+		<property name="username" value="partner2" />
+		<property name="password" value="60e118f9fbec7c1cfef851e5681137d1" />
 		<property name="enabled" value="true" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CARECENTER" />
+					<property name="authority" value="PARTNER" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="userAccountCareCenter3" class="security.UserAccount">
-		<property name="username" value="careCenter3" />
-		<property name="password" value="3626ff0bb93eb16eaa27a551784fae6f" />
+	<bean id="userAccountPartner3" class="security.UserAccount">
+		<property name="username" value="partner3" />
+		<property name="password" value="2c6aea847954046ab7950d96436f8ad2" />
 		<property name="enabled" value="true" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CARECENTER" />
+					<property name="authority" value="PARTNER" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="userAccountCareCenter4" class="security.UserAccount">
-		<property name="username" value="careCenter4" />
-		<property name="password" value="79b2806eede119e6d870f5431a9381cc" />
+	<bean id="userAccountPartner4" class="security.UserAccount">
+		<property name="username" value="partner4" />
+		<property name="password" value="5b7d01fb2c49740b51c0491ba04de6e7" />
 		<property name="enabled" value="true" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CARECENTER" />
+					<property name="authority" value="PARTNER" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="userAccountCareCenter5" class="security.UserAccount">
-		<property name="username" value="careCenter5" />
-		<property name="password" value="419b49f0b1f0e45cfde5e5cd9df36662" />
+	<bean id="userAccountPartner5" class="security.UserAccount">
+		<property name="username" value="partner5" />
+		<property name="password" value="5ab3334753f4c831e1857b461c59fc3d" />
 		<property name="enabled" value="true" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CARECENTER" />
+					<property name="authority" value="PARTNER" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="userAccountCareCenter6" class="security.UserAccount">
-		<property name="username" value="careCenter6" />
-		<property name="password" value="8a0a8362a8e2c7ae90493b33a2ab3a29" />
+	<bean id="userAccountPartner6" class="security.UserAccount">
+		<property name="username" value="partner6" />
+		<property name="password" value="a09f5f394a31d1c28399bd0217d996fe" />
 		<property name="enabled" value="true" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CARECENTER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccountPublicist1" class="security.UserAccount">
-		<property name="username" value="publicist1" />
-		<property name="password" value="eac911a256cf8aa3166a74655bb3d31d" />
-		<property name="enabled" value="true" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="PUBLICIST" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccountPublicist2" class="security.UserAccount">
-		<property name="username" value="publicist2" />
-		<property name="password" value="b60e9836c3410e7eae3eaf312f2a44bc" />
-		<property name="enabled" value="true" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="PUBLICIST" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccountPublicist3" class="security.UserAccount">
-		<property name="username" value="publicist3" />
-		<property name="password" value="6c87203d9b9800a6b2a44323544a28f9" />
-		<property name="enabled" value="true" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="PUBLICIST" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccountPublicist4" class="security.UserAccount">
-		<property name="username" value="publicist4" />
-		<property name="password" value="09bd5d92e829d6f2dbb7f450d5f7898f" />
-		<property name="enabled" value="true" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="PUBLICIST" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccountPublicist5" class="security.UserAccount">
-		<property name="username" value="publicist5" />
-		<property name="password" value="18d5dfe37f6cc83d719931ff60f989d3" />
-		<property name="enabled" value="true" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="PUBLICIST" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccountPublicist6" class="security.UserAccount">
-		<property name="username" value="publicist6" />
-		<property name="password" value="9f0a5d8d19e1c66bc27e92b45621a7bc" />
-		<property name="enabled" value="true" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="PUBLICIST" />
+					<property name="authority" value="PARTNER" />
 				</bean>
 			</list>
 		</property>
@@ -489,136 +411,86 @@
 	</bean>
 	
 
-	<!-- CareCenter -->
+	<!-- Partner -->
 	
-	<bean id="careCenter1" class="domain.CareCenter">
-		<property name="name" value="CareCenter1" />
-		<property name="surname" value="CareCenter1" />
-		<property name="email" value="careCenter1@acme.com" />
+	<bean id="partner1" class="domain.Partner">
+		<property name="name" value="Partner1" />
+		<property name="surname" value="Partner1" />
+		<property name="email" value="partner1@acme.com" />
 		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountCareCenter1" />
-		<property name="description" value="Description CareCenter1" />
+		<property name="userAccount" ref="userAccountPartner1" />
+		<property name="description" value="Description Partner1" />
 		<property name="numDisplay" value="10" />
 		<property name="link" value="https://www.carecenter1.com" />
 		<property name="address" value="Calle de los cuidadores 1ºA" />
+		<property name="totalFee" value="2.5" />
 	</bean>
 	
-	<bean id="careCenter2" class="domain.CareCenter">
-		<property name="name" value="CareCenter2" />
-		<property name="surname" value="CareCenter2" />
-		<property name="email" value="careCenter2@acme.com" />
+	<bean id="partner2" class="domain.Partner">
+		<property name="name" value="Partner2" />
+		<property name="surname" value="Partner2" />
+		<property name="email" value="partner2@acme.com" />
 		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountCareCenter2" />
+		<property name="userAccount" ref="userAccountPartner2" />
 		<property name="numDisplay" value="2" />
-		<property name="description" value="Description CareCenter2" />
+		<property name="description" value="Description Partner2" />
 		<property name="link" value="https://www.carecenter2.com" />
 		<property name="address" value="Calle de los cuidadores 2ºB" />
+		<property name="totalFee" value="0.5" />
 	</bean>
 	
-	<bean id="careCenter3" class="domain.CareCenter">
-		<property name="name" value="CareCenter3" />
-		<property name="surname" value="CareCenter3" />
-		<property name="email" value="careCenter3@acme.com" />
+	<bean id="partner3" class="domain.Partner">
+		<property name="name" value="Partner3" />
+		<property name="surname" value="Partner3" />
+		<property name="email" value="partner3@acme.com" />
 		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountCareCenter3" />
+		<property name="userAccount" ref="userAccountPartner3" />
 		<property name="numDisplay" value="0" />
-		<property name="description" value="Description CareCenter3" />
+		<property name="description" value="Description Partner3" />
 		<property name="link" value="https://www.carecenter3.com" />
 		<property name="address" value="Calle de los cuidadores 3ºC" />
+		<property name="totalFee" value="0" />
 	</bean>
 	
-	<bean id="careCenter4" class="domain.CareCenter">
-		<property name="name" value="CareCenter4" />
-		<property name="surname" value="CareCenter4" />
-		<property name="email" value="careCenter4@acme.com" />
+	<bean id="partner4" class="domain.Partner">
+		<property name="name" value="Partner4" />
+		<property name="surname" value="Partner4" />
+		<property name="email" value="partner4@acme.com" />
 		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountCareCenter4" />
+		<property name="userAccount" ref="userAccountPartner4" />
 		<property name="numDisplay" value="0" />
-		<property name="description" value="Description CareCenter4" />
+		<property name="description" value="Description Partner4" />
 		<property name="link" value="https://www.carecenter4.com" />
 		<property name="address" value="Calle de los cuidadores 4ºD" />
+		<property name="totalFee" value="0" />
 	</bean>
 	
-	<bean id="careCenter5" class="domain.CareCenter">
-		<property name="name" value="CareCenter5" />
-		<property name="surname" value="CareCenter5" />
-		<property name="email" value="careCenter5@acme.com" />
+	<bean id="partner5" class="domain.Partner">
+		<property name="name" value="Partner5" />
+		<property name="surname" value="Partner5" />
+		<property name="email" value="partner5@acme.com" />
 		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountCareCenter5" />
+		<property name="userAccount" ref="userAccountPartner5" />
 		<property name="numDisplay" value="0" />
-		<property name="description" value="Description CareCenter5" />
+		<property name="description" value="Description Partner5" />
 		<property name="link" value="https://www.carecenter5.com" />
 		<property name="address" value="Calle de los cuidadores 5ºA" />
+		<property name="totalFee" value="0" />
 	</bean>
 	
-	<bean id="careCenter6" class="domain.CareCenter">
-		<property name="name" value="CareCenter6" />
-		<property name="surname" value="CareCenter6" />
-		<property name="email" value="careCenter6@acme.com" />
+	<bean id="partner6" class="domain.Partner">
+		<property name="name" value="Partner6" />
+		<property name="surname" value="Partner6" />
+		<property name="email" value="partner6@acme.com" />
 		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountCareCenter6" />
+		<property name="userAccount" ref="userAccountPartner6" />
 		<property name="numDisplay" value="0" />
-		<property name="description" value="Description CareCenter6" />
+		<property name="description" value="Description Partner6" />
 		<property name="link" value="https://www.carecenter6.com" />
 		<property name="address" value="Calle de los cuidadores 6ºB" />
+		<property name="totalFee" value="0" />
 	</bean>
-	
-	<!-- Publicist -->
-	
-	<bean id="publicist1" class="domain.Publicist">
-		<property name="name" value="Publicist1" />
-		<property name="surname" value="Publicist1" />
-		<property name="email" value="publicist1@acme.com" />
-		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountPublicist1" />
-		<property name="numDisplay" value="20" />
-	</bean>
-	
-	<bean id="publicist2" class="domain.Publicist">
-		<property name="name" value="Publicist2" />
-		<property name="surname" value="Publicist2" />
-		<property name="email" value="publicist2@acme.com" />
-		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountPublicist2" />
-		<property name="numDisplay" value="6" />
-	</bean>
-	
-	<bean id="publicist3" class="domain.Publicist">
-		<property name="name" value="Publicist3" />
-		<property name="surname" value="Publicist3" />
-		<property name="email" value="publicist3@acme.com" />
-		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountPublicist3" />
-		<property name="numDisplay" value="0" />
-	</bean>
-	
-	<bean id="publicist4" class="domain.Publicist">
-		<property name="name" value="Publicist4" />
-		<property name="surname" value="Publicist4" />
-		<property name="email" value="publicist4@acme.com" />
-		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountPublicist4" />
-		<property name="numDisplay" value="0" />
-	</bean>
-	
-	<bean id="publicist5" class="domain.Publicist">
-		<property name="name" value="Publicist5" />
-		<property name="surname" value="Publicist5" />
-		<property name="email" value="publicist5@acme.com" />
-		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountPublicist5" />
-		<property name="numDisplay" value="0" />
-	</bean>
-	
-	<bean id="publicist6" class="domain.Publicist">
-		<property name="name" value="Publicist6" />
-		<property name="surname" value="Publicist6" />
-		<property name="email" value="publicist6@acme.com" />
-		<property name="phone" value="+34000000000" />
-		<property name="userAccount" ref="userAccountPublicist6" />
-		<property name="numDisplay" value="0" />
-	</bean>
-	
+		
 	<!-- Vet -->
 	
 	<bean id="vet1" class="domain.Vet">
@@ -830,208 +702,106 @@
 		<property name="actor" ref="administrator1" />
 	</bean>
 	
-	<bean id="folder1CareCenter1" class="domain.Folder">
+	<bean id="folder1Partner1" class="domain.Folder">
 		<property name="name" value="inbox" />
-		<property name="actor" ref="careCenter1" />
+		<property name="actor" ref="partner1" />
 	</bean>
-	<bean id="folder2CareCenter1" class="domain.Folder">
+	<bean id="folder2Partner1" class="domain.Folder">
 		<property name="name" value="outbox" />
-		<property name="actor" ref="careCenter1" />
+		<property name="actor" ref="partner1" />
 	</bean>
-	<bean id="folder3CareCenter1" class="domain.Folder">
+	<bean id="folder3Partner1" class="domain.Folder">
 		<property name="name" value="trashbox" />
-		<property name="actor" ref="careCenter1" />
+		<property name="actor" ref="partner1" />
 	</bean>
-	<bean id="folder4CareCenter1" class="domain.Folder">
+	<bean id="folder4Partner1" class="domain.Folder">
 		<property name="name" value="spambox" />
-		<property name="actor" ref="careCenter1" />
+		<property name="actor" ref="partner1" />
 	</bean>
 	
-	<bean id="folder1CareCenter2" class="domain.Folder">
+	<bean id="folder1Partner2" class="domain.Folder">
 		<property name="name" value="inbox" />
-		<property name="actor" ref="careCenter2" />
+		<property name="actor" ref="partner2" />
 	</bean>
-	<bean id="folder2CareCenter2" class="domain.Folder">
+	<bean id="folder2Partner2" class="domain.Folder">
 		<property name="name" value="outbox" />
-		<property name="actor" ref="careCenter2" />
+		<property name="actor" ref="partner2" />
 	</bean>
-	<bean id="folder3CareCenter2" class="domain.Folder">
+	<bean id="folder3Partner2" class="domain.Folder">
 		<property name="name" value="trashbox" />
-		<property name="actor" ref="careCenter2" />
+		<property name="actor" ref="partner2" />
 	</bean>
-	<bean id="folder4CareCenter2" class="domain.Folder">
+	<bean id="folder4Partner2" class="domain.Folder">
 		<property name="name" value="spambox" />
-		<property name="actor" ref="careCenter2" />
+		<property name="actor" ref="partner2" />
 	</bean>
 	
-	<bean id="folder1CareCenter3" class="domain.Folder">
+	<bean id="folder1Partner3" class="domain.Folder">
 		<property name="name" value="inbox" />
-		<property name="actor" ref="careCenter3" />
+		<property name="actor" ref="partner3" />
 	</bean>
-	<bean id="folder2CareCenter3" class="domain.Folder">
+	<bean id="folder2Partner3" class="domain.Folder">
 		<property name="name" value="outbox" />
-		<property name="actor" ref="careCenter3" />
+		<property name="actor" ref="partner3" />
 	</bean>
-	<bean id="folder3CareCenter3" class="domain.Folder">
+	<bean id="folder3Partner3" class="domain.Folder">
 		<property name="name" value="trashbox" />
-		<property name="actor" ref="careCenter3" />
+		<property name="actor" ref="partner3" />
 	</bean>
-	<bean id="folder4CareCenter3" class="domain.Folder">
+	<bean id="folder4Partner3" class="domain.Folder">
 		<property name="name" value="spambox" />
-		<property name="actor" ref="careCenter3" />
+		<property name="actor" ref="partner3" />
 	</bean>
 	
-	<bean id="folder1CareCenter4" class="domain.Folder">
+	<bean id="folder1Partner4" class="domain.Folder">
 		<property name="name" value="inbox" />
-		<property name="actor" ref="careCenter4" />
+		<property name="actor" ref="partner4" />
 	</bean>
-	<bean id="folder2CareCenter4" class="domain.Folder">
+	<bean id="folder2Partner4" class="domain.Folder">
 		<property name="name" value="outbox" />
-		<property name="actor" ref="careCenter4" />
+		<property name="actor" ref="partner4" />
 	</bean>
-	<bean id="folder3CareCenter4" class="domain.Folder">
+	<bean id="folder3Partner4" class="domain.Folder">
 		<property name="name" value="trashbox" />
-		<property name="actor" ref="careCenter4" />
+		<property name="actor" ref="partner4" />
 	</bean>
-	<bean id="folder4CareCenter4" class="domain.Folder">
+	<bean id="folder4Partner4" class="domain.Folder">
 		<property name="name" value="spambox" />
-		<property name="actor" ref="careCenter4" />
+		<property name="actor" ref="partner4" />
 	</bean>
 	
-	<bean id="folder1CareCenter5" class="domain.Folder">
+	<bean id="folder1Partner5" class="domain.Folder">
 		<property name="name" value="inbox" />
-		<property name="actor" ref="careCenter5" />
+		<property name="actor" ref="partner5" />
 	</bean>
-	<bean id="folder2CareCenter5" class="domain.Folder">
+	<bean id="folder2Partner5" class="domain.Folder">
 		<property name="name" value="outbox" />
-		<property name="actor" ref="careCenter5" />
+		<property name="actor" ref="partner5" />
 	</bean>
-	<bean id="folder3CareCenter5" class="domain.Folder">
+	<bean id="folder3Partner5" class="domain.Folder">
 		<property name="name" value="trashbox" />
-		<property name="actor" ref="careCenter5" />
+		<property name="actor" ref="partner5" />
 	</bean>
-	<bean id="folder4CareCenter5" class="domain.Folder">
+	<bean id="folder4Partner5" class="domain.Folder">
 		<property name="name" value="spambox" />
-		<property name="actor" ref="careCenter5" />
+		<property name="actor" ref="partner5" />
 	</bean>
 	
-	<bean id="folder1CareCenter6" class="domain.Folder">
+	<bean id="folder1Partner6" class="domain.Folder">
 		<property name="name" value="inbox" />
-		<property name="actor" ref="careCenter6" />
+		<property name="actor" ref="partner6" />
 	</bean>
-	<bean id="folder2CareCenter6" class="domain.Folder">
+	<bean id="folder2Partner6" class="domain.Folder">
 		<property name="name" value="outbox" />
-		<property name="actor" ref="careCenter6" />
+		<property name="actor" ref="partner6" />
 	</bean>
-	<bean id="folder3CareCenter6" class="domain.Folder">
+	<bean id="folder3Partner6" class="domain.Folder">
 		<property name="name" value="trashbox" />
-		<property name="actor" ref="careCenter6" />
+		<property name="actor" ref="partner6" />
 	</bean>
-	<bean id="folder4CareCenter6" class="domain.Folder">
+	<bean id="folder4Partner6" class="domain.Folder">
 		<property name="name" value="spambox" />
-		<property name="actor" ref="careCenter6" />
-	</bean>
-	
-	<bean id="folder1Publicist1" class="domain.Folder">
-		<property name="name" value="inbox" />
-		<property name="actor" ref="publicist1" />
-	</bean>
-	<bean id="folder2Publicist1" class="domain.Folder">
-		<property name="name" value="outbox" />
-		<property name="actor" ref="publicist1" />
-	</bean>
-	<bean id="folder3Publicist1" class="domain.Folder">
-		<property name="name" value="trashbox" />
-		<property name="actor" ref="publicist1" />
-	</bean>
-	<bean id="folder4Publicist1" class="domain.Folder">
-		<property name="name" value="spambox" />
-		<property name="actor" ref="publicist1" />
-	</bean>
-	
-	<bean id="folder1Publicist2" class="domain.Folder">
-		<property name="name" value="inbox" />
-		<property name="actor" ref="publicist2" />
-	</bean>
-	<bean id="folder2Publicist2" class="domain.Folder">
-		<property name="name" value="outbox" />
-		<property name="actor" ref="publicist2" />
-	</bean>
-	<bean id="folder3Publicist2" class="domain.Folder">
-		<property name="name" value="trashbox" />
-		<property name="actor" ref="publicist2" />
-	</bean>
-	<bean id="folder4Publicist2" class="domain.Folder">
-		<property name="name" value="spambox" />
-		<property name="actor" ref="publicist2" />
-	</bean>
-	
-	<bean id="folder1Publicist3" class="domain.Folder">
-		<property name="name" value="inbox" />
-		<property name="actor" ref="publicist3" />
-	</bean>
-	<bean id="folder2Publicist3" class="domain.Folder">
-		<property name="name" value="outbox" />
-		<property name="actor" ref="publicist3" />
-	</bean>
-	<bean id="folder3Publicist3" class="domain.Folder">
-		<property name="name" value="trashbox" />
-		<property name="actor" ref="publicist3" />
-	</bean>
-	<bean id="folder4Publicist3" class="domain.Folder">
-		<property name="name" value="spambox" />
-		<property name="actor" ref="publicist3" />
-	</bean>
-	
-	<bean id="folder1Publicist4" class="domain.Folder">
-		<property name="name" value="inbox" />
-		<property name="actor" ref="publicist4" />
-	</bean>
-	<bean id="folder2Publicist4" class="domain.Folder">
-		<property name="name" value="outbox" />
-		<property name="actor" ref="publicist4" />
-	</bean>
-	<bean id="folder3Publicist4" class="domain.Folder">
-		<property name="name" value="trashbox" />
-		<property name="actor" ref="publicist4" />
-	</bean>
-	<bean id="folder4Publicist4" class="domain.Folder">
-		<property name="name" value="spambox" />
-		<property name="actor" ref="publicist4" />
-	</bean>
-	
-	<bean id="folder1Publicist5" class="domain.Folder">
-		<property name="name" value="inbox" />
-		<property name="actor" ref="publicist5" />
-	</bean>
-	<bean id="folder2Publicist5" class="domain.Folder">
-		<property name="name" value="outbox" />
-		<property name="actor" ref="publicist5" />
-	</bean>
-	<bean id="folder3Publicist5" class="domain.Folder">
-		<property name="name" value="trashbox" />
-		<property name="actor" ref="publicist5" />
-	</bean>
-	<bean id="folder4Publicist5" class="domain.Folder">
-		<property name="name" value="spambox" />
-		<property name="actor" ref="publicist5" />
-	</bean>
-	
-	<bean id="folder1Publicist6" class="domain.Folder">
-		<property name="name" value="inbox" />
-		<property name="actor" ref="publicist6" />
-	</bean>
-	<bean id="folder2Publicist6" class="domain.Folder">
-		<property name="name" value="outbox" />
-		<property name="actor" ref="publicist6" />
-	</bean>
-	<bean id="folder3Publicist6" class="domain.Folder">
-		<property name="name" value="trashbox" />
-		<property name="actor" ref="publicist6" />
-	</bean>
-	<bean id="folder4Publicist6" class="domain.Folder">
-		<property name="name" value="spambox" />
-		<property name="actor" ref="publicist6" />
+		<property name="actor" ref="partner6" />
 	</bean>
 	
 	<bean id="folder1Vet1" class="domain.Folder">
@@ -1495,6 +1265,7 @@
 		<property name="weigth" value="5.0" />
 		<property name="genre" value="male" />
 		<property name="certificateBy" value="Vet1 Vet1" />
+		<property name="vet" ref="vet1" />
 		<property name="animaniac" ref="animaniac1" />
 		<property name="type" ref="type1" />
 	</bean>	
@@ -1503,7 +1274,8 @@
 		<property name="name" value="pet2Animaniac1" />
 		<property name="weigth" value="5.0" />
 		<property name="genre" value="male" />
-		<property name="certificateBy" ><null/></property>
+		<property name="certificateBy" value="Vet1 Vet1" />
+		<property name="vet" ref="vet1" />
 		<property name="animaniac" ref="animaniac1" />
 		<property name="type" ref="type1" />
 	</bean>		
@@ -1512,7 +1284,8 @@
 		<property name="name" value="pet3Animaniac1" />
 		<property name="weigth" value="5.0" />
 		<property name="genre" value="male" />
-		<property name="certificateBy" ><null/></property>
+		<property name="certificateBy" value="Vet1 Vet1" />
+		<property name="vet" ref="vet1" />
 		<property name="animaniac" ref="animaniac1" />
 		<property name="type" ref="type1" />
 	</bean>		
@@ -1521,7 +1294,8 @@
 		<property name="name" value="pet4Animaniac1" />
 		<property name="weigth" value="5.0" />
 		<property name="genre" value="female" />
-		<property name="certificateBy" ><null/></property>
+		<property name="certificateBy" value="Vet1 Vet1" />
+		<property name="vet" ref="vet1" />
 		<property name="animaniac" ref="animaniac1" />
 		<property name="type" ref="type1" />
 	</bean>		
@@ -1530,7 +1304,8 @@
 		<property name="name" value="pet5Animaniac1" />
 		<property name="weigth" value="5.0" />
 		<property name="genre" value="female" />
-		<property name="certificateBy" ><null/></property>
+		<property name="certificateBy" value="Vet1 Vet1" />
+		<property name="vet" ref="vet1" />
 		<property name="animaniac" ref="animaniac1" />
 		<property name="type" ref="type1" />
 	</bean>		
@@ -1539,7 +1314,8 @@
 		<property name="name" value="pet6Animaniac1" />
 		<property name="weigth" value="5.0" />
 		<property name="genre" value="female" />
-		<property name="certificateBy" ><null/></property>
+		<property name="certificateBy" value="Vet1 Vet1" />
+		<property name="vet" ref="vet1" />
 		<property name="animaniac" ref="animaniac1" />
 		<property name="type" ref="type1" />
 	</bean>	
@@ -1549,6 +1325,7 @@
 		<property name="weigth" value="0.5" />
 		<property name="genre" value="male" />
 		<property name="certificateBy" ><null/></property>
+		<property name="vet" ><null/></property>
 		<property name="animaniac" ref="animaniac1" />
 		<property name="type" ref="type3" />
 	</bean>	
@@ -1558,6 +1335,7 @@
 		<property name="weigth" value="3.0" />
 		<property name="genre" value="female" />
 		<property name="certificateBy" ><null/></property>
+		<property name="vet" ><null/></property>
 		<property name="animaniac" ref="animaniac2" />
 		<property name="type" ref="type2" />
 	</bean>	
@@ -1576,13 +1354,13 @@
 		<property name="attribute" ref="attribute2Type1" />
 	</bean>
 	
-	<!-- Petition -->
+	<!-- Request -->
 	
-	<bean id="petition1Animaniac1" class="domain.Petition">
+	<bean id="request1Animaniac1" class="domain.Request">
 		<property name="startDate" value="01/20/2017 12:00" />
 		<property name="endDate" value="01/25/2017 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
-		<property name="description" value="Description petition" />
+		<property name="description" value="Description request" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1595,11 +1373,11 @@
 		</property>
 	</bean>
 	
-	<bean id="petition2Animaniac1" class="domain.Petition">
+	<bean id="request2Animaniac1" class="domain.Request">
 		<property name="startDate" value="01/20/2016 12:00" />
 		<property name="endDate" value="01/25/2016 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
-		<property name="description" value="Description petition" />
+		<property name="description" value="Description request" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1607,11 +1385,11 @@
 		</property>
 	</bean>
 	
-	<bean id="petition3Animaniac1" class="domain.Petition">
+	<bean id="request3Animaniac1" class="domain.Request">
 		<property name="startDate" value="01/20/2015 12:00" />
 		<property name="endDate" value="01/25/2015 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
-		<property name="description" value="Description petition" />
+		<property name="description" value="Description request" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1619,11 +1397,11 @@
 		</property>
 	</bean>
 	
-	<bean id="petition4Animaniac1" class="domain.Petition">
+	<bean id="request4Animaniac1" class="domain.Request">
 		<property name="startDate" value="01/20/2014 12:00" />
 		<property name="endDate" value="01/25/2014 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
-		<property name="description" value="Description petition" />
+		<property name="description" value="Description request" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1631,11 +1409,11 @@
 		</property>
 	</bean>
 	
-	<bean id="petition5Animaniac1" class="domain.Petition">
+	<bean id="request5Animaniac1" class="domain.Request">
 		<property name="startDate" value="01/20/2013 12:00" />
 		<property name="endDate" value="01/25/2013 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
-		<property name="description" value="Description petition" />
+		<property name="description" value="Description request" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1643,11 +1421,11 @@
 		</property>
 	</bean>
 	
-	<bean id="petition6Animaniac1" class="domain.Petition">
+	<bean id="request6Animaniac1" class="domain.Request">
 		<property name="startDate" value="01/20/2018 12:00" />
 		<property name="endDate" value="01/25/2018 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
-		<property name="description" value="Description petition" />
+		<property name="description" value="Description request" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1655,11 +1433,11 @@
 		</property>
 	</bean>
 	
-	<bean id="petition1Animaniac2" class="domain.Petition">
+	<bean id="request1Animaniac2" class="domain.Request">
 		<property name="startDate" value="10/10/2017 12:00" />
 		<property name="endDate" value="10/24/2017 12:00" />
 		<property name="address" value="Calle de recogida nº2" />
-		<property name="description" value="Description petition" />
+		<property name="description" value="Description request" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac2" />
@@ -1671,14 +1449,14 @@
 	
 	<bean id="searchEngineAnimaniac1" class="domain.SearchEngine">
 		<property name="animaniac" ref="animaniac1" />
-		<property name="petitions">
+		<property name="requests">
 			<list>
-				<ref bean="petition1Animaniac1" />
-				<ref bean="petition2Animaniac1" />
-				<ref bean="petition3Animaniac1" />
-				<ref bean="petition4Animaniac1" />
-				<ref bean="petition5Animaniac1" />
-				<ref bean="petition6Animaniac1" />
+				<ref bean="request1Animaniac1" />
+				<ref bean="request2Animaniac1" />
+				<ref bean="request3Animaniac1" />
+				<ref bean="request4Animaniac1" />
+				<ref bean="request5Animaniac1" />
+				<ref bean="request6Animaniac1" />
 			</list>
 		</property>
 		<property name="startDate" ><null/></property>
@@ -1688,9 +1466,9 @@
 	
 	<bean id="searchEngineAnimaniac2" class="domain.SearchEngine">
 		<property name="animaniac" ref="animaniac2" />
-		<property name="petitions">
+		<property name="requests">
 			<list>
-				<ref bean="petition6Animaniac1" />
+				<ref bean="request6Animaniac1" />
 			</list>
 		</property>
 		<property name="startDate" value="01/01/2018 00:00" />
@@ -1700,7 +1478,7 @@
 	
 	<bean id="searchEngineAnimaniac3" class="domain.SearchEngine">
 		<property name="animaniac" ref="animaniac3" />
-		<property name="petitions">
+		<property name="requests">
 			<list>
 			</list>
 		</property>
@@ -1711,7 +1489,7 @@
 	
 	<bean id="searchEngineAnimaniac4" class="domain.SearchEngine">
 		<property name="animaniac" ref="animaniac4" />
-		<property name="petitions">
+		<property name="requests">
 			<list>
 			</list>
 		</property>
@@ -1722,7 +1500,7 @@
 	
 	<bean id="searchEngineAnimaniac5" class="domain.SearchEngine">
 		<property name="animaniac" ref="animaniac5" />
-		<property name="petitions">
+		<property name="requests">
 			<list>
 			</list>
 		</property>
@@ -1733,7 +1511,7 @@
 	
 	<bean id="searchEngineAnimaniac6" class="domain.SearchEngine">
 		<property name="animaniac" ref="animaniac6" />
-		<property name="petitions">
+		<property name="requests">
 			<list>
 			</list>
 		</property>
@@ -1744,7 +1522,7 @@
 	
 	<bean id="searchEngineAnimaniac7" class="domain.SearchEngine">
 		<property name="animaniac" ref="animaniac7" />
-		<property name="petitions">
+		<property name="requests">
 			<list>
 			</list>
 		</property>
@@ -1755,7 +1533,7 @@
 	
 	<bean id="searchEngineAnimaniac8" class="domain.SearchEngine">
 		<property name="animaniac" ref="animaniac8" />
-		<property name="petitions">
+		<property name="requests">
 			<list>
 			</list>
 		</property>
@@ -1766,109 +1544,104 @@
 		
 	<!-- Application	-->
 	
-	<bean id="application1Petition1Animaniac1" class="domain.Application">
+	<bean id="application1Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Accepted" />
+		<property name="rated" value="true" />
 		<property name="animaniac" ref="animaniac2" />
-		<property name="petition" ref="petition1Animaniac1" />
+		<property name="request" ref="request1Animaniac1" />
 	</bean>	
 	
-	<bean id="application2Petition1Animaniac1" class="domain.Application">
+	<bean id="application2Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
+		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac3" />
-		<property name="petition" ref="petition1Animaniac1" />
+		<property name="request" ref="request1Animaniac1" />
 	</bean>		
 	
-	<bean id="application3Petition1Animaniac1" class="domain.Application">
+	<bean id="application3Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
+		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac4" />
-		<property name="petition" ref="petition1Animaniac1" />
+		<property name="request" ref="request1Animaniac1" />
 	</bean>		
 	
-	<bean id="application4Petition1Animaniac1" class="domain.Application">
+	<bean id="application4Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
+		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac5" />
-		<property name="petition" ref="petition1Animaniac1" />
+		<property name="request" ref="request1Animaniac1" />
 	</bean>		
 	
-	<bean id="application5Petition1Animaniac1" class="domain.Application">
+	<bean id="application5Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
+		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac6" />
-		<property name="petition" ref="petition1Animaniac1" />
+		<property name="request" ref="request1Animaniac1" />
 	</bean>		
 	
-	<bean id="application6Petition1Animaniac1" class="domain.Application">
+	<bean id="application6Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
+		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac7" />
-		<property name="petition" ref="petition1Animaniac1" />
+		<property name="request" ref="request1Animaniac1" />
 	</bean>
 	
-	<bean id="application1Petition2Animaniac1" class="domain.Application">
+	<bean id="application1Request2Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Pending" />
+		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac2" />
-		<property name="petition" ref="petition2Animaniac1" />
+		<property name="request" ref="request2Animaniac1" />
 	</bean>		
 	
 	<!-- Banner	-->
 	
-	<bean id="Banner1Publicist1" class="domain.Banner">
-		<property name="link" value="http://www.webPublicist1.com"/>
+	<bean id="Banner1Partner1" class="domain.Banner">
+		<property name="link" value="http://www.webPartner1.com"/>
 		<property name="picture" value="http://foto1.png"/>
-		<property name="partner" ref="publicist1"/>
+		<property name="partner" ref="partner1"/>
 	</bean>
 	
-	<bean id="Banner2Publicist1" class="domain.Banner">
-		<property name="link" value="http://www.webPublicist1.com"/>
+	<bean id="Banner2Partner1" class="domain.Banner">
+		<property name="link" value="http://www.webPartner1.com"/>
 		<property name="picture" value="http://foto2.png"/>
-		<property name="partner" ref="publicist1"/>
+		<property name="partner" ref="partner1"/>
 	</bean>
 	
-	<bean id="Banner3Publicist1" class="domain.Banner">
-		<property name="link" value="http://www.webPublicist1.com"/>
+	<bean id="Banner3Partner1" class="domain.Banner">
+		<property name="link" value="http://www.webPartner1.com"/>
 		<property name="picture" value="http://foto3.png"/>
-		<property name="partner" ref="publicist1"/>
+		<property name="partner" ref="partner1"/>
 	</bean>
 	
-	<bean id="Banner4Publicist1" class="domain.Banner">
-		<property name="link" value="http://www.webPublicist1.com"/>
+	<bean id="Banner4Partner1" class="domain.Banner">
+		<property name="link" value="http://www.webPartner1.com"/>
 		<property name="picture" value="http://foto4.png"/>
-		<property name="partner" ref="publicist1"/>
+		<property name="partner" ref="partner1"/>
 	</bean>
 	
-	<bean id="Banner5Publicist1" class="domain.Banner">
-		<property name="link" value="http://www.webPublicist1.com"/>
+	<bean id="Banner5Partner1" class="domain.Banner">
+		<property name="link" value="http://www.webPartner1.com"/>
 		<property name="picture" value="http://foto5.png"/>
-		<property name="partner" ref="publicist1"/>
+		<property name="partner" ref="partner1"/>
 	</bean>
 	
-	<bean id="Banner6Publicist1" class="domain.Banner">
-		<property name="link" value="http://www.webPublicist1.com"/>
+	<bean id="Banner6Partner1" class="domain.Banner">
+		<property name="link" value="http://www.webPartner1.com"/>
 		<property name="picture" value="http://foto6.png"/>
-		<property name="partner" ref="publicist1"/>
+		<property name="partner" ref="partner1"/>
 	</bean>
 	
-	<bean id="Banner1Publicist2" class="domain.Banner">
-		<property name="link" value="http://www.webPublicist2.com"/>
+	<bean id="Banner1Partner2" class="domain.Banner">
+		<property name="link" value="http://www.webPartner2.com"/>
 		<property name="picture" value="http://foto1b.png"/>
-		<property name="partner" ref="publicist2"/>
-	</bean>
-	
-	<bean id="BannerCareCenter1" class="domain.Banner">
-		<property name="link" value="http://www.webCareCenter1.com"/>
-		<property name="picture" value="http://foto1c.png"/>
-		<property name="partner" ref="careCenter1"/>
-	</bean>
-	
-	<bean id="BannerCareCenter2" class="domain.Banner">
-		<property name="link" value="http://www.webCareCenter2.com"/>
-		<property name="picture" value="http://foto2c.png"/>
-		<property name="partner" ref="careCenter2"/>
+		<property name="partner" ref="partner2"/>
 	</bean>
 	
 	<!-- Comment	-->
@@ -1984,78 +1757,23 @@
 	
 	<bean id="configuration" class="domain.Configuration">
 		<property name="cacheTime" value="21600000"/>
+		<property name="partnerFee" value="0.25"/>
 	</bean>
 	
 	<!-- Curriculum	-->
 	
-	<bean id="curriculum1CareCenter1" class="domain.Curriculum">
-		<property name="name" value="Worker1"/>
-		<property name="email" value="worker1CC1@acme.com"/>
-		<property name="picture" value="https://image.flaticon.com/icons/png/512/10/10003.png"/>
-		<property name="educationSection" value="education worker1"/>
-		<property name="experienceSection" value="expreciences worker1"/>
-		<property name="hobbiesSection" value="hobbies worker1"/>
-		<property name="careCenter" ref="careCenter1"/>
+	<bean id="curriculum1Animaniac1" class="domain.Curriculum">
+		<property name="educationSection" value="education animaniac1"/>
+		<property name="experienceSection" value="expreciences animaniac1"/>
+		<property name="hobbiesSection" value="hobbies animaniac1"/>
+		<property name="animaniac" ref="animaniac1"/>
 	</bean>
 	
-	<bean id="curriculum2CareCenter1" class="domain.Curriculum">
-		<property name="name" value="Worker2"/>
-		<property name="email" value="worker2CC1@acme.com"/>
-		<property name="picture" value="https://image.flaticon.com/icons/png/512/10/10003.png"/>
-		<property name="educationSection" value="education worker2"/>
-		<property name="experienceSection" value="expreciences worker2"/>
-		<property name="hobbiesSection" value="hobbies worker2"/>
-		<property name="careCenter" ref="careCenter1"/>
-	</bean>
-	
-	<bean id="curriculum3CareCenter1" class="domain.Curriculum">
-		<property name="name" value="Worker3"/>
-		<property name="email" value="worker3CC1@acme.com"/>
-		<property name="picture" value="https://image.flaticon.com/icons/png/512/10/10003.png"/>
-		<property name="educationSection" value="education worker3"/>
-		<property name="experienceSection" value="expreciences worker3"/>
-		<property name="hobbiesSection" value="hobbies worker3"/>
-		<property name="careCenter" ref="careCenter1"/>
-	</bean>
-	
-	<bean id="curriculum4CareCenter1" class="domain.Curriculum">
-		<property name="name" value="Worker4"/>
-		<property name="email" value="worker4CC1@acme.com"/>
-		<property name="picture" value="https://image.flaticon.com/icons/png/512/10/10003.png"/>
-		<property name="educationSection" value="education worker4"/>
-		<property name="experienceSection" value="expreciences worker4"/>
-		<property name="hobbiesSection" value="hobbies worker4"/>
-		<property name="careCenter" ref="careCenter1"/>
-	</bean>
-	
-	<bean id="curriculum5CareCenter1" class="domain.Curriculum">
-		<property name="name" value="Worker5"/>
-		<property name="email" value="worker5CC1@acme.com"/>
-		<property name="picture" value="https://image.flaticon.com/icons/png/512/10/10003.png"/>
-		<property name="educationSection" value="education worker5"/>
-		<property name="experienceSection" value="expreciences worker5"/>
-		<property name="hobbiesSection" value="hobbies worker5"/>
-		<property name="careCenter" ref="careCenter1"/>
-	</bean>
-	
-	<bean id="curriculum6CareCenter1" class="domain.Curriculum">
-		<property name="name" value="Worker6"/>
-		<property name="email" value="worker6CC1@acme.com"/>
-		<property name="picture" value="https://image.flaticon.com/icons/png/512/10/10003.png"/>
-		<property name="educationSection" value="education worker6"/>
-		<property name="experienceSection" value="expreciences worker6"/>
-		<property name="hobbiesSection" value="hobbies worker6"/>
-		<property name="careCenter" ref="careCenter1"/>
-	</bean>
-	
-	<bean id="curriculum1CareCenter2" class="domain.Curriculum">
-		<property name="name" value="Worker1CC2"/>
-		<property name="email" value="worker1CC2@acme.com"/>
-		<property name="picture" value="https://image.flaticon.com/icons/png/512/10/10003.png"/>
-		<property name="educationSection" value="education worker1CC2"/>
-		<property name="experienceSection" value="expreciences worker1CC2"/>
-		<property name="hobbiesSection" value="hobbies worker1CC2"/>
-		<property name="careCenter" ref="careCenter2"/>
+	<bean id="curriculum1Animaniac2" class="domain.Curriculum">
+		<property name="educationSection" value="education animaniac2"/>
+		<property name="experienceSection" value="expreciences animaniac2"/>
+		<property name="hobbiesSection" value="hobbies animaniac2"/>
+		<property name="animaniac" ref="animaniac2"/>
 	</bean>
 	
 	<!-- Photo	-->
@@ -2106,11 +1824,11 @@
 	</bean>
 	
 	<bean id="spamWord3" class="domain.SpamWord">
-		<property name="word" value="drug"/>
+		<property name="word" value="cocaine"/>
 	</bean>
 	
 	<bean id="spamWord4" class="domain.SpamWord">
-		<property name="word" value="death"/>
+		<property name="word" value="erotic"/>
 	</bean>
 	
 	<bean id="spamWord5" class="domain.SpamWord">

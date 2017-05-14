@@ -47,83 +47,23 @@
 		<security:intercept-url pattern="/security/login.do" access="isAnonymous()" /> 
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" />
 		 
- 		<security:intercept-url pattern="/chorbi/register.do" access="isAnonymous()" />
- 		<security:intercept-url pattern="/managers/register.do" access="isAnonymous()" />
-
-		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
-		
-		<security:intercept-url pattern="/event/list.do" access="permitAll" />
-		<security:intercept-url pattern="/event/list/all.do" access="permitAll" /> 
-		<security:intercept-url pattern="/event/view.do" access="permitAll" /> 
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 		
 		
-		<!-- Actor -->	
-		<security:intercept-url pattern="/chorbi/chorbi/view.do" access="isAuthenticated()"  /> 
-		
-			
-		
+		<!-- Actor -->			
 <!-- 		<security:intercept-url pattern="" access="isAuthenticated()" /> -->
 
-				
-		<!-- Administrator -->
-		
+		<!-- Administrator -->		
 <!-- 		<security:intercept-url pattern="" access="hasRole('ADMINISTRATOR')" /> -->
-		<security:intercept-url pattern="/configuration/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/configuration/administrator/view.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/banner/administrator/view.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/banner/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/banner/administrator/create.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/banner/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/dashboard/administrator/dashboard.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/chorbi/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/chorbi/administrator/ban.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/chorbi/administrator/unban.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/chorbi/administrator/updateChorbiesChargedFees.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/chorbi/administrator/successFee.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/managers/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
 		
-		<!-- Chorbi -->
-<!-- 		<security:intercept-url pattern="" access="hasRole('CHORBI')" /> -->
-		<security:intercept-url pattern="/searchTemplate/chorbi/search.do" access="hasRole('CHORBI')"  /> 
-
-		<security:intercept-url pattern="/chorbi/edit.do" access="hasRole('CHORBI')" /> 
-		<security:intercept-url pattern="/chorbi/chorbi/myProfile.do" access="hasRole('CHORBI')"  /> 
-		<security:intercept-url pattern="/chorbi/list.do" access="hasRole('CHORBI')"  /> 
-		<security:intercept-url pattern="/chorbi/recivedLikedList.do" access="hasRole('CHORBI')"  /> 
+		<!-- Animaniac -->
+<!-- 		<security:intercept-url pattern="" access="hasRole('ANIMANIAC')" /> -->
 		
-		<security:intercept-url pattern="/event/chorbi/list.do" access="hasRole('CHORBI')"  /> 
-		<security:intercept-url pattern="/event/chorbi/register.do" access="hasRole('CHORBI')"/> 
-		<security:intercept-url pattern="/event/chorbi/unregister.do" access="hasRole('CHORBI')" /> 
+		<!-- Partner -->
+<!-- 		<security:intercept-url pattern="" access="hasRole('PARTNER')" /> -->
 		
-		
-		<security:intercept-url pattern="/likes/chorbi/view.do" access="hasRole('CHORBI')"  /> 
-		<security:intercept-url pattern="/likes/chorbi/create.do" access="hasRole('CHORBI')"  /> 
-		<security:intercept-url pattern="/likes/chorbi/received.do" access="hasRole('CHORBI')"  /> 
-		<security:intercept-url pattern="/likes/chorbi/sent.do" access="hasRole('CHORBI')"  /> 
-		<security:intercept-url pattern="/likes/chorbi/list.do" access="hasRole('CHORBI')"  /> 
-		<security:intercept-url pattern="/likes/chorbi/delete.do" access="hasRole('CHORBI')"  /> 
-		
-		<!-- Customer -->
-<!-- 		<security:intercept-url pattern="" access="hasAnyRole('CHORBI','MANAGER')" /> -->
-		<security:intercept-url pattern="/creditCard/customer/create.do" access="hasAnyRole('CHORBI','MANAGER')"  /> 	
-		<security:intercept-url pattern="/creditCard/customer/myCreditCard.do" access="hasAnyRole('CHORBI','MANAGER')"  /> 
-		<security:intercept-url pattern="/creditCard/customer/edit.do" access="hasAnyRole('CHORBI','MANAGER')"  />
-		 	
-		<security:intercept-url pattern="/chirp/customer/sent.do" access="hasAnyRole('CHORBI','MANAGER')"  /> 
-		<security:intercept-url pattern="/chirp/customer/view.do" access="hasAnyRole('CHORBI','MANAGER')"  /> 
-		<security:intercept-url pattern="/chirp/customer/delete.do" access="hasAnyRole('CHORBI','MANAGER')"  /> 
-		<security:intercept-url pattern="/chirp/customer/reply.do" access="hasAnyRole('CHORBI','MANAGER')"  /> 
-		<security:intercept-url pattern="/chirp/customer/forward.do" access="hasAnyRole('CHORBI','MANAGER')"  /> 
-		<security:intercept-url pattern="/chirp/customer/write.do" access="hasAnyRole('CHORBI','MANAGER')"  /> 
-		<security:intercept-url pattern="/chirp/customer/received.do" access="hasAnyRole('CHORBI','MANAGER')"  />
-		
-		<!-- Manager -->
-<!-- 		<security:intercept-url pattern="" access="hasRole('MANAGER')" /> -->
-		<security:intercept-url pattern="/managers/edit.do" access="hasRole('MANAGER')" /> 	
-		<security:intercept-url pattern="/event/manager/list.do" access="hasRole('MANAGER')"  /> 
-		<security:intercept-url pattern="/event/manager/create.do" access="hasRole('MANAGER')"  /> 
-		<security:intercept-url pattern="/event/manager/edit.do" access="hasRole('MANAGER')"  /> 
-		<security:intercept-url pattern="/chirp/manager/broadcast.do" access="hasRole('MANAGER')"  /> 
+		<!-- Vet -->
+<!-- 		<security:intercept-url pattern="" access="hasRole('VET')" /> -->
 		
 		<!--NONE -->
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />

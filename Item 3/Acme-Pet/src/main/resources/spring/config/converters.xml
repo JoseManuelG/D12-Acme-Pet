@@ -25,24 +25,6 @@
  		<bean class="converters.ActorToStringConverter" />
 		<bean class="converters.StringToActorConverter" />
 		
-		<bean class="converters.ChirpToStringConverter" />
-		<bean class="converters.StringToChirpConverter" />
-		
-		<bean class="converters.AttachmentToStringConverter" />
-		<bean class="converters.StringToAttachmentConverter" />
-		
-		<bean class="converters.LikesToStringConverter" />
-		<bean class="converters.StringToLikesConverter" />
-		
-		<bean class="converters.ChorbiToStringConverter" />
-		<bean class="converters.StringToChorbiConverter" />
-		
-		<bean class="converters.EventToStringConverter" />
-		<bean class="converters.StringToEventConverter" />
-		
-		<bean class="converters.ManagerToStringConverter" />
-		<bean class="converters.StringToManagerConverter" />
-		
 	</util:list>
 	
 </beans>

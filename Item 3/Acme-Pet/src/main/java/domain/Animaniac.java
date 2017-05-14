@@ -24,7 +24,7 @@ public class Animaniac extends Actor {
 	private int		rate	= 0;
 
 
-	@Pattern(regexp = "^male$|^female$)")
+	@Pattern(regexp = "^male$|^female$")
 	public String getGenre() {
 		return this.genre;
 	}

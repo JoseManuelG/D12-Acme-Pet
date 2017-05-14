@@ -14,8 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import forms.ActorForm;
-
 @Controller
 @RequestMapping("/law")
 public class LawController extends AbstractController {
@@ -33,7 +31,6 @@ public class LawController extends AbstractController {
 		ModelAndView result;
 
 		result = new ModelAndView("law/terms-conditions");
-		result.addObject(new ActorForm());
 
 		return result;
 	}

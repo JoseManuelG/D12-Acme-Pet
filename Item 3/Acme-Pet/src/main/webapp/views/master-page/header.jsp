@@ -56,34 +56,17 @@
 				</a>
 				<ul>
 					<li class="arrow"></li>
-					<security:authorize access="hasRole('CHORBI')">
-					<li><a href="chorbi/chorbi/myProfile.do"><spring:message code="master.page.chorbi.my.profile" /></a></li>
-					<li><a href="chorbi/list.do"><spring:message code="master.page.list.chorbies" /></a></li>
-					<li><a href="likes/chorbi/sent.do"><spring:message code="master.page.list.likes" /></a></li>
-					<li><a href="creditCard/customer/myCreditCard.do"><spring:message code="master.page.credit.card" /></a></li>
-					<li><a href="chirp/customer/received.do"><spring:message code="master.page.chirp.received" /></a></li>
-					<li><a href="chirp/customer/sent.do"><spring:message code="master.page.chirp.sent" /></a></li>
-					<li><a href="searchTemplate/chorbi/search.do"><spring:message code="master.page.search" /></a></li>
-					<li><a href="event/chorbi/list.do"><spring:message code="master.page.event.chorbi.list" /></a></li>
-					<li><a href="chorbi//recivedLikedList.do"><spring:message code="master.page.chorbi.recivedLikedList" /></a></li>
+					<security:authorize access="hasRole('ANIMANIAC')">
 					</security:authorize>	
 					
-					<security:authorize access="hasRole('MANAGER')">
-					<li><a href="event/manager/create.do"><spring:message code="master.page.event.manager.create" /></a></li>
-					<li><a href="event/manager/list.do"><spring:message code="master.page.event.manager.list" /></a></li>
-					<li><a href="creditCard/customer/myCreditCard.do"><spring:message code="master.page.credit.card" /></a></li>
-					<li><a href="chirp/customer/received.do"><spring:message code="master.page.chirp.received" /></a></li>
-					<li><a href="chirp/customer/sent.do"><spring:message code="master.page.chirp.sent" /></a></li>
-					
+					<security:authorize access="hasRole('VET')">
+						
 					</security:authorize>
 					<security:authorize access="hasRole('ADMINISTRATOR')">
-					<li><a href="dashboard/administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
-					<li><a href="configuration/administrator/view.do"><spring:message code="master.page.administrator.configuration" /></a></li>
-					<li><a href="banner/administrator/list.do"><spring:message code="master.page.administrator.banner" /></a></li>
-					<li><a href="chorbi/administrator/list.do"><spring:message code="master.page.administrator.chorbies" /></a></li>
-					<li><a href="managers/administrator/list.do"><spring:message code="master.page.administrator.managers" /></a></li>
-					<li><a href="chorbi/administrator/updateChorbiesChargedFees.do"><spring:message code="master.page.administrator.chorbies.updateChorbiesChargedFees" /></a></li>
-					
+						
+					</security:authorize>
+					<security:authorize access="hasRole('PARTNER')">
+						
 					</security:authorize>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /></a></li>
 				</ul>
