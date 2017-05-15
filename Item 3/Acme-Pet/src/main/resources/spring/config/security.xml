@@ -37,8 +37,7 @@
 		<security:intercept-url pattern="/styles/**" access="permitAll" /> 
 
 		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
-		
-		
+
 		
 		<security:intercept-url pattern="/about/about.do" access="permitAll" />
 		
@@ -48,6 +47,8 @@
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" />
 		 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
+		
+		<security:intercept-url pattern="/animaniac/register.do" access="permitAll" />
 		
 		
 		<!-- Actor -->			
