@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -20,7 +21,6 @@ public class Animaniac extends Actor {
 	private String	genre;
 	private String	address;
 	private String	picture;
-	private boolean	banned;
 	private int		rate;
 
 
@@ -53,12 +53,9 @@ public class Animaniac extends Actor {
 		this.picture = picture;
 	}
 
+	@Transient
 	public boolean getBanned() {
-		return this.banned;
-	}
-
-	public void setBanned(final boolean banned) {
-		this.banned = banned;
+		return !this.getUserAccount().isEnabled();
 	}
 
 	public int getRate() {

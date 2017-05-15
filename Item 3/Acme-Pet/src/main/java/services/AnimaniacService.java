@@ -30,6 +30,9 @@ public class AnimaniacService {
 	private ActorService		actorService;
 
 	@Autowired
+	private UserAccountService	accountService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -60,6 +63,7 @@ public class AnimaniacService {
 
 		Assert.notNull(animaniac, "animaniac.error.null");
 
+		animaniac.setUserAccount(this.accountService.save(animaniac.getUserAccount()));
 		result = this.animaniacRepository.save(animaniac);
 		Assert.notNull(result, "animaniac.error.commit");
 		if (animaniac.getId() == 0) {
