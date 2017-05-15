@@ -54,7 +54,7 @@
 						
 					</security:authorize>
 					<security:authorize access="hasRole('ADMINISTRATOR')">
-						
+					<li><a href="type/administrator/list.do"><spring:message code="master.page.administrator.types" /></a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('PARTNER')">
 						

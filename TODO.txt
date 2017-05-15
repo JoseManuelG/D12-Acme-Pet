@@ -1,6 +1,7 @@
 ﻿-------------- POR HACER --------------
 - Sacar pdfs de requirements.
 - Poner imagenes correctas en los banners del populate
+- Añadir readOnly a los types?
 
 ---------------- HECHO ----------------
 - Meter reunión y tareas iniciales en redmine (javi).

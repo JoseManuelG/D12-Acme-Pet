@@ -7,6 +7,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.TypeRepository;
 import domain.Type;
@@ -38,13 +39,25 @@ public class TypeService {
 	}
 
 	public void delete(final Type type) {
-		//TO-DO
+		long cont;
+
+		cont = this.typeRepository.countPetsWithType(type.getId());
+
+		Assert.isTrue(type.getId() != 0);
+		Assert.isTrue(cont == 0, "type.error.deletingWhenUsed");
+
 		this.typeRepository.delete(type.getId());
 	}
 
 	public Type save(final Type type) {
-		//TO-DO
 		Type result;
+		long cont;
+
+		if (type.getId() != 0) {
+			cont = this.typeRepository.countPetsWithType(type.getId());
+
+			Assert.isTrue(cont == 0, "type.error.editingWhenUsed");
+		}
 		result = this.typeRepository.save(type);
 		return result;
 	}
