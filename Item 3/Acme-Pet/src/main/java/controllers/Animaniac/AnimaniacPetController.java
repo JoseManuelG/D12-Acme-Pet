@@ -54,9 +54,9 @@ public class AnimaniacPetController extends AbstractController {
 	// Create ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	public ModelAndView create(final int typeId) {
 		ModelAndView result;
-		final Pet pet = this.petService.create();
+		final Pet pet = this.petService.create(typeId);
 		result = this.createEditModelAndView(pet);
 		return result;
 	}

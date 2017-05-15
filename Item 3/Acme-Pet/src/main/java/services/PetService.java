@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 import repositories.PetRepository;
 import domain.Animaniac;
 import domain.Pet;
+import domain.Type;
 
 @Service
 @Transactional
@@ -21,16 +22,20 @@ public class PetService {
 	@Autowired
 	private PetRepository		petRepository;
 
+	// Supporting Services --------------------------------------
 	@Autowired
 	private AnimaniacService	animaniacService;
 
+	@Autowired
+	private TypeService			typeService;
 
-	// Supporting Services --------------------------------------
 
-	public Pet create() {
+	public Pet create(final int typeId) {
 		final Pet result = new Pet();
 		final Animaniac animaniac = this.animaniacService.findAnimaniacByPrincipal();
+		final Type type = this.typeService.findOne(typeId);
 		result.setAnimaniac(animaniac);
+		result.setType(type);
 		return result;
 	}
 
