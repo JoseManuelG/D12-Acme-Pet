@@ -18,7 +18,7 @@ import domain.Actor;
 import domain.Attachment;
 import domain.Folder;
 import domain.Message;
-import form.MessageForm;
+import forms.MessageForm;
 
 @Service
 @Transactional

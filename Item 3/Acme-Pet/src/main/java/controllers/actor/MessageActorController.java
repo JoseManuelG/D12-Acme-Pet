@@ -28,7 +28,7 @@ import controllers.FolderController;
 import domain.Actor;
 import domain.Attachment;
 import domain.Message;
-import form.MessageForm;
+import forms.MessageForm;
 
 @Controller
 @RequestMapping("/message")
