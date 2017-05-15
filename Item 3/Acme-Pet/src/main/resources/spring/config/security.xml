@@ -56,6 +56,9 @@
 		<security:intercept-url pattern="/folder/list.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/folder/view.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/folder/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/view.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/write.do" access="isAuthenticated()" />
+		
 		
 		<!-- Administrator -->		
 <!-- 		<security:intercept-url pattern="" access="hasRole('ADMINISTRATOR')" /> -->

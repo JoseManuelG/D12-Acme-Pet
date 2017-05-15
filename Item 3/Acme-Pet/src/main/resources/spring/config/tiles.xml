@@ -25,6 +25,8 @@
 		<value>/views/security/tiles.xml</value>
 		<value>/views/welcome/tiles.xml</value>
 		<value>/views/folder/tiles.xml</value>
+		<value>/views/message/tiles.xml</value>
+		
 				
 		
 	</util:list>

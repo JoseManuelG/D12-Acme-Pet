@@ -144,7 +144,7 @@ public class FolderController extends AbstractController {
 		result = new ModelAndView("folder/view");
 		result.addObject("folder", folder);
 		result.addObject("messages", messages);
-
+		result.addObject("requestURI", "folder/view.dofolderId=" + folderId);
 		return result;
 	}
 	// Ancillary Methods --------------------------------------------------

@@ -23,14 +23,14 @@
 	<acme:column sorteable="true" code="message.recipient" path="recipientName"/>
 	
 	<display:column>
-		<a href="message/actor/view.do?messageId=${row.id}">
+		<a href="message/view.do?messageId=${row.id}">
 			<spring:message code="message.view"/>
 		</a>
 	</display:column>
 
 </display:table>
 
-<a href="message/actor/write.do">
+<a href="message/write.do">
 	<spring:message code="message.view"/>
 </a>
 
