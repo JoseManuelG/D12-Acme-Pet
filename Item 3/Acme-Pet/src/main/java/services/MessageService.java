@@ -50,7 +50,11 @@ public class MessageService {
 		Assert.notNull(recipient);
 		//Settear recipient
 		result.setRecipient(recipient);
-
+		//Encontrar la carpeta del sender
+		sender = this.actorService.findActorByPrincipal();
+		result.setSender(sender);
+		senderFolder = this.folderService.findFolderOfActor(sender, "outbox");
+		result.setFolder(senderFolder);
 		//nombres de los actores
 		result.setRecipientName(recipient.getName());
 		result.setSenderName(sender.getName());
@@ -160,18 +164,10 @@ public class MessageService {
 	}
 
 	public Message reconstruct(final MessageForm messageForm, final BindingResult binding) {
-		Actor sender;
-		Folder senderFolder;
 		final Message result = this.create(messageForm.getRecipient().getId());
 		result.setText(messageForm.getText());
 		result.setSubject(messageForm.getSubject());
 		result.setIsSender(true);
-
-		//Encontrar la carpeta del sender
-		sender = this.actorService.findActorByPrincipal();
-		result.setSender(sender);
-		senderFolder = this.folderService.findFolderOfActor(sender, "outbox");
-		result.setFolder(senderFolder);
 
 		this.validator.validate(result, binding);
 

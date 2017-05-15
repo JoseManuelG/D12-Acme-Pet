@@ -76,7 +76,7 @@ public class FolderService {
 		Assert.notNull(folder, "DELETE: El folder ha de ser NO nulo");
 		Assert.isTrue(folder.getId() != 0, "El folder ha de haber sido guardado");
 		Assert.isTrue(principal.equals(folder.getActor().getUserAccount()), "DELETE: UserAccount no valido");
-		Assert.isTrue(!folder.getisBasic(), "Los folder basicos NO pueden ser borrados");
+		Assert.isTrue(!folder.getReadonly(), "Los folder basicos NO pueden ser borrados");
 		this.folderRepository.delete(folder);
 	}
 
@@ -86,7 +86,7 @@ public class FolderService {
 		Folder folder;
 		for (int i = 0; i < 4; i++) {
 			folder = this.create(actor);
-			folder.setisBasic(true);
+			folder.setReadonly(true);
 			if (i == 0)
 				folder.setName("inbox");
 			else if (i == 1)
