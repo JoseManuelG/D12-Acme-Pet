@@ -55,7 +55,6 @@ public class Actor extends Commentable {
 		this.email = email;
 	}
 
-	@NotBlank
 	@Pattern(regexp = "^(\\+([0-9][0-9][0-9]))?([0-9A-Za-z])+$")
 	public String getPhone() {
 		return this.phone;

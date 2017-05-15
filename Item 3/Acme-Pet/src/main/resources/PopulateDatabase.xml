@@ -315,7 +315,6 @@
 		<property name="picture" value="https://image.freepik.com/iconos-gratis/avatar-de-usuario-de-esquema_318-34741.jpg" />
 		<property name="genre" value="male" />
 		<property name="address" value="Calle de los animales 1ºA" />
-		<property name="banned" value="false" />
 		<property name="rate" value="25" />			
 	</bean>
 	
@@ -328,7 +327,6 @@
 		<property name="picture" value="https://image.freepik.com/iconos-gratis/avatar-de-usuario-de-esquema_318-34741.jpg" />
 		<property name="genre" value="male" />
 		<property name="address" value="Calle de los animales 2ºB" />
-		<property name="banned" value="false" />
 		<property name="rate" value="4" />			
 	</bean>
 	
@@ -341,7 +339,6 @@
 		<property name="picture" value="https://image.freepik.com/iconos-gratis/avatar-de-usuario-de-esquema_318-34741.jpg" />
 		<property name="genre" value="male" />
 		<property name="address" value="Calle de los animales 3ºC" />
-		<property name="banned" value="false" />
 		<property name="rate" value="-3" />			
 	</bean>
 	
@@ -354,7 +351,6 @@
 		<property name="picture" value="https://image.freepik.com/iconos-gratis/avatar-de-usuario-de-esquema_318-34741.jpg" />
 		<property name="genre" value="male" />
 		<property name="address" value="Calle de los animales 4ºD" />
-		<property name="banned" value="true" />
 		<property name="rate" value="0" />			
 	</bean>
 	
@@ -367,7 +363,6 @@
 		<property name="picture" value="https://image.freepik.com/iconos-gratis/avatar-de-usuario-de-esquema_318-34741.jpg" />
 		<property name="genre" value="female" />
 		<property name="address" value="Calle de los animales 5ºA" />
-		<property name="banned" value="false" />
 		<property name="rate" value="5" />			
 	</bean>
 	
@@ -380,7 +375,6 @@
 		<property name="picture" value="https://image.freepik.com/iconos-gratis/avatar-de-usuario-de-esquema_318-34741.jpg" />
 		<property name="genre" value="female" />
 		<property name="address" value="Calle de los animales 6ºB" />
-		<property name="banned" value="false" />
 		<property name="rate" value="11" />			
 	</bean>
 	
@@ -393,7 +387,6 @@
 		<property name="picture" value="https://image.freepik.com/iconos-gratis/avatar-de-usuario-de-esquema_318-34741.jpg" />
 		<property name="genre" value="female" />
 		<property name="address" value="Calle de los animales 7ºC" />
-		<property name="banned" value="false" />
 		<property name="rate" value="-8" />			
 	</bean>
 	
@@ -406,7 +399,6 @@
 		<property name="picture" value="https://image.freepik.com/iconos-gratis/avatar-de-usuario-de-esquema_318-34741.jpg" />
 		<property name="genre" value="female" />
 		<property name="address" value="Calle de los animales 8ºD" />
-		<property name="banned" value="true" />
 		<property name="rate" value="0" />			
 	</bean>
 	
@@ -550,358 +542,452 @@
 	<!-- Folder -->
 	
 	<bean id="folder1Animaniac1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="animaniac1" />
 	</bean>
 	<bean id="folder2Animaniac1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="animaniac1" />
 	</bean>
 	<bean id="folder3Animaniac1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="animaniac1" />
 	</bean>
 	<bean id="folder4Animaniac1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
+		<property name="actor" ref="animaniac1" />
+	</bean>
+	<bean id="folder5Animaniac1" class="domain.Folder">
+		<property name="readOnly" value="false" />
+		<property name="name" value="newFolder" />
+		<property name="actor" ref="animaniac1" />
+	</bean>
+	<bean id="folder6Animaniac1" class="domain.Folder">
+		<property name="readOnly" value="false" />
+		<property name="name" value="newTestFolder" />
 		<property name="actor" ref="animaniac1" />
 	</bean>
 	
 	<bean id="folder1Animaniac2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="animaniac2" />
 	</bean>
 	<bean id="folder2Animaniac2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="animaniac2" />
 	</bean>
 	<bean id="folder3Animaniac2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="animaniac2" />
 	</bean>
 	<bean id="folder4Animaniac2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="animaniac2" />
 	</bean>
 	
 	<bean id="folder1Animaniac3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="animaniac3" />
 	</bean>
 	<bean id="folder2Animaniac3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="animaniac3" />
 	</bean>
 	<bean id="folder3Animaniac3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="animaniac3" />
 	</bean>
 	<bean id="folder4Animaniac3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="animaniac3" />
 	</bean>
 	
 	<bean id="folder1Animaniac4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="animaniac4" />
 	</bean>
 	<bean id="folder2Animaniac4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="animaniac4" />
 	</bean>
 	<bean id="folder3Animaniac4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="animaniac4" />
 	</bean>
 	<bean id="folder4Animaniac4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="animaniac4" />
 	</bean>
 	
 	<bean id="folder1Animaniac5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="animaniac5" />
 	</bean>
 	<bean id="folder2Animaniac5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="animaniac5" />
 	</bean>
 	<bean id="folder3Animaniac5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="animaniac5" />
 	</bean>
 	<bean id="folder4Animaniac5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="animaniac5" />
 	</bean>
 	
 	<bean id="folder1Animaniac6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="animaniac6" />
 	</bean>
 	<bean id="folder2Animaniac6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="animaniac6" />
 	</bean>
 	<bean id="folder3Animaniac6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="animaniac6" />
 	</bean>
 	<bean id="folder4Animaniac6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="animaniac6" />
 	</bean>
 	
 	<bean id="folder1Animaniac7" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="animaniac7" />
 	</bean>
 	<bean id="folder2Animaniac7" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="animaniac7" />
 	</bean>
 	<bean id="folder3Animaniac7" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="animaniac7" />
 	</bean>
 	<bean id="folder4Animaniac7" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="animaniac7" />
 	</bean>
 	
 	<bean id="folder1Animaniac8" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="animaniac8" />
 	</bean>
 	<bean id="folder2Animaniac8" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="animaniac8" />
 	</bean>
 	<bean id="folder3Animaniac8" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="animaniac8" />
 	</bean>
 	<bean id="folder4Animaniac8" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="animaniac8" />
 	</bean>
 	
 	<bean id="folder1Administrator1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="administrator1" />
 	</bean>
 	<bean id="folder2Administrator1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="administrator1" />
 	</bean>
 	<bean id="folder3Administrator1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="administrator1" />
 	</bean>
 	<bean id="folder4Administrator1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="administrator1" />
 	</bean>
 	
 	<bean id="folder1Partner1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="partner1" />
 	</bean>
 	<bean id="folder2Partner1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="partner1" />
 	</bean>
 	<bean id="folder3Partner1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="partner1" />
 	</bean>
 	<bean id="folder4Partner1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="partner1" />
 	</bean>
 	
 	<bean id="folder1Partner2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="partner2" />
 	</bean>
 	<bean id="folder2Partner2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="partner2" />
 	</bean>
 	<bean id="folder3Partner2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="partner2" />
 	</bean>
 	<bean id="folder4Partner2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="partner2" />
 	</bean>
 	
 	<bean id="folder1Partner3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="partner3" />
 	</bean>
 	<bean id="folder2Partner3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="partner3" />
 	</bean>
 	<bean id="folder3Partner3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="partner3" />
 	</bean>
 	<bean id="folder4Partner3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="partner3" />
 	</bean>
 	
 	<bean id="folder1Partner4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="partner4" />
 	</bean>
 	<bean id="folder2Partner4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="partner4" />
 	</bean>
 	<bean id="folder3Partner4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="partner4" />
 	</bean>
 	<bean id="folder4Partner4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="partner4" />
 	</bean>
 	
 	<bean id="folder1Partner5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="partner5" />
 	</bean>
 	<bean id="folder2Partner5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="partner5" />
 	</bean>
 	<bean id="folder3Partner5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="partner5" />
 	</bean>
 	<bean id="folder4Partner5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="partner5" />
 	</bean>
 	
 	<bean id="folder1Partner6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="partner6" />
 	</bean>
 	<bean id="folder2Partner6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="partner6" />
 	</bean>
 	<bean id="folder3Partner6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="partner6" />
 	</bean>
 	<bean id="folder4Partner6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="partner6" />
 	</bean>
 	
 	<bean id="folder1Vet1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="vet1" />
 	</bean>
 	<bean id="folder2Vet1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="vet1" />
 	</bean>
 	<bean id="folder3Vet1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="vet1" />
 	</bean>
 	<bean id="folder4Vet1" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="vet1" />
 	</bean>
 	
 	<bean id="folder1Vet2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="vet2" />
 	</bean>
 	<bean id="folder2Vet2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="vet2" />
 	</bean>
 	<bean id="folder3Vet2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="vet2" />
 	</bean>
 	<bean id="folder4Vet2" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="vet2" />
 	</bean>
 	
 	<bean id="folder1Vet3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="vet3" />
 	</bean>
 	<bean id="folder2Vet3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="vet3" />
 	</bean>
 	<bean id="folder3Vet3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="vet3" />
 	</bean>
 	<bean id="folder4Vet3" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="vet3" />
 	</bean>
 	
 	<bean id="folder1Vet4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="vet4" />
 	</bean>
 	<bean id="folder2Vet4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="vet4" />
 	</bean>
 	<bean id="folder3Vet4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="vet4" />
 	</bean>
 	<bean id="folder4Vet4" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="vet4" />
 	</bean>
 	
 	<bean id="folder1Vet5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="vet5" />
 	</bean>
 	<bean id="folder2Vet5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="vet5" />
 	</bean>
 	<bean id="folder3Vet5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="vet5" />
 	</bean>
 	<bean id="folder4Vet5" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="vet5" />
 	</bean>
 	
 	<bean id="folder1Vet6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="inbox" />
 		<property name="actor" ref="vet6" />
 	</bean>
 	<bean id="folder2Vet6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="outbox" />
 		<property name="actor" ref="vet6" />
 	</bean>
 	<bean id="folder3Vet6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="trashbox" />
 		<property name="actor" ref="vet6" />
 	</bean>
 	<bean id="folder4Vet6" class="domain.Folder">
+		<property name="readOnly" value="true" />
 		<property name="name" value="spambox" />
 		<property name="actor" ref="vet6" />
 	</bean>

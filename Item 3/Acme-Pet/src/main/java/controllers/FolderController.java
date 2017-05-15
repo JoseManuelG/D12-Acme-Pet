@@ -101,7 +101,7 @@ public class FolderController extends AbstractController {
 			System.out.println(binding);
 			result = this.createEditModelAndView(folder);
 
-		} else if (folder.getReadonly())
+		} else if (folder.getReadOnly())
 			result = new ModelAndView("redirect:list.do");
 		else {
 
@@ -119,7 +119,7 @@ public class FolderController extends AbstractController {
 
 		Assert.notNull(folder);
 
-		if (folder.getReadonly())
+		if (folder.getReadOnly())
 			result = new ModelAndView("redirect:list.do");
 		else
 			try {
