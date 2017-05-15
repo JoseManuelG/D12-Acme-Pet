@@ -16,11 +16,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AttributeValueService;
 import services.PetService;
 import controllers.AbstractController;
+import domain.AttributeValue;
 import domain.Pet;
+import domain.Photo;
 
 @Controller
 @RequestMapping("/pet/animaniac")
@@ -29,7 +33,10 @@ public class AnimaniacPetController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	public PetService	petService;
+	public PetService				petService;
+
+	@Autowired
+	public AttributeValueService	attributeValueService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -40,10 +47,10 @@ public class AnimaniacPetController extends AbstractController {
 
 	// List ------------------------------------------------------------------		
 
-	@RequestMapping(value = "/list")
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		final ModelAndView result;
-		result = new ModelAndView("pet/animaniac/list");
+		result = new ModelAndView("pet/list");
 
 		//Esto no creo que le mole demasiado a corchu por lo pronto lo dejo asi
 		final Collection<Pet> pets = this.petService.findAll();
@@ -71,6 +78,27 @@ public class AnimaniacPetController extends AbstractController {
 		return result;
 	}
 
+	// View ------------------------------------------------------------------		
+
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public ModelAndView view(@RequestParam final int petId) {
+		ModelAndView result;
+		Pet res;
+		Collection<AttributeValue> attributeValues;
+		Collection<Photo> att;
+
+		res = this.petService.findOne(petId);
+		att = ;//TODO
+		
+		attributeValues = this.attributeValueService.findAttributeValuesOfPet(res);
+
+		result = new ModelAndView("pet/view");
+		result.addObject("res", res);
+		result.addObject("attributeValues", attributeValues);
+		result.addObject("requestURI", "pet/animaniac/view.do?petId=" + petId);
+
+		return result;
+	}
 	//Ancillary methods ----------------------------------------------------------------------
 
 	protected ModelAndView createEditModelAndView(final Pet pet) {
@@ -83,7 +111,7 @@ public class AnimaniacPetController extends AbstractController {
 
 	protected ModelAndView createEditModelAndView(final Pet pet, final String message) {
 		ModelAndView result;
-		result = new ModelAndView("pet/animaniac/edit");
+		result = new ModelAndView("pet/edit");
 		result.addObject("pet", pet);
 		result.addObject("message", message);
 
