@@ -23,16 +23,7 @@
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		
-		<li>
-			<a class="fNiv"> 		
-			<spring:message code="master.page.events" />
-			</a>
-			<ul>
-				<li class="arrow"></li>
-				<li><a href="event/list.do"><spring:message code="master.page.events.next.to.close" /></a></li>
-				<li><a href="event/list/all.do"><spring:message code="master.page.events.all" /></a></li>
-			</ul>
-		</li>
+
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
@@ -40,12 +31,12 @@
 				<a class="fNiv">
 				<spring:message code="master.page.register" />
 				</a>
-				<ul>
+		<!--		<ul>
 					<li class="arrow"></li>
 					<li><a href="chorbi/register.do"><spring:message code="master.page.register.chorbi" /></a></li>
 					<li><a href="managers/register.do"><spring:message code="master.page.register.manager" /></a></li>
 				</ul>
-			</li>
+			</li>-->
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

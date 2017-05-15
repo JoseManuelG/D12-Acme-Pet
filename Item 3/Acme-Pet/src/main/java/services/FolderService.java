@@ -40,6 +40,7 @@ public class FolderService {
 	public Folder create(final Actor actor) {
 		final Folder result = new Folder();
 		result.setActor(actor);
+
 		return result;
 	}
 

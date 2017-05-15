@@ -13,7 +13,7 @@ import domain.Message;
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
 	//Esto devuelve todo los mensajes de una carpeta, ya sean enviados por el dueño o no (incluye los recividos).
-	@Query("select m from Message m where m.ownerFolder.id=?1")
+	@Query("select m from Message m where m.folder.id=?1")
 	List<Message> findMessagesInFolder(int folderId);
 	//Esto devuelve todos los mensajes del actor,ya sean enviados por el o no (incluye los recividos).
 	@Query("select m from Message m where m.folder.actor.id=?1")
