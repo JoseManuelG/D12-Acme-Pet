@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.PetService;
@@ -52,19 +53,20 @@ public class AnimaniacPetController extends AbstractController {
 
 	// Create ------------------------------------------------------------------		
 
-	@RequestMapping(value = "/edit")
-	public ModelAndView create() {
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create(final int typeId) {
 		ModelAndView result;
-		final Pet pet = this.petService.create();
+		final Pet pet = this.petService.create(typeId);
 		result = this.createEditModelAndView(pet);
 		return result;
 	}
 
 	// Edit ------------------------------------------------------------------		
 
-	@RequestMapping(value = "/edit")
-	public ModelAndView edit() {
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(final int petId) {
 		ModelAndView result;
+		final Pet pet = this.petService.findOne(petId);
 		result = this.createEditModelAndView(pet);
 		return result;
 	}

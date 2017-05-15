@@ -50,11 +50,13 @@ public class MessageService {
 		Assert.notNull(recipient);
 		//Settear recipient
 		result.setRecipient(recipient);
+
 		//Encontrar la carpeta del sender
 		sender = this.actorService.findActorByPrincipal();
 		result.setSender(sender);
 		senderFolder = this.folderService.findFolderOfActor(sender, "outbox");
 		result.setFolder(senderFolder);
+
 		//nombres de los actores
 		result.setRecipientName(recipient.getName());
 		result.setSenderName(sender.getName());
