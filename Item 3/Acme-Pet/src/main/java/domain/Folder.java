@@ -13,7 +13,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(uniqueConstraints = {
-	@UniqueConstraint(columnNames = "name")
+	@UniqueConstraint(columnNames = {
+		"name", "actor_id"
+	})
 })
 public class Folder extends DomainEntity {
 
