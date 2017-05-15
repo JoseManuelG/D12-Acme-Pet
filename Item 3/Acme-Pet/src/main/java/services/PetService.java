@@ -22,14 +22,14 @@ public class PetService {
 	private PetRepository		petRepository;
 
 	@Autowired
-	private AnimaniacRepository	animaniacRepository;
+	private AnimaniacService	animaniacService;
 
 
 	// Supporting Services --------------------------------------
 
 	public Pet create() {
 		final Pet result = new Pet();
-		final Animaniac animaniac = this.animaniacRepository.findByPrincipal();
+		final Animaniac animaniac = this.animaniacService.findAnimaniacByPrincipal();
 		result.setAnimaniac(animaniac);
 		return result;
 	}
@@ -50,16 +50,16 @@ public class PetService {
 		Assert.notNull(pet);
 		Assert.isTrue(pet.getId() != 0);
 		Assert.notNull(pet.getAnimaniac());
-		Assert.isTrue(pet.getAnimaniac() == this.animaniacRepository.findByPrincipal());
+		Assert.isTrue(pet.getAnimaniac() == this.animaniacService.findAnimaniacByPrincipal());
 		this.petRepository.delete(pet.getId());
 	}
-	
-	public Pet save(Pet pet){
+
+	public Pet save(final Pet pet) {
 		Assert.notNull(pet);
 		Assert.notNull(pet.getAnimaniac());
-		Assert.isTrue(pet.getAnimaniac() == this.animaniacRepository.findByPrincipal());
+		Assert.isTrue(pet.getAnimaniac() == this.animaniacService.findAnimaniacByPrincipal());
 		Pet result;
-		result=this.petRepository.save(pet);
+		result = this.petRepository.save(pet);
 		return result;
 	}
 	//Simple CRUD methods-------------------------------------------------------------------
