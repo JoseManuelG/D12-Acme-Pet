@@ -153,6 +153,10 @@ public class MessageService {
 			this.messageRepository.save(message);
 		}
 	}
+	public void deleteAll(final Collection<Message> messages) {
+		for (final Message m : messages)
+			this.delete(m.getId());
+	}
 	public void flush() {
 		this.messageRepository.flush();
 	}

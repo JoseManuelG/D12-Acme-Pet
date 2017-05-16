@@ -56,15 +56,15 @@
 </jstl:if>
 
 <jstl:if test="${res.folder!=null}">
-	<a href="message/actor/reply.do?messageId=${res.id}">
+	<a href="message/reply.do?messageId=${res.id}">
 		<spring:message code="message.reply"/>
 	</a> | 
 </jstl:if>
 
-<a href="message/actor/forward.do?messageId=${res.id}">
+<a href="message/forward.do?messageId=${res.id}">
 	<spring:message code="message.forward"/>
 </a> | 
 
-<a href="message/actor/delete.do?messageId=${res.id}" onclick="return confirm('<spring:message code="confirm.delete" />')">
+<a href="message/delete.do?messageId=${res.id}" onclick="return confirm('<spring:message code="confirm.delete" />')">
 	<spring:message code="message.delete"/>
 </a>

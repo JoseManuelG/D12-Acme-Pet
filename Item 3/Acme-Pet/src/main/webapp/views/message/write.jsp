@@ -66,7 +66,7 @@
 	<jstl:if test="${messageForm.action eq 1 }">
 		<form:hidden path="recipient" />
 		<spring:message code="message.for" />:
-	<jstl:out value="${messageForm.otherActor.name} ${messageForm.otherActor.surname} (${messageForm.otherActor.userAccount.username})" />
+	<jstl:out value="${messageForm.recipient.name} ${messageForm.recipient.surname} (${messageForm.recipient.userAccount.username})" />
 		<br />
 	</jstl:if>
 

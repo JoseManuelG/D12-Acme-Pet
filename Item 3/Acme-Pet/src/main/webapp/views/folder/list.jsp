@@ -18,7 +18,7 @@
 	<!-- Action links -->
 
 		<display:column>
-		<jstl:if test="${not(row.readonly)}">
+		<jstl:if test="${not(row.readOnly)}">
 			<a href="folder/edit.do?folderId=${row.id}">
 				<spring:message	code="folder.edit" />
 			</a>
@@ -35,8 +35,8 @@
 	<spring:message code="folder.name" var="name" />
 	<display:column property="name" title="${name}" sortable="false"/>
 
-	<spring:message code="folder.readonly" var="readonly" />
-	<display:column property="readonly" title="${readonly}" sortable="false" />
+	<spring:message code="folder.readOnly" var="readOnly" />
+	<display:column property="readOnly" title="${readOnly}" sortable="false" />
 
 </display:table>
 

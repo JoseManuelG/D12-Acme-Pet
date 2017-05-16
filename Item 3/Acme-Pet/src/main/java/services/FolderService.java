@@ -11,10 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.FolderRepository;
-import security.LoginService;
-import security.UserAccount;
 import domain.Actor;
 import domain.Folder;
+import domain.Message;
 
 @Service
 @Transactional
@@ -28,9 +27,9 @@ public class FolderService {
 	//Supporting Services-----------------------------
 
 	@Autowired
-	private LoginService		loginService;
-	@Autowired
 	private ActorService		actorService;
+	@Autowired
+	private MessageService		messageService;
 
 
 	//Constructors------------------------------------
@@ -44,12 +43,11 @@ public class FolderService {
 		return result;
 	}
 
-	@SuppressWarnings("static-access")
 	public Folder save(final Folder folder) {
-		final UserAccount principal = this.loginService.getPrincipal();
+		final Actor principal = this.actorService.findActorByPrincipal();
 		Assert.notNull(folder, "SAVE: El folder ha de ser NO nulo");
 		Assert.notNull(folder.getActor(), "El actor no puede ser nulo");
-		Assert.isTrue(principal.equals(folder.getActor().getUserAccount()), "SAVE: UserAccount no valido");
+		Assert.isTrue(principal.equals(folder.getActor()), "SAVE: UserAccount no valido");
 		final Folder result = this.folderRepository.save(folder);
 		return result;
 	}
@@ -71,13 +69,15 @@ public class FolderService {
 		return result;
 	}
 
-	@SuppressWarnings("static-access")
 	public void delete(final Folder folder) {
-		final UserAccount principal = this.loginService.getPrincipal();
+		final Actor principal = this.actorService.findActorByPrincipal();
+		Collection<Message> messages;
 		Assert.notNull(folder, "DELETE: El folder ha de ser NO nulo");
 		Assert.isTrue(folder.getId() != 0, "El folder ha de haber sido guardado");
-		Assert.isTrue(principal.equals(folder.getActor().getUserAccount()), "DELETE: UserAccount no valido");
+		Assert.isTrue(principal.equals(folder.getActor()), "DELETE: UserAccount no valido");
 		Assert.isTrue(!folder.getReadOnly(), "Los folder basicos NO pueden ser borrados");
+		messages = this.messageService.findMessagesInFolder(folder.getId());
+		this.messageService.deleteAll(messages);
 		this.folderRepository.delete(folder);
 	}
 

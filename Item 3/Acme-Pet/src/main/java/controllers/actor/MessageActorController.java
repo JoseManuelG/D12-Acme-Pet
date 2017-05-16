@@ -24,7 +24,6 @@ import services.ActorService;
 import services.AttachmentService;
 import services.MessageService;
 import controllers.AbstractController;
-import controllers.FolderController;
 import domain.Actor;
 import domain.Attachment;
 import domain.Message;
@@ -37,15 +36,15 @@ public class MessageActorController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private MessageService		messageService;
+	private MessageService			messageService;
 
 	@Autowired
-	private AttachmentService	attachmentService;
+	private AttachmentService		attachmentService;
 
 	@Autowired
-	private ActorService		actorService;
+	private ActorService			actorService;
 	@Autowired
-	private FolderController	folderController;
+	private FolderActorController	folderController;
 
 
 	// Constructors -----------------------------------------------------------
@@ -79,34 +78,32 @@ public class MessageActorController extends AbstractController {
 
 		this.messageService.delete(messageId);
 
-		result = new ModelAndView("redirect:/");
+		result = new ModelAndView("redirect:/folder/list.do");
 
 		return result;
 	}
 
-	/*
-	 * @RequestMapping(value = "/reply", method = RequestMethod.GET)
-	 * public ModelAndView reply(@RequestParam final int messageId) {
-	 * ModelAndView result;
-	 * MessageForm messageForm;
-	 * 
-	 * messageForm = this.messageService.replyMessage(messageId);
-	 * result = this.createEditModelAndView(messageForm);
-	 * 
-	 * return result;
-	 * }
-	 * 
-	 * @RequestMapping(value = "/forward", method = RequestMethod.GET)
-	 * public ModelAndView forward(@RequestParam final int messageId) {
-	 * ModelAndView result;
-	 * MessageForm messageForm;
-	 * 
-	 * messageForm = this.messageService.forwardMessage(messageId);
-	 * result = this.createEditModelAndView(messageForm);
-	 * 
-	 * return result;
-	 * }
-	 */
+	@RequestMapping(value = "/reply", method = RequestMethod.GET)
+	public ModelAndView reply(@RequestParam final int messageId) {
+		ModelAndView result;
+		MessageForm messageForm;
+
+		messageForm = this.messageService.replyMessage(messageId);
+		result = this.createEditModelAndView(messageForm);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/forward", method = RequestMethod.GET)
+	public ModelAndView forward(@RequestParam final int messageId) {
+		ModelAndView result;
+		MessageForm messageForm;
+
+		messageForm = this.messageService.forwardMessage(messageId);
+		result = this.createEditModelAndView(messageForm);
+
+		return result;
+	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public ModelAndView write() {
@@ -158,7 +155,7 @@ public class MessageActorController extends AbstractController {
 		} else
 			try {
 				this.messageService.save(message, messageForm.getAttachments());
-				result = this.folderController.view(message.getFolder().getId());
+				result = new ModelAndView("redirect:../folder/view.do?folderId=" + message.getFolder().getId());
 			} catch (final IllegalArgumentException e) {
 				result = this.createEditModelAndView(messageForm, e.getMessage());
 			}

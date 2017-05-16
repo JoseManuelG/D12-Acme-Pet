@@ -14,7 +14,7 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="readonly" />
+	<form:hidden path="readOnly" />
 	<form:hidden path="actor" />
 	
 	<form:label path="name">

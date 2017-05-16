@@ -1,5 +1,5 @@
 
-package controllers;
+package controllers.actor;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,13 +23,14 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.FolderService;
 import services.MessageService;
+import controllers.AbstractController;
 import domain.Actor;
 import domain.Folder;
 import domain.Message;
 
 @Controller
 @RequestMapping("folder")
-public class FolderController extends AbstractController {
+public class FolderActorController extends AbstractController {
 
 	//InitBinder---------------------------------------------------------------
 
@@ -55,7 +56,7 @@ public class FolderController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public FolderController() {
+	public FolderActorController() {
 		super();
 	}
 
@@ -144,7 +145,7 @@ public class FolderController extends AbstractController {
 		result = new ModelAndView("folder/view");
 		result.addObject("folder", folder);
 		result.addObject("messages", messages);
-		result.addObject("requestURI", "folder/view.dofolderId=" + folderId);
+		result.addObject("requestURI", "folder/view.do?folderId=" + folderId);
 		return result;
 	}
 	// Ancillary Methods --------------------------------------------------

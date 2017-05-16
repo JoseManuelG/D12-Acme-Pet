@@ -21,11 +21,6 @@
 		<put-attribute name="body" value="/views/message/list.jsp" />
 	</definition>
 
-	<definition name="message/list/actor/received" extends="master.page">	
-		<put-attribute name="title" value="Received messages list" />
-		<put-attribute name="body" value="/views/message/list.jsp" />
-	</definition>
-	
 	<definition name="message/actor/view" extends="master.page">	
 		<put-attribute name="title" value="Message view" />
 		<put-attribute name="body" value="/views/message/view.jsp" />
