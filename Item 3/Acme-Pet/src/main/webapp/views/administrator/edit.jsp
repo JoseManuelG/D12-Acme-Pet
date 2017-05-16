@@ -17,15 +17,9 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="${requestURI}" modelAttribute="partnerForm">
+<form:form action="${requestURI}" modelAttribute="administratorForm">
 	
 	<%@include file="../actor/commonInfo.jsp" %>
-	
-	<acme:textbox code="partner.link" path="link"/>
-	
-	<acme:textbox code="partner.address" path="address"/>
-	
-	<acme:textarea code="partner.description" path="description"/>
 	
 	<%@include file="../actor/footForm.jsp" %>
 	

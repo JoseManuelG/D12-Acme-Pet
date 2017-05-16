@@ -35,11 +35,11 @@ public class ActorController extends AbstractController {
 		if (principal instanceof Animaniac)
 			result = new ModelAndView("redirect:/animaniac/view.do?animaniacId=" + principal.getId());
 		else if (principal instanceof Partner)
-			result = new ModelAndView("redirect:/partner/view.do?animaniacId=" + principal.getId());
+			result = new ModelAndView("redirect:/partner/view.do?partnerId=" + principal.getId());
 		else if (principal instanceof Vet)
-			result = new ModelAndView("redirect:/vet/view.do?animaniacId=" + principal.getId());
+			result = new ModelAndView("redirect:/vet/view.do?vetId=" + principal.getId());
 		else
-			result = new ModelAndView("redirect:/administrator/view.do?animaniacId=" + principal.getId());
+			result = new ModelAndView("redirect:/administrator/view.do?administratorId=" + principal.getId());
 
 		return result;
 	}

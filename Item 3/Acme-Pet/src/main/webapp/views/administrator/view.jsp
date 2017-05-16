@@ -20,28 +20,25 @@
 <fieldset>
 
 <b><spring:message code="actor.username"/>:</b>
-<acme:mask text="${vet.userAccount.username}"/><br/>
+<acme:mask text="${administrator.userAccount.username}"/><br/>
 
 <b><spring:message code="actor.name"/>:</b>
-<acme:mask text="${vet.name}"/><br/>
+<acme:mask text="${administrator.name}"/><br/>
 
 <b><spring:message code="actor.surname"/>:</b>
-<acme:mask text="${vet.surname}"/><br/>
+<acme:mask text="${administrator.surname}"/><br/>
 
 <b><spring:message code="actor.email"/>:</b>
-<jstl:out value="${vet.email}"/><br/>
+<jstl:out value="${administrator.email}"/><br/>
 
 <b><spring:message code="actor.phone"/>:</b>
-<jstl:out value="${vet.phone}"/><br/>
-
-<b><spring:message code="vet.address"/>:</b>
-<acme:mask text="${vet.address}"/><br/>
+<jstl:out value="${administrator.phone}"/><br/>
 
 
 </fieldset>
 
 <jstl:if test="${owner}">
-	<a href="vet/vet/edit.do?vetId=${vet.id}">
+	<a href="administrator/administrator/edit.do?administratorId=${administrator.id}">
     	<spring:message  code="actor.edit" />
 	</a>
 </jstl:if>

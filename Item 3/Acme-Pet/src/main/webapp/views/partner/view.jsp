@@ -17,45 +17,36 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<acme:image url="${animaniac.picture}"/><br/>
-
 <fieldset>
 
 <b><spring:message code="actor.username"/>:</b>
-<acme:mask text="${animaniac.userAccount.username}"/><br/>
-
-<b><spring:message code="animaniac.rate"/>:</b>
-<acme:mask text="${animaniac.rate}"/><br/>
+<acme:mask text="${partner.userAccount.username}"/><br/>
 
 <b><spring:message code="actor.name"/>:</b>
-<acme:mask text="${animaniac.name}"/><br/>
+<acme:mask text="${partner.name}"/><br/>
 
-<b><spring:message code="animaniac.surname"/>:</b>
-<acme:mask text="${animaniac.surname}"/><br/>
+<b><spring:message code="actor.surname"/>:</b>
+<acme:mask text="${partner.surname}"/><br/>
 
-<b><spring:message code="animaniac.email"/>:</b>
-<acme:mask text="${animaniac.email}"/><br/>
+<b><spring:message code="actor.email"/>:</b>
+<jstl:out value="${partner.email}"/><br/>
 
-<b><spring:message code="animaniac.phone"/>:</b>
-<acme:mask text="${animaniac.phone}"/><br/>
+<b><spring:message code="actor.phone"/>:</b>
+<jstl:out value="${partner.phone}"/><br/>
 
-<b><spring:message code="animaniac.genre"/>:</b>
-<jstl:if test="${animaniac.genre eq 'male'}">
-	<acme:mask text="${animaniac.male}"/>
-</jstl:if>
-<jstl:if test="${animaniac.genre eq 'female'}">
-	<acme:mask text="${animaniac.female}"/>
-</jstl:if>
+<b><spring:message code="partner.link"/>:</b>
+<a href="<acme:mask text="${partner.link}"/>"><acme:mask text="${partner.link}"/></a><br/>
 
-<b><spring:message code="animaniac.address"/>:</b>
-<acme:mask text="${animaniac.address}"/><br/>
+<b><spring:message code="partner.address"/>:</b>
+<acme:mask text="${partner.address}"/><br/>
+
+<b><spring:message code="partner.description"/>:</b><br/>
+<acme:mask text="${partner.description}"/><br/>
 
 </fieldset>
 
-<!-- TODO comments list-->
-
 <jstl:if test="${owner}">
-	<a href="animaniac/edit.do?animaniacId=${animaniac.id}">
+	<a href="partner/partner/edit.do?partnerId=${partner.id}">
     	<spring:message  code="actor.edit" />
 	</a>
 </jstl:if>

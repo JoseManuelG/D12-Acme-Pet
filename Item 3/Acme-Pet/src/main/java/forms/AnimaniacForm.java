@@ -20,6 +20,7 @@ public class AnimaniacForm extends ActorForm {
 
 		this.setPicture(animaniac.getPicture());
 		this.setGenre(animaniac.getGenre());
+		this.setAddress(animaniac.getAddress());
 
 	}
 

@@ -54,26 +54,37 @@
 		<!-- Actor -->			
 <!-- 	<security:intercept-url pattern="" access="isAuthenticated()" /> -->
 
+		<security:intercept-url pattern="/actor/myProfile.do" access="isAuthenticated()" />
+		
+		<security:intercept-url pattern="/administrator/view.do" access="isAuthenticated()" />
+		
+		<security:intercept-url pattern="/animaniac/view.do" access="isAuthenticated()" />
+
 		<security:intercept-url pattern="/folder/list.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/folder/view.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/folder/edit.do" access="isAuthenticated()" />
+	
 		<security:intercept-url pattern="/message/view.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/write.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/reply.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/forward.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/delete.do" access="isAuthenticated()" />
-		<security:intercept-url pattern="/animaniac/view.do" access="isAuthenticated()" />
-		<security:intercept-url pattern="/vet/view.do" access="isAuthenticated()" />
+
 		<security:intercept-url pattern="/partner/view.do" access="isAuthenticated()" />
-		<security:intercept-url pattern="/actor/myProfile.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/vet/view.do" access="isAuthenticated()" />
 		
 		<!-- Administrator -->		
 <!-- 		<security:intercept-url pattern="" access="hasRole('ADMINISTRATOR')" /> -->
 		
+		<security:intercept-url pattern="/administrator/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+
+		<security:intercept-url pattern="/partner/administrator/register.do" access="hasRole('ADMINISTRATOR')" />
+
 		<security:intercept-url pattern="/type/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/type/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/admin/partner/register.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/admin/vet/register.do" access="hasRole('ADMINISTRATOR')" />
+	
+		<security:intercept-url pattern="/vet/administrator/register.do" access="hasRole('ADMINISTRATOR')" />
 		
 		<!-- Animaniac -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('ANIMANIAC')" /> -->
@@ -81,7 +92,7 @@
 		
 		<!-- Partner -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('PARTNER')" /> -->
-		<security:intercept-url pattern="partner/partner/edit.do" access="hasRole('PARTNER')" />
+		<security:intercept-url pattern="/partner/partner/edit.do" access="hasRole('PARTNER')" />
 		
 		<!-- Vet -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('VET')" /> -->

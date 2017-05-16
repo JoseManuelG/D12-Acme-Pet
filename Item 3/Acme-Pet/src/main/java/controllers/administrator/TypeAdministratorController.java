@@ -47,8 +47,8 @@ public class TypeAdministratorController extends AbstractController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
-		final ModelAndView result;
-		final Collection<Type> types;
+		ModelAndView result;
+		Collection<Type> types;
 
 		result = new ModelAndView("type/administrator/list");
 		types = this.typeService.findAll();
@@ -64,7 +64,7 @@ public class TypeAdministratorController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam(required = false) final Integer typeId) {
 		ModelAndView result;
-		final Type type;
+		Type type;
 
 		if (typeId != null)
 			type = this.typeService.findOne(typeId);

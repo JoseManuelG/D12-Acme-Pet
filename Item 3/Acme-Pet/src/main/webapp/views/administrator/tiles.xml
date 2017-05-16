@@ -16,19 +16,14 @@
        
 <tiles-definitions>
 
-	<definition name="vet/view" extends="master.page">	
-		<put-attribute name="title" value="View vet" />
-		<put-attribute name="body" value="/views/vet/view.jsp" />
+	<definition name="administrator/view" extends="master.page">	
+		<put-attribute name="title" value="View administrator" />
+		<put-attribute name="body" value="/views/administrator/view.jsp" />
 	</definition>
-		
-	<definition name="vet/register" extends="master.page">
-  		<put-attribute name="title" value="Register" /> 
- 		<put-attribute name="body" value="/views/vet/edit.jsp" /> 
-  	</definition>
   	
-  	<definition name="vet/edit" extends="master.page">
+  	<definition name="administrator/edit" extends="master.page">
   		<put-attribute name="title" value="Edit profile" /> 
- 		<put-attribute name="body" value="/views/vet/edit.jsp" /> 
+ 		<put-attribute name="body" value="/views/administrator/edit.jsp" /> 
   	</definition>
 	
 </tiles-definitions>

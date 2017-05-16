@@ -15,40 +15,20 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
       
 <tiles-definitions>
-
-	<definition name="animaniac/administrator/list" extends="master.page">	
-		<put-attribute name="title" value="Listado de churris" />
-		<put-attribute name="body" value="/views/animaniac/list.jsp" />
+	
+	<definition name="partner/view" extends="master.page">	
+		<put-attribute name="title" value="Ver anunciante" />
+		<put-attribute name="body" value="/views/partner/view.jsp" />
 	</definition>
 	
-	<definition name="animaniac/animaniac/view" extends="master.page">	
-		<put-attribute name="title" value="Vista de churris" />
-		<put-attribute name="body" value="/views/animaniac/view.jsp" />
-	</definition>
-	
-	<definition name="animaniac/list" extends="master.page">	
-		<put-attribute name="title" value="Listado de churris" />
-		<put-attribute name="body" value="/views/animaniac/list.jsp" />
-	</definition>
-	
-	<definition name="animaniac/recivedLikedList" extends="master.page">	
-		<put-attribute name="title" value="animaniacs a los que les gusto" />
-		<put-attribute name="body" value="/views/animaniac/recivedLikedList.jsp" />
-	</definition>	
-	
-	<definition name="animaniac/administrator/updateanimaniacesChargedFees" extends="master.page">	
-		<put-attribute name="title" value="Cuota añadida con éxito" />
-		<put-attribute name="body" value="/views/animaniac/updateanimaniacesChargedFees.jsp" />
-	</definition>
-	
-	<definition name="animaniac/register" extends="master.page">
+	<definition name="partner/register" extends="master.page">
   		<put-attribute name="title" value="Registro" /> 
- 		<put-attribute name="body" value="/views/animaniac/edit.jsp" /> 
+ 		<put-attribute name="body" value="/views/partner/edit.jsp" /> 
   	</definition>
   	
-  	<definition name="animaniac/edit" extends="master.page">
+  	<definition name="partner/edit" extends="master.page">
   		<put-attribute name="title" value="Edicion de perfil" /> 
- 		<put-attribute name="body" value="/views/animaniac/edit.jsp" /> 
+ 		<put-attribute name="body" value="/views/partner/edit.jsp" /> 
   	</definition>
 	
 

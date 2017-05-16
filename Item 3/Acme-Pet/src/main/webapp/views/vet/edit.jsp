@@ -17,25 +17,12 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="${requestURI}" modelAttribute="animaniacForm">
+<form:form action="${requestURI}" modelAttribute="vetForm">
 	
-	
-
 	<%@include file="../actor/commonInfo.jsp" %>
 	
-	<form:label path="genre">
-		<spring:message code="animaniac.genre" />
-	</form:label>
-	<form:select id="genre" name="genre" path="genre">
-    	<form:option value="male"><spring:message code="animaniac.male" /></form:option>
-    	<form:option value="female"><spring:message code="animaniac.female" /></form:option>
-    </form:select>
-	<br/>
+	<acme:textbox code="vet.address" path="address"/>
 	
-	<acme:textbox code="animaniac.address" path="address"/>
-	
-	<acme:textbox code="animaniac.picture" path="picture"/>
-
 	<%@include file="../actor/footForm.jsp" %>
 	
 </form:form>

@@ -36,5 +36,10 @@
 	<acme:submit code="actor.delete" name="delete"/>
 </jstl:if>
 
-<acme:cancel url="" code="actor.cancel"/>
+<jstl:if test="${isNew}">
+	<acme:cancel url="" code="actor.cancel"/>
+</jstl:if>
+<jstl:if test="${!isNew}">
+	<acme:cancel url="actor/myProfile.do" code="actor.cancel"/>
+</jstl:if>
 	

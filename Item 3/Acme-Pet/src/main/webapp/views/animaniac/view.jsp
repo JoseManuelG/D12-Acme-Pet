@@ -34,18 +34,18 @@
 <acme:mask text="${animaniac.surname}"/><br/>
 
 <b><spring:message code="actor.email"/>:</b>
-<acme:mask text="${animaniac.email}"/><br/>
+<jstl:out value="${animaniac.email}"/><br/>
 
 <b><spring:message code="actor.phone"/>:</b>
-<acme:mask text="${animaniac.phone}"/><br/>
+<jstl:out value="${animaniac.phone}"/><br/>
 
 <b><spring:message code="animaniac.genre"/>:</b>
 <jstl:if test="${animaniac.genre eq 'male'}">
-	<acme:mask text="${animaniac.male}"/>
+	<spring:message code="animaniac.male" />
 </jstl:if>
 <jstl:if test="${animaniac.genre eq 'female'}">
-	<acme:mask text="${animaniac.female}"/>
-</jstl:if>
+	<spring:message code="animaniac.female" />
+</jstl:if><br/>
 
 <b><spring:message code="animaniac.address"/>:</b>
 <acme:mask text="${animaniac.address}"/><br/>

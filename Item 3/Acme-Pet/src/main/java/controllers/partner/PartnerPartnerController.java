@@ -1,5 +1,5 @@
 
-package controllers.Animaniac;
+package controllers.partner;
 
 import javax.validation.Valid;
 
@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AnimaniacService;
+import services.PartnerService;
 import controllers.AbstractController;
-import domain.Animaniac;
-import forms.AnimaniacForm;
+import domain.Partner;
+import forms.PartnerForm;
 
 @Controller
-@RequestMapping("/animaniac/animaniac")
-public class AnimaniacAnimaniacController extends AbstractController {
+@RequestMapping("/partner/partner")
+public class PartnerPartnerController extends AbstractController {
 
 	@Autowired
-	private AnimaniacService	animaniacService;
+	private PartnerService	partnerService;
 
 
 	// Edit ---------------------------------------------------------------
@@ -28,35 +28,35 @@ public class AnimaniacAnimaniacController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit() {
 		ModelAndView result;
-		Animaniac animaniac;
-		AnimaniacForm animaniacForm;
+		Partner partner;
+		PartnerForm partnerForm;
 
-		animaniac = this.animaniacService.findAnimaniacByPrincipal();
+		partner = this.partnerService.findPartnerByPrincipal();
 
-		animaniacForm = new AnimaniacForm(animaniac);
+		partnerForm = new PartnerForm(partner);
 
-		result = this.createEditModelAndView(animaniacForm);
+		result = this.createEditModelAndView(partnerForm);
 
 		return result;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final AnimaniacForm animaniacForm, final BindingResult binding) {
+	public ModelAndView save(@Valid final PartnerForm partnerForm, final BindingResult binding) {
 		ModelAndView result;
-		Animaniac principal, animaniacResult;
+		Partner principal, partnerResult;
 
-		principal = this.animaniacService.findAnimaniacByPrincipal();
+		principal = this.partnerService.findPartnerByPrincipal();
 
-		animaniacResult = this.animaniacService.reconstruct(animaniacForm, principal, binding);
+		partnerResult = this.partnerService.reconstruct(partnerForm, principal, binding);
 
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(animaniacForm);
+			result = this.createEditModelAndView(partnerForm);
 		else
 			try {
-				this.animaniacService.save(animaniacResult);
+				this.partnerService.save(partnerResult);
 				result = new ModelAndView("redirect:/actor/myProfile.do");
 			} catch (final IllegalArgumentException oops) {
-				result = this.createEditModelAndView(animaniacForm, oops.getMessage());
+				result = this.createEditModelAndView(partnerForm, oops.getMessage());
 			}
 
 		return result;
@@ -65,15 +65,15 @@ public class AnimaniacAnimaniacController extends AbstractController {
 	// Delete ---------------------------------------------------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final AnimaniacForm animaniacForm) {
+	public ModelAndView delete(final PartnerForm partnerForm) {
 		ModelAndView result;
 
 		try {
-			this.animaniacService.delete();
+			this.partnerService.delete();
 			result = new ModelAndView("redirect:/j_spring_security_logout");
 
 		} catch (final IllegalArgumentException e) {
-			result = this.createEditModelAndView(animaniacForm, e.getMessage());
+			result = this.createEditModelAndView(partnerForm, e.getMessage());
 		}
 
 		return result;
@@ -82,22 +82,22 @@ public class AnimaniacAnimaniacController extends AbstractController {
 
 	// Ancillary methods ------------------------------------------------------
 
-	protected ModelAndView createEditModelAndView(final AnimaniacForm animaniacForm) {
+	protected ModelAndView createEditModelAndView(final PartnerForm partnerForm) {
 		ModelAndView result;
 
-		result = this.createEditModelAndView(animaniacForm, null);
+		result = this.createEditModelAndView(partnerForm, null);
 
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final AnimaniacForm animaniacForm, final String message) {
+	protected ModelAndView createEditModelAndView(final PartnerForm partnerForm, final String message) {
 		ModelAndView result;
 		String requestURI;
 
-		requestURI = "animaniac/animaniac/edit.do";
+		requestURI = "partner/partner/edit.do";
 
-		result = new ModelAndView("animaniac/edit");
-		result.addObject("animaniacForm", animaniacForm);
+		result = new ModelAndView("partner/edit");
+		result.addObject("partnerForm", partnerForm);
 		result.addObject("isNew", false);
 		result.addObject("requestURI", requestURI);
 		result.addObject("message", message);

@@ -28,15 +28,9 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li>
-				<a class="fNiv">
+				<a class="fNiv" href="animaniac/register.do">
 				<spring:message code="master.page.register" />
 				</a>
-		<!--		<ul>
-					<li class="arrow"></li>
-					<li><a href="chorbi/register.do"><spring:message code="master.page.register.chorbi" /></a></li>
-					<li><a href="managers/register.do"><spring:message code="master.page.register.manager" /></a></li>
-				</ul>
-			</li>-->
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
@@ -56,6 +50,8 @@
 					</security:authorize>
 					<security:authorize access="hasRole('ADMINISTRATOR')">
 					<li><a href="type/administrator/list.do"><spring:message code="master.page.administrator.types" /></a></li>
+					<li><a href="partner/administrator/register.do"><spring:message code="master.page.register.partner" /></a></li>
+					<li><a href="vet/administrator/register.do"><spring:message code="master.page.register.vet" /></a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('PARTNER')">
 						
