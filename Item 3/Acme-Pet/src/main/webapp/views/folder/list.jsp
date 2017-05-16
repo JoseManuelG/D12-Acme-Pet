@@ -9,6 +9,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <!-- Listing grid -->
 
@@ -32,12 +33,10 @@
 	
 	<!-- Attributes -->
 	
-	<spring:message code="folder.name" var="name" />
-	<display:column property="name" title="${name}" sortable="false"/>
-
-	<spring:message code="folder.readOnly" var="readOnly" />
-	<display:column property="readOnly" title="${readOnly}" sortable="false" />
-
+	
+	<acme:maskedColumn code="folder.name" text="${row.name}" sorteable="false"/>
+	
+	<acme:maskedColumn code="folder.readOnly" text="${row.readOnly}" sorteable="false"/>
 </display:table>
 
 <a href="folder/edit.do?folderId=">

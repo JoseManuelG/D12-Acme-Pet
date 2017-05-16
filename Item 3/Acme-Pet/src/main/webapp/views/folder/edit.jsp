@@ -9,6 +9,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <form:form action="folder/edit.do" modelAttribute="folder">
 
@@ -17,23 +18,14 @@
 	<form:hidden path="readOnly" />
 	<form:hidden path="actor" />
 	
-	<form:label path="name">
-		<spring:message code="folder.name" />:
-	</form:label>
-	<form:input path="name" />
-	<form:errors cssClass="error" path="name" />
-	
+	<acme:textbox code="folder.name" path="name" />
 
-	<input type="submit" name="save"
-		value="<spring:message code="folder.save" />" />&nbsp; 
-	<jstl:if test="${folder.id != 0}">
-		<input type="submit" name="delete"
-			value="<spring:message code="folder.delete" />"
-			onclick="return confirm('<spring:message code="folder.confirm.delete" />')" />&nbsp;
-	</jstl:if>
-	<input type="button" name="cancel"
-		value="<spring:message code="folder.cancel" />"
-		onclick="javascript:window.location.href='folder/list.do'" />
+
+	<acme:submit code="folder.save" name="save" />
+	<acme:submit code="folder.delete" name="delete" />
+		
+	
+	<acme:cancel code="folder.cancel" url="folder/list.do" />
 		
 	<br />
 

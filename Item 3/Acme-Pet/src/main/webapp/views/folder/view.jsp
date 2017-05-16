@@ -16,11 +16,11 @@
 <display:table pagesize="5" class="displaytag" keepStatus="false"
 	name="messages" requestURI="${requestURI}" id="row" excludedParams="*">
 
-	<acme:column sorteable="true" code="message.subject" path="subject"/>
+	<acme:maskedColumn sorteable="true" code="message.subject" text="${row.subject}"/>
 	
-	<acme:column sorteable="true" code="message.sender" path="senderName"/>
+	<acme:maskedColumn sorteable="true" code="message.sender" text="${row.senderName}"/>
 	
-	<acme:column sorteable="true" code="message.recipient" path="recipientName"/>
+	<acme:maskedColumn sorteable="true" code="message.recipient" text="${row.recipientName}"/>
 	
 	<display:column>
 		<a href="message/view.do?messageId=${row.id}">
