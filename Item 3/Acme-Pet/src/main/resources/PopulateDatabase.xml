@@ -1796,6 +1796,54 @@
 		<property name="commentable" ref="pet2Animaniac1"/>
 	</bean>
 	
+	<bean id="comment1Animaniac3" class="domain.Comment">
+		<property name="title" value="title Comment1Animaniac1"/>
+		<property name="postMoment" value="01/01/2017 12:00"/>
+		<property name="body" value="body Comment1Animaniac1"/>
+		<property name="animaniac" ref="animaniac3"/>
+		<property name="commentable" ref="animaniac1"/>
+	</bean>
+	
+	<bean id="comment2Animaniac3" class="domain.Comment">
+		<property name="title" value="title Comment2Animaniac1"/>
+		<property name="postMoment" value="01/01/2017 12:01"/>
+		<property name="body" value="body Comment2Animaniac1"/>
+		<property name="animaniac" ref="animaniac3"/>
+		<property name="commentable" ref="animaniac1"/>
+	</bean>
+	
+	<bean id="comment3Animaniac3" class="domain.Comment">
+		<property name="title" value="title Comment3Animaniac1"/>
+		<property name="postMoment" value="01/01/2017 12:02"/>
+		<property name="body" value="body Comment3Animaniac1"/>
+		<property name="animaniac" ref="animaniac3"/>
+		<property name="commentable" ref="animaniac1"/>
+	</bean>
+	
+	<bean id="comment4Animaniac3" class="domain.Comment">
+		<property name="title" value="title Comment4Animaniac1"/>
+		<property name="postMoment" value="01/01/2017 12:03"/>
+		<property name="body" value="body Comment4Animaniac1"/>
+		<property name="animaniac" ref="animaniac3"/>
+		<property name="commentable" ref="animaniac1"/>
+	</bean>
+	
+	<bean id="comment5Animaniac3" class="domain.Comment">
+		<property name="title" value="title Comment5Animaniac1"/>
+		<property name="postMoment" value="01/01/2017 12:04"/>
+		<property name="body" value="body Comment5Animaniac1"/>
+		<property name="animaniac" ref="animaniac3"/>
+		<property name="commentable" ref="animaniac1"/>
+	</bean>
+	
+	<bean id="comment6Animaniac3" class="domain.Comment">
+		<property name="title" value="title Comment6Animaniac1"/>
+		<property name="postMoment" value="01/01/2017 12:05"/>
+		<property name="body" value="body Comment6Animaniac1"/>
+		<property name="animaniac" ref="animaniac3"/>
+		<property name="commentable" ref="animaniac1"/>
+	</bean>
+	
 	<!-- AbuseReport	-->
 	
 	<bean id="abuseReport1Animaniac4" class="domain.AbuseReport">

@@ -1,6 +1,8 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.AnimaniacService;
+import services.CommentService;
+import services.CurriculumService;
 import domain.Actor;
 import domain.Animaniac;
+import domain.Comment;
+import domain.Curriculum;
 import forms.AnimaniacForm;
 
 @Controller
@@ -28,11 +34,19 @@ public class AnimaniacController extends AbstractController {
 	@Autowired
 	private ActorService		actorService;
 
+	@Autowired
+	private CommentService		commentService;
+
+	@Autowired
+	private CurriculumService	curriculumService;
+
 
 	//View------------------------------------------------------------
 
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public ModelAndView view(@RequestParam final int animaniacId) {
+		Collection<Comment> comments;
+		Curriculum curriculum;
 		ModelAndView result;
 		Animaniac animaniac;
 		Actor principal;
@@ -41,16 +55,19 @@ public class AnimaniacController extends AbstractController {
 		principal = this.actorService.findActorByPrincipal();
 		animaniac = this.animaniacService.findOne(animaniacId);
 		owner = animaniac.equals(principal);
+		comments = this.commentService.findAllCommentsByCommentable(animaniacId);
+		curriculum = this.curriculumService.findCurriculumByAnimaniac(animaniacId);
 
 		result = new ModelAndView("animaniac/view");
 		result.addObject("animaniac", animaniac);
 		result.addObject("owner", owner);
+		result.addObject("comments", comments);
+		result.addObject("curriculum", curriculum);
 
 		result.addObject("requestURI", "animaniac/view.do?animaniacId=" + animaniacId);
 
 		return result;
 	}
-
 	//Register ------------------------------------------------------------
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
