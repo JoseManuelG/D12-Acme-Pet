@@ -6,25 +6,25 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.AttributeRepository;
-import domain.Attribute;
+import repositories.AttributeValueRepository;
+import domain.AttributeValue;
 
 @Component
 @Transactional
-public class StringToAttributeConverter implements Converter<String, Attribute> {
+public class StringToAttributeValueConverter implements Converter<String, AttributeValue> {
 
 	@Autowired
-	AttributeRepository	attributeRepository;
+	AttributeValueRepository	attributeValueRepository;
 
 
 	@Override
-	public Attribute convert(final String text) {
-		Attribute result;
+	public AttributeValue convert(final String text) {
+		AttributeValue result;
 		int id;
 
 		try {
 			id = Integer.valueOf(text);
-			result = this.attributeRepository.findOne(id);
+			result = this.attributeValueRepository.findOne(id);
 		} catch (final Throwable oops) {
 			throw new IllegalArgumentException(oops);
 		}
