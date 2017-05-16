@@ -35,5 +35,5 @@
 </display:table>
 
 <a href="message/actor/write.do">
-	<spring:message code="message.new"/>
+	<spring:message code="message.write"/>
 </a>

@@ -17,24 +17,24 @@ import org.hibernate.validator.constraints.SafeHtml;
 @Access(AccessType.PROPERTY)
 @Table(uniqueConstraints = {
 	@UniqueConstraint(columnNames = {
-		"attribute", "type_id"
+		"name", "type_id"
 	})
 })
 public class Attribute extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private String	attribute;
+	private String	name;
 
 
 	@NotBlank
 	@SafeHtml
-	public String getAttribute() {
-		return this.attribute;
+	public String getName() {
+		return this.name;
 	}
 
-	public void setAttribute(final String attribute) {
-		this.attribute = attribute;
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 

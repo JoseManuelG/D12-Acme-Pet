@@ -36,15 +36,13 @@ public class MessageActorController extends AbstractController {
 	// Services ---------------------------------------------------------------
 
 	@Autowired
-	private MessageService			messageService;
+	private MessageService		messageService;
 
 	@Autowired
-	private AttachmentService		attachmentService;
+	private AttachmentService	attachmentService;
 
 	@Autowired
-	private ActorService			actorService;
-	@Autowired
-	private FolderActorController	folderController;
+	private ActorService		actorService;
 
 
 	// Constructors -----------------------------------------------------------

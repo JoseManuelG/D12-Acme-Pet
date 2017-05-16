@@ -1,7 +1,9 @@
 ﻿-------------- POR HACER --------------
 - Sacar pdfs de requirements.
 - Poner imagenes correctas en los banners del populate
-- Añadir readOnly a los types?
+- B+Tree
+- Informe costes
+- Sacar PDFs de los astah ya que se ha cambiado el nombre de attribute name
 
 ---------------- HECHO ----------------
 - Meter reunión y tareas iniciales en redmine (javi).

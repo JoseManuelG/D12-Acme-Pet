@@ -9,36 +9,32 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-<%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <!-- Listing grid -->
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="folders" requestURI="${requestURI}" id="row">
+	name="attributes" requestURI="${requestURI}" id="row">
 	
-	<!-- Action links -->
-
-		<display:column>
-		<jstl:if test="${not(row.readOnly)}">
-			<a href="folder/edit.do?folderId=${row.id}">
-				<spring:message	code="folder.edit" />
-			</a>
-		</jstl:if>
-		</display:column>	
-		<display:column>
-			<a href="folder/view.do?folderId=${row.id}">
-				<spring:message	code="folder.view" />
-			</a>
-		</display:column>	
 	
 	<!-- Attributes -->
 	
+	<spring:message code="attribute.name" var="name" />
+	<display:column property="name" title="${name}" sortable="true"/>
 	
-	<acme:maskedColumn code="folder.name" text="${row.name}" sorteable="false"/>
+	<spring:message code="attribute.type" var="type" />
+	<display:column property="type.typeName" title="${type}" sortable="true"/>
 	
-	<acme:maskedColumn code="folder.readOnly" text="${row.readOnly}" sorteable="false"/>
+	<!-- Action links -->
+
+	<display:column>
+		<a href="attribute/administrator/edit.do?attributeId=${row.id}">
+			<spring:message	code="attribute.edit" />
+		</a>
+	</display:column>
+	
+
 </display:table>
 
-<a href="folder/edit.do?folderId=">
-	<spring:message	code="folder.create" />
+<a href="attribute/administrator/edit.do">
+	<spring:message	code="attribute.create" />
 </a>

@@ -42,6 +42,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="actor/myProfile.do"><spring:message code="master.page.my.profile" /></a></li>
+					<li><a href="folder/list.do"><spring:message code="master.page.folders" /></a></li>
 					<security:authorize access="hasRole('ANIMANIAC')">
 					</security:authorize>	
 					
@@ -50,6 +51,7 @@
 					</security:authorize>
 					<security:authorize access="hasRole('ADMINISTRATOR')">
 					<li><a href="type/administrator/list.do"><spring:message code="master.page.administrator.types" /></a></li>
+					<li><a href="attribute/administrator/list.do"><spring:message code="master.page.administrator.attributes" /></a></li>
 					<li><a href="partner/administrator/register.do"><spring:message code="master.page.register.partner" /></a></li>
 					<li><a href="vet/administrator/register.do"><spring:message code="master.page.register.vet" /></a></li>
 					</security:authorize>

@@ -12,8 +12,8 @@
 
 <!-- Listing grid -->
 
-<display:table pagesize="10" class="displaytag" keepStatus="false"
-	name="types" requestURI="requestURI" id="row">
+<display:table pagesize="5" class="displaytag" keepStatus="false"
+	name="types" requestURI="${requestURI}" id="row">
 	
 	
 	<!-- Attributes -->

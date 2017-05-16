@@ -83,4 +83,11 @@ public class AttributeValueService {
 		}
 	}
 
+	public void deleteAttributeValuesFromAttribute(final int attributeId) {
+		Collection<AttributeValue> values;
+
+		values = this.attributeValueRepository.findAllFromAttribute(attributeId);
+		this.attributeValueRepository.delete(values);
+	}
+
 }

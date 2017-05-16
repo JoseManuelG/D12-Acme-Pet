@@ -83,6 +83,9 @@
 
 		<security:intercept-url pattern="/type/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/type/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+		
+		<security:intercept-url pattern="/attribute/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/attribute/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
 	
 		<security:intercept-url pattern="/vet/administrator/register.do" access="hasRole('ADMINISTRATOR')" />
 		
