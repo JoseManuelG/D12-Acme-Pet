@@ -47,6 +47,7 @@
 				</a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="actor/myProfile.do"><spring:message code="master.page.my.profile" /></a></li>
 					<security:authorize access="hasRole('ANIMANIAC')">
 					</security:authorize>	
 					

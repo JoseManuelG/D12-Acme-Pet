@@ -65,6 +65,7 @@
 		<security:intercept-url pattern="/animaniac/view.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/vet/view.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/partner/view.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/actor/myProfile.do" access="isAuthenticated()" />
 		
 		<!-- Administrator -->		
 <!-- 		<security:intercept-url pattern="" access="hasRole('ADMINISTRATOR')" /> -->

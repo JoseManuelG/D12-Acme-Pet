@@ -30,13 +30,13 @@
 <b><spring:message code="actor.name"/>:</b>
 <acme:mask text="${animaniac.name}"/><br/>
 
-<b><spring:message code="actor.surname"/>:</b>
+<b><spring:message code="animaniac.surname"/>:</b>
 <acme:mask text="${animaniac.surname}"/><br/>
 
-<b><spring:message code="actor.email"/>:</b>
+<b><spring:message code="animaniac.email"/>:</b>
 <acme:mask text="${animaniac.email}"/><br/>
 
-<b><spring:message code="actor.phone"/>:</b>
+<b><spring:message code="animaniac.phone"/>:</b>
 <acme:mask text="${animaniac.phone}"/><br/>
 
 <b><spring:message code="animaniac.genre"/>:</b>
@@ -55,7 +55,7 @@
 <!-- TODO comments list-->
 
 <jstl:if test="${owner}">
-	<a href="animaniac/animaniac/edit.do?animaniacId=${animaniac.id}">
+	<a href="animaniac/edit.do?animaniacId=${animaniac.id}">
     	<spring:message  code="actor.edit" />
 	</a>
 </jstl:if>

@@ -8,9 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.AnimaniacService;
+import domain.Actor;
 import domain.Animaniac;
 import forms.AnimaniacForm;
 
@@ -22,6 +25,31 @@ public class AnimaniacController extends AbstractController {
 	@Autowired
 	private AnimaniacService	animaniacService;
 
+	@Autowired
+	private ActorService		actorService;
+
+
+	//View------------------------------------------------------------
+
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public ModelAndView view(@RequestParam final int animaniacId) {
+		ModelAndView result;
+		Animaniac animaniac;
+		Actor principal;
+		Boolean owner;
+
+		principal = this.actorService.findActorByPrincipal();
+		animaniac = this.animaniacService.findOne(animaniacId);
+		owner = animaniac.equals(principal);
+
+		result = new ModelAndView("animaniac/view");
+		result.addObject("animaniac", animaniac);
+		result.addObject("owner", owner);
+
+		result.addObject("requestURI", "animaniac/view.do?animaniacId=" + animaniacId);
+
+		return result;
+	}
 
 	//Register ------------------------------------------------------------
 
@@ -39,7 +67,7 @@ public class AnimaniacController extends AbstractController {
 	// Save ---------------------------------------------------------------
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final AnimaniacForm animaniacForm, final BindingResult binding) {
+	public ModelAndView saveNew(@Valid final AnimaniacForm animaniacForm, final BindingResult binding) {
 		ModelAndView result;
 		Animaniac animaniac;
 
@@ -56,63 +84,6 @@ public class AnimaniacController extends AbstractController {
 			}
 
 		return result;
-	}
-
-	// Edit ---------------------------------------------------------------
-
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit() {
-		ModelAndView result;
-		Animaniac animaniac;
-		AnimaniacForm animaniacForm;
-
-		animaniac = this.animaniacService.findAnimaniacByPrincipal();
-
-		animaniacForm = new AnimaniacForm(animaniac);
-
-		result = this.createEditModelAndView(animaniacForm);
-
-		return result;
-	}
-
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView edit(@Valid final AnimaniacForm animaniacForm, final BindingResult binding) {
-		ModelAndView result;
-		Animaniac principal, animaniacResult;
-
-		principal = this.animaniacService.findAnimaniacByPrincipal();
-
-		animaniacResult = this.animaniacService.reconstruct(animaniacForm, principal, binding);
-
-		if (binding.hasErrors())
-			result = this.createEditModelAndView(animaniacForm);
-		else
-			try {
-				this.animaniacService.save(animaniacResult);
-				result = new ModelAndView("redirect:/animaniac/animaniac/myProfile.do");
-			} catch (final IllegalArgumentException oops) {
-				result = this.createEditModelAndView(animaniacForm, oops.getMessage());
-			}
-
-		return result;
-	}
-
-	// Delete ---------------------------------------------------------------
-
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final AnimaniacForm animaniacForm) {
-		ModelAndView result;
-
-		try {
-			this.animaniacService.delete();
-			result = new ModelAndView("redirect:/j_spring_security_logout");
-
-		} catch (final IllegalArgumentException e) {
-			result = this.createEditModelAndView(animaniacForm, e.getMessage());
-		}
-
-		return result;
-
 	}
 
 	// Ancillary methods ------------------------------------------------------
@@ -134,28 +105,6 @@ public class AnimaniacController extends AbstractController {
 		result = new ModelAndView("animaniac/register");
 		result.addObject("animaniacForm", animaniacForm);
 		result.addObject("isNew", true);
-		result.addObject("requestURI", requestURI);
-		result.addObject("message", message);
-
-		return result;
-	}
-	protected ModelAndView createEditModelAndView(final AnimaniacForm animaniacForm) {
-		ModelAndView result;
-
-		result = this.createEditModelAndView(animaniacForm, null);
-
-		return result;
-	}
-
-	protected ModelAndView createEditModelAndView(final AnimaniacForm animaniacForm, final String message) {
-		ModelAndView result;
-		String requestURI;
-
-		requestURI = "animaniac/edit.do";
-
-		result = new ModelAndView("animaniac/edit");
-		result.addObject("animaniacForm", animaniacForm);
-		result.addObject("isNew", false);
 		result.addObject("requestURI", requestURI);
 		result.addObject("message", message);
 
