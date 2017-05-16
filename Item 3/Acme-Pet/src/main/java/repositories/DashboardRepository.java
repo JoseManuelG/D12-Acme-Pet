@@ -38,10 +38,6 @@ public interface DashboardRepository extends JpaRepository<DomainEntity, Integer
 	@Query("select count(m) from Message m where m.isSender=true and m.sender is not null group by m.sender.id order by count(m) desc")
 	public List<Long> maxOfMessagesSentPerActor();
 
-	//Dashboard - 03	TODO Sustituir por couunt de comment cuando esté el servicio
-	@Query("select count(c) from Comment c")
-	public Double averageOfCommentsWrittenPerActor();
-
 	//Dashboard - 03
 	@Query("select count(c) from Comment c  group by m.animaniac.id order by count(m) asc")
 	public List<Long> minOfCommentsWrittenPerActor();
@@ -49,10 +45,6 @@ public interface DashboardRepository extends JpaRepository<DomainEntity, Integer
 	//Dashboard - 03
 	@Query("select count(c) from Comment c  group by m.animaniac.id order by count(m) desc")
 	public List<Long> maxOfCommentsWrittenPerActor();
-
-	//Dashboard - 04 TODO Sustituir por couunt de comment cuando esté el servicio
-	@Query("select count(c) from Comment c")
-	public Double averageOfCommentsWrittenInCommentable();
 
 	//Dashboard - 04
 	@Query("select count(c) from Comment c  group by m.commentable.id order by count(m) asc")
