@@ -106,16 +106,19 @@ public class MessageActorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
-	public ModelAndView write() {
+	public ModelAndView write(@RequestParam(required = false) final Integer actorId) {
 		ModelAndView result;
 		MessageForm messageForm;
 		Collection<Actor> actors;
-
-		messageForm = new MessageForm();
-		actors = this.actorService.findAll();
-		result = this.createEditModelAndView(messageForm);
-		result.addObject("actors", actors);
-
+		if (actorId == null) {
+			messageForm = new MessageForm();
+			actors = this.actorService.findAll();
+			result = this.createEditModelAndView(messageForm);
+			result.addObject("actors", actors);
+		} else {
+			messageForm = this.messageService.writeTo(actorId);
+			result = this.createEditModelAndView(messageForm);
+		}
 		return result;
 	}
 	@RequestMapping(value = "/write", method = RequestMethod.POST, params = "addAttachment")

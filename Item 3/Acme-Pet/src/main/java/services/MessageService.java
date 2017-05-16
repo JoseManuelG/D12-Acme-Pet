@@ -215,6 +215,15 @@ public class MessageService {
 		result.setRecipient(recipient);
 		return result;
 	}
+	public MessageForm writeTo(final int actorId) {
+
+		final MessageForm result = new MessageForm();
+		result.setAction(1);
+
+		final Actor recipient = this.actorService.findOne(actorId);
+		result.setRecipient(recipient);
+		return result;
+	}
 
 	public void deleteFromChorbi(final Actor actor) {
 		final Collection<Message> messages;
