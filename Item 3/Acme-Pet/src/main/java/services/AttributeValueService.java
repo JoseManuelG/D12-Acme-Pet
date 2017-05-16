@@ -75,4 +75,12 @@ public class AttributeValueService {
 
 	}
 
+	public void addAttributeValues(final Collection<AttributeValue> attributeValues, final Pet pet) {
+		for (final AttributeValue a : attributeValues) {
+			final AttributeValue attributeValue = this.create(pet, a.getAttribute());
+			attributeValue.setValue(a.getValue());
+			this.save(attributeValue);
+		}
+	}
+
 }

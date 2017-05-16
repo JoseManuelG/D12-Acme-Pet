@@ -8,11 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.PetRepository;
 import domain.Animaniac;
+import domain.AttributeValue;
 import domain.Pet;
+import domain.Photo;
 import domain.Type;
+import forms.PetForm;
 
 @Service
 @Transactional
@@ -20,14 +25,23 @@ public class PetService {
 
 	// Managed Repository --------------------------------------
 	@Autowired
-	private PetRepository		petRepository;
+	private PetRepository			petRepository;
 
 	// Supporting Services --------------------------------------
 	@Autowired
-	private AnimaniacService	animaniacService;
+	private AnimaniacService		animaniacService;
 
 	@Autowired
-	private TypeService			typeService;
+	private TypeService				typeService;
+
+	@Autowired
+	private AttributeValueService	attributeValueService;
+
+	@Autowired
+	private PhotoService			photoService;
+
+	@Autowired
+	private Validator				validator;
 
 
 	public Pet create(final int typeId) {
@@ -67,7 +81,42 @@ public class PetService {
 		result = this.petRepository.save(pet);
 		return result;
 	}
+
+	public Pet save(final Pet pet, final Collection<AttributeValue> attributeValues, final Collection<Photo> photos) {
+		Assert.notNull(pet);
+		Assert.notNull(pet.getAnimaniac());
+		Assert.isTrue(pet.getAnimaniac() == this.animaniacService.findAnimaniacByPrincipal());
+		Pet result;
+		result = this.petRepository.save(pet);
+		this.attributeValueService.addAttributeValues(attributeValues, result);
+		this.photoService.addPhotos(photos, result);
+		return result;
+	}
 	//Simple CRUD methods-------------------------------------------------------------------
+
+	public Pet reconstruct(final PetForm petForm, final BindingResult binding) {
+		final Pet result = this.create(petForm.getType().getId());
+		result.setAnimaniac(this.animaniacService.findAnimaniacByPrincipal());
+		result.setName(petForm.getName());
+		result.setGenre(petForm.getGenre());
+		result.setWeigth(petForm.getWeigth());
+		result.setType(petForm.getType());
+
+		this.validator.validate(result, binding);
+
+		if (!binding.hasErrors()) {
+			for (final Photo a : petForm.getPhotos()) {
+				a.setPet(result);
+				this.validator.validate(a, binding);
+			}
+			for (final AttributeValue a : petForm.getAttributeValues()) {
+				a.setPet(result);
+				this.validator.validate(a, binding);
+			}
+		}
+		return result;
+
+	}
 
 	// other business methods --------------------------------------
 
