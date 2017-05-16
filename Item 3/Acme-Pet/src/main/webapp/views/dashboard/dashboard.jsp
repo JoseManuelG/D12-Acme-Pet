@@ -14,16 +14,18 @@
 <fieldset>
 	
 	
-	<spring:message code="dashboard.actorName" var="actorName" />
-	<spring:message code="dashboard.city" var="city" />
-	<spring:message code="dashboard.country" var="country" />
-	<spring:message code="dashboard.min" var="min" />
-	<spring:message code="dashboard.max" var="max" />
-	<spring:message code="dashboard.avg" var="avg" />
-	<spring:message code="dashboard.fee" var="fee" />
-	<spring:message code="dashboard.events" var="events" />
+	<spring:message code="dashboard.averageOfMessagesReceivedPerActor" var="averageOfMessagesReceivedPerActor" />
+	<spring:message code="dashboard.minOfMessagesReceivedPerActor" var="minOfMessagesReceivedPerActor" />
+	<spring:message code="dashboard.maxOfMessagesReceivedPerActor" var="maxOfMessagesReceivedPerActor" />
+	<spring:message code="dashboard.averageOfMessagesSentPerActor" var="minOfMessagesSentPerActor" />
+	<spring:message code="dashboard.maxOfMessagesSentPerActor" var="maxOfMessagesSentPerActor" />
+	<spring:message code="dashboard.averageOfCommentsWrittenPerActor" var="averageOfCommentsWrittenPerActor" />
+	<spring:message code="dashboard.minOfCommentsWrittenPerActor" var="minOfCommentsWrittenPerActor" />
+	<spring:message code="dashboard.maxOfCommentsWrittenPerActor" var="maxOfCommentsWrittenPerActor" />
+	<spring:message code="dashboard.averageOfCommentsWrittenInCommentable" var="averageOfCommentsWrittenInCommentable" />
+	<spring:message code="dashboard.reportedAnimaniacsRatio" var="reportedAnimaniacsRatio" />
 
-	<spring:message code="dashboard.chorbiesGroupedByCity" />:<br>
+	<%-- <spring:message code="dashboard.chorbiesGroupedByCity" />:<br>
 	<display:table pagesize="5" class="displaytag1" name="chorbiesGroupedByCity"
 		requestURI="${requestURI}" id="row" uid="chorbiesGroupedByCity" excludedParams="*">
 		
@@ -195,5 +197,5 @@
 	    </display:column>
 	</display:table>
 	<br>
-	
+	 --%>
 </fieldset>

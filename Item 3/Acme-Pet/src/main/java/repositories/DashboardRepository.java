@@ -39,19 +39,19 @@ public interface DashboardRepository extends JpaRepository<DomainEntity, Integer
 	public List<Long> maxOfMessagesSentPerActor();
 
 	//Dashboard - 03
-	@Query("select count(c) from Comment c  group by m.animaniac.id order by count(m) asc")
+	@Query("select count(c) from Comment c  group by c.animaniac.id order by count(c) asc")
 	public List<Long> minOfCommentsWrittenPerActor();
 
 	//Dashboard - 03
-	@Query("select count(c) from Comment c  group by m.animaniac.id order by count(m) desc")
+	@Query("select count(c) from Comment c  group by c.animaniac.id order by count(c) desc")
 	public List<Long> maxOfCommentsWrittenPerActor();
 
 	//Dashboard - 04
-	@Query("select count(c) from Comment c  group by m.commentable.id order by count(m) asc")
+	@Query("select count(c) from Comment c  group by c.commentable.id order by count(c) asc")
 	public List<Long> minOfCommentsWrittenInCommentable();
 
 	//Dashboard - 04
-	@Query("select count(c) from Comment c  group by m.commentable.id order by count(m) desc")
+	@Query("select count(c) from Comment c  group by c.commentable.id order by count(c) desc")
 	public List<Long> maxOfCommentsWrittenInCommentable();
 
 	//Dashboard - 05
