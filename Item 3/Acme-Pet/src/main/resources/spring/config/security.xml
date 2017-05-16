@@ -62,21 +62,29 @@
 		<security:intercept-url pattern="/message/reply.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/forward.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/delete.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/animaniac/view.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/vet/view.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/partner/view.do" access="isAuthenticated()" />
 		
 		<!-- Administrator -->		
 <!-- 		<security:intercept-url pattern="" access="hasRole('ADMINISTRATOR')" /> -->
 		
 		<security:intercept-url pattern="/type/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/type/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/admin/partner/register.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/admin/vet/register.do" access="hasRole('ADMINISTRATOR')" />
 		
 		<!-- Animaniac -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('ANIMANIAC')" /> -->
+		<security:intercept-url pattern="/animaniac/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
 		
 		<!-- Partner -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('PARTNER')" /> -->
+		<security:intercept-url pattern="partner/partner/edit.do" access="hasRole('PARTNER')" />
 		
 		<!-- Vet -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('VET')" /> -->
+		<security:intercept-url pattern="/vet/vet/edit.do" access="hasRole('VET')" />
 		
 		<!--NONE -->
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
