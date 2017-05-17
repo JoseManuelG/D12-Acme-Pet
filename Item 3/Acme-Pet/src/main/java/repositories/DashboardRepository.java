@@ -88,7 +88,7 @@ public interface DashboardRepository extends JpaRepository<DomainEntity, Integer
 
 	//Dashboard - 13
 	@Query("select count(p) from Pet p where p.certificateBy is not null")
-	public Integer numberOfCertificatedPets();
+	public Integer numberOfCertifiedPets();
 
 	//Dashboard - 14
 	@Query("select distinct p.animaniac from Pet p where(select count(p2) from Pet p2 where p.animaniac.id=p2.animaniac.id) >= (select count(p3) from Pet p3)*0.8")

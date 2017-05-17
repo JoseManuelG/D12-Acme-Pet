@@ -25,8 +25,9 @@
 	<spring:message code="dashboard.maxOfCommentsWrittenPerActor"/>: <jstl:out value="${maxOfCommentsWrittenPerActor}"/><br/>
 	<spring:message code="dashboard.averageOfCommentsWrittenInCommentable"/>: <jstl:out value="${averageOfCommentsWrittenInCommentable}"/><br/>
 	<spring:message code="dashboard.reportedAnimaniacsRatio"/>: <jstl:out value="${reportedAnimaniacsRatio}"/><br/>
-		<spring:message code="dashboard.partnerWithMoreBanners"/>: <jstl:out value="${partnerWithMoreBanners.name} ${partnerWithMoreBanners.surname}"/><br/>
+	<spring:message code="dashboard.partnerWithMoreBanners"/>: <jstl:out value="${partnerWithMoreBanners.name} ${partnerWithMoreBanners.surname}"/><br/>
 	<spring:message code="dashboard.partnerWithHighestFee"/>: <jstl:out value="${partnerWithHighestFee.name} ${partnerWithHighestFee.surname}"/><br/>
+	<br>
 	<spring:message code="dashboard.certifiedPetRatio"/>: <jstl:out value="${certifiedPetRatio}"/><br/>
 
 	<spring:message code="dashboard.animaniacsByReports" />:<br>
