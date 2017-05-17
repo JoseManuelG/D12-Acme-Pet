@@ -36,6 +36,9 @@ public class AnimaniacService {
 	private UserAccountService	accountService;
 
 	@Autowired
+	private AbuseReportService	reportService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -80,6 +83,7 @@ public class AnimaniacService {
 		Animaniac animaniac;
 		animaniac = this.findAnimaniacByPrincipal();
 		//TODO: borrar relaciones.
+		this.reportService.deleteFromAnimaniac(animaniac);
 		//		this.creditCardService.deleteFromAnimaniac(animaniac);
 		//		this.searchTemplateService.deleteFromAnimaniac(animaniac);
 		//		this.likesService.deleteFromAnimaniac(animaniac);
@@ -89,7 +93,6 @@ public class AnimaniacService {
 		//		this.userAccountService.delete(animaniac.getUserAccount().getId());
 
 	}
-
 	public Animaniac findOne(final int actorId) {
 
 		return this.animaniacRepository.findOne(actorId);

@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,5 +62,20 @@ public class AbuseReportService {
 			}
 		return result;
 
+	}
+
+	public void deleteFromAnimaniac(final Animaniac animaniac) {
+		Collection<AbuseReport> reportsRecived;
+		Collection<AbuseReport> reportsDone;
+
+		reportsRecived = this.abuseReportRepository.findAbuseReportRecived(animaniac.getId());
+		reportsDone = this.abuseReportRepository.findAbuseReportDone(animaniac.getId());
+
+		this.abuseReportRepository.delete(reportsRecived);
+
+		for (final AbuseReport report : reportsDone) {
+			report.setReporter(null);
+			this.abuseReportRepository.save(report);
+		}
 	}
 }
