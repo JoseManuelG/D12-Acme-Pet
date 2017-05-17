@@ -17,4 +17,7 @@ public interface AttributeRepository extends JpaRepository<Attribute, Integer> {
 
 	@Query("select a from Attribute a where a.type.id=?1")
 	Collection<Attribute> attributtesWithType(int typeId);
+
+	@Query("select a from Attribute a where a.name=?1 and a.type.id=?2")
+	Attribute findByNameAndType(String attributeName, int typeId);
 }

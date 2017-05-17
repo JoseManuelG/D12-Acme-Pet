@@ -20,6 +20,11 @@
 		<put-attribute name="title" value="View partner" />
 		<put-attribute name="body" value="/views/partner/view.jsp" />
 	</definition>
+	
+	<definition name="partner/list" extends="master.page">
+  		<put-attribute name="title" value="Partner list" /> 
+ 		<put-attribute name="body" value="/views/partner/list.jsp" /> 
+  	</definition>
 		
 	<definition name="partner/register" extends="master.page">
   		<put-attribute name="title" value="Register" /> 

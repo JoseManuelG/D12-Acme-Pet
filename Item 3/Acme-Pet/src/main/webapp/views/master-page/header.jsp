@@ -30,6 +30,9 @@
 				<li class="arrow"></li>
 				<li><a href="animaniac/list.do"><spring:message code="master.page.list.animaniac" /></a></li>
 				<li><a href="vet/list.do"><spring:message code="master.page.list.vet" /></a></li>
+				<security:authorize access="isAuthenticated()">
+					<li><a href="partner/list.do"><spring:message code="master.page.list.partner" /></a></li>
+				</security:authorize>
 			</ul>
 		</li>	
 		<security:authorize access="isAnonymous()">

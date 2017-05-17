@@ -52,12 +52,18 @@ public class TypeService {
 	public Type save(final Type type) {
 		Type result;
 		long cont;
+		Type existing;
 
 		if (type.getId() != 0) {
 			cont = this.typeRepository.countPetsWithType(type.getId());
 
 			Assert.isTrue(cont == 0, "type.error.editingWhenUsed");
 		}
+
+		existing = this.typeRepository.findByName(type.getTypeName());
+		if (existing != null)
+			Assert.isTrue(existing.getId() == type.getId(), "type.error.alreadyExists");
+
 		result = this.typeRepository.save(type);
 		return result;
 	}

@@ -1,7 +1,9 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -14,6 +16,7 @@ import org.springframework.validation.Validator;
 import repositories.AnimaniacRepository;
 import security.Authority;
 import security.LoginService;
+import security.UserAccount;
 import domain.Animaniac;
 import forms.AnimaniacForm;
 
@@ -100,6 +103,26 @@ public class AnimaniacService {
 		return this.animaniacRepository.count();
 	}
 	// other business methods --------------------------------------
+
+	public void ban(final int animaniacId) {
+		final List<Authority> auths = new ArrayList<Authority>(this.actorService.findActorByPrincipal().getUserAccount().getAuthorities());
+		final Authority auth = auths.get(0);
+		Assert.isTrue(auth.getAuthority().equals("ADMINISTRATOR"), "animaniac.error.notadmin");
+		final UserAccount ua = this.animaniacRepository.findOne(animaniacId).getUserAccount();
+		ua.setEnabled(false);
+		this.accountService.save(ua);
+
+	}
+
+	public void unban(final int animaniacId) {
+		final List<Authority> auths = new ArrayList<Authority>(this.actorService.findActorByPrincipal().getUserAccount().getAuthorities());
+		final Authority auth = auths.get(0);
+		Assert.isTrue(auth.getAuthority().equals("ADMINISTRATOR"), "animaniac.error.notadmin");
+		final UserAccount ua = this.animaniacRepository.findOne(animaniacId).getUserAccount();
+		ua.setEnabled(true);
+		this.accountService.save(ua);
+
+	}
 
 	public Animaniac findAnimaniacByPrincipal() {
 		Animaniac result;

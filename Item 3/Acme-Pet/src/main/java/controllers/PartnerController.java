@@ -1,6 +1,8 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,22 @@ public class PartnerController extends AbstractController {
 	@Autowired
 	private ActorService	actorService;
 
+
+	//List------------------------------------------------------------
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Partner> partners;
+
+		partners = this.partnerService.findAll();
+
+		result = new ModelAndView("partner/list");
+		result.addObject("partners", partners);
+		result.addObject("requestURI", "partner/list.do");
+
+		return result;
+	}
 
 	//View------------------------------------------------------------
 

@@ -52,12 +52,18 @@ public class AttributeService {
 	public Attribute save(final Attribute attribute) {
 		Attribute result;
 		long cont;
+		Attribute existing;
 
 		if (attribute.getId() != 0) {
 			cont = this.attributeRepository.countAttributeValuesWithAttribute(attribute.getId());
 
 			Assert.isTrue(cont == 0, "attribute.error.editingWhenUsed");
 		}
+
+		existing = this.attributeRepository.findByNameAndType(attribute.getName(), attribute.getType().getId());
+		if (existing != null)
+			Assert.isTrue(existing.getId() == attribute.getId(), "attribute.error.alreadyExists");
+
 		result = this.attributeRepository.save(attribute);
 		return result;
 	}
