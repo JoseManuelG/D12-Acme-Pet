@@ -1,6 +1,8 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,22 @@ public class VetController extends AbstractController {
 	@Autowired
 	private ActorService	actorService;
 
+
+	//List------------------------------------------------------------
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Vet> vets;
+
+		vets = this.vetService.findAll();
+
+		result = new ModelAndView("vet/list");
+		result.addObject("vets", vets);
+		result.addObject("requestURI", "vet/list.do");
+
+		return result;
+	}
 
 	//View------------------------------------------------------------
 

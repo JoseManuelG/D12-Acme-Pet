@@ -31,6 +31,6 @@
 </display:table>
 
 <a href="message/write.do">
-	<spring:message code="message.view"/>
+	<spring:message code="message.write"/>
 </a>
 

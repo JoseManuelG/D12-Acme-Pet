@@ -50,6 +50,10 @@
 		
 		<security:intercept-url pattern="/animaniac/register.do" access="permitAll" />
 		
+		<security:intercept-url pattern="/animaniac/list.do" access="permitAll" />
+		
+		<security:intercept-url pattern="/vet/list.do" access="permitAll" />
+		
 		
 		<!-- Actor -->			
 <!-- 	<security:intercept-url pattern="" access="isAuthenticated()" /> -->

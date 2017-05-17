@@ -18,7 +18,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="animaniaces" requestURI="${requestURI}" id="row" excludedParams="*">
+	name="animaniacs" requestURI="${requestURI}" id="row" excludedParams="*">
 	
 		
 	<display:column>
@@ -59,15 +59,15 @@
 	<acme:maskedColumn sorteable="true" code="actor.name" text="${row.name}" highlight="${style}" />
 	
 	<acme:maskedColumn sorteable="true" code="actor.surname" text="${row.surname}" highlight="${style}" />
-
-	<acme:maskedColumn sorteable="true" code="animaniac.genre" text="
-	<jstl:if test="${animaniac.genre eq 'male'}">
-		<spring:message code="animaniac.male" />
+	
+	<jstl:if test="${row.genre eq 'male'}">
+		<spring:message var="gender" code="animaniac.male" />
 	</jstl:if>
-	<jstl:if test="${animaniac.genre eq 'female'}">
-		<spring:message code="animaniac.female" />
+	<jstl:if test="${row.genre eq 'female'}">
+		<spring:message var="gender" code="animaniac.female" />
 	</jstl:if><br/>
-	" highlight="${style}" />
+	
+	<acme:maskedColumn sorteable="true" code="animaniac.genre" text="${gender}" highlight="${style}" />
 	
 </display:table>
 

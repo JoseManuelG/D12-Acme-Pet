@@ -21,6 +21,11 @@
 		<put-attribute name="body" value="/views/vet/view.jsp" />
 	</definition>
 	
+	<definition name="vet/list" extends="master.page">
+  		<put-attribute name="title" value="Lista de veterinarios" /> 
+ 		<put-attribute name="body" value="/views/vet/list.jsp" /> 
+  	</definition>
+	
 	<definition name="vet/register" extends="master.page">
   		<put-attribute name="title" value="Registro" /> 
  		<put-attribute name="body" value="/views/vet/edit.jsp" /> 

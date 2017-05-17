@@ -41,6 +41,8 @@ public class AnimaniacController extends AbstractController {
 	private CurriculumService	curriculumService;
 
 
+	//List------------------------------------------------------------
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
