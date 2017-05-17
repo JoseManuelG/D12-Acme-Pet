@@ -99,6 +99,8 @@
 		
 		<security:intercept-url pattern="/dashboard/administrator/dashboard.do" access="hasRole('ADMINISTRATOR')" />
 		
+		<security:intercept-url pattern="/abuseReport/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
+		
 		<!-- Animaniac -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('ANIMANIAC')" /> -->
 		<security:intercept-url pattern="/animaniac/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
@@ -106,7 +108,10 @@
 		<security:intercept-url pattern="/pet/animaniac/create.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/pet/animaniac/view.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/type/animaniac/select.do" access="hasRole('ANIMANIAC')" />
-			<security:intercept-url pattern="/comment/animaniac/create.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/comment/animaniac/create.do" access="hasRole('ANIMANIAC')" />
+		
+		<security:intercept-url pattern="/abuseReport/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
+		
 		<!-- Partner -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('PARTNER')" /> -->
 		<security:intercept-url pattern="/partner/partner/edit.do" access="hasRole('PARTNER')" />

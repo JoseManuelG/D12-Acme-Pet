@@ -27,6 +27,7 @@
 		
 		
 		<value>/views/actor/messages</value>
+		<value>/views/abuseReport/messages</value>
 		<value>/views/animaniac/messages</value>
 		<value>/views/attribute/messages</value>
 		<value>/views/comment/messages</value>
