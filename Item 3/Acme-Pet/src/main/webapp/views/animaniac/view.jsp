@@ -51,7 +51,9 @@
 <acme:mask text="${animaniac.address}"/><br/>
 
 </fieldset>
-
+	<a href="message/write.do?actorId=${animaniac.id}">
+    	<spring:message  code="actor.sendMessage" />
+	</a>
 <fieldset>
 	<h2><spring:message  code="animaniac.curriculum" />:</h2>
 
@@ -87,7 +89,9 @@
 		<acme:column sorteable="true" code="comment.body" path="body" />
 
 	</display:table>
-
+	<a href="comment/animaniac/create.do?commentableId=${animaniac.id}">
+    	<spring:message  code="actor.comment" />
+	</a>
 </fieldset>
 
 <jstl:if test="${owner}">

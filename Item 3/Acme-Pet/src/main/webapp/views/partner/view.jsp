@@ -44,7 +44,9 @@
 <acme:mask text="${partner.description}"/><br/>
 
 </fieldset>
-
+	<a href="message/write.do?actorId=${partner.id}">
+    	<spring:message  code="actor.sendMessage" />
+	</a>
 <jstl:if test="${owner}">
 	<a href="partner/partner/edit.do?partnerId=${partner.id}">
     	<spring:message  code="actor.edit" />

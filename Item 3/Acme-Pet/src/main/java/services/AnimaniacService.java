@@ -88,6 +88,7 @@ public class AnimaniacService {
 	}
 
 	public Animaniac findOne(final int actorId) {
+
 		return this.animaniacRepository.findOne(actorId);
 	}
 

@@ -12,23 +12,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AnimaniacService;
 import services.CommentService;
+import services.CommentableService;
 import controllers.AbstractController;
+import controllers.AnimaniacController;
+import domain.Animaniac;
 import domain.Comment;
 import domain.Commentable;
+import domain.Pet;
 
 @Controller
 @RequestMapping("/comment")
 public class CommentAnimaniacController extends AbstractController {
 
 	@Autowired
-	private CommentService		commentService;
+	private CommentService			commentService;
+	@Autowired
+	private CommentableService		commentableService;
 
 	@Autowired
-	private AnimaniacService	animaniacService;
+	private AnimaniacController		animaniacController;
 	@Autowired
-	private AnimaniacService	commentableService;
+	private AnimaniacPetController	petController;
 
 
 	// List --------------------------------------------------------------------
@@ -39,7 +44,7 @@ public class CommentAnimaniacController extends AbstractController {
 		final Commentable commentable;
 		ModelAndView result;
 		Comment comment;
-		String requestURI;
+		String requestURI = "";
 
 		commentable = this.commentableService.findOne(commentableId);
 
@@ -47,19 +52,18 @@ public class CommentAnimaniacController extends AbstractController {
 
 		result = this.createEditModelAndView(comment);
 
-		requestURI = "comment/animaniac/create.do?animaniacId=" + comment.getAnimaniac().getId();
+		requestURI = "comment/animaniac/create.do?animaniacId=" + comment.getCommentable().getId();
 
 		result.addObject("requestURI", requestURI);
 		result.addObject("comment", comment);
 		return result;
 
 	}
-
 	// Save ---------------------------------------------------------------
 	@RequestMapping(value = "/animaniac/create", method = RequestMethod.POST, params = "save")
 	public @ResponseBody
 	ModelAndView save(final Comment comment, final BindingResult binding) {
-		ModelAndView result;
+		ModelAndView result = null;
 		Comment commentReconstructed;
 
 		commentReconstructed = this.commentService.reconstruct(comment, binding);
@@ -69,8 +73,10 @@ public class CommentAnimaniacController extends AbstractController {
 			try {
 
 				this.commentService.save(commentReconstructed);
-				//TODO distinguir entre animaniac y mascotas
-				result = new ModelAndView("redirect:animaniac/animaniac/view.do?animaniacId=" + comment.getCommentable());
+				if (Animaniac.class.equals(comment.getCommentable().getClass()))
+					result = this.animaniacController.view(comment.getCommentable().getId());
+				if (Pet.class.equals(comment.getCommentable().getClass()))
+					result = this.petController.view(comment.getCommentable().getId());
 
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(comment, oops.getMessage());
@@ -82,7 +88,7 @@ public class CommentAnimaniacController extends AbstractController {
 	// Delete ---------------------------------------------------------------
 	@RequestMapping(value = "/animaniac/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam final int commentId) {
-		ModelAndView result;
+		ModelAndView result = null;
 		Comment comment;
 		final Collection<Comment> res;
 
@@ -90,8 +96,10 @@ public class CommentAnimaniacController extends AbstractController {
 
 		this.commentService.delete(comment);
 
-		//TODO distinguir entre animaniac y mascotas
-		result = new ModelAndView("redirect:animaniac/animaniac/view.do?animaniacId=" + comment.getCommentable());
+		if (Animaniac.class.equals(comment.getCommentable().getClass()))
+			result = this.animaniacController.view(comment.getCommentable().getId());
+		if (Pet.class.equals(comment.getCommentable().getClass()))
+			result = this.petController.view(comment.getCommentable().getId());
 
 		return result;
 	}
