@@ -1,5 +1,5 @@
 
-package administrator;
+package controllers.administrator;
 
 import java.text.DecimalFormat;
 
@@ -70,7 +70,7 @@ public class DashboardAdministratorController extends AbstractController {
 
 		result.addObject("certifiedPetRatio", DashboardAdministratorController.df2.format(this.dashboardService.certifiedPetRatio()));
 
-		result.addObject("animaniacsWithMorePets", DashboardAdministratorController.df2.format(this.dashboardService.animaniacsWithMorePets()));
+		result.addObject("animaniacsWithMorePets", this.dashboardService.animaniacsWithMorePets());
 
 		return result;
 	}

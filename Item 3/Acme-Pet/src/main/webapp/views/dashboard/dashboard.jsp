@@ -14,16 +14,20 @@
 <fieldset>
 	
 	
-	<spring:message code="dashboard.averageOfMessagesReceivedPerActor" var="averageOfMessagesReceivedPerActor" />
-	<spring:message code="dashboard.minOfMessagesReceivedPerActor" var="minOfMessagesReceivedPerActor" />
-	<spring:message code="dashboard.maxOfMessagesReceivedPerActor" var="maxOfMessagesReceivedPerActor" />
-	<spring:message code="dashboard.averageOfMessagesSentPerActor" var="minOfMessagesSentPerActor" />
-	<spring:message code="dashboard.maxOfMessagesSentPerActor" var="maxOfMessagesSentPerActor" />
-	<spring:message code="dashboard.averageOfCommentsWrittenPerActor" var="averageOfCommentsWrittenPerActor" />
-	<spring:message code="dashboard.minOfCommentsWrittenPerActor" var="minOfCommentsWrittenPerActor" />
-	<spring:message code="dashboard.maxOfCommentsWrittenPerActor" var="maxOfCommentsWrittenPerActor" />
-	<spring:message code="dashboard.averageOfCommentsWrittenInCommentable" var="averageOfCommentsWrittenInCommentable" />
-	<spring:message code="dashboard.reportedAnimaniacsRatio" var="reportedAnimaniacsRatio" />
+	<spring:message code="dashboard.averageOfMessagesReceivedPerActor"/>: <jstl:out value="${averageOfMessagesReceivedPerActor}"/><br/>
+	<spring:message code="dashboard.minOfMessagesReceivedPerActor"/>: <jstl:out value="${minOfMessagesReceivedPerActor}"/><br/>
+	<spring:message code="dashboard.maxOfMessagesReceivedPerActor"/>: <jstl:out value="${maxOfMessagesReceivedPerActor}"/><br/>
+	<spring:message code="dashboard.averageOfMessagesSentPerActor"/>: <jstl:out value="${averageOfMessagesSentPerActor}"/><br/>
+	<spring:message code="dashboard.minOfMessagesSentPerActor"/>: <jstl:out value="${minOfMessagesSentPerActor}"/><br/>
+	<spring:message code="dashboard.maxOfMessagesSentPerActor"/>: <jstl:out value="${maxOfMessagesSentPerActor}"/><br/>
+	<spring:message code="dashboard.averageOfCommentsWrittenPerActor"/>: <jstl:out value="${averageOfCommentsWrittenPerActor}"/><br/>
+	<spring:message code="dashboard.minOfCommentsWrittenPerActor"/>: <jstl:out value="${minOfCommentsWrittenPerActor}"/><br/>
+	<spring:message code="dashboard.maxOfCommentsWrittenPerActor"/>: <jstl:out value="${maxOfCommentsWrittenPerActor}"/><br/>
+	<spring:message code="dashboard.averageOfCommentsWrittenInCommentable"/>: <jstl:out value="${averageOfCommentsWrittenInCommentable}"/><br/>
+	<spring:message code="dashboard.reportedAnimaniacsRatio"/>: <jstl:out value="${reportedAnimaniacsRatio}"/><br/>
+		<spring:message code="dashboard.partnerWithMoreBanners"/>: <jstl:out value="${partnerWithMoreBanners.name} ${partnerWithMoreBanners.surname}"/><br/>
+	<spring:message code="dashboard.partnerWithHighestFee"/>: <jstl:out value="${partnerWithHighestFee.name} ${partnerWithHighestFee.surname}"/><br/>
+	<spring:message code="dashboard.certifiedPetRatio"/>: <jstl:out value="${certifiedPetRatio}"/><br/>
 
 	<spring:message code="dashboard.animaniacsByReports" />:<br>
 	<display:table pagesize="5" class="displaytag1" name="animaniacsByReports"
@@ -39,9 +43,7 @@
 	    <acme:column sorteable="false" code="dashboard.animaniac.rate" path="rate"/>
 	</display:table>
 	<br>
-	
-	<spring:message code="dashboard.animaniacsWith10PercentMoreAcceptedApplicationsThanAvg" var="totalBannersDisplayed" />
-	
+		
 	<spring:message code="dashboard.animaniacsWith10PercentMoreAcceptedApplicationsThanAvg" />:<br>
 	<display:table pagesize="5" class="displaytag1" name="animaniacsWith10PercentMoreAcceptedApplicationsThanAvg"
 		requestURI="${requestURI}" id="row" uid="animaniacsWith10PercentMoreAcceptedApplicationsThanAvg" excludedParams="*">
@@ -86,11 +88,6 @@
 	    <acme:column sorteable="false" code="dashboard.animaniac.rate" path="rate"/>
 	</display:table>
 	<br>
-	
-	<spring:message code="dashboard.partnerWithMoreBanners" var="partnerWithMoreBanners" />
-	<spring:message code="dashboard.partnerWithHighestFee" var="partnerWithHighestFee" />
-	
-	<spring:message code="dashboard.certifiedPetRatio" var="certifiedPetRatio" />
 	
 	<spring:message code="dashboard.animaniacsWithMorePets" />:<br>
 	<display:table pagesize="5" class="displaytag1" name="animaniacsWithMorePets"

@@ -255,9 +255,9 @@ public class DashboardService {
 		List<Animaniac> aux;
 
 		aux = this.dashboardRepository.animaniacsSortedByPopularityDesc();
-		res.add(aux.get(0));
-		res.add(aux.get(1));
-		res.add(aux.get(2));
+		for (int i = 0; i < 3; i++)
+			if ((aux.size() - 1) >= i)
+				res.add(aux.get(i));
 
 		return res;
 	}
@@ -268,9 +268,9 @@ public class DashboardService {
 		List<Animaniac> aux;
 
 		aux = this.dashboardRepository.animaniacsSortedByPetNumberDesc();
-		res.add(aux.get(0));
-		res.add(aux.get(1));
-		res.add(aux.get(2));
+		for (int i = 0; i < 3; i++)
+			if ((aux.size() - 1) >= i)
+				res.add(aux.get(i));
 
 		return res;
 	}
