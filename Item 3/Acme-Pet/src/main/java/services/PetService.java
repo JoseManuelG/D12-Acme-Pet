@@ -109,9 +109,10 @@ public class PetService {
 				a.setPet(result);
 				this.validator.validate(a, binding);
 			}
-			for (final AttributeValue a : petForm.getAttributeValues()) {
-				a.setPet(result);
-				this.validator.validate(a, binding);
+			for (int i = 0; i < petForm.getAttributeValues().size(); i++) {
+				petForm.getAttributeValues().get(i).setPet(result);
+				petForm.getAttributeValues().get(i).setAttribute(petForm.getAttributes().get(i));
+				this.validator.validate(petForm.getAttributeValues().get(i), binding);
 			}
 		}
 		return result;

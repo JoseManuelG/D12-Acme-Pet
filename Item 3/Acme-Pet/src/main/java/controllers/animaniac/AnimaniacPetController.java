@@ -78,7 +78,9 @@ public class AnimaniacPetController extends AbstractController {
 	public ModelAndView create(final int typeId) {
 		ModelAndView result;
 		final PetForm petForm = new PetForm();
-		petForm.getAttributeValues().addAll(this.attributeService.attributeValuesFromType(typeId, this.petService.create(typeId)));
+		final Collection<AttributeValue> attributeValues = this.attributeService.attributeValuesFromType(typeId, this.petService.create(typeId));
+		petForm.getAttributeValues().addAll(attributeValues);
+		petForm.fillAttributes(attributeValues);
 		petForm.setType(this.typeService.findOne(typeId));
 		result = this.createEditModelAndView(petForm);
 		return result;
@@ -111,10 +113,32 @@ public class AnimaniacPetController extends AbstractController {
 		} else
 			try {
 				this.petService.save(pet, petForm.getAttributeValues(), petForm.getPhotos());
-				result = new ModelAndView("redirect:..");
+				result = new ModelAndView("redirect:...");
 			} catch (final IllegalArgumentException e) {
 				result = this.createEditModelAndView(petForm, e.getMessage());
 			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "addPhoto")
+	public ModelAndView addAttachment(final PetForm petForm) {
+		ModelAndView result;
+
+		petForm.addPhotoSpace();
+
+		result = this.createEditModelAndView(petForm);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "removePhoto")
+	public ModelAndView removeAttachment(final PetForm petForm) {
+		ModelAndView result;
+
+		petForm.removePhotoSpace();
+
+		result = this.createEditModelAndView(petForm);
 
 		return result;
 	}
@@ -143,18 +167,18 @@ public class AnimaniacPetController extends AbstractController {
 	}
 	//Ancillary methods ----------------------------------------------------------------------
 
-	protected ModelAndView createEditModelAndView(final PetForm pet) {
+	protected ModelAndView createEditModelAndView(final PetForm petForm) {
 		ModelAndView result;
 
-		result = this.createEditModelAndView(pet, null);
+		result = this.createEditModelAndView(petForm, null);
 
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final PetForm pet, final String message) {
+	protected ModelAndView createEditModelAndView(final PetForm petForm, final String message) {
 		ModelAndView result;
 		result = new ModelAndView("pet/animaniac/edit");
-		result.addObject("petForm", pet);
+		result.addObject("petForm", petForm);
 		result.addObject("message", message);
 
 		return result;

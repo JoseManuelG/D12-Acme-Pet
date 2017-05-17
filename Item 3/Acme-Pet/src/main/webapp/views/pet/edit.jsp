@@ -20,8 +20,9 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<form:form action="pet/edit.do" modelAttribute="petForm">
-
+<form:form action="pet/animaniac/edit.do" modelAttribute="petForm">
+	<form:hidden path="type"/>
+	<form:hidden path="attributes"/>
 	<acme:textbox code="pet.name" path="name" />
 	<acme:textbox code="pet.genre" path="genre" />
 	<acme:textbox code="pet.weigth" path="weigth" />
@@ -29,7 +30,7 @@
 	<br />
 	<jstl:forEach items="${petForm.attributeValues}" var="attributeValue"
 		varStatus="j">
-		<jstl:out value="${attributeValues(j.index).attribute.name}"/>
+		<jstl:out value="${petForm.attributes[j.index].name}"/>:
 		<acme:textbox code="pet.nada" path="attributeValues[${j.index}].value" />
 	</jstl:forEach>
 
