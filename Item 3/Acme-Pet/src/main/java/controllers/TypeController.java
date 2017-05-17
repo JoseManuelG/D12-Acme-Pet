@@ -22,7 +22,7 @@ import services.TypeService;
 import domain.Type;
 
 @Controller
-@RequestMapping("/type")
+@RequestMapping("/type/animaniac")
 public class TypeController extends AbstractController {
 
 	// Services ---------------------------------------------------------------

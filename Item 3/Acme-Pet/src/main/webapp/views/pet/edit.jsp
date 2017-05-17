@@ -21,7 +21,6 @@
 
 
 <form:form action="pet/edit.do" modelAttribute="petForm">
-	<form:hidden path="certificatedBy"/>
 
 	<acme:textbox code="pet.name" path="name" />
 	<acme:textbox code="pet.genre" path="genre" />
@@ -30,8 +29,8 @@
 	<br />
 	<jstl:forEach items="${petForm.attributeValues}" var="attributeValue"
 		varStatus="j">
-		<acme:textbox code="<jstl:out value="${attributeValue.attribute.name}"/>"
-			path="attributeValues[${j.index}].value" />
+		<jstl:out value="${attributeValues(j.index).attribute.name}"/>
+		<acme:textbox code="pet.nada" path="attributeValues[${j.index}].value" />
 	</jstl:forEach>
 
 	<br />

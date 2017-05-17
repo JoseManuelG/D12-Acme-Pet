@@ -153,7 +153,7 @@ public class AnimaniacPetController extends AbstractController {
 
 	protected ModelAndView createEditModelAndView(final PetForm pet, final String message) {
 		ModelAndView result;
-		result = new ModelAndView("pet/edit");
+		result = new ModelAndView("pet/animaniac/edit");
 		result.addObject("petForm", pet);
 		result.addObject("message", message);
 

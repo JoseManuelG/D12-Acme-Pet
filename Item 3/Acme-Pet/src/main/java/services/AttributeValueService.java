@@ -29,6 +29,8 @@ public class AttributeValueService {
 	//Simple CRUD methods------------------------------------------------------------
 	public AttributeValue create(final Pet pet, final Attribute attribute) {
 		final AttributeValue result = new AttributeValue();
+		result.setPet(pet);
+		result.setAttribute(attribute);
 		return result;
 	}
 
