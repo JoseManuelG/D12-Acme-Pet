@@ -33,7 +33,7 @@
 	<display:column  title="${codeName}">
 		<ul>
 		<jstl:forEach items="${row.pets}" var="pet">
-			<li><a href="pet/view.do?petId=${pet.id}">
+			<li><a href="pet/animaniac/view.do?petId=${pet.id}">
 				<acme:mask text="${pet.name}"/>
 			</a></li>
 		</jstl:forEach>
