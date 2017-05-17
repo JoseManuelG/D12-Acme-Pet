@@ -9,29 +9,55 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <!-- Listing grid -->
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="types" requestURI="${requestURI}" id="row">
+	name="abuseReports" requestURI="${requestURI}" id="row">
 	
-	
-	<!-- Attributes -->
-	
-	<spring:message code="type.name" var="name" />
-	<display:column property="typeName" title="${name}" sortable="true"/>
-	
-	<!-- Action links -->
-
-	<display:column>
-		<a href="type/administrator/edit.do?typeId=${row.id}">
-			<spring:message	code="type.edit" />
+	<spring:message code="abuseReport.reported" var="reported"/>
+	<display:column title="${reported}">
+		<a href="animaniac/view.do?animaniacId=${row.reported.id}">
+			<jstl:out value="${row.reported.userAccount.username}" />
 		</a>
 	</display:column>
 	
+	<spring:message code="abuseReport.reporter" var="reporter"/>
+	<display:column title="${reporter}">
+		<jstl:choose>
+			<jstl:when test="${row.reporter==null}">
+				<spring:message code="abuseReport.deletedReporter" />
+			</jstl:when>
+			<jstl:otherwise>
+				<a href="animaniac/view.do?animaniacId=${row.reporter.id}">
+			<jstl:out value="${row.reporter.userAccount.username}" />
+				</a>
+			</jstl:otherwise>
+		</jstl:choose>
+	</display:column>
+	
+	<acme:column sorteable="false" code="abuseReport.description" path="description"/>
+	
+	<acme:column sorteable="false" code="abuseReport.reportDate" path="reportDate"/>
+	
+	<security:authorize access="hasRole('ADMINISTRATOR')">
+		<jstl:choose>
+		    <jstl:when test="${row.reported.banned == true}">
+		        <display:column>
+					<a href="animaniac/administrator/unban.do?animaniacId=${row.reported.id}&reported=1">
+						<spring:message code="abuseReport.unban"/>
+					</a>
+				</display:column>
+		    </jstl:when>    
+		    <jstl:otherwise>
+		        <display:column>
+					<a href="animaniac/administrator/ban.do?animaniacId=${row.reported.id}&reported=1">
+						<spring:message code="abuseReport.ban"/>
+					</a>
+				</display:column>
+		    </jstl:otherwise>
+		</jstl:choose>
+	</security:authorize>
 
 </display:table>
-
-<a href="type/administrator/edit.do">
-	<spring:message	code="type.create" />
-</a>

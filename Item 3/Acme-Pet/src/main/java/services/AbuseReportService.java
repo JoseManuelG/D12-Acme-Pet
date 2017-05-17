@@ -2,10 +2,14 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.AbuseReportRepository;
 import domain.AbuseReport;
@@ -19,48 +23,55 @@ public class AbuseReportService {
 	@Autowired
 	private AbuseReportRepository	abuseReportRepository;
 
-
 	//Supported Services--------------------------------------------------------------------
+	@Autowired
+	private AnimaniacService		animaniacService;
+
+	@Autowired
+	private Validator				validator;
+
+
 	//Simple CRUD methods------------------------------------------------------------
-	public AbuseReport create() {
-		final AbuseReport result = new AbuseReport();
+	public AbuseReport create(final int reportedId) {
+		AbuseReport result;
+
+		result = new AbuseReport();
+		result.setReported(this.animaniacService.findOne(reportedId));
+
 		return result;
 	}
 
 	public AbuseReport save(final AbuseReport abuseReport) {
 		AbuseReport result;
+
+		Assert.isTrue(!abuseReport.getReporter().equals(abuseReport.getReported()), "abuseReport.cant.report.myself");
+
 		result = this.abuseReportRepository.save(abuseReport);
 		return result;
 	}
 
-	public void delete(final AbuseReport abuseReport) {
-		this.abuseReportRepository.delete(abuseReport);
-
+	public Collection<AbuseReport> findAll() {
+		return this.abuseReportRepository.findAllOrderedByDate();
 	}
 
 	//Other Bussnisnes methods------------------------------------------------------------
 
-	//	public AbuseReport reconstruct(final AbuseReportForm abuseReportForm, final BindingResult binding) {
-	//		AbuseReport result;
-	//		Animaniac reported;
-	//		final Animaniac principal;
-	//
-	//		result = this.create();
-	//		reported = animaniacService.findOne(abuseReportForm.get);
-	//		result.setDescription(abuseReportForm.getDescription());
-	//		result.setSubject(abuseReportForm.getSubject());
-	//		result.setIsSender(true);
-	//
-	//		this.validator.validate(result, binding);
-	//
-	//		if (!binding.hasErrors())
-	//			for (final Attachment a : abuseReportForm.getAttachments()) {
-	//				a.setAbuseReport(result);
-	//				this.validator.validate(a, binding);
-	//			}
-	//		return result;
-	//
-	//	}
+	public AbuseReport reconstruct(final AbuseReport abuseReport, final BindingResult binding) {
+		AbuseReport result;
+		Animaniac principal;
+
+		result = this.create(abuseReport.getReported().getId());
+		principal = this.animaniacService.findAnimaniacByPrincipal();
+
+		result.setReporter(principal);
+		result.setDescription(abuseReport.getDescription());
+		result.setReportDate(new Date(System.currentTimeMillis() - 100));
+
+		this.validator.validate(result, binding);
+
+		return result;
+
+	}
 
 	public void deleteFromAnimaniac(final Animaniac animaniac) {
 		Collection<AbuseReport> reportsRecived;

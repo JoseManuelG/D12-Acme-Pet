@@ -21,24 +21,30 @@ public class AnimaniacAdministratorController extends AbstractController {
 
 	// Ban 	-------------------------------------------------------------------
 	@RequestMapping(value = "/ban", method = RequestMethod.GET)
-	public ModelAndView ban(@RequestParam final int animaniacId) {
+	public ModelAndView ban(@RequestParam final int animaniacId, @RequestParam(required = false) final Integer reported) {
 		ModelAndView result;
 
 		this.animaniacService.ban(animaniacId);
 
-		result = new ModelAndView("redirect:/animaniac/list.do");
+		if (reported != null)
+			result = new ModelAndView("redirect:/abuseReport/administrator/list.do");
+		else
+			result = new ModelAndView("redirect:/animaniac/list.do");
 
 		return result;
 	}
 
 	// Unban 	-------------------------------------------------------------------
 	@RequestMapping(value = "/unban", method = RequestMethod.GET)
-	public ModelAndView unban(@RequestParam final int animaniacId) {
+	public ModelAndView unban(@RequestParam final int animaniacId, @RequestParam(required = false) final Integer reported) {
 		ModelAndView result;
 
 		this.animaniacService.unban(animaniacId);
-		result = new ModelAndView("redirect:/animaniac/list.do");
 
+		if (reported != null)
+			result = new ModelAndView("redirect:/abuseReport/administrator/list.do");
+		else
+			result = new ModelAndView("redirect:/animaniac/list.do");
 		return result;
 	}
 

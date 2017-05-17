@@ -12,20 +12,17 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="type/administrator/edit.do" modelAttribute="type">
+<form:form action="abuseReport/animaniac/edit.do" modelAttribute="abuseReport">
 
-	<form:hidden path="id" />
-	<form:hidden path="version" />
-	
-	<acme:textbox code="type.name" path="typeName"/>
+	<form:hidden path="reported"/>
+
+	<acme:textbox code="abuseReport.description" path="description"/>
 	
 	<br/>
 	
-	<acme:submit name="save" code="type.save"/>
-	<jstl:if test="${type.id != 0}">
-		<acme:submit name="delete" code="type.delete"/>
-	</jstl:if>
-	<acme:cancel url="type/administrator/list.do" code="type.cancel"/>
+	<acme:submit name="save" code="abuseReport.save"/>
+	
+	<acme:cancel url="animaniac/view.do.do?animaniacId=${abuseReport.reported.id}" code="abuseReport.cancel"/>
 
 
 </form:form>

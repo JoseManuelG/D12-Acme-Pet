@@ -24,6 +24,9 @@
 		-->
  		<bean class="converters.ActorToStringConverter" />
 		<bean class="converters.StringToActorConverter" />
+		
+ 		<bean class="converters.AnimaniacToStringConverter" />
+		<bean class="converters.StringToAnimaniacConverter" />
 				
 		<bean class="converters.AttributeToStringConverter" />
 		<bean class="converters.StringToAttributeConverter" />

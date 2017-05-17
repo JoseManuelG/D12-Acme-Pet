@@ -65,6 +65,7 @@
 					<li><a href="partner/administrator/register.do"><spring:message code="master.page.register.partner" /></a></li>
 					<li><a href="vet/administrator/register.do"><spring:message code="master.page.register.vet" /></a></li>
 					<li><a href="dashboard/administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
+					<li><a href="abuseReport/administrator/list.do"><spring:message code="master.page.administrator.abuseReport" /></a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('PARTNER')">
 						

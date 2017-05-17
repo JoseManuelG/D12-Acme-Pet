@@ -9,6 +9,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <!-- Listing grid -->
 
@@ -18,11 +19,9 @@
 	
 	<!-- Attributes -->
 	
-	<spring:message code="attribute.name" var="name" />
-	<display:column property="name" title="${name}" sortable="true"/>
+	<acme:column sorteable="true" code="attribute.name" path="name"/>
 	
-	<spring:message code="attribute.type" var="type" />
-	<display:column property="type.typeName" title="${type}" sortable="true"/>
+	<acme:column sorteable="true" code="attribute.type" path="type.typeName"/>
 	
 	<!-- Action links -->
 

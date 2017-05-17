@@ -16,4 +16,7 @@ public interface AbuseReportRepository extends JpaRepository<AbuseReport, Intege
 	@Query("select a from AbuseReport a where a.reporter.id = ?1")
 	Collection<AbuseReport> findAbuseReportDone(int id);
 
+	@Query("select a from AbuseReport a order by a.reportDate desc")
+	Collection<AbuseReport> findAllOrderedByDate();
+
 }
