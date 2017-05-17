@@ -11,6 +11,8 @@ import org.springframework.util.Assert;
 
 import repositories.AttributeRepository;
 import domain.Attribute;
+import domain.AttributeValue;
+import domain.Pet;
 
 @Service
 @Transactional
@@ -62,5 +64,15 @@ public class AttributeService {
 	//Simple CRUD methods-------------------------------------------------------------------
 
 	// other business methods --------------------------------------
+
+	public Collection<AttributeValue> attributeValuesFromType(final int typeId, final Pet pet) {
+		final Collection<AttributeValue> result = new ArrayList<AttributeValue>();
+		final Collection<Attribute> attributes = this.attributeRepository.attributtesWithType(typeId);
+		for (final Attribute a : attributes) {
+			final AttributeValue attributeValue = this.attributeValueService.create(pet, a);
+			result.add(attributeValue);
+		}
+		return result;
+	}
 
 }

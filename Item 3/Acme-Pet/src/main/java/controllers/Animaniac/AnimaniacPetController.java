@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AttributeService;
 import services.AttributeValueService;
 import services.PetService;
 import services.PhotoService;
@@ -48,6 +49,9 @@ public class AnimaniacPetController extends AbstractController {
 	@Autowired
 	public AttributeValueService	attributeValueService;
 
+	@Autowired
+	public AttributeService			attributeService;
+
 
 	// Constructors -----------------------------------------------------------
 
@@ -74,6 +78,7 @@ public class AnimaniacPetController extends AbstractController {
 	public ModelAndView create(final int typeId) {
 		ModelAndView result;
 		final PetForm petForm = new PetForm();
+		petForm.getAttributeValues().addAll(this.attributeService.attributeValuesFromType(typeId, this.petService.create(typeId)));
 		petForm.setType(this.typeService.findOne(typeId));
 		result = this.createEditModelAndView(petForm);
 		return result;
@@ -85,6 +90,8 @@ public class AnimaniacPetController extends AbstractController {
 		ModelAndView result;
 		final Pet pet = this.petService.findOne(petId);
 		final PetForm petForm = new PetForm(pet);
+		petForm.getAttributeValues().addAll(this.attributeValueService.findAttributeValuesOfPet(pet));
+		petForm.getPhotos().addAll(this.photoService.findPhotosOfPet(pet));
 		result = this.createEditModelAndView(petForm);
 		return result;
 	}

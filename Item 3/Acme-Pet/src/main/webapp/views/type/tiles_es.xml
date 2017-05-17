@@ -18,5 +18,9 @@
 		<put-attribute name="body" value="/views/type/list.jsp" />
 	</definition>
 	
+	<definition name="type/select" extends="master.page">
+		<put-attribute name="title" value="Seleccionar tipo" />
+		<put-attribute name="body" value="/views/type/select.jsp" />
+	</definition>
 	
 </tiles-definitions>

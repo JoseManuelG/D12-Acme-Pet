@@ -91,6 +91,8 @@ public class PetForm {
 		this.name = pet.getName();
 		this.Type = pet.getType();
 		this.weigth = pet.getWeigth();
+		this.attributeValues = new ArrayList<AttributeValue>();
+		this.photos = new LinkedList<Photo>();
 	}
 
 	public void addPhotoSpace() {
