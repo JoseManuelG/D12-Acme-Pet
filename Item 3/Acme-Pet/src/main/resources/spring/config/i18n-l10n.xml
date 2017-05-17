@@ -36,7 +36,7 @@
 		<value>/views/partner/messages</value>
 		<value>/views/type/messages</value>
 		<value>/views/vet/messages</value>
-		
+		<value>/views/pet/messages</value>
 		
 
 	</util:list>
