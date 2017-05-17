@@ -11,7 +11,6 @@ import repositories.ActorRepository;
 import security.LoginService;
 import security.UserAccount;
 import domain.Actor;
-import domain.Animaniac;
 import forms.ActorForm;
 
 @Service
@@ -38,16 +37,6 @@ public class ActorService {
 
 	public Actor findOne(final int actorId) {
 		return this.actorRepository.findOne(actorId);
-	}
-
-	public void save(final Actor actor) {
-
-		if (actor instanceof Animaniac)
-			this.animaniacService.save((Animaniac) actor);
-		//		else if (actor instanceof Partner)
-		//			this.partnerService.save((Partner) actor);
-		//TODO: else if...
-
 	}
 
 	public Collection<Actor> findAll() {

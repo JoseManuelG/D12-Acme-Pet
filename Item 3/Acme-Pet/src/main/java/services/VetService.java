@@ -66,6 +66,7 @@ public class VetService {
 		vet.setUserAccount(this.accountService.save(vet.getUserAccount()));
 		result = this.vetRepository.save(vet);
 		Assert.notNull(result, "vet.error.commit");
+		//TODO: crear carpetas
 		return result;
 
 	}
@@ -73,7 +74,6 @@ public class VetService {
 	public void delete() {
 		Vet vet;
 		vet = this.findVetByPrincipal();
-		//TODO: borrar relaciones.
 		this.petService.deleteFromVet(vet);
 		this.vetRepository.delete(vet);
 		this.accountService.delete(vet.getUserAccount().getId());

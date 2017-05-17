@@ -69,6 +69,7 @@ public class PartnerService {
 		partner.setUserAccount(this.accountService.save(partner.getUserAccount()));
 		result = this.partnerRepository.save(partner);
 		Assert.notNull(result, "partner.error.commit");
+		//TODO: crear carpetas
 		return result;
 
 	}

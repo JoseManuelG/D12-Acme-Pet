@@ -75,7 +75,7 @@ public class Request extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Collection<Pet>	pets;	//TODO: Cambiar a tabla aparte?
+	private Collection<Pet>	pets;
 
 
 	@NotNull

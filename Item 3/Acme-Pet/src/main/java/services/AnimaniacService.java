@@ -90,6 +90,7 @@ public class AnimaniacService {
 		if (animaniac.getId() == 0) {
 			//TODO: crear buscador this.searchTemplateService.createForAnimaniac(result);
 		}
+		//TODO: crear carpetas
 		return result;
 
 	}

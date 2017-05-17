@@ -14,31 +14,41 @@
 <!-- Listing grid -->
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="requests" requestURI="requestURI" id="row">
+	name="requests" requestURI="${requestURI}" id="row">
 	
 	
 	<!-- Attributes -->
+	<spring:message code="request.owner" var="codeName" />
+	<display:column  title="${codeName}">
+		<a href="animaniac/view.do?animaniacId=${row.pets[0].animaniac.id}">
+				<acme:mask text="${row.pets[0].animaniac.userAccount.username}"/>
+		</a>
+	</display:column>
 	<acme:maskedColumn code="request.startDate" text="${row.startDate}" sorteable="false"/>
 	<acme:maskedColumn code="request.endDate" text="${row.endDate}" sorteable="false"/>
 	<acme:maskedColumn code="request.address" text="${row.address}" sorteable="false"/>
 	<acme:maskedColumn code="request.description" text="${row.description}" sorteable="false"/>
-	<acme:maskedColumn code="request.description" text="
-	<ul>
-	<jstl:forEach items="${row.pets}" var="pet">
-		<li><a href="/pet/view.do?=${pet.id}">${pet.name}</a></li>
-	</jstl:forEach>
-	</ul>
-	" sorteable="false"/>
 	
-	<!-- Action links -->
-
-	<display:column>
-		<a href="request/animaniac/edit.do?requestId=${row.id}">
-			<spring:message	code="request.edit" />
-		</a>
+	<spring:message code="request.description" var="codeName" />
+	<display:column  title="${codeName}">
+		<ul>
+		<jstl:forEach items="${row.pets}" var="pet">
+			<li><a href="pet/view.do?petId=${pet.id}">
+				<acme:mask text="${pet.name}"/>
+			</a></li>
+		</jstl:forEach>
+		</ul>
 	</display:column>
 	
-
+	<!-- Action links -->
+	
+	<jstl:if test="${owner}">
+		<display:column>
+			<a href="request/animaniac/edit.do?requestId=${row.id}">
+				<spring:message	code="request.edit" />
+			</a>
+		</display:column>
+	</jstl:if>
 </display:table>
 
 <a href="request/animaniac/edit.do">
