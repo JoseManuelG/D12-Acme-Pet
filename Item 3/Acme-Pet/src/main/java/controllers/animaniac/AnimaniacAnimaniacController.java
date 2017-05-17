@@ -1,5 +1,5 @@
 
-package controllers.Animaniac;
+package controllers.animaniac;
 
 import javax.validation.Valid;
 

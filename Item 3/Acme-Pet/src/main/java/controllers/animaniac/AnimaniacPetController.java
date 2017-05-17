@@ -8,7 +8,7 @@
  * http://www.tdg-seville.info/License.html
  */
 
-package controllers.Animaniac;
+package controllers.animaniac;
 
 import java.util.Collection;
 
