@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AnimaniacService;
 import services.AttributeService;
 import services.AttributeValueService;
 import services.PetService;
@@ -51,6 +52,9 @@ public class AnimaniacPetController extends AbstractController {
 
 	@Autowired
 	public AttributeService			attributeService;
+
+	@Autowired
+	public AnimaniacService			animaniacService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -150,17 +154,21 @@ public class AnimaniacPetController extends AbstractController {
 		ModelAndView result;
 		Pet res;
 		Collection<AttributeValue> attributeValues;
-		Collection<Photo> att;
+		final Collection<Photo> att;
+		Boolean owner = false;
 
 		res = this.petService.findOne(petId);
+		owner = res.getAnimaniac().equals(this.animaniacService.findAnimaniacByPrincipal());
 		att = this.photoService.findPhotosOfPet(res);
 
 		attributeValues = this.attributeValueService.findAttributeValuesOfPet(res);
 
-		result = new ModelAndView("pet/view");
-		result.addObject("res", res);
+		result = new ModelAndView("pet/animaniac/view");
+		result.addObject("pet", res);
+		result.addObject("type", res.getType());
+		result.addObject("owner", owner);
 		result.addObject("attributeValues", attributeValues);
-		result.addObject("att", att);
+		result.addObject("photos", att);
 		result.addObject("requestURI", "pet/animaniac/view.do?petId=" + petId);
 
 		return result;
