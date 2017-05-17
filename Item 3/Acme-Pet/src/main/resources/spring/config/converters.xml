@@ -33,7 +33,10 @@
 		
 		<bean class="converters.AttributeValueToStringConverter" />
 		<bean class="converters.StringToAttributeValueConverter" />
-
+	
+		<bean class="converters.CommentableToStringConverter" />
+		<bean class="converters.StringToCommentableConverter" />
+		
  		<bean class="converters.PetToStringConverter" />
 		<bean class="converters.StringToPetConverter" />
 		
