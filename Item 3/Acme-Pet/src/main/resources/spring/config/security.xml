@@ -89,6 +89,8 @@
 	
 		<security:intercept-url pattern="/vet/administrator/register.do" access="hasRole('ADMINISTRATOR')" />
 		
+		<security:intercept-url pattern="/dashboard/administrator/dashboard.do" access="hasRole('ADMINISTRATOR')" />
+		
 		<!-- Animaniac -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('ANIMANIAC')" /> -->
 		<security:intercept-url pattern="/animaniac/animaniac/edit.do" access="hasRole('ANIMANIAC')" />

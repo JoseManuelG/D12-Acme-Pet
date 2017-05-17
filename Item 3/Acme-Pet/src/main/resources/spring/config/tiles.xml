@@ -36,6 +36,7 @@
 		<value>/views/type/tiles.xml</value>
 		<value>/views/vet/tiles.xml</value>
 		<value>/views/pet/tiles.xml</value>
+		<value>/views/dashboard/tiles.xml</value>
 
 		
 				
