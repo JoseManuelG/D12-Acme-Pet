@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import repositories.CommentableRepository;
-import domain.Animaniac;
 import domain.Commentable;
 
 @Component
@@ -20,7 +19,7 @@ public class StringToCommentableConverter implements Converter<String, Commentab
 
 	@Override
 	public Commentable convert(final String text) {
-		Animaniac result;
+		Commentable result;
 		int id;
 
 		try {
