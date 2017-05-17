@@ -96,6 +96,8 @@
 		<security:intercept-url pattern="/pet/animaniac/create.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/pet/animaniac/view.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/type/select.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/comment/animaniac/create.do" access="hasRole('ANIMANIAC')" />
+		
 		<!-- Partner -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('PARTNER')" /> -->
 		<security:intercept-url pattern="/partner/partner/edit.do" access="hasRole('PARTNER')" />

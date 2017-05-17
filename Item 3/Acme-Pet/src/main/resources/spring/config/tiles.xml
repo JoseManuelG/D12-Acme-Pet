@@ -29,12 +29,14 @@
 		<value>/views/administrator/tiles.xml</value>
 		<value>/views/animaniac/tiles.xml</value>
 		<value>/views/attribute/tiles.xml</value>
+		<value>/views/comment/tiles.xml</value>
 		<value>/views/folder/tiles.xml</value>
 		<value>/views/message/tiles.xml</value>
 		<value>/views/partner/tiles.xml</value>
 		<value>/views/type/tiles.xml</value>
 		<value>/views/vet/tiles.xml</value>
 		<value>/views/pet/tiles.xml</value>
+
 		
 				
 		
