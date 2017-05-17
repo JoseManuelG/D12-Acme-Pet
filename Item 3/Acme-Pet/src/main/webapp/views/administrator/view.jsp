@@ -36,7 +36,9 @@
 
 
 </fieldset>
-
+	<a href="message/write.do?actorId=${administrator.id}">
+    	<spring:message  code="actor.sendMessage" />
+	</a>
 <jstl:if test="${owner}">
 	<a href="administrator/administrator/edit.do?administratorId=${administrator.id}">
     	<spring:message  code="actor.edit" />

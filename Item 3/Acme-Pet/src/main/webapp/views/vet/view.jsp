@@ -39,7 +39,9 @@
 
 
 </fieldset>
-
+	<a href="message/write.do?actorId=${vet.id}">
+    	<spring:message  code="actor.sendMessage" />
+	</a>
 <jstl:if test="${owner}">
 	<a href="vet/vet/edit.do?vetId=${vet.id}">
     	<spring:message  code="actor.edit" />
