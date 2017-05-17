@@ -4,6 +4,8 @@
 - B+Tree
 - Informe costes
 - Sacar PDFs de los astah ya que se ha cambiado el nombre de attribute name
+- Propiedad de pet certificateBy deberia ser certificatedBy?
+- Formulario de pet, attribute value si se ponen todos cambiar para que si esta en blanco no cree el attribute value
 
 ---------------- HECHO ----------------
 - Meter reunión y tareas iniciales en redmine (javi).
