@@ -11,12 +11,15 @@ import domain.AttributeValue;
 
 public interface AttributeValueRepository extends JpaRepository<AttributeValue, Integer> {
 
-	//Find all the sendt chirps for a given actor
+	//Find all the sent chirps for a given actor
 	@Query("select a from AttributeValue a where a.pet.id=?1")
 	public List<AttributeValue> findAttributeValuesOfPet(int petId);
 
-	//Find all the sendt chirps for a given actor
+	//Find all the sent chirps for a given actor
 	@Query("select a from AttributeValue a where a.pet.id=?1")
 	public Collection<AttributeValue> findAttributeValuesOfPetDeleting(int id);
+
+	@Query("select a from AttributeValue a where a.attribute.id=?1")
+	public Collection<AttributeValue> findAllFromAttribute(int attributeId);
 
 }

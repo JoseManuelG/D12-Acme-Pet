@@ -24,14 +24,10 @@
 	<!-- Action links -->
 
 	<display:column>
-		<a href="type/administrator/edit.do?typeId=${row.id}">
-			<spring:message	code="type.edit" />
+		<a href="pet/animaniac/create.do?typeId=${row.id}">
+			<spring:message	code="type.select" />
 		</a>
 	</display:column>
 	
 
 </display:table>
-
-<a href="type/administrator/edit.do">
-	<spring:message	code="type.create" />
-</a>

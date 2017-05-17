@@ -29,7 +29,7 @@ import domain.Folder;
 import domain.Message;
 
 @Controller
-@RequestMapping("folder")
+@RequestMapping("/folder")
 public class FolderActorController extends AbstractController {
 
 	//InitBinder---------------------------------------------------------------

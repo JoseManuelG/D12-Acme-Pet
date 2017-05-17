@@ -25,177 +25,85 @@
 	<spring:message code="dashboard.averageOfCommentsWrittenInCommentable" var="averageOfCommentsWrittenInCommentable" />
 	<spring:message code="dashboard.reportedAnimaniacsRatio" var="reportedAnimaniacsRatio" />
 
-	<%-- <spring:message code="dashboard.chorbiesGroupedByCity" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="chorbiesGroupedByCity"
-		requestURI="${requestURI}" id="row" uid="chorbiesGroupedByCity" excludedParams="*">
+	<spring:message code="dashboard.animaniacsByReports" />:<br>
+	<display:table pagesize="5" class="displaytag1" name="animaniacsByReports"
+		requestURI="${requestURI}" id="row" uid="animaniacsByReports" excludedParams="*">
 		
-	    <display:column title="${city}">
-	   	  <jstl:out value="${chorbiesGroupedByCity[1]}"/>
+	   	<display:column title="${dashboard.animaniac.name}">
+	   	  <jstl:out value="${animaniacsByReports.name}"/>
+	   	  <jstl:out value="${animaniacsByReports.surname}"/>
 	    </display:column>
-	    
-	     <display:column >
-	   	  <jstl:out value="${chorbiesGroupedByCity[0]}"/>
-	    </display:column>
+	    <acme:column sorteable="false" code="dashboard.animaniac.email" path="email"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.gender" path="genre"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.address" path="address"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.rate" path="rate"/>
 	</display:table>
 	<br>
 	
-	<spring:message code="dashboard.chorbiesGroupedByCountry" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="chorbiesGroupedByCountry"
-		requestURI="${requestURI}" id="row" uid="chorbiesGroupedByCountry" excludedParams="*">
-		
-	    <display:column title="${country}">
-	   	  <jstl:out value="${chorbiesGroupedByCountry[1]}"/>
-	    </display:column>
-	    
-	     <display:column >
-	   	  <jstl:out value="${chorbiesGroupedByCountry[0]}"/>
-	    </display:column>
-	</display:table>
-	<br>
-
-	<spring:message code="dashboard.minumumChorbiAge" />: <jstl:out value="${minumumChorbiAge}"/><br/>
-	<spring:message code="dashboard.maximumChorbiAge" />: <jstl:out value="${maximumChorbiAge}"/><br/>
-	<spring:message code="dashboard.averageChorbiAge" />: <jstl:out value="${averageChorbiAge}"/><br/>
-	<spring:message code="dashboard.ratioOfNoCCAndInvalidCCVersusValidCC" />: <jstl:out value="${ratioOfNoCCAndInvalidCCVersusValidCC}"/><br/>
+	<spring:message code="dashboard.animaniacsWith10PercentMoreAcceptedApplicationsThanAvg" var="totalBannersDisplayed" />
 	
-	<spring:message code="dashboard.ratioActivitiesSearch" />: <jstl:out value="${ratioActivitiesSearch}"/><br/>
-	<spring:message code="dashboard.ratioFriendshipSearch" />: <jstl:out value="${ratioFriendshipSearch}"/><br/>
-	<spring:message code="dashboard.ratioLoveSearch" />: <jstl:out value="${ratioLoveSearch}"/><br/>
-	
-	<spring:message code="dashboard.chorbiesOrderedByLikes" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="chorbiesOrderedByLikes"
-		requestURI="${requestURI}" id="row" uid="chorbiesOrderedByLikes" excludedParams="*">
+	<spring:message code="dashboard.animaniacsWith10PercentMoreAcceptedApplicationsThanAvg" />:<br>
+	<display:table pagesize="5" class="displaytag1" name="animaniacsWith10PercentMoreAcceptedApplicationsThanAvg"
+		requestURI="${requestURI}" id="row" uid="animaniacsWith10PercentMoreAcceptedApplicationsThanAvg" excludedParams="*">
 		
-	    <display:column title="${actorName}">
-	   	  <jstl:out value="${chorbiesOrderedByLikes.name}"/>
-	   	  <jstl:out value="${chorbiesOrderedByLikes.surname}"/>
+	   	<display:column title="${dashboard.animaniac.name}">
+	   	  <jstl:out value="${animaniacsWith10PercentMoreAcceptedApplicationsThanAvg.name}"/>
+	   	  <jstl:out value="${animaniacsWith10PercentMoreAcceptedApplicationsThanAvg.surname}"/>
 	    </display:column>
+	    <acme:column sorteable="false" code="dashboard.animaniac.email" path="email"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.gender" path="genre"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.address" path="address"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.rate" path="rate"/>
 	</display:table>
 	<br>
 	
-	<spring:message code="dashboard.minimumChorbiLikes" />: <jstl:out value="${minimumChorbiLikes}"/><br/>
-	<spring:message code="dashboard.maximumChorbiLikes" />: <jstl:out value="${maximumChorbiLikes}"/><br/>
-	<spring:message code="dashboard.averageChorbiLikes" />: <jstl:out value="${averageChorbiLikes}"/><br/>
-	
-	
-	<spring:message code="dashboard.minimumChirpsReceivedByChorbi" />: <jstl:out value="${minimumChirpsReceivedByChorbi}"/><br/>
-	<spring:message code="dashboard.maximumChirpsReceivedByChorbi" />: <jstl:out value="${maximumChirpsReceivedByChorbi}"/><br/>
-	<spring:message code="dashboard.averageChirpsReceivedByChorbi" />: <jstl:out value="${averageChirpsReceivedByChorbi}"/><br/>
-	<spring:message code="dashboard.minimumChirpsSentByChorbi" />: <jstl:out value="${minimumChirpsSentByChorbi}"/><br/>
-	<spring:message code="dashboard.maximumChirpsSentByChorbi" />: <jstl:out value="${maximumChirpsSentByChorbi}"/><br/>
-	<spring:message code="dashboard.averageChirpsSentByChorbi" />: <jstl:out value="${averageChirpsSentByChorbi}"/><br/>
-	
-	
-	<spring:message code="dashboard.ChorbiesWithMoreReceivedChirps" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="ChorbiesWithMoreReceivedChirps"
-		requestURI="${requestURI}" id="row" uid="ChorbiesWithMoreReceivedChirps" excludedParams="*">
+	<spring:message code="dashboard.top3PopularAnimaniacs" />:<br>
+	<display:table pagesize="5" class="displaytag1" name="top3PopularAnimaniacs"
+		requestURI="${requestURI}" id="row" uid="top3PopularAnimaniacs" excludedParams="*">
 		
-	    <display:column title="${actorName}">
-	   	  <jstl:out value="${ChorbiesWithMoreReceivedChirps.name}"/>
-	   	  <jstl:out value="${ChorbiesWithMoreReceivedChirps.surname}"/>
+	   	<display:column title="${dashboard.animaniac.name}">
+	   	  <jstl:out value="${top3PopularAnimaniacs.name}"/>
+	   	  <jstl:out value="${top3PopularAnimaniacs.surname}"/>
 	    </display:column>
+	    <acme:column sorteable="false" code="dashboard.animaniac.email" path="email"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.gender" path="genre"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.address" path="address"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.rate" path="rate"/>
 	</display:table>
 	<br>
 	
-	<spring:message code="dashboard.ChorbiesWithMoreSentChirps" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="ChorbiesWithMoreSentChirps"
-		requestURI="${requestURI}" id="row" uid="ChorbiesWithMoreSentChirps" excludedParams="*">
+	<spring:message code="dashboard.top3AnimaniacsByPetNumber" />:<br>
+	<display:table pagesize="5" class="displaytag1" name="top3AnimaniacsByPetNumber"
+		requestURI="${requestURI}" id="row" uid="top3AnimaniacsByPetNumber" excludedParams="*">
 		
-	    <display:column title="${actorName}">
-	   	  <jstl:out value="${ChorbiesWithMoreSentChirps.name}"/>
-	   	  <jstl:out value="${ChorbiesWithMoreSentChirps.surname}"/>
+	   	<display:column title="${dashboard.animaniac.name}">
+	   	  <jstl:out value="${top3AnimaniacsByPetNumber.name}"/>
+	   	  <jstl:out value="${top3AnimaniacsByPetNumber.surname}"/>
 	    </display:column>
+	    <acme:column sorteable="false" code="dashboard.animaniac.email" path="email"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.gender" path="genre"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.address" path="address"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.rate" path="rate"/>
 	</display:table>
 	<br>
 	
-	<spring:message code="dashboard.getManagersOrderedByEvents" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="getManagersOrderedByEvents"
-		requestURI="${requestURI}" id="row" uid="getManagersOrderedByEvents" excludedParams="*">
-		
-	    <display:column title="${actorName}">
-	   	  <jstl:out value="${getManagersOrderedByEvents[0].name}"/>
-	   	  <jstl:out value="${getManagersOrderedByEvents[0].surname}"/>
-	    </display:column>
-	    <display:column title="${events}">
-	   	  <jstl:out value="${getManagersOrderedByEvents[1]}"/>
-	    </display:column>
-	</display:table>
-	<br>
+	<spring:message code="dashboard.partnerWithMoreBanners" var="partnerWithMoreBanners" />
+	<spring:message code="dashboard.partnerWithHighestFee" var="partnerWithHighestFee" />
 	
-	<spring:message code="dashboard.getManagersWithChargedFee" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="getManagersWithChargedFee"
-		requestURI="${requestURI}" id="row" uid="getManagersWithChargedFee" excludedParams="*">
-		
-	    <display:column title="${actorName}">
-	   	  <jstl:out value="${getManagersWithChargedFee.name}"/>
-	   	  <jstl:out value="${getManagersWithChargedFee.surname}"/>
-	    </display:column>
-	    <display:column title="${fee}">
-	   	  <jstl:out value="${getManagersWithChargedFee.chargedFee}"/>
-	    </display:column>
-	</display:table>
-	<br>
-
-	<spring:message code="dashboard.getChorbiesOrderedByEvents" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="getChorbiesOrderedByEvents"
-		requestURI="${requestURI}" id="row" uid="getChorbiesOrderedByEvents" excludedParams="*">
-		
-	    <display:column title="${actorName}">
-	   	  <jstl:out value="${getChorbiesOrderedByEvents[0].name}"/>
-	   	  <jstl:out value="${getChorbiesOrderedByEvents[0].surname}"/>
-	    </display:column>
-	    <display:column title="${events}">
-	   	  <jstl:out value="${getChorbiesOrderedByEvents[1]}"/>
-	    </display:column>
-	</display:table>
-	<br>
+	<spring:message code="dashboard.certifiedPetRatio" var="certifiedPetRatio" />
 	
-	<spring:message code="dashboard.getChorbiesWithChargedFee" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="getChorbiesWithChargedFee"
-		requestURI="${requestURI}" id="row" uid="getChorbiesWithChargedFee" excludedParams="*">
+	<spring:message code="dashboard.animaniacsWithMorePets" />:<br>
+	<display:table pagesize="5" class="displaytag1" name="animaniacsWithMorePets"
+		requestURI="${requestURI}" id="row" uid="animaniacsWithMorePets" excludedParams="*">
 		
-	    <display:column title="${actorName}">
-	   	  <jstl:out value="${getChorbiesWithChargedFee.name}"/>
-	   	  <jstl:out value="${getChorbiesWithChargedFee.surname}"/>
+	   	<display:column title="${dashboard.animaniac.name}">
+	   	  <jstl:out value="${animaniacsWithMorePets.name}"/>
+	   	  <jstl:out value="${animaniacsWithMorePets.surname}"/>
 	    </display:column>
-	    <display:column title="${fee}">
-	   	  <jstl:out value="${getChorbiesWithChargedFee.chargedFee}"/>
-	    </display:column>
+	    <acme:column sorteable="false" code="dashboard.animaniac.email" path="email"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.gender" path="genre"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.address" path="address"/>
+	    <acme:column sorteable="false" code="dashboard.animaniac.rate" path="rate"/>
 	</display:table>
 	<br>
-	
-	<spring:message code="dashboard.getChorbiesWithMinMaxAvgStars" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="getChorbiesWithMinMaxAvgStars"
-		requestURI="${requestURI}" id="row" uid="getChorbiesWithMinMaxAvgStars" excludedParams="*">
-		
-	    <display:column title="${actorName}">
-	   	  <jstl:out value="${getChorbiesWithMinMaxAvgStars[0].name}"/>
-	   	  <jstl:out value="${getChorbiesWithMinMaxAvgStars[0].surname}"/>
-	    </display:column>
-	    <display:column title="${min}">
-	   	  <jstl:out value="${getChorbiesWithMinMaxAvgStars[1]}"/>
-	    </display:column>
-	    <display:column title="${max}">
-	   	  <jstl:out value="${getChorbiesWithMinMaxAvgStars[2]}"/>
-	    </display:column>
-	    <display:column title="${avg}">
-	   	  <jstl:out value="${getChorbiesWithMinMaxAvgStars[3]}"/>
-	    </display:column>
-	</display:table>
-	<br>
-	
-	<spring:message code="dashboard.getChorbiesWithAvgStarsOrderedByAvgStars" />:<br>
-	<display:table pagesize="5" class="displaytag1" name="getChorbiesWithAvgStarsOrderedByAvgStars"
-		requestURI="${requestURI}" id="row" uid="getChorbiesWithAvgStarsOrderedByAvgStars" excludedParams="*">
-		
-	    <display:column title="${actorName}">
-	   	  <jstl:out value="${getChorbiesWithAvgStarsOrderedByAvgStars[0].name}"/>
-	   	  <jstl:out value="${getChorbiesWithAvgStarsOrderedByAvgStars[0].surname}"/>
-	    </display:column>
-	    <display:column title="${avg}">
-	   	  <jstl:out value="${getChorbiesWithAvgStarsOrderedByAvgStars[1]}"/>
-	    </display:column>
-	</display:table>
-	<br>
-	 --%>
 </fieldset>

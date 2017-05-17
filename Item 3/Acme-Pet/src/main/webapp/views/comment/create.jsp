@@ -9,29 +9,17 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<form:form action="comment/animaniac/create.do" modelAttribute="comment">
 
-<!-- Listing grid -->
-
-<display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="types" requestURI="${requestURI}" id="row">
+	<form:hidden path="commentable" />
+	<acme:textbox code="comment.title" path="title"/>
+	<acme:textbox code="comment.body" path="body"/>
+	<br/>	
+		
+	<acme:submit name="save" code="comment.save"/>
 	
+	<acme:cancel url='${requestURI}' code="comment.cancel"/>
 	
-	<!-- Attributes -->
-	
-	<spring:message code="type.name" var="name" />
-	<display:column property="typeName" title="${name}" sortable="true"/>
-	
-	<!-- Action links -->
-
-	<display:column>
-		<a href="type/administrator/edit.do?typeId=${row.id}">
-			<spring:message	code="type.edit" />
-		</a>
-	</display:column>
-	
-
-</display:table>
-
-<a href="type/administrator/edit.do">
-	<spring:message	code="type.create" />
-</a>
+	<br>
+</form:form>

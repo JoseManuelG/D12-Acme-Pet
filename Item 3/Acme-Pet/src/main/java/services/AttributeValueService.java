@@ -29,6 +29,8 @@ public class AttributeValueService {
 	//Simple CRUD methods------------------------------------------------------------
 	public AttributeValue create(final Pet pet, final Attribute attribute) {
 		final AttributeValue result = new AttributeValue();
+		result.setPet(pet);
+		result.setAttribute(attribute);
 		return result;
 	}
 
@@ -81,6 +83,13 @@ public class AttributeValueService {
 			attributeValue.setValue(a.getValue());
 			this.save(attributeValue);
 		}
+	}
+
+	public void deleteAttributeValuesFromAttribute(final int attributeId) {
+		Collection<AttributeValue> values;
+
+		values = this.attributeValueRepository.findAllFromAttribute(attributeId);
+		this.attributeValueRepository.delete(values);
 	}
 
 }

@@ -25,6 +25,27 @@
  		<bean class="converters.ActorToStringConverter" />
 		<bean class="converters.StringToActorConverter" />
 		
+		<bean class="converters.AnimaniacToStringConverter" />
+		<bean class="converters.StringToAnimaniacConverter" />
+		
+		<bean class="converters.AttributeToStringConverter" />
+		<bean class="converters.StringToAttributeConverter" />
+		
+		<bean class="converters.AttributeValueToStringConverter" />
+		<bean class="converters.StringToAttributeValueConverter" />
+	
+		<bean class="converters.CommentableToStringConverter" />
+		<bean class="converters.StringToCommentableConverter" />
+		
+ 		<bean class="converters.PetToStringConverter" />
+		<bean class="converters.StringToPetConverter" />
+		
+ 		<bean class="converters.PhotoToStringConverter" />
+		<bean class="converters.StringToPhotoConverter" />
+		
+ 		<bean class="converters.TypeToStringConverter" />
+		<bean class="converters.StringToTypeConverter" />
+		
 	</util:list>
 	
 </beans>

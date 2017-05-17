@@ -28,6 +28,7 @@
 		
 		<value>/views/actor/messages</value>
 		<value>/views/animaniac/messages</value>
+		<value>/views/attribute/messages</value>
 		<value>/views/comment/messages</value>
 		<value>/views/curriculum/messages</value>
 		<value>/views/folder/messages</value>
@@ -35,7 +36,8 @@
 		<value>/views/partner/messages</value>
 		<value>/views/type/messages</value>
 		<value>/views/vet/messages</value>
-		
+		<value>/views/pet/messages</value>
+		<value>/views/dashboard/messages</value>
 		
 
 	</util:list>
