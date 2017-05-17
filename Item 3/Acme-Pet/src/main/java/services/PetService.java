@@ -17,6 +17,7 @@ import domain.AttributeValue;
 import domain.Pet;
 import domain.Photo;
 import domain.Type;
+import domain.Vet;
 import forms.PetForm;
 
 @Service
@@ -120,5 +121,25 @@ public class PetService {
 	}
 
 	// other business methods --------------------------------------
+
+	public void deleteFromAnimaniac(final Animaniac animaniac) {
+		Collection<Pet> pets;
+
+		pets = this.petRepository.findPetsByAnimaniac(animaniac.getId());
+
+		for (final Pet pet : pets)
+			this.delete(pet);
+	}
+
+	public void deleteFromVet(final Vet vet) {
+		Collection<Pet> pets;
+
+		pets = this.petRepository.findPetsByVet(vet.getId());
+
+		for (final Pet pet : pets)
+			pet.setVet(null);
+
+		this.petRepository.save(pets);
+	}
 
 }

@@ -1,21 +1,23 @@
 
 package services;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.CurriculumRepository;
+import repositories.ApplicationRepository;
 import domain.Animaniac;
-import domain.Curriculum;
+import domain.Application;
 
 @Service
 @Transactional
-public class CurriculumService {
+public class ApplicationService {
 
 	//Managed Repository--------------------------------------------------------------------
 	@Autowired
-	private CurriculumRepository	curriculumRepository;
+	private ApplicationRepository	applicationRepository;
 
 
 	//Supported Services--------------------------------------------------------------------
@@ -25,14 +27,14 @@ public class CurriculumService {
 	//Other Business methods-------------------------------------------------------------------
 
 	public void deleteFromAnimaniac(final Animaniac animaniac) {
-		Curriculum curriculum;
+		Collection<Application> applications;
 
-		curriculum = this.curriculumRepository.findByAnimaniac(animaniac.getId());
+		applications = this.applicationRepository.findByAnimaniac(animaniac.getId());
 
-		this.curriculumRepository.delete(curriculum);
+		this.applicationRepository.delete(applications);
 	}
 
-	public Curriculum findCurriculumByAnimaniac(final int animaniacId) {
-		return this.curriculumRepository.findByAnimaniac(animaniacId);
+	public Collection<Application> findApplicationsByAnimaniac(final int animaniacId) {
+		return this.applicationRepository.findByAnimaniac(animaniacId);
 	}
 }

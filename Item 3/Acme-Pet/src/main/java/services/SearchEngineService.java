@@ -5,17 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.CurriculumRepository;
+import repositories.SearchEngineRepository;
 import domain.Animaniac;
-import domain.Curriculum;
+import domain.SearchEngine;
 
 @Service
 @Transactional
-public class CurriculumService {
+public class SearchEngineService {
 
 	//Managed Repository--------------------------------------------------------------------
 	@Autowired
-	private CurriculumRepository	curriculumRepository;
+	private SearchEngineRepository	searchEngineRepository;
 
 
 	//Supported Services--------------------------------------------------------------------
@@ -25,14 +25,14 @@ public class CurriculumService {
 	//Other Business methods-------------------------------------------------------------------
 
 	public void deleteFromAnimaniac(final Animaniac animaniac) {
-		Curriculum curriculum;
+		SearchEngine searchEngine;
 
-		curriculum = this.curriculumRepository.findByAnimaniac(animaniac.getId());
+		searchEngine = this.searchEngineRepository.findByAnimaniac(animaniac.getId());
 
-		this.curriculumRepository.delete(curriculum);
+		this.searchEngineRepository.delete(searchEngine);
 	}
 
-	public Curriculum findCurriculumByAnimaniac(final int animaniacId) {
-		return this.curriculumRepository.findByAnimaniac(animaniacId);
+	public SearchEngine findSearchEngineByAnimaniac(final int animaniacId) {
+		return this.searchEngineRepository.findByAnimaniac(animaniacId);
 	}
 }

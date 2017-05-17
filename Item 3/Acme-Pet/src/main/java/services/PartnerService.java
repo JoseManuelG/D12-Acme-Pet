@@ -31,6 +31,8 @@ public class PartnerService {
 
 	@Autowired
 	private UserAccountService	accountService;
+	@Autowired
+	private BannerService		bannerService;
 
 	@Autowired
 	private Validator			validator;
@@ -73,15 +75,13 @@ public class PartnerService {
 
 	public void delete() {
 		Partner partner;
+
 		partner = this.findPartnerByPrincipal();
-		//TODO: borrar relaciones.
-		//		this.creditCardService.deleteFromPartner(partner);
-		//		this.searchTemplateService.deleteFromPartner(partner);
-		//		this.likesService.deleteFromPartner(partner);
-		//		this.chirpService.deleteFromPartner(partner);
-		//		this.registerService.deleteFromPartner(partner);
+
+		this.actorService.deleteFromActor(partner);
+		this.bannerService.deleteFromPartner(partner);
 		this.partnerRepository.delete(partner);
-		//		this.userAccountService.delete(partner.getUserAccount().getId());
+		this.accountService.delete(partner.getUserAccount().getId());
 
 	}
 

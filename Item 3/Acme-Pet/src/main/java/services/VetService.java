@@ -33,6 +33,9 @@ public class VetService {
 	private UserAccountService	accountService;
 
 	@Autowired
+	private PetService			petService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -71,7 +74,7 @@ public class VetService {
 		Vet vet;
 		vet = this.findVetByPrincipal();
 		//TODO: borrar relaciones.
-		//		this.petService.deleteFromVet(vet);
+		this.petService.deleteFromVet(vet);
 		this.vetRepository.delete(vet);
 		this.accountService.delete(vet.getUserAccount().getId());
 

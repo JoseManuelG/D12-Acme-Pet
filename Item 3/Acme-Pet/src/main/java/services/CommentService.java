@@ -15,6 +15,7 @@ import repositories.CommentRepository;
 import domain.Animaniac;
 import domain.Comment;
 import domain.Commentable;
+import domain.Pet;
 
 @Service
 @Transactional
@@ -115,6 +116,11 @@ public class CommentService {
 	public void deleteAllCommentsOfAnimaniac(final Animaniac animaniac) {
 		this.commentRepository.delete(this.findAllCommentsByAnimaniac(animaniac.getId()));
 		this.commentRepository.delete(this.findAllCommentsByCommentable(animaniac.getId()));
+
+	}
+
+	public void deleteAllCommentsOfPet(final Pet pet) {
+		this.commentRepository.delete(this.findAllCommentsByCommentable(pet.getId()));
 
 	}
 }

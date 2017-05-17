@@ -225,7 +225,7 @@ public class MessageService {
 		return result;
 	}
 
-	public void deleteFromChorbi(final Actor actor) {
+	public void deleteFromActor(final Actor actor) {
 		final Collection<Message> messages;
 		//Todos los mensajes de los que el actor es dueño, enviados o no por el.
 		messages = (this.messageRepository.findMessagesOfActor(actor.getId()));

@@ -32,9 +32,11 @@
    
 <acme:submit code="actor.save" name="save"/>
 
-<jstl:if test="${!isNew}">
-	<acme:submit code="actor.delete" name="delete"/>
-</jstl:if>
+<security:authorize access="!hasRole('ADMINISTRATOR')">
+	<jstl:if test="${!isNew}">
+		<acme:submit code="actor.delete" name="delete"/>
+	</jstl:if>
+</security:authorize>
 
 <jstl:if test="${isNew}">
 	<acme:cancel url="" code="actor.cancel"/>

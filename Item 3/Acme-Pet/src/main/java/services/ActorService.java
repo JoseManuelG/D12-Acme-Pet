@@ -26,8 +26,12 @@ public class ActorService {
 
 	@Autowired
 	private AnimaniacService	animaniacService;
+
 	@Autowired
 	private UserAccountService	accountService;
+
+	@Autowired
+	private MessageService		messageService;
 
 
 	//Simple CRUD methods-------------------------------------------------------------------
@@ -59,6 +63,11 @@ public class ActorService {
 		Actor result;
 		result = this.actorRepository.findByUserAccountId(LoginService.getPrincipal().getId());
 		return result;
+	}
+
+	public void deleteFromActor(final Actor actor) {
+		this.messageService.deleteFromActor(actor);
+
 	}
 
 	public void setReconstructActorProperties(final Actor result, final Actor origin, final ActorForm actorForm) {

@@ -36,6 +36,21 @@ public class AnimaniacService {
 	private UserAccountService	accountService;
 
 	@Autowired
+	private ApplicationService	applicationService;
+
+	@Autowired
+	private CommentService		commentService;
+
+	@Autowired
+	private CurriculumService	curriculumService;
+
+	@Autowired
+	private PetService			petService;
+
+	@Autowired
+	private SearchEngineService	searchEngineService;
+
+	@Autowired
 	private AbuseReportService	reportService;
 
 	@Autowired
@@ -82,16 +97,15 @@ public class AnimaniacService {
 	public void delete() {
 		Animaniac animaniac;
 		animaniac = this.findAnimaniacByPrincipal();
-		//TODO: borrar relaciones.
 		this.reportService.deleteFromAnimaniac(animaniac);
-		//		this.creditCardService.deleteFromAnimaniac(animaniac);
-		//		this.searchTemplateService.deleteFromAnimaniac(animaniac);
-		//		this.likesService.deleteFromAnimaniac(animaniac);
-		//		this.chirpService.deleteFromAnimaniac(animaniac);
-		//		this.registerService.deleteFromAnimaniac(animaniac);
+		this.curriculumService.deleteFromAnimaniac(animaniac);
+		this.petService.deleteFromAnimaniac(animaniac);
+		this.searchEngineService.deleteFromAnimaniac(animaniac);
+		this.applicationService.deleteFromAnimaniac(animaniac);
+		this.actorService.deleteFromActor(animaniac);
+		this.commentService.deleteAllCommentsOfAnimaniac(animaniac);
 		this.animaniacRepository.delete(animaniac);
-		//		this.userAccountService.delete(animaniac.getUserAccount().getId());
-
+		this.accountService.delete(animaniac.getUserAccount().getId());
 	}
 	public Animaniac findOne(final int actorId) {
 

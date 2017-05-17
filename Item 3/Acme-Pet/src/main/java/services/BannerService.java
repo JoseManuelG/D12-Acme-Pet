@@ -1,21 +1,23 @@
 
 package services;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.CurriculumRepository;
-import domain.Animaniac;
-import domain.Curriculum;
+import repositories.BannerRepository;
+import domain.Banner;
+import domain.Partner;
 
 @Service
 @Transactional
-public class CurriculumService {
+public class BannerService {
 
 	//Managed Repository--------------------------------------------------------------------
 	@Autowired
-	private CurriculumRepository	curriculumRepository;
+	private BannerRepository	bannerRepository;
 
 
 	//Supported Services--------------------------------------------------------------------
@@ -24,15 +26,15 @@ public class CurriculumService {
 
 	//Other Business methods-------------------------------------------------------------------
 
-	public void deleteFromAnimaniac(final Animaniac animaniac) {
-		Curriculum curriculum;
+	public void deleteFromPartner(final Partner partner) {
+		Collection<Banner> banners;
 
-		curriculum = this.curriculumRepository.findByAnimaniac(animaniac.getId());
+		banners = this.bannerRepository.findByPartner(partner.getId());
 
-		this.curriculumRepository.delete(curriculum);
+		this.bannerRepository.delete(banners);
 	}
 
-	public Curriculum findCurriculumByAnimaniac(final int animaniacId) {
-		return this.curriculumRepository.findByAnimaniac(animaniacId);
+	public Collection<Banner> findBannerByPartner(final int partnerId) {
+		return this.bannerRepository.findByPartner(partnerId);
 	}
 }
