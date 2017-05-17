@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import repositories.ActorRepository;
 import repositories.AnimaniacRepository;
+import repositories.CommentRepository;
 import repositories.CommentableRepository;
 import repositories.DashboardRepository;
 import repositories.PetRepository;
@@ -26,6 +27,9 @@ public class DashboardService {
 
 	@Autowired
 	private ActorRepository			actorRepository;
+
+	@Autowired
+	private CommentRepository		commentRepository;
 
 	@Autowired
 	private CommentableRepository	commentableRepository;
@@ -139,18 +143,18 @@ public class DashboardService {
 		return res;
 	}
 	//Dashboard - 03
-	public Long averageOfCommentsWrittenPerActor() {
-		Long actors;
-		Long comments;
-		Long res;
+	public Double averageOfCommentsWrittenPerActor() {
+		Double actors;
+		Double comments;
+		Double res;
 
-		actors = this.actorRepository.count();
-		comments = this.commentableRepository.count();
+		actors = (double) this.actorRepository.count();
+		comments = (double) this.commentableRepository.count();
 
 		if (actors > 0)
-			res = comments / actors;
+			res = (comments / actors);
 		else
-			res = 0l;
+			res = 0d;
 
 		return res;
 	}
@@ -190,34 +194,34 @@ public class DashboardService {
 	}
 
 	//Dashboard - 04
-	public Long averageOfCommentsWrittenInCommentable() {
-		Long commentables;
-		Long comments;
-		Long res;
-		commentables = this.commentableRepository.count();
-		comments = this.commentableRepository.count();
+	public Double averageOfCommentsWrittenInCommentable() {
+		Double commentables;
+		Double comments;
+		Double res;
+		commentables = (double) this.commentableRepository.count();
+		comments = (double) this.commentRepository.count();
 
 		if (commentables > 0)
-			res = comments / commentables;
+			res = (comments / commentables);
 		else
-			res = 0l;
+			res = 0d;
 
 		return res;
 	}
 
 	//Dashoard - 05
 	public Double reportedAnimaniacsRatio() {
-		Integer reportedAnimaniacs;
-		Long nonReportedAnimaniacs;
+		Double reportedAnimaniacs;
+		Double nonReportedAnimaniacs;
 		Double res;
 
-		reportedAnimaniacs = this.dashboardRepository.reportsByAnimaniac().size();
+		reportedAnimaniacs = (double) this.dashboardRepository.reportsByAnimaniac().size();
 		nonReportedAnimaniacs = this.animaniacRepository.count() - reportedAnimaniacs;
 
 		if (nonReportedAnimaniacs > 0)
-			res = 1.0 * (reportedAnimaniacs / nonReportedAnimaniacs);
+			res = reportedAnimaniacs / nonReportedAnimaniacs;
 		else
-			res = 0.;
+			res = 0d;
 
 		return res;
 	}
@@ -297,17 +301,17 @@ public class DashboardService {
 
 	//Dashboard - 13
 	public Double certifiedPetRatio() {
-		final Integer certifiedPets;
-		Long pets;
-		final Double res;
+		Double certifiedPets;
+		Double pets;
+		Double res;
 
-		certifiedPets = this.dashboardRepository.numberOfCertificatedPets();
-		pets = this.petRepository.count();
+		certifiedPets = (double) this.dashboardRepository.numberOfCertifiedPets();
+		pets = (double) this.petRepository.count();
 
 		if (pets > 0)
-			res = 1.0 * (certifiedPets / pets);
+			res = certifiedPets / pets;
 		else
-			res = 0.;
+			res = 0d;
 
 		return res;
 	}
