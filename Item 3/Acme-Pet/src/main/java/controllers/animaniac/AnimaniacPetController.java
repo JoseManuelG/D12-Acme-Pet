@@ -100,7 +100,9 @@ public class AnimaniacPetController extends AbstractController {
 		ModelAndView result;
 		final Pet pet = this.petService.findOne(petId);
 		final PetForm petForm = new PetForm(pet);
-		petForm.getAttributeValues().addAll(this.attributeValueService.findAttributeValuesOfPet(pet));
+		final Collection<AttributeValue> attributeValues = this.attributeValueService.findAttributeValuesOfPet(pet);
+		petForm.getAttributeValues().addAll(attributeValues);
+		petForm.fillAttributes(attributeValues);
 		petForm.getPhotos().addAll(this.photoService.findPhotosOfPet(pet));
 		result = this.createEditModelAndView(petForm);
 		return result;
@@ -123,8 +125,8 @@ public class AnimaniacPetController extends AbstractController {
 			result = this.createEditModelAndView(petForm, error);
 		} else
 			try {
-				this.petService.save(pet, petForm.getAttributeValues(), petForm.getPhotos());
-				result = new ModelAndView("redirect:...");
+				final Pet savedPet = this.petService.save(pet, petForm.getAttributeValues(), petForm.getPhotos());
+				result = new ModelAndView("redirect:pet/animaniac/view.do?petId=" + savedPet.getId());
 			} catch (final IllegalArgumentException e) {
 				result = this.createEditModelAndView(petForm, e.getMessage());
 			}

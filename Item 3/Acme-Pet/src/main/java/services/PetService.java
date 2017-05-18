@@ -148,6 +148,7 @@ public class PetService {
 				this.validator.validate(petForm.getAttributeValues().get(i), binding);
 			}
 		}
+
 		return result;
 
 	}
