@@ -54,7 +54,24 @@
 		
 	</display:table>
 </jstl:if>
-
+<form:form action="message/move.do" modelAttribute="res">
+		<form:hidden path="Id"/>
+		<form:label path="folder">
+			<spring:message code="message.folder" />
+		</form:label>
+		<form:select path="folder">
+			<jstl:forEach items="${folders}" var="folder">
+				<form:option value="${folder.id}">
+					<jstl:out
+						value="${folder.name}" />
+				</form:option>
+			</jstl:forEach>
+		</form:select>
+		<form:errors path="folder" cssClass="error" />
+		<acme:submit code="message.move" name="save" />
+</form:form>
+		
+<br>		
 <jstl:if test="${res.folder!=null}">
 	<a href="message/reply.do?messageId=${res.id}">
 		<spring:message code="message.reply"/>

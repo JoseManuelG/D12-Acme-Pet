@@ -185,6 +185,16 @@ public class MessageService {
 		return result;
 
 	}
+	public Message reconstruct(final Message message, final BindingResult binding) {
+		final Message messageDB, result;
+		messageDB = this.messageRepository.findOne(message.getId());
+		messageDB.setFolder(message.getFolder());
+
+		this.validator.validate(messageDB, binding);
+
+		return messageDB;
+
+	}
 
 	public MessageForm forwardMessage(final int messageId) {
 		//Lo he cambiado para que pida chirpId en vez de chirp para no tener que
@@ -213,6 +223,17 @@ public class MessageService {
 
 		final Actor recipient = message.getSender();
 		result.setRecipient(recipient);
+		return result;
+	}
+	public Message moveMessage(final Message message) {
+
+		final Message result;
+		Actor actor;
+		actor = this.actorService.findActorByPrincipal();
+		Assert.notNull(message.getFolder(), "Debes guardar el mensaje en algún folder");
+		Assert.isTrue(message.getFolder().getActor().equals(actor), "No puedes guardar un mensaje en una carpeta que no te pertenezca");
+		Assert.isTrue(message.getId() != 0, "No puedes cambiar la carpeta a un mensaje que no está en la base de datos");
+		result = this.messageRepository.save(message);
 		return result;
 	}
 	public MessageForm writeTo(final int actorId) {

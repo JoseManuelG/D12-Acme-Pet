@@ -37,6 +37,9 @@
 		<bean class="converters.CommentableToStringConverter" />
 		<bean class="converters.StringToCommentableConverter" />
 		
+		<bean class="converters.FolderToStringConverter" />
+		<bean class="converters.StringToFolderConverter" />
+		
  		<bean class="converters.PetToStringConverter" />
 		<bean class="converters.StringToPetConverter" />
 		

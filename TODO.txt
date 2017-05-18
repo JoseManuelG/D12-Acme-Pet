@@ -8,6 +8,7 @@
 - Formulario de pet, attribute value si se ponen todos cambiar para que si esta en blanco no cree el attribute value
 - Cambiar mensajes de folder.
 - Crear carpetas de un actor al crear el actor.
+-Filtro de Spam de mensajeria
 
 ---------------- HECHO ----------------
 - Meter reunión y tareas iniciales en redmine (javi).

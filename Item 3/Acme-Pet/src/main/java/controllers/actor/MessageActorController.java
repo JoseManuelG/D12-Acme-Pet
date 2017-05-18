@@ -22,10 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.AttachmentService;
+import services.FolderService;
 import services.MessageService;
 import controllers.AbstractController;
 import domain.Actor;
 import domain.Attachment;
+import domain.Folder;
 import domain.Message;
 import forms.MessageForm;
 
@@ -43,6 +45,8 @@ public class MessageActorController extends AbstractController {
 
 	@Autowired
 	private ActorService		actorService;
+	@Autowired
+	private FolderService		folderService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -58,6 +62,9 @@ public class MessageActorController extends AbstractController {
 		ModelAndView result;
 		Message res;
 		final Collection<Attachment> attachments;
+		Actor actor;
+		actor = this.actorService.findActorByPrincipal();
+		final Collection<Folder> folders = this.folderService.findFoldersOfActor(actor);
 
 		res = this.messageService.findOne(messageId);
 		attachments = this.attachmentService.findAttachmentsOfMessage(res);
@@ -66,6 +73,7 @@ public class MessageActorController extends AbstractController {
 		result.addObject("res", res);
 		result.addObject("attachments", attachments);
 		result.addObject("requestURI", "message/actor/view.do?messageId=" + messageId);
+		result.addObject("folders", folders);
 
 		return result;
 	}
@@ -91,7 +99,51 @@ public class MessageActorController extends AbstractController {
 
 		return result;
 	}
+	@RequestMapping(value = "/move", method = RequestMethod.GET)
+	public ModelAndView move(@RequestParam final int messageId) {
+		ModelAndView result;
+		Message message;
+		Actor actor;
+		actor = this.actorService.findActorByPrincipal();
+		final Collection<Folder> folders = this.folderService.findFoldersOfActor(actor);
 
+		message = this.messageService.findOne(messageId);
+
+		result = new ModelAndView("message/actor/move");
+		result.addObject("requestURI", "message/actor/move.do");
+		result.addObject("Message", message);
+		result.addObject("folders", folders);
+		return result;
+	}
+	@RequestMapping(value = "/move", method = RequestMethod.POST, params = "save")
+	public ModelAndView move(final Message message, final BindingResult bindingResult) {
+		ModelAndView result;
+		Message messageReconstructed;
+		String error;
+		Actor actor;
+		messageReconstructed = this.messageService.reconstruct(message, bindingResult);
+		if (bindingResult.hasErrors()) {
+			error = null;
+			if (bindingResult.hasFieldErrors("url"))
+				error = "message.url.error";
+			result = this.move(message.getId());
+			result.addObject("message", null);
+		} else
+			try {
+				this.messageService.moveMessage(messageReconstructed);
+				result = new ModelAndView("redirect:../folder/view.do?folderId=" + message.getFolder().getId());
+			} catch (final IllegalArgumentException e) {
+				actor = this.actorService.findActorByPrincipal();
+				final Collection<Folder> folders = this.folderService.findFoldersOfActor(actor);
+
+				result = new ModelAndView("message/actor/move");
+				result.addObject("requestURI", "message/actor/move.do");
+				result.addObject("Message", message);
+				result.addObject("folders", folders);
+			}
+
+		return result;
+	}
 	@RequestMapping(value = "/forward", method = RequestMethod.GET)
 	public ModelAndView forward(@RequestParam final int messageId) {
 		ModelAndView result;

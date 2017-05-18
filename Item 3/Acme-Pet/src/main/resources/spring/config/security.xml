@@ -73,6 +73,7 @@
 		<security:intercept-url pattern="/message/reply.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/forward.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/delete.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/move.do" access="isAuthenticated()" />
 
 		<security:intercept-url pattern="/partner/list.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/partner/view.do" access="isAuthenticated()" />

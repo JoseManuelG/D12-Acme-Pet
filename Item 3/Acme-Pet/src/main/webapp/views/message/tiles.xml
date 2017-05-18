@@ -31,9 +31,10 @@
 		<put-attribute name="body" value="/views/message/write.jsp" />
 	</definition>
 	
-	<definition name="message/actor/broadcast" extends="master.page">	
-		<put-attribute name="title" value="Notify" />
-		<put-attribute name="body" value="/views/message/write_broadcast.jsp" />
+
+	<definition name="message/actor/move" extends="master.page">	
+		<put-attribute name="title" value="Move mensaje" />
+		<put-attribute name="body" value="/views/message/move.jsp" />
 	</definition>
 	
 </tiles-definitions>
