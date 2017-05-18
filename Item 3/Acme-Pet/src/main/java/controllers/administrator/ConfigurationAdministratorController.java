@@ -46,7 +46,7 @@ public class ConfigurationAdministratorController extends AbstractController {
 
 		result = new ModelAndView("configuration/administrator/view");
 		result.addObject("time", time);
-		result.addObject("chorbiFee", conf.getPartnerFee());
+		result.addObject("patnerFee", conf.getPartnerFee());
 		result.addObject("requestURI", "configuration/administrator/view");
 
 		return result;

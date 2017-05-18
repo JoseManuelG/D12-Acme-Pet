@@ -22,8 +22,8 @@
 	<acme:textbox code="configuration.minutes" path="minutes"/>
 	<acme:textbox code="configuration.seconds" path="seconds"/>
 	
-	<acme:textbox code="configuration.chorbiFee" path="chorbiFee"/>
-	<acme:textbox code="configuration.managerFee" path="managerFee"/>
+	<acme:textbox code="configuration.PatnerFee" path="patnerFee"/>
+
 	
 	<acme:submit code="configuration.save" name="save" />
 	<acme:cancel code="configuration.cancel" url="/configuration/administrator/view.do" />
