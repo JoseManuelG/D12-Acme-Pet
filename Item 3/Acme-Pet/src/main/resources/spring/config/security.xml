@@ -107,6 +107,8 @@
 		
 		<security:intercept-url pattern="/spamword/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/spamword/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/spamword/administrator/delete.do" access="hasRole('ADMINISTRATOR')" />
+		
 		
 		<!-- Animaniac -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('ANIMANIAC')" /> -->
