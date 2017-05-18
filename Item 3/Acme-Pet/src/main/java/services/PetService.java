@@ -45,6 +45,8 @@ public class PetService {
 	private Validator				validator;
 
 
+	//Simple CRUD methods-------------------------------------------------------------------
+
 	public Pet create(final int typeId) {
 		final Pet result = new Pet();
 		final Animaniac animaniac = this.animaniacService.findAnimaniacByPrincipal();
@@ -93,7 +95,8 @@ public class PetService {
 		this.photoService.addPhotos(photos, result);
 		return result;
 	}
-	//Simple CRUD methods-------------------------------------------------------------------
+
+	// other business methods --------------------------------------
 
 	public Pet reconstruct(final PetForm petForm, final BindingResult binding) {
 		final Pet result = this.create(petForm.getType().getId());
@@ -170,4 +173,9 @@ public class PetService {
 		this.petRepository.save(pets);
 	}
 
+	public Collection<Pet> findPetsByAnimaniac(final int animaniacId) {
+		Collection<Pet> result=new ArrayList<Pet>();
+		result = this.petRepository.findPetsByAnimaniac(int animaniacId);
+		return result;
+	}
 }

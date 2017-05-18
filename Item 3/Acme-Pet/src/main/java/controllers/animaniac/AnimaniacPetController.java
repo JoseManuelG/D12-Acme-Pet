@@ -66,12 +66,11 @@ public class AnimaniacPetController extends AbstractController {
 	// List ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list() {
+	public ModelAndView list(@RequestParam final int animaniacId) {
 		final ModelAndView result;
-		result = new ModelAndView("pet/list");
+		result = new ModelAndView("pet/animaniac/list");
 
-		//Esto no creo que le mole demasiado a corchu por lo pronto lo dejo asi
-		final Collection<Pet> pets = this.petService.findAll();
+		final Collection<Pet> pets = this.petService.findPetsByAnimaniac(animaniacId);
 		result.addObject("pets", pets);
 		return result;
 	}
