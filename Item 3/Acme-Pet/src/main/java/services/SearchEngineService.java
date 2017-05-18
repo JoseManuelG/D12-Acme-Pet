@@ -1,12 +1,15 @@
 
 package services;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import repositories.SearchEngineRepository;
 import domain.Animaniac;
+import domain.Request;
 import domain.SearchEngine;
 
 @Service
@@ -34,5 +37,16 @@ public class SearchEngineService {
 
 	public SearchEngine findSearchEngineByAnimaniac(final int animaniacId) {
 		return this.searchEngineRepository.findByAnimaniac(animaniacId);
+	}
+
+	public void deleteFromRequest(final Request request) {
+		Collection<SearchEngine> searchEngines;
+
+		searchEngines = this.searchEngineRepository.findByRequest(request.getId());
+
+		for (final SearchEngine engine : searchEngines)
+			engine.getRequests().remove(request);
+
+		this.searchEngineRepository.save(searchEngines);
 	}
 }

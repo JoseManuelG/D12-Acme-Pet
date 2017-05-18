@@ -12,21 +12,21 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="/request/animaniac/create.do" modelAttribute="request">
+<form:form action="request/animaniac/create.do" modelAttribute="request">
 
-	<acme:textbox code="request.startDate" path="startDate"/>
-	<acme:textbox code="request.endDate" path="endDate"/>
+	<acme:textbox code="request.startDate" path="startDate" placeholder="dd/mm/yyyy hh:MM"/>
+	<acme:textbox code="request.endDate" path="endDate" placeholder="dd/mm/yyyy hh:MM"/>
 	<acme:textbox code="request.address" path="address"/>
 	<acme:textarea code="request.description" path="description"/>
 	<fieldset>
 	 	<legend><spring:message code="request.select.pet"/></legend>
 		<jstl:forEach items="${availablePets}" var="pet" varStatus="status">
-			<form:checkbox path="pets" value="${pet}" /><a href="/pet/view.do?=${pet.id}">${pet.name}</a>
+			<form:checkbox path="pets" value="${pet}" /><a target="_blank" href="pet/animaniac/view.do?petId=${pet.id}">${pet.name}</a>
 			<jstl:if test="${(status.index+1)%3==0}">
 				<br />
 			</jstl:if>
 		</jstl:forEach>
-		<br />
+		<form:errors path="pets" cssClass="error" />
 	</fieldset>
 	<br/>
 	

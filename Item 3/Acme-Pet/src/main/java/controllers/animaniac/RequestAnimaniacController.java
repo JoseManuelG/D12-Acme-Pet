@@ -47,14 +47,8 @@ public class RequestAnimaniacController extends AbstractController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-		Collection<Request> requests;
 
-		result = new ModelAndView("request/animaniac/list");
-		requests = this.requestService.findAllFromPrincipal();
-
-		result.addObject("requests", requests);
-		result.addObject("owner", true);
-		result.addObject("requestURI", "request/animaniac/list.do");
+		result = this.createListModelAndView();
 
 		return result;
 	}
@@ -100,8 +94,7 @@ public class RequestAnimaniacController extends AbstractController {
 			this.requestService.delete(requestId);
 			result = new ModelAndView("redirect:list.do");
 		} catch (final IllegalArgumentException e) {
-			result = new ModelAndView("request/animaniac/list");
-			result.addObject("message", e.getMessage());
+			result = this.createListModelAndView(e.getMessage());
 		}
 
 		return result;
@@ -119,13 +112,37 @@ public class RequestAnimaniacController extends AbstractController {
 
 	protected ModelAndView createEditModelAndView(final Request request, final String message) {
 		ModelAndView result;
-		Collection<Pet> pets;
+		Collection<Pet> availablePets;
 
 		result = new ModelAndView("request/animaniac/create");
-		pets = this.petService.findAvalaiblePetsFromAnimaniac();
+		availablePets = this.petService.findAvalaiblePetsFromPrincipal();
 
+		result.addObject("availablePets", availablePets);
 		result.addObject("request", request);
 		result.addObject("message", message);
+
+		return result;
+	}
+
+	protected ModelAndView createListModelAndView() {
+		ModelAndView result;
+
+		result = this.createListModelAndView(null);
+
+		return result;
+	}
+
+	protected ModelAndView createListModelAndView(final String message) {
+		ModelAndView result;
+		Collection<Request> requests;
+
+		result = new ModelAndView("request/animaniac/list");
+		requests = this.requestService.findAllFromPrincipal();
+
+		result.addObject("requests", requests);
+		result.addObject("owner", true);
+		result.addObject("message", message);
+		result.addObject("requestURI", "request/animaniac/list.do");
 
 		return result;
 	}

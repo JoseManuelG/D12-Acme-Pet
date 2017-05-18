@@ -42,4 +42,13 @@ public class ApplicationService {
 	public Application findAcceptedApplicationForRequest(final Request request) {
 		return this.applicationRepository.findAcceptedApplicationForRequest(request.getId());
 	}
+
+	public void deleteFromRequest(final Request request) {
+		Collection<Application> applications;
+
+		applications = this.applicationRepository.findByRequest(request.getId());
+
+		this.applicationRepository.delete(applications);
+
+	}
 }

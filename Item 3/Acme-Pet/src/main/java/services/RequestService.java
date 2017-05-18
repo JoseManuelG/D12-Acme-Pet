@@ -31,6 +31,9 @@ public class RequestService {
 	@Autowired
 	private ApplicationService	applicationService;
 
+	@Autowired
+	private SearchEngineService	searchEngineService;
+
 
 	//Simple CRUD methods-------------------------------------------
 
@@ -59,6 +62,8 @@ public class RequestService {
 	public Request save(final Request request) {
 		Request result;
 
+		Assert.isTrue(request.getStartDate().after(new Date()), "request.error.start.date");
+		Assert.isTrue(request.getStartDate().before(request.getEndDate()), "request.error.end.date");
 		result = this.requestRepository.save(request);
 		return result;
 	}
@@ -73,10 +78,12 @@ public class RequestService {
 		principal = this.animaniacService.findAnimaniacByPrincipal();
 		owner = request.getPets().iterator().next().getAnimaniac();
 
-		Assert.isTrue(owner.equals(principal));
+		Assert.isTrue(owner.equals(principal), "request.error.not.owner");
 		Assert.isTrue(active, "request.error.active");
 		Assert.isTrue(request.getId() != 0);
 
+		this.applicationService.deleteFromRequest(request);
+		this.searchEngineService.deleteFromRequest(request);
 		this.requestRepository.delete(request);
 	}
 
@@ -106,5 +113,20 @@ public class RequestService {
 
 		return !hasAcceptedApplication || (request.getEndDate().before(timeToDelete));
 
+	}
+
+	public void deleteFromPet(final Pet pet) {
+		Collection<Request> requests;
+
+		requests = this.requestRepository.findByPet(pet.getId());
+
+		for (final Request request : requests) {
+			Assert.isTrue(this.checkNotActiveRequest(request), "request.error.active");//TODO personalizar error para pet
+
+			this.applicationService.deleteFromRequest(request);
+			this.searchEngineService.deleteFromRequest(request);
+			this.requestRepository.delete(request);
+
+		}
 	}
 }

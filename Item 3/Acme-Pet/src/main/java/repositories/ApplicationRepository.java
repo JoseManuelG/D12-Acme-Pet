@@ -16,4 +16,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	@Query("select a from Application a where a.request.id = ?1 and a.state='Accepted'")
 	Application findAcceptedApplicationForRequest(int requestId);
 
+	@Query("select a from Application a where a.request.id = ?1")
+	Collection<Application> findByRequest(int id);
+
 }

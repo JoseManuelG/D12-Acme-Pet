@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -140,6 +141,18 @@ public class PetService {
 			pet.setVet(null);
 
 		this.petRepository.save(pets);
+	}
+
+	public Collection<Pet> findAvalaiblePetsFromPrincipal() {
+		/*
+		 * Busca aquellas mascotas del animaniac conectado que, de estar ya en
+		 * alguna request, esta tiene fecha fin anterior a hoy.
+		 */
+		Animaniac principal;
+
+		principal = this.animaniacService.findAnimaniacByPrincipal();
+
+		return this.petRepository.findAvalaiblePetsFromAnimaniac(principal.getId(), new Date());
 	}
 
 }
