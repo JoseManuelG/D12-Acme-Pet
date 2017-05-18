@@ -68,10 +68,13 @@ public class AnimaniacPetController extends AbstractController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(@RequestParam final int animaniacId) {
 		final ModelAndView result;
+		Boolean owner = false;
 		result = new ModelAndView("pet/animaniac/list");
 
 		final Collection<Pet> pets = this.petService.findPetsByAnimaniac(animaniacId);
+		owner = this.animaniacService.findOne(animaniacId).equals(this.animaniacService.findAnimaniacByPrincipal());
 		result.addObject("pets", pets);
+		result.addObject("owner", owner);
 		return result;
 	}
 
