@@ -26,8 +26,8 @@
 		<!-- Action links -->
 		<spring:message code="pet.name" var="name" />
 	    <display:column title="${name}">
-	      <a href="pet/animaniac/view.do?petId=${row.pet.id}">
-	   	  <acme:mask text="${row.pet.name}"/>
+	      <a href="pet/animaniac/view.do?petId=${row.id}">
+	   	  <acme:mask text="${row.name}"/>
 	   	  </a>
 	    </display:column>
 		<!-- Attributes -->

@@ -75,6 +75,8 @@ public class AnimaniacPetController extends AbstractController {
 		owner = this.animaniacService.findOne(animaniacId).equals(this.animaniacService.findAnimaniacByPrincipal());
 		result.addObject("pets", pets);
 		result.addObject("owner", owner);
+		result.addObject("requestURI", "pet/animaniac/list.do?animaniacId=" + animaniacId);
+
 		return result;
 	}
 
