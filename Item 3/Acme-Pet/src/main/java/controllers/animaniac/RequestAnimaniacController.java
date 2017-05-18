@@ -114,12 +114,17 @@ public class RequestAnimaniacController extends AbstractController {
 		ModelAndView result;
 		Collection<Pet> availablePets;
 
-		result = new ModelAndView("request/animaniac/create");
-		availablePets = this.petService.findAvalaiblePetsFromPrincipal();
+		try {
+			availablePets = this.petService.findAvalaiblePetsFromPrincipal();
 
-		result.addObject("availablePets", availablePets);
-		result.addObject("request", request);
-		result.addObject("message", message);
+			result = new ModelAndView("request/animaniac/create");
+			result.addObject("availablePets", availablePets);
+			result.addObject("request", request);
+			result.addObject("message", message);
+
+		} catch (final IllegalArgumentException e) {
+			result = this.createListModelAndView(e.getMessage());
+		}
 
 		return result;
 	}

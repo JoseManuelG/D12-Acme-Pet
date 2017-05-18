@@ -40,11 +40,14 @@ public class RequestService {
 	public Request create() {
 		Collection<Pet> pets;
 		Request request;
+		Animaniac principal;
 
 		request = new Request();
 		pets = new HashSet<Pet>();
+		principal = this.animaniacService.findAnimaniacByPrincipal();
 
 		request.setPets(pets);
+		request.setAddress(principal.getAddress());
 
 		return request;
 	}
