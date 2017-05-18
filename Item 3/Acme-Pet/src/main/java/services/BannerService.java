@@ -55,18 +55,19 @@ public class BannerService {
 		Banner result;
 		Assert.notNull(banner, "banner.error.null");
 		Assert.isTrue(this.partnerService.findPartnerByPrincipal().getClass().equals(Partner.class), "banner.error.notpartner");
+		Assert.isTrue(banner.getPartner().equals(this.partnerService.findPartnerByPrincipal()), "banner.error.notowner");
 		result = this.bannerRepository.save(banner);
 		return result;
 	}
-
 	public Collection<Banner> findAll() {
 		return this.bannerRepository.findAll();
 	}
 
 	public void delete(final Banner banner) {
-		Assert.notNull(banner, "banner.null.error");
-		Assert.isTrue(this.bannerRepository.exists(banner.getId()), "banner.exists.error");
+		Assert.notNull(banner, "banner.error.null");
+		Assert.isTrue(this.bannerRepository.exists(banner.getId()), "banner.error.notexists");
 		Assert.isTrue(this.partnerService.findPartnerByPrincipal().getClass().equals(Partner.class), "banner.error.notpartner");
+		Assert.isTrue(banner.getPartner().equals(this.partnerService.findPartnerByPrincipal()), "banner.error.notowner");
 
 		this.bannerRepository.delete(banner);
 
@@ -101,9 +102,10 @@ public class BannerService {
 			final Banner savedBanner = this.findOne(banner.getId());
 			result.setId(savedBanner.getId());
 			result.setVersion(savedBanner.getVersion());
-		}
+			result.setPartner(savedBanner.getPartner());
+		} else
+			result.setPartner(principal);
 
-		result.setPartner(principal);
 		result.setPicture(banner.getPicture());
 		result.setLink(banner.getLink());
 		this.validator.validate(result, binding);

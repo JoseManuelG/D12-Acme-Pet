@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BannerService;
+import services.PartnerService;
 import controllers.AbstractController;
 import domain.Banner;
+import domain.Partner;
 
 @Controller
 @RequestMapping("/banner/partner")
@@ -24,6 +26,9 @@ public class BannerPartnerController extends AbstractController {
 
 	@Autowired
 	private BannerService	bannerService;
+
+	@Autowired
+	private PartnerService	partnerService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -51,8 +56,11 @@ public class BannerPartnerController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Banner> banners;
+		Partner principal;
 
-		banners = this.bannerService.findAll();
+		principal = this.partnerService.findPartnerByPrincipal();
+
+		banners = this.bannerService.findBannerByPartner(principal.getId());
 
 		result = new ModelAndView("banner/partner/list");
 		result.addObject("banners", banners);
