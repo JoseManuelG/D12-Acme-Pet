@@ -44,9 +44,9 @@ public class SpamWordService {
 		return result;
 	}
 
-	public void delete(final SpamWord spamWord) {
+	public void delete(final int spamWordId) {
 
-		this.spamWordRepository.delete(spamWord.getId());
+		this.spamWordRepository.delete(spamWordId);
 	}
 
 	public SpamWord save(final SpamWord spamWord) {
