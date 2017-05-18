@@ -29,6 +29,14 @@
 <b><spring:message code="pet.certificatedBy"/>:</b>
 <acme:mask text="${pet.certificateBy}"/><br/>
 
+<security:authorize access="hasRole('VET')">
+<jstl:if test="${pet.certificateBy eq ''}">
+	<a href="pet/vet/certificate.do?petId=${pet.id}">
+    	<spring:message  code="pet.certificate" />
+	</a>
+</jstl:if>
+</security:authorize>
+
 <b><spring:message code="pet.genre"/>:</b>
 <jstl:if test="${pet.genre eq 'male'}">
 	<spring:message code="pet.male" />

@@ -135,6 +135,7 @@
 		<!-- Vet -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('VET')" /> -->
 		<security:intercept-url pattern="/vet/vet/edit.do" access="hasRole('VET')" />
+		<security:intercept-url pattern="/pet/vet/certificate.do" access="hasRole('VET')" />
 		
 		<!--NONE -->
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
