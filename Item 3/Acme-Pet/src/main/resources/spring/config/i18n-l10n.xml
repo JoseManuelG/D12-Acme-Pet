@@ -41,6 +41,7 @@
 		<value>/views/request/messages</value>
 		<value>/views/type/messages</value>
 		<value>/views/vet/messages</value>
+		<value>/views/spamWord/messages</value>
 		
 
 	</util:list>

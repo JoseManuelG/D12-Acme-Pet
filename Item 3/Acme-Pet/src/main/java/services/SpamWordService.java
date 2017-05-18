@@ -44,9 +44,9 @@ public class SpamWordService {
 		return result;
 	}
 
-	public void delete(final SpamWord spamWord) {
+	public void delete(final int spamWordId) {
 
-		this.spamWordRepository.delete(spamWord.getId());
+		this.spamWordRepository.delete(spamWordId);
 	}
 
 	public SpamWord save(final SpamWord spamWord) {
@@ -59,7 +59,7 @@ public class SpamWordService {
 		Assert.notNull(spamWord.getWord(), "spamWord.error.nullWord");
 		existing = this.spamWordRepository.findByWord(spamWord.getWord());
 		if (existing != null)
-			Assert.isTrue(existing.getWord().equals(spamWord.getWord()), "spamWord.error.alreadyExists");
+			Assert.isTrue(!existing.getWord().equals(spamWord.getWord()), "spamWord.error.alreadyExists");
 
 		result = this.spamWordRepository.save(spamWord);
 		return result;
