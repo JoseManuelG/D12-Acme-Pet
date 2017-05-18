@@ -12,7 +12,7 @@ public class Configuration extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private int		cacheTime;
+	private long	cacheTime;
 	private double	partnerFee;
 
 
@@ -26,11 +26,11 @@ public class Configuration extends DomainEntity {
 	}
 
 	@Min(0)
-	public int getCacheTime() {
+	public long getCacheTime() {
 		return this.cacheTime;
 	}
 
-	public void setCacheTime(final int cacheTime) {
+	public void setCacheTime(final long cacheTime) {
 		this.cacheTime = cacheTime;
 	}
 

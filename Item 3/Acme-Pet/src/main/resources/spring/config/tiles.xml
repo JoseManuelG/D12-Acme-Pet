@@ -30,6 +30,7 @@
 		<value>/views/administrator/tiles.xml</value>
 		<value>/views/animaniac/tiles.xml</value>
 		<value>/views/attribute/tiles.xml</value>
+		<value>/views/configuration/tiles.xml</value>
 		<value>/views/comment/tiles.xml</value>
 		<value>/views/dashboard/tiles.xml</value>
 		<value>/views/folder/tiles.xml</value>
