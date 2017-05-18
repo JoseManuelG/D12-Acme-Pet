@@ -183,13 +183,18 @@ public class PetService {
 	public Collection<Pet> findAvalaiblePetsFromPrincipal() {
 		/*
 		 * Busca aquellas mascotas del animaniac conectado que, de estar ya en
-		 * alguna request, esta tiene fecha fin anterior a hoy.
+		 * alguna request, esta tiene fecha fin anterior a hoy. Si no hay ninguna,
+		 * da una IllegalArgumentException.
 		 */
 		Animaniac principal;
+		Collection<Pet> pets;
 
 		principal = this.animaniacService.findAnimaniacByPrincipal();
+		pets = this.petRepository.findAvalaiblePetsFromAnimaniac(principal.getId(), new Date());
 
-		return this.petRepository.findAvalaiblePetsFromAnimaniac(principal.getId(), new Date());
+		Assert.notEmpty(pets, "request.error.available.pets.empty");
+
+		return pets;
 	}
 
 }
