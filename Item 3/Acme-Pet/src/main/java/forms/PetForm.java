@@ -27,7 +27,11 @@ public class PetForm {
 	private List<Attribute>			attributes;
 	private LinkedList<Photo>		photos;
 	private Type					Type;
+	private int						id;
 
+
+	//	private int						errorValue;
+	//	private int						errorPhoto;
 
 	//attributes------------
 
@@ -83,6 +87,14 @@ public class PetForm {
 		this.photos = photos;
 	}
 
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(final int id) {
+		this.id = id;
+	}
+
 	public Type getType() {
 		return this.Type;
 	}
@@ -91,12 +103,31 @@ public class PetForm {
 		this.Type = type;
 	}
 
+	//	public int getErrorValue() {
+	//		return this.errorValue;
+	//	}
+	//
+	//	public void setErrorValue(final int errorValue) {
+	//		this.errorValue = errorValue;
+	//	}
+	//
+	//	public int getErrorPhoto() {
+	//		return this.errorPhoto;
+	//	}
+	//
+	//	public void setErrorPhoto(final int errorPhoto) {
+	//		this.errorPhoto = errorPhoto;
+	//	}
+
 	//----Metodos de uso del formulario----
 
 	public PetForm() {
 		this.attributeValues = new ArrayList<AttributeValue>();
 		this.photos = new LinkedList<Photo>();
 		this.weigth = 0.;
+		this.id = -1;
+		//		this.errorPhoto = -1;
+		//		this.errorValue = -1;
 	}
 	public PetForm(final Pet pet) {
 		this.genre = pet.getGenre();
@@ -105,6 +136,9 @@ public class PetForm {
 		this.weigth = pet.getWeigth();
 		this.attributeValues = new ArrayList<AttributeValue>();
 		this.photos = new LinkedList<Photo>();
+		this.setId(pet.getId());
+		//		this.errorPhoto = -1;
+		//		this.errorValue = -1;
 	}
 
 	public void addPhotoSpace() {

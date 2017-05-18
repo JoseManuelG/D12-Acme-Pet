@@ -119,6 +119,34 @@ public class PetService {
 		return result;
 
 	}
+	public Pet reconstruct2(final PetForm petForm, final int petId, final BindingResult binding) {
+		final Pet pet = this.petRepository.findOne(petId);
+		final Pet result = this.create(petForm.getType().getId());
+		result.setAnimaniac(this.animaniacService.findAnimaniacByPrincipal());
+		result.setName(petForm.getName());
+		result.setGenre(petForm.getGenre());
+		result.setWeigth(petForm.getWeigth());
+		result.setType(petForm.getType());
+		result.setCertificateBy(pet.getCertificateBy());
+		result.setId(petId);
+		result.setVersion(pet.getVersion());
+
+		this.validator.validate(result, binding);
+
+		if (!binding.hasErrors()) {
+			for (final Photo a : petForm.getPhotos()) {
+				a.setPet(result);
+				this.validator.validate(a, binding);
+			}
+			for (int i = 0; i < petForm.getAttributeValues().size(); i++) {
+				petForm.getAttributeValues().get(i).setPet(result);
+				petForm.getAttributeValues().get(i).setAttribute(petForm.getAttributes().get(i));
+				this.validator.validate(petForm.getAttributeValues().get(i), binding);
+			}
+		}
+		return result;
+
+	}
 
 	// other business methods --------------------------------------
 

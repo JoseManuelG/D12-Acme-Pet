@@ -107,8 +107,11 @@ public class AnimaniacPetController extends AbstractController {
 		ModelAndView result;
 		Pet pet;
 		String error;
+		if (petForm.getId() == -1)
+			pet = this.petService.reconstruct(petForm, bindingResult);
+		else
+			pet = this.petService.reconstruct2(petForm, petForm.getId(), bindingResult);
 
-		pet = this.petService.reconstruct(petForm, bindingResult);
 		if (bindingResult.hasErrors()) {
 			error = null;
 			if (bindingResult.hasFieldErrors("url"))
@@ -124,7 +127,6 @@ public class AnimaniacPetController extends AbstractController {
 
 		return result;
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "addPhoto")
 	public ModelAndView addAttachment(final PetForm petForm) {
 		ModelAndView result;

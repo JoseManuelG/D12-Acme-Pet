@@ -21,6 +21,11 @@
 
 
 <form:form action="pet/animaniac/edit.do" modelAttribute="petForm">
+	<%--
+	<form:hidden path="errorValue"/>
+	<form:hidden path="errorPhoto"/>
+	--%>
+	<form:hidden path="id"/>
 	<form:hidden path="type"/>
 	<form:hidden path="attributes"/>
 	<acme:textbox code="pet.name" path="name" />
@@ -32,6 +37,11 @@
 		varStatus="j">
 		<jstl:out value="${petForm.attributes[j.index].name}"/>:
 		<acme:textbox code="pet.nada" path="attributeValues[${j.index}].value" />
+		<%-- 
+		<jstl:if test="${errorValue eq j.index}">
+			<form:errors <form:errors cssClass="error" path="errorValue" />/>
+		</jstl:if>
+		--%>
 	</jstl:forEach>
 
 	<br />
@@ -39,6 +49,11 @@
 		varStatus="i">
 		<acme:textbox code="pet.photo.link"
 			path="photos[${i.index}].link" />
+		<%-- 
+		<jstl:if test="${errorPhoto eq j.index}">
+			<form:errors <form:errors cssClass="error" path="errorPhoto" />/>
+		</jstl:if>
+		--%>
 	</jstl:forEach>
 
 	<acme:submit code="pet.save" name="save" />
