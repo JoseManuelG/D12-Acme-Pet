@@ -54,19 +54,22 @@
 	<a href="message/write.do?actorId=${animaniac.id}">
     	<spring:message  code="actor.sendMessage" />
 	</a>
-<fieldset>
-	<h2><spring:message  code="animaniac.curriculum" />:</h2>
-
-	<b><spring:message code="curriculum.educationSection"/>:</b><br/>
-	<jstl:out value="${curriculum.educationSection}"/><br/>
+<jstl:if test="${curriculum!=null}">
+	<fieldset>
+		<h2><spring:message  code="animaniac.curriculum" />:</h2>
 	
-	<b><spring:message code="curriculum.experienceSection"/>:</b><br/>
-	<jstl:out value="${curriculum.experienceSection}"/><br/>
+		<b><spring:message code="curriculum.educationSection"/>:</b><br/>
+		<jstl:out value="${curriculum.educationSection}"/><br/>
+		
+		<b><spring:message code="curriculum.experienceSection"/>:</b><br/>
+		<jstl:out value="${curriculum.experienceSection}"/><br/>
+		
+		<b><spring:message code="curriculum.hobbiesSection"/>:</b><br/>
+		<jstl:out value="${curriculum.hobbiesSection}"/><br/>
+		
+	</fieldset>
 	
-	<b><spring:message code="curriculum.hobbiesSection"/>:</b><br/>
-	<jstl:out value="${curriculum.hobbiesSection}"/><br/>
-	
-</fieldset>
+</jstl:if>
 
 <fieldset>
 
@@ -98,6 +101,18 @@
 	<a href="animaniac/animaniac/edit.do?animaniacId=${animaniac.id}">
     	<spring:message  code="actor.edit" />
 	</a>
+	
+	|
+	
+	<a href="curriculum/animaniac/edit.do">
+		<jstl:if test="${curriculum==null}">
+    		<spring:message  code="animaniac.create.curr" />
+		</jstl:if>
+		<jstl:if test="${curriculum!=null}">
+    		<spring:message  code="animaniac.edit.curr" />
+		</jstl:if>
+	</a>
+	
 </jstl:if>
 
 <security:authorize access="hasRole('ANIMANIAC')">

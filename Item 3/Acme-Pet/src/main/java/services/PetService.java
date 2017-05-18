@@ -175,11 +175,11 @@ public class PetService {
 	}
 
 	public Collection<Pet> findPetsByAnimaniac(final int animaniacId) {
-		Collection<Pet> result=new ArrayList<Pet>();
-		result = this.petRepository.findPetsByAnimaniac(int animaniacId);
+		Collection<Pet> result = new ArrayList<Pet>();
+		result = this.petRepository.findPetsByAnimaniac(animaniacId);
 		return result;
 	}
-	
+
 	public Collection<Pet> findAvalaiblePetsFromPrincipal() {
 		/*
 		 * Busca aquellas mascotas del animaniac conectado que, de estar ya en
