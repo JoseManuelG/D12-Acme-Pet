@@ -17,4 +17,4 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <p><spring:message code="welcome.greeting.current.time" /> ${moment}</p>
-<p><a href="${banner.link }"><img src="${banner.image}" /></a></p> 
+<p><a href="${banner.link}"><img class="banner" src="${banner.picture}" /></a></p> 
