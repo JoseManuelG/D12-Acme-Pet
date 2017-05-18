@@ -66,12 +66,11 @@ public class AnimaniacPetController extends AbstractController {
 	// List ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list() {
+	public ModelAndView list(@RequestParam final int animaniacId) {
 		final ModelAndView result;
-		result = new ModelAndView("pet/list");
+		result = new ModelAndView("pet/animaniac/list");
 
-		//Esto no creo que le mole demasiado a corchu por lo pronto lo dejo asi
-		final Collection<Pet> pets = this.petService.findAll();
+		final Collection<Pet> pets = this.petService.findPetsByAnimaniac(animaniacId);
 		result.addObject("pets", pets);
 		return result;
 	}
@@ -107,8 +106,11 @@ public class AnimaniacPetController extends AbstractController {
 		ModelAndView result;
 		Pet pet;
 		String error;
+		if (petForm.getId() == -1)
+			pet = this.petService.reconstruct(petForm, bindingResult);
+		else
+			pet = this.petService.reconstruct2(petForm, petForm.getId(), bindingResult);
 
-		pet = this.petService.reconstruct(petForm, bindingResult);
 		if (bindingResult.hasErrors()) {
 			error = null;
 			if (bindingResult.hasFieldErrors("url"))
@@ -124,7 +126,6 @@ public class AnimaniacPetController extends AbstractController {
 
 		return result;
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "addPhoto")
 	public ModelAndView addAttachment(final PetForm petForm) {
 		ModelAndView result;

@@ -46,6 +46,8 @@ public class PetService {
 	private Validator				validator;
 
 
+	//Simple CRUD methods-------------------------------------------------------------------
+
 	public Pet create(final int typeId) {
 		final Pet result = new Pet();
 		final Animaniac animaniac = this.animaniacService.findAnimaniacByPrincipal();
@@ -94,7 +96,8 @@ public class PetService {
 		this.photoService.addPhotos(photos, result);
 		return result;
 	}
-	//Simple CRUD methods-------------------------------------------------------------------
+
+	// other business methods --------------------------------------
 
 	public Pet reconstruct(final PetForm petForm, final BindingResult binding) {
 		final Pet result = this.create(petForm.getType().getId());
@@ -103,6 +106,34 @@ public class PetService {
 		result.setGenre(petForm.getGenre());
 		result.setWeigth(petForm.getWeigth());
 		result.setType(petForm.getType());
+
+		this.validator.validate(result, binding);
+
+		if (!binding.hasErrors()) {
+			for (final Photo a : petForm.getPhotos()) {
+				a.setPet(result);
+				this.validator.validate(a, binding);
+			}
+			for (int i = 0; i < petForm.getAttributeValues().size(); i++) {
+				petForm.getAttributeValues().get(i).setPet(result);
+				petForm.getAttributeValues().get(i).setAttribute(petForm.getAttributes().get(i));
+				this.validator.validate(petForm.getAttributeValues().get(i), binding);
+			}
+		}
+		return result;
+
+	}
+	public Pet reconstruct2(final PetForm petForm, final int petId, final BindingResult binding) {
+		final Pet pet = this.petRepository.findOne(petId);
+		final Pet result = this.create(petForm.getType().getId());
+		result.setAnimaniac(this.animaniacService.findAnimaniacByPrincipal());
+		result.setName(petForm.getName());
+		result.setGenre(petForm.getGenre());
+		result.setWeigth(petForm.getWeigth());
+		result.setType(petForm.getType());
+		result.setCertificateBy(pet.getCertificateBy());
+		result.setId(petId);
+		result.setVersion(pet.getVersion());
 
 		this.validator.validate(result, binding);
 
@@ -143,6 +174,12 @@ public class PetService {
 		this.petRepository.save(pets);
 	}
 
+	public Collection<Pet> findPetsByAnimaniac(final int animaniacId) {
+		Collection<Pet> result=new ArrayList<Pet>();
+		result = this.petRepository.findPetsByAnimaniac(int animaniacId);
+		return result;
+	}
+	
 	public Collection<Pet> findAvalaiblePetsFromPrincipal() {
 		/*
 		 * Busca aquellas mascotas del animaniac conectado que, de estar ya en
