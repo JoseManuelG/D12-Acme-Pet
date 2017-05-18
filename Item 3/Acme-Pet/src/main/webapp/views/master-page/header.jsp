@@ -34,7 +34,21 @@
 					<li><a href="partner/list.do"><spring:message code="master.page.list.partner" /></a></li>
 				</security:authorize>
 			</ul>
-		</li>	
+		</li>
+		<security:authorize access="isAuthenticated()">
+			<li>
+				<a class="fNiv"> 
+					<spring:message code="master.page.requets" /> 
+				</a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="request/actor/list.do"><spring:message code="master.page.list.all.request" /></a></li>
+					<security:authorize access="hasRole('ANIMANIAC')">
+						<li><a href="request/animaniac/list.do"><spring:message code="master.page.list.my.request" /></a></li>
+					</security:authorize>
+				</ul>
+			</li>	
+		</security:authorize>
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li>

@@ -29,7 +29,7 @@
 	<acme:maskedColumn code="request.address" text="${row.address}" sorteable="false"/>
 	<acme:maskedColumn code="request.description" text="${row.description}" sorteable="false"/>
 	
-	<spring:message code="request.description" var="codeName" />
+	<spring:message code="request.pets" var="codeName" />
 	<display:column  title="${codeName}">
 		<ul>
 		<jstl:forEach items="${row.pets}" var="pet">
@@ -44,13 +44,13 @@
 	
 	<jstl:if test="${owner}">
 		<display:column>
-			<a href="request/animaniac/edit.do?requestId=${row.id}">
-				<spring:message	code="request.edit" />
+			<a href="request/animaniac/delete.do?requestId=${row.id}">
+				<spring:message	code="request.delete" />
 			</a>
 		</display:column>
 	</jstl:if>
 </display:table>
 
-<a href="request/animaniac/edit.do">
+<a href="request/animaniac/create.do">
 	<spring:message	code="request.create" />
 </a>

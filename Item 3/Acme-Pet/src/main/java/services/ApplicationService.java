@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import repositories.ApplicationRepository;
 import domain.Animaniac;
 import domain.Application;
+import domain.Request;
 
 @Service
 @Transactional
@@ -36,5 +37,9 @@ public class ApplicationService {
 
 	public Collection<Application> findApplicationsByAnimaniac(final int animaniacId) {
 		return this.applicationRepository.findByAnimaniac(animaniacId);
+	}
+
+	public Application findAcceptedApplicationForRequest(final Request request) {
+		return this.applicationRepository.findAcceptedApplicationForRequest(request.getId());
 	}
 }

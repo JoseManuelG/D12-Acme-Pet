@@ -12,10 +12,8 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="${requestURI}" modelAttribute="request">
+<form:form action="/request/animaniac/create.do" modelAttribute="request">
 
-	<form:hidden path="id" />
-	
 	<acme:textbox code="request.startDate" path="startDate"/>
 	<acme:textbox code="request.endDate" path="endDate"/>
 	<acme:textbox code="request.address" path="address"/>
@@ -23,7 +21,7 @@
 	<fieldset>
 	 	<legend><spring:message code="request.select.pet"/></legend>
 		<jstl:forEach items="${availablePets}" var="pet" varStatus="status">
-			<form:checkbox path="pets" value="${pet}" label="<a href="/pet/view.do?=${pet.id}">${pet.name}</a>"/>
+			<form:checkbox path="pets" value="${pet}" /><a href="/pet/view.do?=${pet.id}">${pet.name}</a>
 			<jstl:if test="${(status.index+1)%3==0}">
 				<br />
 			</jstl:if>
@@ -33,9 +31,6 @@
 	<br/>
 	
 	<acme:submit name="save" code="request.save"/>
-	<jstl:if test="${request.id != 0}">
-		<acme:submit name="delete" code="request.delete"/>
-	</jstl:if>
 	<acme:cancel url="request/animaniac/list.do" code="request.cancel"/>
 
 
