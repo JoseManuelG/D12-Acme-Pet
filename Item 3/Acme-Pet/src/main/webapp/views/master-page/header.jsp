@@ -82,6 +82,7 @@
 					<li><a href="abuseReport/administrator/list.do"><spring:message code="master.page.administrator.abuseReport" /></a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('PARTNER')">
+					<li><a href="banner/partner/list.do"><spring:message code="master.page.partner.banner" /></a></li>
 						
 					</security:authorize>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /></a></li>

@@ -36,3 +36,10 @@ p.link {
     text-decoration: underline;
     cursor: pointer;
 }
+
+.banner {
+    height: auto; 
+    width: auto; 
+    max-width: 25%; 
+    max-height: 250px;
+}
