@@ -132,6 +132,10 @@
 		<!-- Partner -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('PARTNER')" /> -->
 		<security:intercept-url pattern="/partner/partner/edit.do" access="hasRole('PARTNER')" />
+		<security:intercept-url pattern="/banner/partner/create.do" access="hasRole('PARTNER')" />
+		<security:intercept-url pattern="/banner/partner/edit.do" access="hasRole('PARTNER')" />
+		<security:intercept-url pattern="/banner/partner/view.do" access="hasRole('PARTNER')" />
+		<security:intercept-url pattern="/banner/partner/list.do" access="hasRole('PARTNER')" />
 		
 		<!-- Vet -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('VET')" /> -->
