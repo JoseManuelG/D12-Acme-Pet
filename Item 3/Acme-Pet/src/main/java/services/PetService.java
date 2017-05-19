@@ -89,12 +89,17 @@ public class PetService {
 		return result;
 	}
 
-	public Pet saveCertificateByVet(final Pet pet) {
+	public Pet saveCertificateByVet(final int petId) {
 		Vet vet;
+		Pet pet;
+
+		pet = this.findOne(petId);
 		Assert.notNull(pet);
 		vet = this.vetService.findVetByPrincipal();
 		Assert.isTrue(vet.getUserAccount().getAuthorities().iterator().next().getAuthority().equals("VET"));
+		Assert.isNull(pet.getVet());
 		pet.setCertificateBy(vet.getName() + "," + vet.getSurname());
+		pet.setVet(vet);
 		Pet result;
 		result = this.petRepository.save(pet);
 		return result;

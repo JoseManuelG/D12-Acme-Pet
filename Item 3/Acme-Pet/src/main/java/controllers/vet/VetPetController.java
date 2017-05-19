@@ -30,11 +30,11 @@ public class VetPetController extends AbstractController {
 		ModelAndView result;
 		Pet pet;
 
-		pet = this.petService.findOne(petId);
 		try {
-			this.petService.saveCertificateByVet(pet);
+			pet = this.petService.saveCertificateByVet(petId);
 			result = new ModelAndView("redirect:/pet/animaniac/view.do?petId=" + pet.getId());
 		} catch (final IllegalArgumentException oops) {
+			pet = this.petService.findOne(petId);
 			result = this.createEditModelAndView(pet, oops.getMessage());
 		}
 
