@@ -40,7 +40,7 @@
 </fieldset>
 
 <jstl:if test="${owner}">
-	<a href="pet/animaniac/create.do?petId=${pet.id}">
+	<a href="type/animaniac/select.do">
     	<spring:message  code="pet.create" />
 	</a>
 </jstl:if>
