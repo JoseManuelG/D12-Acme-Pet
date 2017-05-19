@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AnimaniacService;
 import services.PetService;
 import services.RequestService;
 import controllers.AbstractController;
+import domain.Animaniac;
 import domain.Pet;
 import domain.Request;
 
@@ -34,6 +36,8 @@ import domain.Request;
 public class RequestAnimaniacController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
+	@Autowired
+	public AnimaniacService	animaniacService;
 
 	@Autowired
 	public RequestService	requestService;
@@ -140,12 +144,14 @@ public class RequestAnimaniacController extends AbstractController {
 	protected ModelAndView createListModelAndView(final String message) {
 		ModelAndView result;
 		Collection<Request> requests;
+		Animaniac principal;
 
 		result = new ModelAndView("request/animaniac/list");
 		requests = this.requestService.findAllFromPrincipal();
+		principal = this.animaniacService.findAnimaniacByPrincipal();
 
 		result.addObject("requests", requests);
-		result.addObject("owner", true);
+		result.addObject("principal", principal);
 		result.addObject("message", message);
 		result.addObject("requestURI", "request/animaniac/list.do");
 

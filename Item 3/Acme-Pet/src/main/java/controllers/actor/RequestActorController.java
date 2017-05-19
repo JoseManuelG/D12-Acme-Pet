@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.RequestService;
 import controllers.AbstractController;
+import domain.Actor;
 import domain.Request;
 
 @Controller
@@ -27,6 +29,9 @@ import domain.Request;
 public class RequestActorController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
+
+	@Autowired
+	public ActorService		actorService;
 
 	@Autowired
 	public RequestService	requestService;
@@ -38,11 +43,14 @@ public class RequestActorController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Request> requests;
+		Actor principal;
 
 		result = new ModelAndView("request/actor/list");
 		requests = this.requestService.findAll();
+		principal = this.actorService.findActorByPrincipal();
 
 		result.addObject("requests", requests);
+		result.addObject("principal", principal);
 		result.addObject("requestURI", "request/actor/list.do");
 
 		return result;

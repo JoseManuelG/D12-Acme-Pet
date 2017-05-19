@@ -15,13 +15,14 @@
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
 	name="requests" requestURI="${requestURI}" id="row">
+	<jstl:set var="owner" value="${row.pets[0].animaniac}"/>
 	
 	
 	<!-- Attributes -->
 	<spring:message code="request.owner" var="codeName" />
 	<display:column  title="${codeName}">
-		<a href="animaniac/view.do?animaniacId=${row.pets[0].animaniac.id}">
-				<acme:mask text="${row.pets[0].animaniac.userAccount.username}"/>
+		<a href="animaniac/view.do?animaniacId=${owner.id}">
+				<acme:mask text="${owner.userAccount.username}"/>
 		</a>
 	</display:column>
 	<acme:maskedColumn code="request.startDate" text="${row.startDate}" sorteable="false"/>
@@ -42,15 +43,27 @@
 	
 	<!-- Action links -->
 	
-	<jstl:if test="${owner}">
+	<security:authorize access="hasRole('ANIMANIAC')">
 		<display:column>
-			<a href="request/animaniac/delete.do?requestId=${row.id}">
-				<spring:message	code="request.delete" />
-			</a>
+			<jstl:if test="${owner eq principal}">
+				<a href="request/animaniac/delete.do?requestId=${row.id}">
+					<spring:message	code="request.delete" />
+				</a> |
+				<a href="application/animaniac/list.do?requestId=${row.id}">
+					<spring:message	code="request.applications.view" />
+				</a>
+			</jstl:if>
+			<jstl:if test="${!(owner eq principal)}">
+				<a href="application/animaniac/create.do?requestId=${row.id}">
+					<spring:message	code="request.apply" />
+				</a>
+			</jstl:if>
 		</display:column>
-	</jstl:if>
+	</security:authorize>	
 </display:table>
 
-<a href="request/animaniac/create.do">
-	<spring:message	code="request.create" />
-</a>
+<security:authorize access="hasRole('ANIMANIAC')">
+	<a href="request/animaniac/create.do">
+		<spring:message	code="request.create" />
+	</a>
+</security:authorize>
