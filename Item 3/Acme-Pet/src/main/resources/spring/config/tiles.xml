@@ -43,7 +43,7 @@
 		<value>/views/vet/tiles.xml</value>
 		<value>/views/spamWord/tiles.xml</value>
 		<value>/views/banner/tiles.xml</value>
-		
+		<value>/views/searchEngine/tiles.xml</value>
 				
 		
 	</util:list>

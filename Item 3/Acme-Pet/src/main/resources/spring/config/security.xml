@@ -129,6 +129,8 @@
 		
 		<security:intercept-url pattern="/type/animaniac/select.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/curriculum/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
+		
+		<security:intercept-url pattern="/searchEngine/animaniac/search.do" access="hasRole('ANIMANIAC')" />
 
 		<!-- Partner -->
 <!-- 		<security:intercept-url pattern="" access="hasRole('PARTNER')" /> -->

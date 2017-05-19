@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.SearchEngineService;
+import services.TypeService;
 import controllers.AbstractController;
 import domain.Request;
 import domain.SearchEngine;
+import domain.Type;
 
 @Controller
 @RequestMapping("/searchEngine/animaniac")
@@ -22,6 +24,8 @@ public class SearchEngineAnimaniacController extends AbstractController {
 
 	@Autowired
 	private SearchEngineService	searchEngineService;
+	@Autowired
+	private TypeService			typeService;
 
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -30,7 +34,7 @@ public class SearchEngineAnimaniacController extends AbstractController {
 		ModelAndView result;
 		final Collection<Request> results;
 		SearchEngine search;
-
+		final Collection<Type> types = this.typeService.findAll();
 		search = this.searchEngineService.findByPrincipal();
 		results = search.getRequests();
 
@@ -38,6 +42,7 @@ public class SearchEngineAnimaniacController extends AbstractController {
 		result.addObject("results", results);
 		result.addObject("search", search);
 		result.addObject("requestURI", "searchEngine/animaniac/search.do");
+		result.addObject("types", types);
 
 		return result;
 	}
@@ -71,6 +76,8 @@ public class SearchEngineAnimaniacController extends AbstractController {
 				result.addObject("results", results);
 				result.addObject("message", e.getMessage());
 			}
+		final Collection<Type> types = this.typeService.findAll();
+		result.addObject("types", types);
 		return result;
 	}
 }

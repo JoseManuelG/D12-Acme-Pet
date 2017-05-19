@@ -43,6 +43,7 @@
 		<value>/views/vet/messages</value>
 		<value>/views/spamWord/messages</value>
 		<value>/views/banner/messages</value>
+		<value>/views/searchEngine/messages</value>
 		
 
 	</util:list>
