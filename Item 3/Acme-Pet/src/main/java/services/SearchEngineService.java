@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.SearchEngineRepository;
 import domain.Animaniac;
@@ -33,6 +35,8 @@ public class SearchEngineService {
 	private RequestService			requestService;
 	@Autowired
 	private ConfigurationService	configurationService;
+	@Autowired
+	private Validator				validator;
 
 
 	//Simple CRUD methods-------------------------------------------------------------------
@@ -46,6 +50,11 @@ public class SearchEngineService {
 		result.setSearchMoment(new DateTime(System.currentTimeMillis() - this.configurationService.findConfiguration().getCacheTime()).toDate());
 		result.setAddress("");
 
+		return result;
+	}
+	public SearchEngine findOne(final int searchEngineId) {
+		SearchEngine result;
+		result = this.searchEngineRepository.findOne(searchEngineId);
 		return result;
 	}
 
@@ -68,7 +77,6 @@ public class SearchEngineService {
 		result = searchEngine;
 
 		//Comprobamos si el SearchTemplate ha sido modificado
-		//TODO Probar a pasar el bloque if al FindOne() para que saliera actualizado automaticamente
 		if (lastSearch.before(timeOfCache) || this.searchTemplateHasBeenModified(searchEngine)) {
 
 			result.setSearchMoment(new DateTime(System.currentTimeMillis() - 1000).toDate());
@@ -129,7 +137,12 @@ public class SearchEngineService {
 	public SearchEngine findSearchEngineByAnimaniac(final int animaniacId) {
 		return this.searchEngineRepository.findByAnimaniac(animaniacId);
 	}
-
+	public SearchEngine findByPrincipal() {
+		final SearchEngine result;
+		final int actorId = this.actorService.findActorByPrincipal().getId();
+		result = this.findSearchEngineByAnimaniac(actorId);
+		return result;
+	}
 	public void deleteFromRequest(final Request request) {
 		Collection<SearchEngine> searchEngines;
 
@@ -139,5 +152,28 @@ public class SearchEngineService {
 			engine.getRequests().remove(request);
 
 		this.searchEngineRepository.save(searchEngines);
+	}
+
+	public SearchEngine reconstruct(final SearchEngine searchEngine, final BindingResult binding) {
+		SearchEngine res, old;
+
+		old = this.findOne(searchEngine.getId());
+		res = this.create(this.actorService.findActorByPrincipal().getId());
+
+		//old things
+		res.setId(old.getId());
+		res.setVersion(old.getVersion());
+		res.setSearchMoment(old.getSearchMoment());
+		res.setRequests(old.getRequests());
+		res.setAnimaniac(old.getAnimaniac());
+
+		//New things
+		res.setAddress(searchEngine.getAddress());
+		res.setType(searchEngine.getType());
+		res.setStartDate(searchEngine.getStartDate());
+		res.setEndDate(searchEngine.getEndDate());
+		this.validator.validate(res, binding);
+
+		return res;
 	}
 }
