@@ -43,6 +43,9 @@ public class PetService {
 	private PhotoService			photoService;
 
 	@Autowired
+	private VetService				vetService;
+
+	@Autowired
 	private Validator				validator;
 
 
@@ -81,6 +84,17 @@ public class PetService {
 		Assert.notNull(pet);
 		Assert.notNull(pet.getAnimaniac());
 		Assert.isTrue(pet.getAnimaniac() == this.animaniacService.findAnimaniacByPrincipal());
+		Pet result;
+		result = this.petRepository.save(pet);
+		return result;
+	}
+
+	public Pet saveCertificateByVet(final Pet pet) {
+		Vet vet;
+		Assert.notNull(pet);
+		vet = this.vetService.findVetByPrincipal();
+		Assert.isTrue(vet.getUserAccount().getAuthorities().iterator().next().getAuthority().equals("VET"));
+		pet.setCertificateBy(vet.getName() + "," + vet.getSurname());
 		Pet result;
 		result = this.petRepository.save(pet);
 		return result;

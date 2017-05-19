@@ -14,7 +14,6 @@ import services.PetService;
 import services.VetService;
 import controllers.AbstractController;
 import domain.Pet;
-import domain.Vet;
 
 @Controller
 @RequestMapping("/pet/vet")
@@ -32,17 +31,13 @@ public class VetPetController extends AbstractController {
 	@RequestMapping(value = "/certificate", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Pet pet, final BindingResult binding) {
 		ModelAndView result;
-		Vet principal;
-
-		principal = this.vetService.findVetByPrincipal();
-		pet.setCertificateBy(principal.getName() + "," + principal.getSurname());
 
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(pet);
 		else
 			try {
-				this.petService.save(pet);
-				result = new ModelAndView("redirect:/pet/view.do?petId=" + pet.getId());
+				this.petService.saveCertificateByVet(pet);
+				result = new ModelAndView("redirect:/pet/animaniac/view.do?petId=" + pet.getId());
 			} catch (final IllegalArgumentException oops) {
 				result = this.createEditModelAndView(pet, oops.getMessage());
 			}
@@ -64,7 +59,7 @@ public class VetPetController extends AbstractController {
 
 		requestURI = "pet/vet/edit.do";
 
-		result = new ModelAndView("pet/view.do?petId=" + pet.getId());
+		result = new ModelAndView("pet/animaniac/view.do?petId=" + pet.getId());
 		result.addObject("pet", pet);
 		result.addObject("requestURI", requestURI);
 		result.addObject("message", message);
