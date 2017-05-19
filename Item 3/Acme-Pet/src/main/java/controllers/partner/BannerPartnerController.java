@@ -124,7 +124,7 @@ public class BannerPartnerController extends AbstractController {
 			result = new ModelAndView("redirect:/banner/partner/list.do");
 
 		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(banner, "banner.commit.error");
+			result = this.createEditModelAndView(banner, oops.getMessage());
 		}
 
 		return result;
