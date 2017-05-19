@@ -50,7 +50,7 @@
 					<spring:message	code="request.delete" />
 				</a> |
 				<a href="application/animaniac/list.do?requestId=${row.id}">
-					<spring:message	code="request.applications.view" />
+					<spring:message	code="request.application.view" />
 				</a>
 			</jstl:if>
 			<jstl:if test="${!(owner eq principal)}">

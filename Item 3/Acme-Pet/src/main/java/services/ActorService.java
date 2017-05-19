@@ -24,9 +24,6 @@ public class ActorService {
 	// Supporting Services --------------------------------------
 
 	@Autowired
-	private AnimaniacService	animaniacService;
-
-	@Autowired
 	private UserAccountService	accountService;
 
 	@Autowired

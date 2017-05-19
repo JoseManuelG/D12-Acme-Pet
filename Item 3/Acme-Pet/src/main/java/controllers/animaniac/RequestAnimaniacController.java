@@ -37,13 +37,13 @@ public class RequestAnimaniacController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
 	@Autowired
-	public AnimaniacService	animaniacService;
+	private AnimaniacService	animaniacService;
 
 	@Autowired
-	public RequestService	requestService;
+	private RequestService		requestService;
 
 	@Autowired
-	public PetService		petService;
+	private PetService			petService;
 
 
 	// List ------------------------------------------------------------------		

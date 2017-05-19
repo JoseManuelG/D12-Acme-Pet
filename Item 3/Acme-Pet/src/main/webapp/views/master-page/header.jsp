@@ -45,6 +45,7 @@
 					<li><a href="request/actor/list.do"><spring:message code="master.page.list.all.request" /></a></li>
 					<security:authorize access="hasRole('ANIMANIAC')">
 						<li><a href="request/animaniac/list.do"><spring:message code="master.page.list.my.request" /></a></li>
+						<li><a href="application/animaniac/list.do"><spring:message code="master.page.list.my.application" /></a></li>
 					</security:authorize>
 				</ul>
 			</li>	

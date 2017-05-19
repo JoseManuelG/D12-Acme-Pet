@@ -14,7 +14,7 @@
 <!-- Listing grid -->
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="applications" requestURI="${applicationURI}" id="row">
+	name="applications" requestURI="${requestURI}" id="row">
 	
 	<!-- Attributes -->
 	<jstl:if test="${requestOwner}">
@@ -28,23 +28,23 @@
 	<jstl:if test="${!requestOwner}">
 		<spring:message code="application.for" var="codeName" />
 		<display:column  title="${codeName}">
-				<a href="animaniac/view.do?animaniacId=${row.animaniac.id}">
+				<a href="request/actor/list.do?requestId=${row.request.id}">
 					<spring:message code="application.request"/>
 				</a>
 		</display:column>
 	</jstl:if>
 	
-	<acme:maskedColumn code="application.description" text="${row.endDate}" sorteable="false"/>
+	<acme:maskedColumn code="application.description" text="${row.description}" sorteable="false"/>
 	
 	<jstl:choose>
-		<jstl:when test="${row.state not eq 'Accepted'}">
-			<spring:message var="state" code="request.state.accepted" />
+		<jstl:when test="${row.state eq 'Accepted'}">
+			<spring:message var="state" code="application.state.accepted" />
 		</jstl:when>
-		<jstl:when test="${row.state not eq 'Pending'}">
-			<spring:message var="state" code="request.state.pending" />
+		<jstl:when test="${row.state eq 'Pending'}">
+			<spring:message var="state" code="application.state.pending" />
 		</jstl:when>
-		<jstl:when test="${row.state not eq 'Denied'}">
-			<spring:message var="state" code="request.state.denied" />
+		<jstl:when test="${row.state eq 'Denied'}">
+			<spring:message var="state" code="application.state.denied" />
 		</jstl:when>
 	</jstl:choose>
 	
@@ -55,7 +55,7 @@
 	
 	<jstl:if test="${requestOwner}">
 		<display:column>
-			<jstl:if test="${row.state not eq 'Accepted'}">
+			<jstl:if test="${row.state eq 'Pending'}">
 				<a href="application/animaniac/accept.do?applicationId=${row.id}">
 					<spring:message	code="application.accept" />
 				</a> |

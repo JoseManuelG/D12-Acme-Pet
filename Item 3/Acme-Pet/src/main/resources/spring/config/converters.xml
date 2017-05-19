@@ -45,6 +45,9 @@
 		
  		<bean class="converters.PhotoToStringConverter" />
 		<bean class="converters.StringToPhotoConverter" />
+				
+		<bean class="converters.RequestToStringConverter" />
+		<bean class="converters.StringToRequestConverter" />
 		
  		<bean class="converters.TypeToStringConverter" />
 		<bean class="converters.StringToTypeConverter" />

@@ -116,6 +116,11 @@
 
 		<security:intercept-url pattern="/animaniac/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
 		
+		<security:intercept-url pattern="/application/animaniac/create.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/application/animaniac/list.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/application/animaniac/accept.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/application/animaniac/deny.do" access="hasRole('ANIMANIAC')" />
+		
 		<security:intercept-url pattern="/comment/animaniac/create.do" access="hasRole('ANIMANIAC')" />
 		
 		<security:intercept-url pattern="/pet/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
