@@ -30,7 +30,6 @@ public class SearchEngine extends DomainEntity {
 	private Date	searchMoment;
 
 
-	@NotNull
 	public String getType() {
 		return this.type;
 	}

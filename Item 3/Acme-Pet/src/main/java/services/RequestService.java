@@ -132,4 +132,13 @@ public class RequestService {
 
 		}
 	}
+
+	public Collection<Request> searchRequest(final String address, final String type, final Date startDate, final Date endDate) {
+		// TODO Auto-generated method stub
+		return this.requestRepository.searchRequest(address, type, startDate, endDate);
+	}
+	public Collection<Request> searchRequest(final String address, final Date startDate, final Date endDate) {
+		// TODO Auto-generated method stub
+		return this.requestRepository.searchRequest(address, startDate, endDate);
+	}
 }
