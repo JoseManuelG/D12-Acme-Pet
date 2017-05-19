@@ -30,9 +30,9 @@
 <acme:mask text="${pet.certificateBy}"/><br/>
 
 <security:authorize access="hasRole('VET')">
-<jstl:if test="${pet.certificateBy eq ''}">
+<jstl:if test="${pet.certificateBy eq null}">
 	<a href="pet/vet/certificate.do?petId=${pet.id}">
-    	<spring:message  code="pet.certificate" />
+    	<spring:message  code="pet.certificate" /><br/>
 	</a>
 </jstl:if>
 </security:authorize>
