@@ -1,11 +1,8 @@
 
 package controllers.vet;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,19 +25,18 @@ public class VetPetController extends AbstractController {
 
 	// Edit ---------------------------------------------------------------
 
-	@RequestMapping(value = "/certificate", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Pet pet, final BindingResult binding) {
+	@RequestMapping(value = "/certificate", method = RequestMethod.GET)
+	public ModelAndView cetificate(final int petId) {
 		ModelAndView result;
+		Pet pet;
 
-		if (binding.hasErrors())
-			result = this.createEditModelAndView(pet);
-		else
-			try {
-				this.petService.saveCertificateByVet(pet);
-				result = new ModelAndView("redirect:/pet/animaniac/view.do?petId=" + pet.getId());
-			} catch (final IllegalArgumentException oops) {
-				result = this.createEditModelAndView(pet, oops.getMessage());
-			}
+		pet = this.petService.findOne(petId);
+		try {
+			this.petService.saveCertificateByVet(pet);
+			result = new ModelAndView("redirect:/pet/animaniac/view.do?petId=" + pet.getId());
+		} catch (final IllegalArgumentException oops) {
+			result = this.createEditModelAndView(pet, oops.getMessage());
+		}
 
 		return result;
 	}
@@ -55,13 +51,9 @@ public class VetPetController extends AbstractController {
 
 	protected ModelAndView createEditModelAndView(final Pet pet, final String message) {
 		ModelAndView result;
-		String requestURI;
-
-		requestURI = "pet/vet/edit.do";
 
 		result = new ModelAndView("pet/animaniac/view.do?petId=" + pet.getId());
 		result.addObject("pet", pet);
-		result.addObject("requestURI", requestURI);
 		result.addObject("message", message);
 
 		return result;
