@@ -51,11 +51,22 @@ public class PhotoService {
 		final List<Photo> result = this.photoRepository.findPhotosOfPet(pet.getId());
 		return result;
 	}
-	public void addPhotos(final Collection<Photo> photos, final Pet pet) {
-		final Photo photo = this.create(pet);
-		for (final Photo a : photos) {
-			photo.setLink(a.getLink());
-			this.save(photo);
+	public void addPhotos(final List<Photo> photos, final int petId, final Pet pet) {
+		if (petId == 0) {
+			final Photo photo = this.create(pet);
+			for (final Photo a : photos) {
+				photo.setLink(a.getLink());
+				photo.setPet(pet);
+				this.save(photo);
+			}
+		} else {
+			final List<Photo> photos2 = this.photoRepository.findPhotosOfPet(petId);
+			for (int i = 0; i < photos.size(); i++) {
+				photos.get(i).setId(photos2.get(i).getId());
+				photos.get(i).setVersion(photos2.get(i).getVersion());
+				photos.get(i).setPet(pet);
+				this.save(photos.get(i));
+			}
 		}
 
 	}

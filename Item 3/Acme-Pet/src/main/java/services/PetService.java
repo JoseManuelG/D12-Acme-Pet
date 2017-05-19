@@ -4,6 +4,7 @@ package services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -109,10 +110,12 @@ public class PetService {
 		Assert.notNull(pet);
 		Assert.notNull(pet.getAnimaniac());
 		Assert.isTrue(pet.getAnimaniac() == this.animaniacService.findAnimaniacByPrincipal());
+		final List<AttributeValue> attributeValues2 = new ArrayList<AttributeValue>(attributeValues);
+		final List<Photo> photos2 = new ArrayList<Photo>(photos);
 		Pet result;
 		result = this.petRepository.save(pet);
-		this.attributeValueService.addAttributeValues(attributeValues, result);
-		this.photoService.addPhotos(photos, result);
+		this.attributeValueService.addAttributeValues(attributeValues2, pet.getId(), result);
+		this.photoService.addPhotos(photos2, pet.getId(), result);
 		return result;
 	}
 

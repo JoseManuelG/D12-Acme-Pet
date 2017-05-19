@@ -115,6 +115,10 @@
 	
 </jstl:if>
 
+<a href="pet/animaniac/list.do?animaniacId=${animaniac.id}">
+    	<spring:message  code="pet.list" />
+	</a>
+
 <security:authorize access="hasRole('ANIMANIAC')">
 	<jstl:if test="${!owner}">
 	<a href="abuseReport/animaniac/edit.do?reportedId=${animaniac.id}">

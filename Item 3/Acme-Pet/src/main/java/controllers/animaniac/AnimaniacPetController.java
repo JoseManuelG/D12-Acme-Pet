@@ -126,7 +126,7 @@ public class AnimaniacPetController extends AbstractController {
 		} else
 			try {
 				final Pet savedPet = this.petService.save(pet, petForm.getAttributeValues(), petForm.getPhotos());
-				result = new ModelAndView("redirect:pet/animaniac/view.do?petId=" + savedPet.getId());
+				result = this.view(savedPet.getId());
 			} catch (final IllegalArgumentException e) {
 				result = this.createEditModelAndView(petForm, e.getMessage());
 			}
