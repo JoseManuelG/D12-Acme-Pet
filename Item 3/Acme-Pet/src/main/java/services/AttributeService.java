@@ -26,6 +26,9 @@ public class AttributeService {
 	@Autowired
 	private AttributeValueService	attributeValueService;
 
+	@Autowired
+	private AdministratorService	administratorService;
+
 
 	public Attribute create() {
 		final Attribute result = new Attribute();
@@ -45,6 +48,8 @@ public class AttributeService {
 	}
 
 	public void delete(final Attribute attribute) {
+		Assert.notNull(this.administratorService.findAdministratorByPrincipal());
+
 		this.attributeValueService.deleteAttributeValuesFromAttribute(attribute.getId());
 		this.attributeRepository.delete(attribute.getId());
 	}
@@ -53,6 +58,8 @@ public class AttributeService {
 		Attribute result;
 		long cont;
 		Attribute existing;
+
+		Assert.notNull(this.administratorService.findAdministratorByPrincipal());
 
 		if (attribute.getId() != 0) {
 			cont = this.attributeRepository.countAttributeValuesWithAttribute(attribute.getId());
@@ -66,6 +73,10 @@ public class AttributeService {
 
 		result = this.attributeRepository.save(attribute);
 		return result;
+	}
+
+	public void flush() {
+		this.attributeRepository.flush();
 	}
 	//Simple CRUD methods-------------------------------------------------------------------
 

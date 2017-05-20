@@ -54,6 +54,10 @@ public class AbuseReportService {
 		return this.abuseReportRepository.findAllOrderedByDate();
 	}
 
+	public void flush() {
+		this.abuseReportRepository.flush();
+	}
+
 	//Other Bussnisnes methods------------------------------------------------------------
 
 	public AbuseReport reconstruct(final AbuseReport abuseReport, final BindingResult binding) {
@@ -87,4 +91,5 @@ public class AbuseReportService {
 			this.abuseReportRepository.save(report);
 		}
 	}
+
 }

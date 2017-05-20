@@ -18,7 +18,11 @@ public class TypeService {
 
 	// Managed Repository --------------------------------------
 	@Autowired
-	private TypeRepository	typeRepository;
+	private TypeRepository			typeRepository;
+
+	// Other Services --------------------------------------
+	@Autowired
+	private AdministratorService	administratorService;
 
 
 	public Type create() {
@@ -41,6 +45,8 @@ public class TypeService {
 	public void delete(final Type type) {
 		long cont;
 
+		Assert.notNull(this.administratorService.findAdministratorByPrincipal());
+
 		cont = this.typeRepository.countPetsWithType(type.getId());
 
 		Assert.isTrue(type.getId() != 0);
@@ -53,6 +59,8 @@ public class TypeService {
 		Type result;
 		long cont;
 		Type existing;
+
+		Assert.notNull(this.administratorService.findAdministratorByPrincipal());
 
 		if (type.getId() != 0) {
 			cont = this.typeRepository.countPetsWithType(type.getId());
@@ -67,8 +75,8 @@ public class TypeService {
 		result = this.typeRepository.save(type);
 		return result;
 	}
-	//Simple CRUD methods-------------------------------------------------------------------
 
-	// other business methods --------------------------------------
-
+	public void flush() {
+		this.typeRepository.flush();
+	}
 }

@@ -4,6 +4,7 @@ package services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
@@ -38,6 +39,7 @@ public class CurriculumService {
 	}
 
 	public void save(final Curriculum res) {
+		Assert.notNull(res);
 		this.curriculumRepository.save(res);
 	}
 
@@ -46,11 +48,19 @@ public class CurriculumService {
 		Animaniac principal;
 
 		principal = this.animaniacService.findAnimaniacByPrincipal();
+
+		Assert.notNull(principal);
+
 		curriculum = this.curriculumRepository.findByAnimaniac(principal.getId());
+
+		Assert.notNull(curriculum);
 
 		this.curriculumRepository.delete(curriculum);
 	}
 
+	public void flush() {
+		this.curriculumRepository.flush();
+	}
 	//Other Business methods-------------------------------------------------------------------
 
 	public void deleteFromAnimaniac(final Animaniac animaniac) {
