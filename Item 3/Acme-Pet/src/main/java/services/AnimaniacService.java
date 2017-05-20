@@ -45,13 +45,16 @@ public class AnimaniacService {
 	private CurriculumService	curriculumService;
 
 	@Autowired
+	private FolderService		folderService;
+
+	@Autowired
 	private PetService			petService;
 
 	@Autowired
-	private SearchEngineService	searchEngineService;
+	private AbuseReportService	reportService;
 
 	@Autowired
-	private AbuseReportService	reportService;
+	private SearchEngineService	searchEngineService;
 
 	@Autowired
 	private Validator			validator;
@@ -88,13 +91,13 @@ public class AnimaniacService {
 		result = this.animaniacRepository.save(animaniac);
 		Assert.notNull(result, "animaniac.error.commit");
 		if (animaniac.getId() == 0) {
-			//TODO: crear buscador this.searchTemplateService.createForAnimaniac(result);
+			this.searchEngineService.create(result.getId());
+			this.folderService.createBasicsFolders(result);
 		}
-		//TODO: crear carpetas
+
 		return result;
 
 	}
-
 	public void delete() {
 		Animaniac animaniac;
 		animaniac = this.findAnimaniacByPrincipal();

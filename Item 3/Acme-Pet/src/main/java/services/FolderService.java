@@ -1,7 +1,6 @@
 
 package services;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -82,23 +81,18 @@ public class FolderService {
 	}
 
 	//Other business methods--------------------------
-	public Collection<Folder> createBasicsFolders(final Actor actor) {
-		final Collection<Folder> folders = new ArrayList<Folder>();
+	public void createBasicsFolders(final Actor actor) {
 		Folder folder;
+		final String[] names = {
+			"inbox", "outbox", "trashbox", "spambox"
+		};
+
 		for (int i = 0; i < 4; i++) {
 			folder = this.create(actor);
 			folder.setReadOnly(true);
-			if (i == 0)
-				folder.setName("inbox");
-			else if (i == 1)
-				folder.setName("outbox");
-			else if (i == 2)
-				folder.setName("trashbox");
-			else if (i == 3)
-				folder.setName("spambox");
-			folders.add(folder);
+			folder.setName(names[i]);
+			this.folderRepository.save(folder);
 		}
-		return folders;
 	}
 	//Busca un Folder con el nombre "name" del actor "actor"
 	//	public Folder findFolderFromActor(Actor actor, String name) {

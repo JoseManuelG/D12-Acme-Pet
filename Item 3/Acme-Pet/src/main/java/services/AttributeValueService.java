@@ -1,7 +1,6 @@
 
 package services;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -62,17 +61,10 @@ public class AttributeValueService {
 		}
 
 	}
-	//Borra los attributeValues de un mensaje, se debe llamar antes de borrar el mensaje para evitar problemas de persistencia
-	public void deleteAttributeValuesOfPet(final Pet pet) {
-		final List<AttributeValue> aux = this.findAttributeValuesOfPet(pet);
-		for (final AttributeValue attributeValue : aux)
-			this.delete(attributeValue);
 
-	}
-
-	public void deletePet(final Pet pet) {
-		final Collection<AttributeValue> attributeValues = new ArrayList<AttributeValue>();
-		attributeValues.addAll(this.attributeValueRepository.findAttributeValuesOfPetDeleting(pet.getId()));
+	public void deleteFromPet(final Pet pet) {
+		Collection<AttributeValue> attributeValues;
+		attributeValues = this.attributeValueRepository.findAttributeValuesOfPetDeleting(pet.getId());
 		this.attributeValueRepository.delete(attributeValues);
 
 	}

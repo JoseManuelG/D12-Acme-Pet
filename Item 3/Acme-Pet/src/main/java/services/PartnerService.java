@@ -37,6 +37,9 @@ public class PartnerService {
 	@Autowired
 	private Validator			validator;
 
+	@Autowired
+	private FolderService		folderService;
+
 
 	//Simple CRUD methods-------------------------------------------------------------------
 
@@ -69,7 +72,8 @@ public class PartnerService {
 		partner.setUserAccount(this.accountService.save(partner.getUserAccount()));
 		result = this.partnerRepository.save(partner);
 		Assert.notNull(result, "partner.error.commit");
-		//TODO: crear carpetas
+		if (partner.getId() == 0)
+			this.folderService.createBasicsFolders(result);
 		return result;
 
 	}

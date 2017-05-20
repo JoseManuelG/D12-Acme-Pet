@@ -124,7 +124,22 @@ public class RequestService {
 		requests = this.requestRepository.findByPet(pet.getId());
 
 		for (final Request request : requests) {
-			Assert.isTrue(this.checkNotActiveRequest(request), "request.error.active");//TODO personalizar error para pet
+			Assert.isTrue(this.checkNotActiveRequest(request), "request.error.active.pet");
+
+			this.applicationService.deleteFromRequest(request);
+			this.searchEngineService.deleteFromRequest(request);
+			this.requestRepository.delete(request);
+
+		}
+	}
+
+	public void deleteFromPetFromAnimaniac(final Pet pet) {
+		Collection<Request> requests;
+
+		requests = this.requestRepository.findByPet(pet.getId());
+
+		for (final Request request : requests) {
+			Assert.isTrue(this.checkNotActiveRequest(request), "request.error.active.animaniac");
 
 			this.applicationService.deleteFromRequest(request);
 			this.searchEngineService.deleteFromRequest(request);

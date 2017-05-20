@@ -1,7 +1,6 @@
 
 package services;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -82,17 +81,10 @@ public class PhotoService {
 		return result;
 
 	}
-	//Borra los photos de un mensaje, se debe llamar antes de borrar el mensaje para evitar problemas de persistencia
-	public void deletePhotosOfPet(final Pet pet) {
-		final List<Photo> aux = this.findPhotosOfPet(pet);
-		for (final Photo photo : aux)
-			this.delete(photo);
 
-	}
-
-	public void deleteActor(final Pet pet) {
-		final Collection<Photo> photos = new ArrayList<Photo>();
-		photos.addAll(this.photoRepository.findPhotosOfPetDeleting(pet.getId()));
+	public void deleteFromPet(final Pet pet) {
+		Collection<Photo> photos;
+		photos = this.photoRepository.findPhotosOfPetDeleting(pet.getId());
 		this.photoRepository.delete(photos);
 
 	}

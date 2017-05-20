@@ -38,6 +38,9 @@ public class VetService {
 	@Autowired
 	private Validator			validator;
 
+	@Autowired
+	private FolderService		folderService;
+
 
 	//Simple CRUD methods-------------------------------------------------------------------
 
@@ -66,7 +69,8 @@ public class VetService {
 		vet.setUserAccount(this.accountService.save(vet.getUserAccount()));
 		result = this.vetRepository.save(vet);
 		Assert.notNull(result, "vet.error.commit");
-		//TODO: crear carpetas
+		if (vet.getId() == 0)
+			this.folderService.createBasicsFolders(result);
 		return result;
 
 	}
@@ -74,6 +78,7 @@ public class VetService {
 	public void delete() {
 		Vet vet;
 		vet = this.findVetByPrincipal();
+		this.actorService.deleteFromActor(vet);
 		this.petService.deleteFromVet(vet);
 		this.vetRepository.delete(vet);
 		this.accountService.delete(vet.getUserAccount().getId());

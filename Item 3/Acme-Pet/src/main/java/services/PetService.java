@@ -35,6 +35,9 @@ public class PetService {
 	private AnimaniacService		animaniacService;
 
 	@Autowired
+	private CommentService			commentService;
+
+	@Autowired
 	private TypeService				typeService;
 
 	@Autowired
@@ -42,6 +45,9 @@ public class PetService {
 
 	@Autowired
 	private PhotoService			photoService;
+
+	@Autowired
+	private RequestService			requestService;
 
 	@Autowired
 	private VetService				vetService;
@@ -78,9 +84,12 @@ public class PetService {
 		Assert.isTrue(pet.getId() != 0);
 		Assert.notNull(pet.getAnimaniac());
 		Assert.isTrue(pet.getAnimaniac() == this.animaniacService.findAnimaniacByPrincipal());
+		this.requestService.deleteFromPet(pet);
+		this.attributeValueService.deleteFromPet(pet);
+		this.commentService.deleteAllCommentsOfPet(pet);
+		this.photoService.deleteFromPet(pet);
 		this.petRepository.delete(pet.getId());
 	}
-
 	public Pet save(final Pet pet) {
 		Assert.notNull(pet);
 		Assert.notNull(pet.getAnimaniac());
@@ -182,10 +191,11 @@ public class PetService {
 
 		pets = this.petRepository.findPetsByAnimaniac(animaniac.getId());
 
-		for (final Pet pet : pets)
+		for (final Pet pet : pets) {
+			this.requestService.deleteFromPetFromAnimaniac(pet);
 			this.delete(pet);
+		}
 	}
-
 	public void deleteFromVet(final Vet vet) {
 		Collection<Pet> pets;
 
