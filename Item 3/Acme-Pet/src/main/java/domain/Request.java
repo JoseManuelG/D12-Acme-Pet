@@ -28,7 +28,16 @@ public class Request extends DomainEntity {
 	private Date	endDate;
 	private String	address;
 	private String	description;
+	private boolean	rated;
 
+
+	public boolean getRated() {
+		return this.rated;
+	}
+
+	public void setRated(final boolean rated) {
+		this.rated = rated;
+	}
 
 	@NotNull
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -78,7 +87,6 @@ public class Request extends DomainEntity {
 	private Collection<Pet>	pets;
 
 
-	@NotNull
 	@NotEmpty
 	@Valid
 	@ManyToMany

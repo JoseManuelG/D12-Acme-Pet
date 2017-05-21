@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.RequestRepository;
 import domain.Animaniac;
@@ -34,6 +36,9 @@ public class RequestService {
 	@Autowired
 	private SearchEngineService	searchEngineService;
 
+	@Autowired
+	private Validator			validator;
+
 
 	//Simple CRUD methods-------------------------------------------
 
@@ -47,6 +52,7 @@ public class RequestService {
 		principal = this.animaniacService.findAnimaniacByPrincipal();
 
 		request.setPets(pets);
+		request.setRated(false);
 		request.setAddress(principal.getAddress());
 
 		return request;
@@ -73,16 +79,16 @@ public class RequestService {
 
 	public void delete(final int requestId) {
 		Request request;
-		Boolean active;
+		Boolean notActive;
 		Animaniac principal, owner;
 
 		request = this.findOne(requestId);
-		active = this.checkNotActiveRequest(request);
+		notActive = this.checkNotActiveRequest(request);
 		principal = this.animaniacService.findAnimaniacByPrincipal();
 		owner = request.getPets().iterator().next().getAnimaniac();
 
 		Assert.isTrue(owner.equals(principal), "request.error.not.owner");
-		Assert.isTrue(active, "request.error.active");
+		Assert.isTrue(notActive, "request.error.active");
 		Assert.isTrue(request.getId() != 0);
 
 		this.applicationService.deleteFromRequest(request);
@@ -149,11 +155,26 @@ public class RequestService {
 	}
 
 	public Collection<Request> searchRequest(final String address, final String type, final Date startDate, final Date endDate) {
-		// TODO Auto-generated method stub
 		return this.requestRepository.searchRequest(address, type, startDate, endDate);
 	}
+
 	public Collection<Request> searchRequest(final String address, final Date startDate, final Date endDate) {
-		// TODO Auto-generated method stub
 		return this.requestRepository.searchRequest(address, startDate, endDate);
+	}
+
+	public Request reconstruct(final Request request, final BindingResult binding) {
+		Request result;
+
+		result = this.create();
+		result.setAddress(request.getAddress());
+		result.setDescription(request.getDescription());
+		result.setStartDate(request.getStartDate());
+		result.setEndDate(request.getEndDate());
+		result.setPets(request.getPets());
+
+		this.validator.validate(result, binding);
+
+		return result;
+
 	}
 }

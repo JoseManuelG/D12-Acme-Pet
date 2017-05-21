@@ -1465,6 +1465,7 @@
 		<property name="endDate" value="01/25/2017 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
 		<property name="description" value="Description request" />
+		<property name="rated" value="true" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1482,6 +1483,7 @@
 		<property name="endDate" value="01/25/2016 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
 		<property name="description" value="Description request" />
+		<property name="rated" value="false" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1494,6 +1496,7 @@
 		<property name="endDate" value="01/25/2015 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
 		<property name="description" value="Description request" />
+		<property name="rated" value="false" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1506,6 +1509,7 @@
 		<property name="endDate" value="01/25/2014 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
 		<property name="description" value="Description request" />
+		<property name="rated" value="false" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1518,6 +1522,7 @@
 		<property name="endDate" value="01/25/2013 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
 		<property name="description" value="Description request" />
+		<property name="rated" value="false" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1530,6 +1535,7 @@
 		<property name="endDate" value="01/25/2018 12:00" />
 		<property name="address" value="Calle de recogida nº1" />
 		<property name="description" value="Description request" />
+		<property name="rated" value="false" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac1" />
@@ -1542,6 +1548,7 @@
 		<property name="endDate" value="10/24/2017 12:00" />
 		<property name="address" value="Calle de recogida nº2" />
 		<property name="description" value="Description request" />
+		<property name="rated" value="false" />
 		<property name="pets">
 			<list>
 				<ref bean="pet1Animaniac2" />
@@ -1659,7 +1666,6 @@
 	<bean id="application1Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Accepted" />
-		<property name="rated" value="true" />
 		<property name="animaniac" ref="animaniac2" />
 		<property name="request" ref="request1Animaniac1" />
 	</bean>	
@@ -1667,7 +1673,6 @@
 	<bean id="application2Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
-		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac3" />
 		<property name="request" ref="request1Animaniac1" />
 	</bean>		
@@ -1675,7 +1680,6 @@
 	<bean id="application3Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
-		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac4" />
 		<property name="request" ref="request1Animaniac1" />
 	</bean>		
@@ -1683,7 +1687,6 @@
 	<bean id="application4Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
-		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac5" />
 		<property name="request" ref="request1Animaniac1" />
 	</bean>		
@@ -1691,7 +1694,6 @@
 	<bean id="application5Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
-		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac6" />
 		<property name="request" ref="request1Animaniac1" />
 	</bean>		
@@ -1699,7 +1701,6 @@
 	<bean id="application6Request1Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Denied" />
-		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac7" />
 		<property name="request" ref="request1Animaniac1" />
 	</bean>
@@ -1707,10 +1708,16 @@
 	<bean id="application1Request2Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
 		<property name="state" value="Pending" />
-		<property name="rated" value="false" />
 		<property name="animaniac" ref="animaniac2" />
 		<property name="request" ref="request2Animaniac1" />
 	</bean>		
+	
+	<bean id="application1Request6Animaniac1" class="domain.Application">
+		<property name="description" value="application description" />
+		<property name="state" value="Accepted" />
+		<property name="animaniac" ref="animaniac7" />
+		<property name="request" ref="request6Animaniac1" />
+	</bean>
 	
 	<!-- Banner	-->
 	

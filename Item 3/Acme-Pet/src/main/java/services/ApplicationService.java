@@ -49,7 +49,6 @@ public class ApplicationService {
 		request = this.requestService.findOne(requestId);
 
 		application.setAnimaniac(principal);
-		application.setRated(false);
 		application.setRequest(request);
 		application.setState("Pending");
 
@@ -122,6 +121,7 @@ public class ApplicationService {
 		return result;
 
 	}
+
 	public void accept(final int applicationId) {
 		Application application;
 		Collection<Application> applicationsDenied;

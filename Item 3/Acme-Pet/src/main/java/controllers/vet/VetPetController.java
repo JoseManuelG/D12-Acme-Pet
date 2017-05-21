@@ -8,16 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.PetService;
-import services.VetService;
 import controllers.AbstractController;
 import domain.Pet;
 
 @Controller
 @RequestMapping("/pet/vet")
-public class VetPetController extends AbstractController {
-
-	@Autowired
-	private VetService	vetService;
+public class VetPetController extends AbstractController { //TODO el nombre es al reves
 
 	@Autowired
 	private PetService	petService;

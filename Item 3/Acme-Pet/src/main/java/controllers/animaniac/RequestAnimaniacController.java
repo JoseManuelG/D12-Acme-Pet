@@ -12,8 +12,6 @@ package controllers.animaniac;
 
 import java.util.Collection;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -74,14 +72,16 @@ public class RequestAnimaniacController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Request request, final BindingResult binding) {
+	public ModelAndView save(final Request request, final BindingResult binding) {
 		ModelAndView result;
+		Request requestResult;
 
+		requestResult = this.requestService.reconstruct(request, binding);
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(request);
 		else
 			try {
-				this.requestService.save(request);
+				this.requestService.save(requestResult);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final IllegalArgumentException e) {
 				result = this.createEditModelAndView(request, e.getMessage());

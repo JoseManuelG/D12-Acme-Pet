@@ -27,16 +27,7 @@ public class Application extends DomainEntity {
 
 	private String	description;
 	private String	state;
-	private boolean	rated;
 
-
-	public boolean getRated() {
-		return this.rated;
-	}
-
-	public void setRated(final boolean rated) {
-		this.rated = rated;
-	}
 
 	@NotBlank
 	@SafeHtml
