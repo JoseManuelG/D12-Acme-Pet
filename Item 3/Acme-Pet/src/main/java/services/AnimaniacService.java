@@ -123,6 +123,10 @@ public class AnimaniacService {
 	public Long count() {
 		return this.animaniacRepository.count();
 	}
+
+	public void flush() {
+		this.animaniacRepository.flush();
+	}
 	// other business methods --------------------------------------
 
 	public void ban(final int animaniacId) {

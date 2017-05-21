@@ -114,8 +114,17 @@ public class CommentService {
 	}
 
 	public void deleteAllCommentsOfAnimaniac(final Animaniac animaniac) {
-		this.commentRepository.delete(this.findAllCommentsByAnimaniac(animaniac.getId()));
-		this.commentRepository.delete(this.findAllCommentsByCommentable(animaniac.getId()));
+		Collection<Comment> comments;
+
+		this.animaniacService.findAll();
+
+		comments = this.findAllCommentsByAnimaniac(animaniac.getId());
+		if (comments != null)
+			this.commentRepository.delete(comments);
+
+		comments = this.findAllCommentsByCommentable(animaniac.getId());
+		if (comments != null)
+			this.commentRepository.delete(comments);
 
 	}
 
