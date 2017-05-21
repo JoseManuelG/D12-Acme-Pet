@@ -58,6 +58,9 @@ public class AnimaniacService {
 	private SearchEngineService	searchEngineService;
 
 	@Autowired
+	private MessageService		messageService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -139,6 +142,7 @@ public class AnimaniacService {
 		final UserAccount ua = this.animaniacRepository.findOne(animaniacId).getUserAccount();
 		ua.setEnabled(false);
 		this.accountService.save(ua);
+		this.messageService.alertAnimaniacs(animaniacId);
 
 	}
 

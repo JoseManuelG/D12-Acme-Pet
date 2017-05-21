@@ -15,9 +15,11 @@ import org.springframework.validation.Validator;
 
 import repositories.MessageRepository;
 import domain.Actor;
+import domain.Animaniac;
 import domain.Attachment;
 import domain.Folder;
 import domain.Message;
+import domain.Request;
 import forms.MessageForm;
 
 @Service
@@ -35,6 +37,12 @@ public class MessageService {
 	private FolderService		folderService;
 	@Autowired
 	private AttachmentService	attachmentService;
+	@Autowired
+	private RequestService		requestService;
+	@Autowired
+	private ApplicationService	applicationService;
+	@Autowired
+	private AnimaniacService	animaniacService;
 	@Autowired
 	private Validator			validator;
 
@@ -267,5 +275,20 @@ public class MessageService {
 		this.messageRepository.save(messages);
 		messages.clear();
 	}
+	public void alertAnimaniacs(final int animaniacId) {
+		final Collection<Request> requests;
+		Collection<Animaniac> animaniacs;
+		final Animaniac bannedAnimaniac = this.animaniacService.findOne(animaniacId);
 
+		requests = this.requestService.findAllFromAnimaniac(animaniacId);
+		animaniacs = this.applicationService.findAnimaniacsWithAcceptedApplicationOfRequest(requests);
+
+		for (final Animaniac a : animaniacs) {
+			final Message m = this.create(a.getId());
+			m.setSubject("Alerta sobre tus solicitudes");
+			m.setText("El animaniaco" + bannedAnimaniac.getName() + " " + bannedAnimaniac.getSurname() + " ha sido expulsado por mal comportamiento. La(s) solicitud(es) de cuidado que te ha aceptado ya no tienen validez");
+			this.save(m, new LinkedList<Attachment>());
+		}
+
+	}
 }

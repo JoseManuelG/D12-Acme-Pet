@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -159,5 +160,17 @@ public class ApplicationService {
 		principal = this.animaniacService.findAnimaniacByPrincipal();
 
 		return request.getPets().iterator().next().getAnimaniac().equals(principal);
+	}
+
+	public Collection<Animaniac> findAnimaniacsWithAcceptedApplicationOfRequest(final Collection<Request> requests) {
+		Collection<Animaniac> results;
+
+		results = new ArrayList<Animaniac>();
+
+		for (Request r : requests) {
+			Animaniac aux = this.applicationRepository.findAnimaniacsWithAcceptedApplicationOfRequest(r.getId());
+			results.add(aux);
+		}
+		return results;
 	}
 }

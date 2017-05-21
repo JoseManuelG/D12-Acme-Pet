@@ -109,6 +109,14 @@ public class RequestService {
 		return requests;
 	}
 
+	public Collection<Request> findAllFromAnimaniac(final int animaniacId) {
+		Collection<Request> requests;
+
+		requests = this.requestRepository.findActiveRequestsFromAnimaniacId(animaniacId);
+
+		return requests;
+	}
+
 	public Boolean checkNotActiveRequest(final Request request) {
 		Date timeToDelete;
 		long now, day;
