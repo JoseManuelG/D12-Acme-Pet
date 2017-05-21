@@ -18,6 +18,7 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Animaniac;
+import domain.SearchEngine;
 import forms.AnimaniacForm;
 
 @Service
@@ -84,6 +85,7 @@ public class AnimaniacService {
 
 	public Animaniac save(final Animaniac animaniac) {
 		Animaniac result;
+		SearchEngine searchEngine;
 
 		Assert.notNull(animaniac, "animaniac.error.null");
 
@@ -91,7 +93,8 @@ public class AnimaniacService {
 		result = this.animaniacRepository.save(animaniac);
 		Assert.notNull(result, "animaniac.error.commit");
 		if (animaniac.getId() == 0) {
-			this.searchEngineService.create(result.getId());
+			searchEngine = this.searchEngineService.create(result.getId());
+			this.searchEngineService.saveParaCreate(searchEngine);
 			this.folderService.createBasicsFolders(result);
 		}
 
@@ -122,6 +125,10 @@ public class AnimaniacService {
 
 	public Long count() {
 		return this.animaniacRepository.count();
+	}
+
+	public void flush() {
+		this.animaniacRepository.flush();
 	}
 	// other business methods --------------------------------------
 

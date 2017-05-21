@@ -68,7 +68,8 @@ public class CurriculumService {
 
 		curriculum = this.curriculumRepository.findByAnimaniac(animaniac.getId());
 
-		this.curriculumRepository.delete(curriculum);
+		if (curriculum != null)
+			this.curriculumRepository.delete(curriculum);
 	}
 
 	public Curriculum findCurriculumByAnimaniac(final int animaniacId) {
