@@ -23,22 +23,26 @@ public class PartnerService {
 
 	// Managed Repository --------------------------------------
 	@Autowired
-	private PartnerRepository	partnerRepository;
+	private PartnerRepository		partnerRepository;
 
 	// Supporting Services --------------------------------------
 	@Autowired
-	private ActorService		actorService;
+	private ActorService			actorService;
 
 	@Autowired
-	private UserAccountService	accountService;
-	@Autowired
-	private BannerService		bannerService;
+	private UserAccountService		accountService;
 
 	@Autowired
-	private Validator			validator;
+	private AdministratorService	administratorService;
 
 	@Autowired
-	private FolderService		folderService;
+	private BannerService			bannerService;
+
+	@Autowired
+	private Validator				validator;
+
+	@Autowired
+	private FolderService			folderService;
 
 
 	//Simple CRUD methods-------------------------------------------------------------------
@@ -67,6 +71,8 @@ public class PartnerService {
 	public Partner save(final Partner partner) {
 		Partner result;
 
+		if (partner.getId() == 0)
+			Assert.notNull(this.administratorService.findAdministratorByPrincipal());
 		Assert.notNull(partner, "partner.error.null");
 
 		partner.setUserAccount(this.accountService.save(partner.getUserAccount()));
@@ -100,6 +106,9 @@ public class PartnerService {
 
 	public Long count() {
 		return this.partnerRepository.count();
+	}
+	public void flush() {
+		this.partnerRepository.flush();
 	}
 	// other business methods --------------------------------------
 

@@ -23,23 +23,26 @@ public class VetService {
 
 	// Managed Repository --------------------------------------
 	@Autowired
-	private VetRepository		vetRepository;
+	private VetRepository			vetRepository;
 
 	// Supporting Services --------------------------------------
 	@Autowired
-	private ActorService		actorService;
+	private ActorService			actorService;
 
 	@Autowired
-	private UserAccountService	accountService;
+	private UserAccountService		accountService;
 
 	@Autowired
-	private PetService			petService;
+	private PetService				petService;
 
 	@Autowired
-	private Validator			validator;
+	private Validator				validator;
 
 	@Autowired
-	private FolderService		folderService;
+	private FolderService			folderService;
+
+	@Autowired
+	private AdministratorService	administratorService;
 
 
 	//Simple CRUD methods-------------------------------------------------------------------
@@ -64,6 +67,8 @@ public class VetService {
 	public Vet save(final Vet vet) {
 		Vet result;
 
+		if (vet.getId() == 0)
+			Assert.notNull(this.administratorService.findAdministratorByPrincipal());
 		Assert.notNull(vet, "vet.error.null");
 
 		vet.setUserAccount(this.accountService.save(vet.getUserAccount()));
@@ -96,6 +101,11 @@ public class VetService {
 	public Long count() {
 		return this.vetRepository.count();
 	}
+
+	public void flush() {
+		this.vetRepository.flush();
+	}
+
 	// other business methods --------------------------------------
 
 	public Vet findVetByPrincipal() {
