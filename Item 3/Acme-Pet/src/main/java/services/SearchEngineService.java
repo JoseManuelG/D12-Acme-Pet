@@ -47,8 +47,11 @@ public class SearchEngineService {
 		result = new SearchEngine();
 		result.setAnimaniac(this.animaniacService.findOne(animaniacId));
 		result.setRequests(requests);
-		result.setSearchMoment(new DateTime(System.currentTimeMillis() - this.configurationService.findConfiguration().getCacheTime()).toDate());
+		result.setStartDate(new Date(System.currentTimeMillis() - 200));
+		result.setEndDate(new Date(System.currentTimeMillis() - 100));
+		result.setSearchMoment(new Date(System.currentTimeMillis() - this.configurationService.findConfiguration().getCacheTime()));
 		result.setAddress("");
+		result.setType("");
 
 		return result;
 	}
@@ -56,6 +59,10 @@ public class SearchEngineService {
 		SearchEngine result;
 		result = this.searchEngineRepository.findOne(searchEngineId);
 		return result;
+	}
+
+	public SearchEngine saveParaCreate(final SearchEngine searchEngine) {
+		return this.searchEngineRepository.save(searchEngine);
 	}
 
 	public SearchEngine save(final SearchEngine searchEngine) {
