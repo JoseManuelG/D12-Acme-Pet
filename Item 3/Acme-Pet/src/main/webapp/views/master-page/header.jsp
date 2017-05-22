@@ -74,6 +74,7 @@
 					<li><a href="actor/myProfile.do"><spring:message code="master.page.my.profile" /></a></li>
 					<li><a href="folder/list.do"><spring:message code="master.page.folders" /></a></li>
 					<security:authorize access="hasRole('ANIMANIAC')">
+					<li><a href="searchEngine/animaniac/search.do"><spring:message code="master.page.searchEngine" /></a></li>
 					</security:authorize>	
 					
 					<security:authorize access="hasRole('VET')">
