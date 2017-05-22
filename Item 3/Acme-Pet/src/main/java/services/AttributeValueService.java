@@ -1,10 +1,9 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,7 +80,7 @@ public class AttributeValueService {
 			}
 		else {
 			final List<AttributeValue> attributeValues2 = this.findAttributeValuesOfPet(pet);
-			final Set<AttributeValue> attributeValues3 = new HashSet<AttributeValue>();
+			final List<AttributeValue> attributeValues3 = new ArrayList<AttributeValue>(attributeValues);
 			for (int i = 0; i < attributeValues.size(); i++)
 				for (int j = 0; j < attributeValues2.size(); j++)
 					if (attributeValues.get(i).getAttribute() == attributeValues2.get(j).getAttribute()) {
@@ -91,15 +90,14 @@ public class AttributeValueService {
 						attributeValue.setVersion(attributeValues2.get(j).getVersion());
 
 						if (!attributeValue.getValue().isEmpty()) {
-							attributeValues3.add(attributeValues.get(i));
+							attributeValues3.remove(attributeValues.get(i));
 							this.save(attributeValue);
 						} else {
-							attributeValues3.add(attributeValues.get(i));
+							attributeValues3.remove(attributeValues.get(i));
 							this.delete(attributeValues2.get(j));
 						}
 					}
-			attributeValues.removeAll(attributeValues3);
-			for (final AttributeValue a : attributeValues) {
+			for (final AttributeValue a : attributeValues3) {
 				final AttributeValue attributeValue = this.create(pet, a.getAttribute());
 				attributeValue.setValue(a.getValue());
 				if (!a.getValue().isEmpty())
