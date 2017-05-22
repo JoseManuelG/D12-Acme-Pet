@@ -25,6 +25,7 @@ import services.AttributeService;
 import services.AttributeValueService;
 import services.PetService;
 import services.PhotoService;
+import services.RequestService;
 import services.TypeService;
 import controllers.AbstractController;
 import domain.AttributeValue;
@@ -55,6 +56,9 @@ public class AnimaniacPetController extends AbstractController { //TODO el nombr
 
 	@Autowired
 	public AnimaniacService			animaniacService;
+
+	@Autowired
+	public RequestService			requestService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -127,6 +131,8 @@ public class AnimaniacPetController extends AbstractController { //TODO el nombr
 			result = this.createEditModelAndView(petForm, error);
 		} else
 			try {
+				if (petForm.getId() != 0)
+					this.requestService.checkRequests(petForm.getId());
 				final Pet savedPet = this.petService.save(pet, petForm.getAttributeValues(), petForm.getPhotos());
 				result = this.view(savedPet.getId());
 			} catch (final IllegalArgumentException e) {

@@ -147,6 +147,13 @@ public class RequestService {
 		}
 	}
 
+	public void checkRequests(final int petId) {
+		Collection<Request> requests;
+		requests = this.requestRepository.findByPet(petId);
+
+		for (final Request request : requests)
+			Assert.isTrue(this.checkNotActiveRequest(request), "request.error.active.pet2");
+	}
 	public void deleteFromPetFromAnimaniac(final Pet pet) {
 		Collection<Request> requests;
 
