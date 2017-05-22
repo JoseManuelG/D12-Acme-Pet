@@ -86,6 +86,10 @@
 					<li><a href="banner/partner/list.do"><spring:message code="master.page.partner.banner" /></a></li>
 						
 					</security:authorize>
+					<security:authorize access="hasAnyRole('ANIMANIAC','VET')">
+					<li><a href="pet/listAll.do"><spring:message code="master.page.pet.list" /></a></li>
+						
+					</security:authorize>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /></a></li>
 				</ul>
 			</li>
