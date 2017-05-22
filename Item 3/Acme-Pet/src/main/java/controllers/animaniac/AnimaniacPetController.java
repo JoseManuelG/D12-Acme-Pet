@@ -87,6 +87,13 @@ public class AnimaniacPetController extends AbstractController { //TODO el nombr
 		return result;
 	}
 
+	@RequestMapping(value = "/myPets", method = RequestMethod.GET)
+	public ModelAndView myPets() {
+		ModelAndView result;
+		result = this.list(this.animaniacService.findAnimaniacByPrincipal().getId());
+		return result;
+	}
+
 	// Create ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -134,7 +141,7 @@ public class AnimaniacPetController extends AbstractController { //TODO el nombr
 
 		if (bindingResult.hasErrors()) {
 			error = null;
-			if (bindingResult.hasFieldErrors("url"))
+			if (bindingResult.hasFieldErrors("link"))
 				error = "pet.url.error";
 			result = this.createEditModelAndView(petForm, error);
 		} else
