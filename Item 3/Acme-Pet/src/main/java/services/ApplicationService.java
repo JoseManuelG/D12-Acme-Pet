@@ -73,6 +73,10 @@ public class ApplicationService {
 
 	}
 
+	public void flush() {
+		this.applicationRepository.flush();
+	}
+
 	//Other Business methods-------------------------------------------------------------------
 
 	public void deleteFromAnimaniac(final Animaniac animaniac) {
@@ -177,4 +181,5 @@ public class ApplicationService {
 		}
 		return results;
 	}
+
 }

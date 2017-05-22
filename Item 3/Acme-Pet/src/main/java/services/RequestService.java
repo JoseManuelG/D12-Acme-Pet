@@ -39,6 +39,9 @@ public class RequestService {
 	private SearchEngineService	searchEngineService;
 
 	@Autowired
+	private PetService			petService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -72,6 +75,11 @@ public class RequestService {
 
 	public Request save(final Request request) {
 		Request result;
+		Collection<Pet> availables;
+
+		availables = this.petService.findAvalaiblePetsFromPrincipal();
+
+		Assert.isTrue(availables.containsAll(request.getPets()), "request.error.notAvaiable");
 
 		Assert.isTrue(request.getStartDate().after(new Date()), "request.error.start.date");
 		Assert.isTrue(request.getStartDate().before(request.getEndDate()), "request.error.end.date");
@@ -96,6 +104,10 @@ public class RequestService {
 		this.applicationService.deleteFromRequest(request);
 		this.searchEngineService.deleteFromRequest(request);
 		this.requestRepository.delete(request);
+	}
+
+	public void flush() {
+		this.requestRepository.flush();
 	}
 
 	// other business methods --------------------------------------
