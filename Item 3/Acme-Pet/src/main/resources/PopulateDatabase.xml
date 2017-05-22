@@ -1715,7 +1715,7 @@
 	
 	<bean id="application1Request2Animaniac1" class="domain.Application">
 		<property name="description" value="application description" />
-		<property name="state" value="Pending" />
+		<property name="state" value="Accepted" />
 		<property name="animaniac" ref="animaniac2" />
 		<property name="request" ref="request2Animaniac1" />
 	</bean>		

@@ -20,12 +20,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import services.PetService;
 import services.RequestService;
 import utilities.AbstractTest;
 import domain.Pet;
 import domain.Request;
+import forms.RateForm;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
@@ -93,6 +95,33 @@ public class RequestTest extends AbstractTest {
 		this.templateDeleteRequest("animaniac1", "request6Animaniac1", IllegalArgumentException.class);
 	}
 
+	//Caso de uso de puntuar un request:
+	//test positivo
+	@Test
+	public void rateRequestTest1() {
+		this.templateRateRequest("animaniac1", "request2Animaniac1", 5, null);
+	}
+	//rate fuera de rango
+	@Test
+	public void rateRequestTest2() {
+		this.templateRateRequest("animaniac1", "request2Animaniac1", 8, IllegalArgumentException.class);
+	}
+	//sin loguearse
+	@Test
+	public void rateRequestTest3() {
+		this.templateRateRequest(null, "request2Animaniac1", 4, IllegalArgumentException.class);
+	}
+	//logueado con otro animaniac que no sea el propietario del request
+	@Test
+	public void rateRequestTest4() {
+		this.templateRateRequest("animaniac2", "request2Animaniac1", 4, IllegalArgumentException.class);
+	}
+	//request ya puntuado
+	@Test
+	public void rateRequestTest5() {
+		this.templateRateRequest("animaniac1", "request1Animaniac1", 4, IllegalArgumentException.class);
+	}
+
 	// Ancillary methods ------------------------------------------------------
 
 	protected void templateRegisterRequest(final String userName, final long startDate, final long endDate, final String description, final String address, final int numberPets, final Class<?> expected) {
@@ -144,6 +173,30 @@ public class RequestTest extends AbstractTest {
 			request = this.requestService.findOne(this.extract(requestBean));
 
 			this.requestService.delete(request.getId());
+			this.requestService.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
+
+	protected void templateRateRequest(final String username, final String requestBean, final int rate, final Class<?> expected) {
+		Class<?> caught;
+		Request request;
+		caught = null;
+		RateForm rateForm;
+		try {
+			this.authenticate(username);
+
+			request = this.requestService.findOne(this.extract(requestBean));
+
+			rateForm = new RateForm(request.getId());
+			rateForm.setRate(rate);
+
+			//Simula el @Valid que tiene el rateForm en el controlador
+			Assert.isTrue(-5 <= rateForm.getRate() && rateForm.getRate() <= 5);
+
+			this.requestService.rate(rateForm);
 			this.requestService.flush();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
