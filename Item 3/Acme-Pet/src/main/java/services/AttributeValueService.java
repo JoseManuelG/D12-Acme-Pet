@@ -2,7 +2,9 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,15 +76,34 @@ public class AttributeValueService {
 			for (final AttributeValue a : attributeValues) {
 				final AttributeValue attributeValue = this.create(pet, a.getAttribute());
 				attributeValue.setValue(a.getValue());
-				this.save(attributeValue);
+				if (!a.getValue().isEmpty())
+					this.save(attributeValue);
 			}
 		else {
-			final List<AttributeValue> attributeValues2 = this.attributeValueRepository.findAttributeValuesOfPet(petId);
-			for (int i = 0; i < attributeValues.size(); i++) {
-				attributeValues.get(i).setId(attributeValues2.get(i).getId());
-				attributeValues.get(i).setVersion(attributeValues2.get(i).getVersion());
-				attributeValues.get(i).setAttribute(attributeValues2.get(i).getAttribute());
-				this.save(attributeValues.get(i));
+			final List<AttributeValue> attributeValues2 = this.findAttributeValuesOfPet(pet);
+			final Set<AttributeValue> attributeValues3 = new HashSet<AttributeValue>();
+			for (int i = 0; i < attributeValues.size(); i++)
+				for (int j = 0; j < attributeValues2.size(); j++)
+					if (attributeValues.get(i).getAttribute() == attributeValues2.get(j).getAttribute()) {
+						final AttributeValue attributeValue = this.create(pet, attributeValues2.get(j).getAttribute());
+						attributeValue.setValue(attributeValues.get(i).getValue());
+						attributeValue.setId(attributeValues2.get(j).getId());
+						attributeValue.setVersion(attributeValues2.get(j).getVersion());
+
+						if (!attributeValue.getValue().isEmpty()) {
+							attributeValues3.add(attributeValues.get(i));
+							this.save(attributeValue);
+						} else {
+							attributeValues3.add(attributeValues.get(i));
+							this.delete(attributeValues2.get(j));
+						}
+					}
+			attributeValues.removeAll(attributeValues3);
+			for (final AttributeValue a : attributeValues) {
+				final AttributeValue attributeValue = this.create(pet, a.getAttribute());
+				attributeValue.setValue(a.getValue());
+				if (!a.getValue().isEmpty())
+					this.save(attributeValue);
 			}
 		}
 	}

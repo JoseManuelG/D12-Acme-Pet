@@ -60,12 +60,18 @@ public class PhotoService {
 			}
 		} else {
 			final List<Photo> photos2 = this.photoRepository.findPhotosOfPet(petId);
-			for (int i = 0; i < photos.size(); i++) {
-				photos.get(i).setId(photos2.get(i).getId());
-				photos.get(i).setVersion(photos2.get(i).getVersion());
-				photos.get(i).setPet(pet);
-				this.save(photos.get(i));
-			}
+			for (int i = 0; i < photos.size(); i++)
+				if (photos2.size() < i) {
+					photos.get(i).setId(photos2.get(i).getId());
+					photos.get(i).setVersion(photos2.get(i).getVersion());
+					photos.get(i).setPet(pet);
+					this.save(photos.get(i));
+				} else {
+					final Photo photo = this.create(pet);
+					photo.setLink(photos.get(i).getLink());
+					photo.setPet(pet);
+					this.save(photo);
+				}
 		}
 
 	}
