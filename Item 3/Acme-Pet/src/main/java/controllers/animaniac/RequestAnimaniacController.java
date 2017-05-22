@@ -12,6 +12,8 @@ package controllers.animaniac;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -28,6 +30,7 @@ import controllers.AbstractController;
 import domain.Animaniac;
 import domain.Pet;
 import domain.Request;
+import forms.RateForm;
 
 @Controller
 @RequestMapping("/request/animaniac")
@@ -104,6 +107,39 @@ public class RequestAnimaniacController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/rate", method = RequestMethod.GET)
+	public ModelAndView rate(@RequestParam final int requestId) {
+		ModelAndView result;
+		RateForm rateForm;
+
+		try {
+			this.requestService.checkRateable(requestId);
+			rateForm = new RateForm(requestId);
+			result = this.createRateModelAndView(rateForm);
+		} catch (final IllegalArgumentException e) {
+			result = this.createListModelAndView(e.getMessage());
+		}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/rate", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveRate(@Valid final RateForm rateForm, final BindingResult binding) {
+		ModelAndView result;
+
+		if (binding.hasErrors())
+			result = this.createRateModelAndView(rateForm);
+		else
+			try {
+				this.requestService.rate(rateForm);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final IllegalArgumentException e) {
+				result = this.createRateModelAndView(rateForm, e.getMessage());
+			}
+
+		return result;
+	}
+
 	//Ancillary methods ----------------------------------------------------------------------
 
 	protected ModelAndView createEditModelAndView(final Request request) {
@@ -154,6 +190,24 @@ public class RequestAnimaniacController extends AbstractController {
 		result.addObject("principal", principal);
 		result.addObject("message", message);
 		result.addObject("requestURI", "request/animaniac/list.do");
+
+		return result;
+	}
+
+	protected ModelAndView createRateModelAndView(final RateForm rateForm) {
+		ModelAndView result;
+
+		result = this.createRateModelAndView(rateForm, null);
+
+		return result;
+	}
+
+	protected ModelAndView createRateModelAndView(final RateForm rateForm, final String message) {
+		ModelAndView result;
+
+		result = new ModelAndView("request/animaniac/rate");
+		result.addObject("rateForm", rateForm);
+		result.addObject("message", message);
 
 		return result;
 	}

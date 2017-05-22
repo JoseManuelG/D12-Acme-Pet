@@ -22,4 +22,9 @@
 		<put-attribute name="body" value="/views/request/list.jsp" />
 	</definition>
 	
+	<definition name="request/animaniac/rate" extends="master.page">
+		<put-attribute name="title" value="Puntuar" />
+		<put-attribute name="body" value="/views/request/rate.jsp" />
+	</definition>
+	
 </tiles-definitions>

@@ -57,12 +57,16 @@ public class ApplicationService {
 	}
 
 	public Application save(final Application application) {
-		Application result;
+		Application result, existing;
+		Animaniac principal;
 
+		principal = this.animaniacService.findAnimaniacByPrincipal();
+		existing = this.applicationRepository.findApplicationsByAnimaniacAndRequest(principal.getId(), application.getRequest().getId());
+
+		Assert.isNull(existing, "application.error.already.applied");
 		Assert.isTrue(!this.checkRequestOwner(application.getRequest().getId()));
 		Assert.isTrue(application.getRequest().getStartDate().after(new Date()), "application.error.start.date");
 
-		//TODO: comprobar que no existe ya una application para la misma request y animaniac.
 		result = this.applicationRepository.save(application);
 
 		return result;
@@ -167,8 +171,8 @@ public class ApplicationService {
 
 		results = new ArrayList<Animaniac>();
 
-		for (Request r : requests) {
-			Animaniac aux = this.applicationRepository.findAnimaniacsWithAcceptedApplicationOfRequest(r.getId());
+		for (final Request r : requests) {
+			final Animaniac aux = this.applicationRepository.findAnimaniacsWithAcceptedApplicationOfRequest(r.getId());
 			results.add(aux);
 		}
 		return results;

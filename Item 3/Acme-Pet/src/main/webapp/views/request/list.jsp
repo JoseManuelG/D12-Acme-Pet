@@ -12,6 +12,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <!-- Listing grid -->
+<jsp:useBean id="now" class="java.util.Date" />
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
 	name="requests" requestURI="${requestURI}" id="row">
@@ -52,6 +53,11 @@
 				<a href="application/animaniac/list.do?requestId=${row.id}">
 					<spring:message	code="request.application.view" />
 				</a>
+				<jstl:if test="${!row.rated and row.endDate<now}">
+					 | <a href="request/animaniac/rate.do?requestId=${row.id}">
+						<spring:message	code="request.rate" />
+					</a>
+				</jstl:if>
 			</jstl:if>
 			<jstl:if test="${!(owner eq principal)}">
 				<a href="application/animaniac/create.do?requestId=${row.id}">

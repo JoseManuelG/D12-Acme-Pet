@@ -29,4 +29,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	@Query("select distinct a.animaniac from Application a where a.request.id=?1 and a.state='ACCEPTED'")
 	Animaniac findAnimaniacsWithAcceptedApplicationOfRequest(int requestId);
 
+	@Query("select a from Application a where a.animaniac.id = ?1 and a.request.id = ?2")
+	Application findApplicationsByAnimaniacAndRequest(int animaniacId, int requestId);
+
 }

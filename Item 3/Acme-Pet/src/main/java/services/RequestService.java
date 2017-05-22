@@ -14,8 +14,10 @@ import org.springframework.validation.Validator;
 
 import repositories.RequestRepository;
 import domain.Animaniac;
+import domain.Application;
 import domain.Pet;
 import domain.Request;
+import forms.RateForm;
 
 @Service
 @Transactional
@@ -192,6 +194,41 @@ public class RequestService {
 		this.validator.validate(result, binding);
 
 		return result;
+
+	}
+
+	public void checkRateable(final int requestId) {
+		Request request;
+		Application accepted;
+		Animaniac principal, owner;
+
+		request = this.findOne(requestId);
+		accepted = this.applicationService.findAcceptedApplicationForRequest(request);
+		principal = this.animaniacService.findAnimaniacByPrincipal();
+		owner = request.getPets().iterator().next().getAnimaniac();
+
+		Assert.isTrue(owner.equals(principal));
+		Assert.isTrue(!request.getRated());
+		Assert.isTrue(request.getEndDate().before(new Date()));
+		Assert.notNull(accepted, "request.error.accepted.application");
+	}
+
+	public void rate(final RateForm rateForm) {
+		Request request;
+		Application application;
+		Animaniac animaniac;
+
+		this.checkRateable(rateForm.getRequestId());
+
+		request = this.findOne(rateForm.getRequestId());
+		application = this.applicationService.findAcceptedApplicationForRequest(request);
+		animaniac = application.getAnimaniac();
+
+		request.setRated(true);
+		this.requestRepository.save(request);
+
+		animaniac.setRate(animaniac.getRate() + rateForm.getRate());
+		this.animaniacService.saveRate(animaniac);
 
 	}
 }

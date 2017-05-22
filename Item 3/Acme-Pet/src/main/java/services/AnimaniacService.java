@@ -203,4 +203,8 @@ public class AnimaniacService {
 
 	}
 
+	public void saveRate(final Animaniac animaniac) {
+		this.animaniacRepository.save(animaniac);
+	}
+
 }
