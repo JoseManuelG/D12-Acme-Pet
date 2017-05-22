@@ -162,8 +162,10 @@ public class RequestService {
 		}
 	}
 
-	public Collection<Request> searchRequest(final String address, final String type, final Date startDate, final Date endDate) {
+	public Collection<Request> searchRequest(final String address, final int type, final Date startDate, final Date endDate) {
 		return this.requestRepository.searchRequest(address, type, startDate, endDate);
+		//		return this.requestRepository.searchRequest(address, type, startDate);
+
 	}
 
 	public Collection<Request> searchRequest(final String address, final Date startDate, final Date endDate) {

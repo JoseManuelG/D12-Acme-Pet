@@ -90,7 +90,7 @@ public class SearchEngineService {
 			if (searchEngine.getStartDate() != null)
 				startDate = searchEngine.getStartDate();
 			else
-				startDate = new DateTime(System.currentTimeMillis()).toDate();
+				startDate = new DateTime(System.currentTimeMillis()).minusYears(10).toDate();
 
 			if (searchEngine.getEndDate() != null)
 				endDate = searchEngine.getEndDate();
@@ -100,7 +100,7 @@ public class SearchEngineService {
 			//Busqueda en base de Datos
 			if ((searchEngine.getType() != null))
 
-				requests = this.requestService.searchRequest(searchEngine.getAddress(), searchEngine.getType(), startDate, endDate);
+				requests = this.requestService.searchRequest(searchEngine.getAddress(), Integer.parseInt(searchEngine.getType()), startDate, endDate);
 
 			else
 				requests = this.requestService.searchRequest(searchEngine.getAddress(), startDate, endDate);
@@ -122,11 +122,25 @@ public class SearchEngineService {
 
 		result = !searchEngine.getAddress().equals(old.getAddress())
 
-		|| !(searchEngine.getType().equals(old.getType()))
+		|| !(searchEngine.getType().equals(old.getType()));
 
-		|| !(searchEngine.getEndDate().equals(old.getEndDate()))
+		if (searchEngine.getEndDate() == null && old.getEndDate() == null)
+			result = result;
+		else if (searchEngine.getEndDate() != null && old.getEndDate() == null)
+			result = true;
+		else if (searchEngine.getEndDate() == null && old.getEndDate() != null)
+			result = true;
+		else
+			result = result || !searchEngine.getEndDate().equals(old.getEndDate());
 
-		|| !(searchEngine.getStartDate().equals(old.getStartDate()));
+		if (searchEngine.getStartDate() == null && old.getStartDate() == null)
+			result = result;
+		else if (searchEngine.getStartDate() != null && old.getStartDate() == null)
+			result = true;
+		else if (searchEngine.getStartDate() == null && old.getStartDate() != null)
+			result = true;
+		else
+			result = result || !searchEngine.getStartDate().equals(old.getStartDate());
 
 		return result;
 

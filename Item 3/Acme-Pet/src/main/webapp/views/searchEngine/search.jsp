@@ -14,7 +14,8 @@
 <fieldset>
 	<form:form action="searchEngine/animaniac/search.do" modelAttribute="search">
 		<form:hidden path="id" />
-
+		<form:hidden path="animaniac" />
+		
 		
 		
     
@@ -36,7 +37,7 @@
 <jstl:if test="${!results.isEmpty()}">
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="requests" requestURI="${requestURI}" id="row">
+	name="search.requests" requestURI="${requestURI}" id="row">
 	
 	
 	<!-- Attributes -->
