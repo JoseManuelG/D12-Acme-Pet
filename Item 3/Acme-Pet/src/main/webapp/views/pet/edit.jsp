@@ -58,6 +58,8 @@
 
 	<acme:submit code="pet.save" name="save" />
 
+	<acme:submit code="pet.delete" name="delete" />
+
 	<acme:submit code="pet.addPhoto" name="addPhoto" />
 
 	<jstl:if test="${petForm.photos.size()>0}">

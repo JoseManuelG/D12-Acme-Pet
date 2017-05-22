@@ -108,6 +108,8 @@ public class AnimaniacPetController extends AbstractController { //TODO el nombr
 		return result;
 	}
 
+	// Save -------------------------------------------------------------------------
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView write(final PetForm petForm, final BindingResult bindingResult) {
 		ModelAndView result;
@@ -133,6 +135,25 @@ public class AnimaniacPetController extends AbstractController { //TODO el nombr
 
 		return result;
 	}
+
+	// Delete ---------------------------------------------------------------
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(final PetForm petForm) {
+		ModelAndView result;
+
+		try {
+			this.petService.delete(this.petService.findOne(petForm.getId()));
+			result = this.list(this.animaniacService.findAnimaniacByPrincipal().getId());
+
+		} catch (final IllegalArgumentException e) {
+			result = this.createEditModelAndView(petForm, e.getMessage());
+		}
+
+		return result;
+
+	}
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "addPhoto")
 	public ModelAndView addAttachment(final PetForm petForm) {
 		ModelAndView result;
