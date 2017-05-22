@@ -81,27 +81,29 @@ public class AttributeValueService {
 		else {
 			final List<AttributeValue> attributeValues2 = this.findAttributeValuesOfPet(pet);
 			final List<AttributeValue> attributeValues3 = new ArrayList<AttributeValue>(attributeValues);
+			final List<Integer> attributeValues4 = new ArrayList<Integer>();
 			for (int i = 0; i < attributeValues.size(); i++)
 				for (int j = 0; j < attributeValues2.size(); j++)
-					if (attributeValues.get(i).getAttribute() == attributeValues2.get(j).getAttribute()) {
+					if (attributeValues.get(i).getAttribute().getName().equals(attributeValues2.get(j).getAttribute().getName())) {
 						final AttributeValue attributeValue = this.create(pet, attributeValues2.get(j).getAttribute());
+						attributeValues4.add(i);
 						attributeValue.setValue(attributeValues.get(i).getValue());
 						attributeValue.setId(attributeValues2.get(j).getId());
 						attributeValue.setVersion(attributeValues2.get(j).getVersion());
-
-						if (!attributeValue.getValue().isEmpty()) {
-							attributeValues3.remove(attributeValues.get(i));
+						if (!attributeValue.getValue().isEmpty())
 							this.save(attributeValue);
-						} else {
-							attributeValues3.remove(attributeValues.get(i));
+						else
 							this.delete(attributeValues2.get(j));
-						}
 					}
+			int roldanArreglapetes = 0;
 			for (final AttributeValue a : attributeValues3) {
-				final AttributeValue attributeValue = this.create(pet, a.getAttribute());
-				attributeValue.setValue(a.getValue());
-				if (!a.getValue().isEmpty())
-					this.save(attributeValue);
+				if (!attributeValues4.contains(roldanArreglapetes)) {
+					final AttributeValue attributeValue = this.create(pet, a.getAttribute());
+					attributeValue.setValue(a.getValue());
+					if (!a.getValue().isEmpty())
+						this.save(attributeValue);
+				}
+				roldanArreglapetes++;
 			}
 		}
 	}
