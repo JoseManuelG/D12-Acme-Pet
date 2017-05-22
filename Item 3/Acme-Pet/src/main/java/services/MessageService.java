@@ -15,6 +15,7 @@ import org.springframework.validation.Validator;
 
 import repositories.MessageRepository;
 import domain.Actor;
+import domain.Administrator;
 import domain.Animaniac;
 import domain.Attachment;
 import domain.Folder;
@@ -290,5 +291,12 @@ public class MessageService {
 			this.save(m, new LinkedList<Attachment>());
 		}
 
+	}
+	public Boolean isAdmin(final Message message) {
+		Boolean res;
+		res = false;
+		if (Administrator.class.equals(message.getSender().getClass()))
+			res = true;
+		return res;
 	}
 }

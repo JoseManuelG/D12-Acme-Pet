@@ -75,6 +75,8 @@ public class MessageActorController extends AbstractController {
 		result.addObject("requestURI", "message/actor/view.do?messageId=" + messageId);
 		result.addObject("folders", folders);
 
+		result.addObject("isAdmin", this.messageService.isAdmin(res));
+
 		return result;
 	}
 

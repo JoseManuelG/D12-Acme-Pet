@@ -17,9 +17,19 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:if test="${!isAdmin}">
 <spring:message code="message.from"/>:
 <acme:mask text="${res.senderName}"/><br/>
+</jstl:if>
 
+<jstl:if test="${isAdmin}">
+
+<div style="color: green; font-weight: bold" >
+<spring:message code="message.from"/>:
+<jstl:out value="${res.senderName}" /><br/>
+
+</div>
+</jstl:if>
 <spring:message code="message.for"/>:
 <acme:mask text="${res.recipientName}"/><br/>
 
