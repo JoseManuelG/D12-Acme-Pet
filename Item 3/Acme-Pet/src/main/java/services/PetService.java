@@ -148,7 +148,7 @@ public class PetService {
 			for (int i = 0; i < petForm.getAttributeValues().size(); i++) {
 				petForm.getAttributeValues().get(i).setPet(result);
 				petForm.getAttributeValues().get(i).setAttribute(petForm.getAttributes().get(i));
-				this.validator.validate(petForm.getAttributeValues().get(i), binding);
+
 			}
 		}
 		return result;
@@ -176,7 +176,7 @@ public class PetService {
 			for (int i = 0; i < petForm.getAttributeValues().size(); i++) {
 				petForm.getAttributeValues().get(i).setPet(result);
 				petForm.getAttributeValues().get(i).setAttribute(petForm.getAttributes().get(i));
-				this.validator.validate(petForm.getAttributeValues().get(i), binding);
+
 			}
 		}
 

@@ -92,4 +92,10 @@ public class AttributeService {
 		return result;
 	}
 
+	public Collection<Attribute> attributeFromType(final int typeId) {
+		Collection<Attribute> result;
+		result = this.attributeRepository.attributtesWithType(typeId);
+		return result;
+	}
+
 }

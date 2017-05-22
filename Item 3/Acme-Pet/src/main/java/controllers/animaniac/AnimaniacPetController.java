@@ -10,7 +10,9 @@
 
 package controllers.animaniac;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,7 @@ import services.PhotoService;
 import services.RequestService;
 import services.TypeService;
 import controllers.AbstractController;
+import domain.Attribute;
 import domain.AttributeValue;
 import domain.Pet;
 import domain.Photo;
@@ -91,8 +94,10 @@ public class AnimaniacPetController extends AbstractController { //TODO el nombr
 		ModelAndView result;
 		final PetForm petForm = new PetForm();
 		final Collection<AttributeValue> attributeValues = this.attributeService.attributeValuesFromType(typeId, this.petService.create(typeId));
+		final Collection<Attribute> attributes = this.attributeService.attributeFromType(typeId);
+		final List<Attribute> attributes2 = new ArrayList<Attribute>(attributes);
+		petForm.setAttributes(attributes2);
 		petForm.getAttributeValues().addAll(attributeValues);
-		petForm.fillAttributes(attributeValues);
 		petForm.setType(this.typeService.findOne(typeId));
 		result = this.createEditModelAndView(petForm);
 		return result;
@@ -104,14 +109,17 @@ public class AnimaniacPetController extends AbstractController { //TODO el nombr
 		ModelAndView result;
 		final Pet pet = this.petService.findOne(petId);
 		final PetForm petForm = new PetForm(pet);
-		final Collection<AttributeValue> attributeValues = this.attributeValueService.findAttributeValuesOfPet(pet);
+		final Collection<AttributeValue> attributeValues = this.attributeService.attributeValuesFromType(pet.getType().getId(), pet);
+		final Collection<AttributeValue> attributeValues2 = this.attributeValueService.findAttributeValuesOfPet(pet);
+		final Collection<Attribute> attributes = this.attributeService.attributeFromType(pet.getType().getId());
+		final List<Attribute> attributes2 = new ArrayList<Attribute>(attributes);
 		petForm.getAttributeValues().addAll(attributeValues);
-		petForm.fillAttributes(attributeValues);
+		petForm.setAttributes(attributes2);
+		petForm.fillAttributeValues(attributeValues2, attributes2);
 		petForm.getPhotos().addAll(this.photoService.findPhotosOfPet(pet));
 		result = this.createEditModelAndView(petForm);
 		return result;
 	}
-
 	// Save -------------------------------------------------------------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")

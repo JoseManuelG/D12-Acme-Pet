@@ -30,9 +30,6 @@ public class PetForm {
 	private int						id;
 
 
-	//	private int						errorValue;
-	//	private int						errorPhoto;
-
 	//attributes------------
 
 	@SafeHtml
@@ -103,22 +100,6 @@ public class PetForm {
 		this.Type = type;
 	}
 
-	//	public int getErrorValue() {
-	//		return this.errorValue;
-	//	}
-	//
-	//	public void setErrorValue(final int errorValue) {
-	//		this.errorValue = errorValue;
-	//	}
-	//
-	//	public int getErrorPhoto() {
-	//		return this.errorPhoto;
-	//	}
-	//
-	//	public void setErrorPhoto(final int errorPhoto) {
-	//		this.errorPhoto = errorPhoto;
-	//	}
-
 	//----Metodos de uso del formulario----
 
 	public PetForm() {
@@ -126,8 +107,7 @@ public class PetForm {
 		this.photos = new LinkedList<Photo>();
 		this.weigth = 0.;
 		this.id = -1;
-		//		this.errorPhoto = -1;
-		//		this.errorValue = -1;
+
 	}
 	public PetForm(final Pet pet) {
 		this.genre = pet.getGenre();
@@ -137,8 +117,7 @@ public class PetForm {
 		this.attributeValues = new ArrayList<AttributeValue>();
 		this.photos = new LinkedList<Photo>();
 		this.setId(pet.getId());
-		//		this.errorPhoto = -1;
-		//		this.errorValue = -1;
+
 	}
 
 	public void addPhotoSpace() {
@@ -149,10 +128,10 @@ public class PetForm {
 		this.photos.removeLast();
 	}
 
-	public void fillAttributes(final Collection<AttributeValue> attributeValues) {
-		final List<Attribute> attributes = new ArrayList<Attribute>();
-		for (final AttributeValue a : attributeValues)
-			attributes.add(a.getAttribute());
-		this.setAttributes(attributes);
+	public void fillAttributeValues(final Collection<AttributeValue> attributeValues, final List<Attribute> attribute) {
+		for (int i = 0; i < this.attributes.size(); i++)
+			for (final AttributeValue attv : attributeValues)
+				if (attv.getAttribute() == this.attributes.get(i))
+					this.attributeValues.set(i, attv);
 	}
 }
