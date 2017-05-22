@@ -127,7 +127,7 @@
 		<security:intercept-url pattern="/pet/animaniac/create.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/pet/animaniac/view.do" access="hasAnyRole('ANIMANIAC','VET')" />
 		<security:intercept-url pattern="/pet/animaniac/list.do" access="hasRole('ANIMANIAC')" />
-		<security:intercept-url pattern="/pet/animaniac/list.do" access="hasAnyRole('ANIMANIAC','VET')" />
+		<security:intercept-url pattern="/pet/listAll.do" access="hasAnyRole('ANIMANIAC','VET')" />
 
 		<security:intercept-url pattern="/request/animaniac/list.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/request/animaniac/create.do" access="hasRole('ANIMANIAC')" />

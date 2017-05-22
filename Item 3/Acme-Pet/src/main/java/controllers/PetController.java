@@ -44,7 +44,8 @@ public class PetController extends AbstractController {
 		ModelAndView result;
 		final Collection<Pet> pets = this.petService.findAll();
 		result = new ModelAndView("pet/listAll");
-		result.addObject("types", pets);
+		result.addObject("pets", pets);
+		result.addObject("requestURI", "pet/listAll.do");
 		return result;
 	}
 }
