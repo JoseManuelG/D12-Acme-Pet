@@ -1,4 +1,6 @@
 ﻿-------------- POR HACER --------------
+- Cambiar toda referencia a "asociado" por "anunciante".
+- Enlace a lista de pets desde el perfil de un usuario falla como partner y supongo que para admin (o se pone para que solo aparezca para vet y animaniac el enlace o se pone en security permitAll)
 - Borrado de animaniac baneado por admin.
 - Añadir a los requisitos spamwords (funcional y no funcional) y buscador (funcional)
 - Internacionalizar genero para pets (esta hecho para animaniacos)

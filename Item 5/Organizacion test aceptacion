@@ -1,0 +1,828 @@
+No autenticado 
+	Caso de uso 1: Listar mascotas
+		Descripción
+			En este caso de uso vamos a ver la lista de todas las mascotas registradas en el sistema sin autenticarnos.
+		Acceso
+			Ponemos el ratón en "Mascotas" en la barra de navegación horizontal y pulsamos en el desplegable que se abre sobre "Listar todas". El acceso es el mismo para todos los tipos de usuario.
+		Tests
+		Test <#1> 
+		Descripción
+			Comprobar que la información sobre las mascotas que aparece en lista es la esperada.
+		Salida esperada
+			La lista de mascotas tiene las siguientes columnas: Nombre (que además será un enlace al perfil de la mascota), género y peso.
+		Notas del diseñador
+			Si intentas acceder al perfil de la mascota, el sistema te pedira que te autentiques. Es el comportamiento normal del sistema.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2> 
+		Descripción
+			Comprobar todos los enlaces de paginación.
+		Salida esperada
+			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobar que la lista se ordena correctamente para cada página usando los criterios de género y peso.
+		Salida esperada
+			Los dos ordenan correctamente para cada página.
+		Notas del diseñador
+			El orden global no funciona con este componente, es un error conocido, compruebalo solo para cada página por separado sin tener en cuenta las demás.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#4>
+		Descripción
+			Comprobar que los enlaces de los nombres de las mascotas funcionan correctamente.
+		Salida esperada
+			Todos los enlaces llevan al perfil de cada mascota.
+		Notas del diseñador
+			Para ver el perfil es necesario autenticarse. Usa los credenciales de "animaniac1".
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#5>
+		Descripción
+			Comprobar el acceso. Entra como cada tipo de actor con las credenciales "animaniac1", "vetvet1", "partner1" y "admin" para verificar que todos los actores pueden entrar.
+		Salida esperada
+			Todos los actores pueden acceder.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#6>
+		Descripción
+			Realiza de nuevo todos los test en inglés.
+		Salida esperada
+			Se han traducido todos los elementos menos el nombre de cada mascota.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 2: Listar animaniacos
+		Descripción
+			En este caso de uso vamos a ver la lista de todos los animaniacos registrados en el sistema sin autenticarnos.
+		Acceso
+			Ponemos el ratón en "Gente" en la barra de navegación horizontal y pulsamos en el desplegable que se abre sobre "Listar animaniacos".
+		Tests
+		Test <#1> 
+		Descripción
+			Comprobar que la información sobre los animaniacos que aparece en lista es la esperada.
+		Salida esperada
+			La lista de animaniacos tiene las siguientes columnas: Nombre, Apellidos y Género. Además se proporciona un enlace para ver el perfil de cada animaniaco.
+		Notas del diseñador
+			Si intentas acceder al perfil del animaniaco, el sistema te pedira que te autentiques. Es el comportamiento normal del sistema.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2> 
+		Descripción
+			Comprobar los enlaces de paginación.
+		Salida esperada
+			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobar que la lista se ordena correctamente para cada página usando los criterios de nombre, apellido y género.
+		Salida esperada
+			Los tres ordenan correctamente para cada página.
+		Notas del diseñador
+			El orden global no funciona con este componente, es un error conocido, compruébalo solo para cada página por separado sin tener en cuenta las demás.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#4>
+		Descripción
+			Comprobar que los enlaces de ver perfil funcionan correctamente.
+		Salida esperada
+			Todos los enlaces llevan al perfil de cada animaniaco.
+		Notas del diseñador
+			Para ver el perfil es necesario autenticarse. Usa los credenciales de "animaniac1".
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#5>
+		Descripción
+			Comprobar el acceso. Entra como cada tipo de actor con las credenciales "animaniac1", "vetvet1", "partner1" y "admin" para verificar que todos los actores pueden entrar.
+		Salida esperada
+			Todos los actores pueden acceder. El admin puede ver botones para las acciones de banear o desbanear, según sea el caso.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#6>
+		Descripción
+			Realiza de nuevo todos los test en inglés.
+		Salida esperada
+			Se han traducido todos los elementos menos el nombre y apellido de cada animaniaco.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 3: Listar veterinarios
+		Descripción
+			En este caso de uso vamos a ver la lista de todos los veterinarios registrados en el sistema sin autenticarnos.
+		Acceso
+			Ponemos el ratón en "Gente" en la barra de navegación horizontal y pulsamos en el desplegable que se abre sobre "Listar veterinarios".
+		Tests
+		Test <#1> 
+		Descripción
+			Comprobar que la información sobre los veterinarios que aparece en lista es la esperada.
+		Salida esperada
+			La lista de animaniacos tiene las siguientes columnas: Nombre, Apellidos, Dirección y Teléfono. Además se proporciona un enlace para ver el perfil de cada veterinario.
+		Notas del diseñador
+			Si intentas acceder al perfil del veterinario, el sistema te pedira que te autentiques. Es el comportamiento normal del sistema.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2> 
+		Descripción
+			Comprobar los enlaces de paginación.
+		Salida esperada
+			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobar que la lista se ordena correctamente para cada página usando los criterios de nombre, apellidos, dirección y teléfono.
+		Salida esperada
+			Los cuatro ordenan correctamente para cada página.
+		Notas del diseñador
+			El orden global no funciona con este componente, es un error conocido, compruébalo solo para cada página por separado sin tener en cuenta las demás.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#4>
+		Descripción
+			Comprobar que los enlaces de ver perfil funcionan correctamente.
+		Salida esperada
+			Todos los enlaces llevan al perfil de cada veterinario.
+		Notas del diseñador
+			Para ver el perfil es necesario autenticarse. Usa los credenciales de "animaniac1".
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#5>
+		Descripción
+			Comprobar el acceso. Entra como cada tipo de actor con las credenciales "animaniac1", "vetvet1", "partner1" y "admin" para verificar que todos los actores pueden entrar.
+		Salida esperada
+			Todos los actores pueden acceder.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#6>
+		Descripción
+			Realiza de nuevo todos los test en inglés.
+		Salida esperada
+			Se han traducido todos los elementos menos el nombre, apellido, dirección y teléfono de cada veterinario.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 4: Listar anunciantes [WIP]
+		Descripción
+			En este caso de uso vamos a ver la lista de todos los anunciantes registrados en el sistema. Para ello es necesario que estemos autenticados como algún usuario, por ejemplo lo haremos con "animaniac1". Como los administradores pueden ver más información, tambien lo haremos con "admin".
+		Acceso
+			Una vez autenticados, ponemos el ratón en "Gente" en la barra de navegación horizontal y pulsamos en el desplegable que se abre sobre "Listar anunciantes".
+		Tests
+		Test <#1> 
+		Descripción
+			Comprobar que la información sobre los anunciantes que aparece en lista es la esperada.
+		Salida esperada
+			La lista de anunciantes tiene las siguientes columnas: Nombre, Apellidos Teléfono. Además se proporciona un enlace para ver el perfil de cada anunciante.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2> 
+		Descripción
+			Comprobar los enlaces de paginación.
+		Salida esperada
+			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobar que la lista se ordena correctamente para cada página usando los criterios de nombre, apellidos, dirección y teléfono.
+		Salida esperada
+			Los tres ordenan correctamente para cada página.
+		Notas del diseñador
+			El orden global no funciona con este componente, es un error conocido, compruébalo solo para cada página por separado sin tener en cuenta las demás.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#4>
+		Descripción
+			Comprobar que los enlaces de ver perfil funcionan correctamente.
+		Salida esperada
+			Todos los enlaces llevan al perfil de cada veterinario.
+		Notas del diseñador
+			Para ver el perfil es necesario autenticarse. Usa los credenciales de "animaniac1".
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#5>
+		Descripción
+			Comprobar el acceso. Entra como cada tipo de actor con las credenciales "animaniac1", "vetvet1", "partner1" y "admin" para verificar que todos los actores pueden entrar.
+		Salida esperada
+			Todos los actores pueden acceder.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#6>
+		Descripción
+			Realiza de nuevo todos los test en inglés.
+		Salida esperada
+			Se han traducido todos los elementos menos el nombre, apellido, dirección y teléfono de cada veterinario.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 4: Registro como animaniaco
+		Descripción
+			En este caso de uso vamos registrar un nuevo usuario.
+		Acceso
+			Sin autenticarnos, pulsamos sobre el botón registro en la barra de navegación horizontal.
+		Tests
+		Test <#1> 
+		Descripción
+			Comprobamos que la información de registro que aparece para un animaniaco es la esperada. Un animaniaco debe tener un nombre de usuario, una contraseña, un nombre, apellidos, email, teléfono, género, dirección y, opcionalmente, una foto.
+		Salida esperada
+			Se muestran campos para todos los datos necesarios.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2> 
+		Descripción
+			Comprobamos que el botón de cancelar nos devuelve correctamente a la página principal.
+		Salida esperada
+			Redirige correctamente.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobamos que pasa al intentar guardar con todos los campos vacios.
+		Salida esperada
+			Se muestran errores en todos los campos, excepto en el de foto, que es opcional, en el de confirmar contraseña, ya que al estar las dos en blanco coinciden, y en el de género, que hay uno seleccionado.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#4> 
+		Descripción
+			Comprobamos a rellenar los campos con datos erróneos o hace XSS. Usa los siguientes datos:
+				Nombre de usuario: test1
+				Contraseña: test1
+				Confirmar contraseña: test2
+				Nombre: Juan
+				Apellido: <script>alert('hacked!')</script>
+				Email: jucamp@com
+				Teléfono: No tengo
+				Género: Masculino
+				Dirección: Calle de las rosas 3
+				Foto: imagen.es/img.jpg
+		Salida esperada
+			Se esperan los siguientes errores: 
+				Confirmar contraseña: La contraseña no coincide
+				Apellido: HTML inseguro
+				Email: No encaja en el patrón
+				Teléfono: No encaja en el patrón
+				Foto: URL incorrecta
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#5> 
+		Descripción
+			Comprobamos qué ocurre al intentar hacer SQL injection en algun campo:
+				Nombre de usuario: test1
+				Contraseña: test1
+				Confirmar contraseña: test1
+				Nombre: test1
+				Apellido: ' or 'A' = 'A
+				Email: test1@test1.com
+				Teléfono: +34000000000
+				Género: Masculino
+				Dirección: Calle de las rosas 3
+				Términos y condiciones marcados
+			Podemos comprobar sus datos llendo a la lista de todos los animaniacos (Gente/Listar animaniacos). Estará en la última posición.
+		Salida esperada
+			Se crea el usuario test1 con el apellido usado.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#6> 
+		Descripción
+			Comprobamos que todos los campos de la lista de género funcionen correctamente. Ya hemos registrado un animaniaco de género másculino, registramos uno de género femenino.
+				Nombre de usuario: test2
+				Contraseña: test2
+				Confirmar contraseña: test2
+				Nombre: test2
+				Apellido: test2
+				Email: test2@test2.com
+				Teléfono: +34000000000
+				Género: Femenino
+				Dirección: Calle de las rosas 3
+				Términos y condiciones marcados
+			Podemos comprobar sus datos llendo a la lista de todos los animaniacos (Gente/Listar animaniacos). Estará en la última posición.
+		Salida esperada
+			Se crea el usuario test2 correctamente.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#7> 
+		Descripción
+			Repite los test anteriores en inglés
+		Notas del diseñador
+			No es válido crear dos usuarios con el mismo nombre. Usa test3 y test 4 en lugar de test1 y test2 respectivamente.
+		Salida esperada
+			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 5: Ver perfil de animaniaco.
+		Descripción
+			En este caso de uso vamos a ver el perfil de un animaniaco. Si el que lo ve es el propio animaniaco, tendrá también enlaces con distintas acciones de edición.
+		Acceso
+			Tenemos varias opciones para acceder al perfil de un animaniaco. Durante los siguientes test vamos a usar dos de ellas. La primera es através de la lista de animaniacos (Gente/Listar animaniacos) y seleccionando qué animaniaco queremos ver. Si lo que queremos es ver el perfil del usuario conectado, podemos poner el ratón sobre el boton "perfil" de la barra de navegación y pulsar en la primera opción del desplegable, "mi perfil".
+
+		Tests
+		Test <#1> 
+		Descripción
+			Comprobamos que al entrar en el perfil del usuario los datos que aparecen son los esperados por el cliente. Para un animaniaco debe aparecer la siguiente información: foto de perfil, nombre de usuario, puntuación, nombre, apellido, email, teléfono, género y dirección. Además debe aparecer su curriculum con los campos sección de educacion, sección de experiencia y sección de aficiones, y una lista de los comentarios hechos sobre su perfil. También debe contar un enlaces para mandarle un mensaje, comentar en su perfil, ver sus mascotas y, si estas conectado como otro animaniaco, informar sobre su mal uso de la aplicación. Autenticate como "animaniac2" y entra en el perfil del animaniac1.
+		Salida esperada
+			Se muestran todos los datos necesario, así como el curriculum, la lista de comentarios y los enlaces pertinentes.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2> 
+		Descripción
+			Comprobamos que los distintos enlaces funcionan.
+		Salida esperada
+			Mandar un mensaje nos lleva al formulario para crear un mensaje, comentar, al formulario para crear un comentario, reportar, al formulario para crear un informe de mal uso, y lista de mascotas, a las mascotas del animaniaco.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobamos los enlaces de edicion en el perfil del propio animaniaco. Para ello vamos a "mi perfil". Además de todo lo anterior, deben aparecer los enlaces "editar" y "editar curriculum". Pulsamos sobre ellos para comprobarlos.
+		Salida esperada
+			Editar lleva al formulario de edición y editar curriculum al de editar curriculum.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 6: Listar comentarios
+		Descripción
+			Hemos visto que en el perfil de un animaniaco aparece una lista de comentarios. Vamos a comprobar que la lista funciona adecuadamente.
+		Acceso
+			Accedemos a un peril de un animaniaco, por alguno de los metodos comentados en el caso de uso anterior.
+		Tests
+		Test <#1> 
+		Descripción
+			Comprobar que la información sobre los comentarios que aparece en lista es la esperada.
+		Salida esperada
+			La lista de comentarios tiene las siguientes columnas: momento de publicación, título y cuerpo, asi como un enlace a su autor.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2> 
+		Descripción
+			Comprobar los enlaces de paginación.
+		Salida esperada
+			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobar que la lista se ordena correctamente para cada página usando los criterios de momento de publicación, título y cuerpo.
+		Salida esperada
+			Los tres ordenan correctamente para cada página.
+		Notas del diseñador
+			El orden global no funciona con este componente, es un error conocido, compruébalo solo para cada página por separado sin tener en cuenta las demás.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#4>
+		Descripción
+			Comprobar que los enlaces de para ver perfil funcionan correctamente.
+		Salida esperada
+			Todos los enlaces llevan al perfil de cada animaniaco.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#5>
+		Descripción
+			Comprobar el formato. La fecha debe seguir el formato año-mes-día hora:minuto:segundo. 
+		Salida esperada
+			La fecha tiene el formato esperado.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#6>
+		Descripción
+			Realiza de nuevo todos los test en inglés.
+		Salida esperada
+			Se han traducido todos los elementos menos el nombre, apellido, dirección y teléfono de cada veterinario.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 7: Ver perfil de veterinario.
+		Descripción
+			En este caso de uso vamos a ver el perfil de un veterinario. Si el que lo ve es el propio veterinario, tendrá también un enlace pare editar su perfil.
+		Acceso
+			Al igual que en caso de uso 5, podemos entrar a través de "Gente/Listar veterinarios" o de "Perfil/Mi perfil".
+
+		Tests
+		Test <#1> 
+		Descripción
+			Comprobamos que al entrar en el perfil del usuario los datos que aparecen son los esperados por el cliente. Para un veterinario debe aparecer la siguiente información: nombre de usuario, nombre, apellido, email, teléfono, y dirección. También debe contar con un enlace para mandarle un mensaje. Autenticate como "vetvet2" y entra en el perfil de vetvet1.
+		Salida esperada
+			Se muestran todos los datos necesario, así como el enlace para mandar mensaje.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2> 
+		Descripción
+			Comprobamos que el enlace de mandar mensaje funciona.
+		Salida esperada
+			Mandar un mensaje nos lleva al formulario para crear un mensaje con destino el veterinario elegido.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobamos el enlace de edición en el perfil del propio veterinario. Para ello vamos a "mi perfil". Además de todo lo anterior, debe aparecer el enlace de "editar". Pulsamos sobre ellos para comprobarlos.
+		Salida esperada
+			Editar lleva al formulario de edición del veterinario.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 7: Ver perfil de anunciante.[WIP]
+		Descripción
+			En este caso de uso vamos a ver el perfil de un anunciante. Si el que lo ve es el propio anunciante, tendrá también un enlace pare editar su perfil.
+		Acceso
+			Al igual que en caso de uso 5, podemos entrar a través de "Gente/Listar anunciantes" o de "Perfil/Mi perfil".
+
+		Tests
+		Test <#1> 
+		Descripción
+			Comprobamos que al entrar en el perfil del usuario los datos que aparecen son los esperados por el cliente. Para un veterinario debe aparecer la siguiente información: nombre de usuario, nombre, apellido, email, teléfono, y dirección. También debe contar con un enlace para mandarle un mensaje. Autenticate como "vetvet2" y entra en el perfil de vetvet1.
+		Salida esperada
+			Se muestran todos los datos necesario, así como el enlace para mandar mensaje.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2> 
+		Descripción
+			Comprobamos que el enlace de mandar mensaje funciona.
+		Salida esperada
+			Mandar un mensaje nos lleva al formulario para crear un mensaje con destino el veterinario elegido.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobamos el enlace de edición en el perfil del propio veterinario. Para ello vamos a "mi perfil". Además de todo lo anterior, debe aparecer el enlace de "editar". Pulsamos sobre ellos para comprobarlos.
+		Salida esperada
+			Editar lleva al formulario de edición del veterinario.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegurate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 6: Modificar perfil. 
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 7: Modificar curriculum.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 8: Listar mis mascotas.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 9: Crear una nueva mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 10: Ver mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 11: Editar mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 12: Borrar mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 13: Listar peticiones
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 14: Crear petición sobre sus mascotas.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 15: Listar mis peticiones.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 16: Rechazar solicitud. 
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 17: Aceptar solicitud.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 18: Borrar petición.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 19: Buscar peticiones.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 20: Hacer solicitud. 
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 21: Comentar en otro animaniaco.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 22: Comentar en una mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 23: Puntuar en un animaniaco.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 24: Informar sobre el mal comportamiento de un animaniaco.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 25: Ver lista de veterinarios.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 26: Ver información sobre un veterinario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 27: Enviar mensaje a ese veterinario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 28: Crear carpeta.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 29: Mover mensaje.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 30: Eliminar mensaje.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 31: Eliminar definitivamente mensaje.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 32: Eliminar carpeta.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 33: Listar anunciantes.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 34: Ver perfil de anunciante. 
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Partner
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 35: Modificar su perfil.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 36: Registrar banner.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 37: modificar banner.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 38: Eliminar banner.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Vet
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 39: Modificar su perfil.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 40: Certificar mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 41: Responder mensaje.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 42: Reenviar mensaje. 
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Admin
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 43: Modificar su perfil.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 44: Registrar anunciante.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 45: Registrar veterinario.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 46: Listar tipos de mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 47: Crear tipo de mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 48: editar tipo de mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 49: Eliminar tipo de mascota.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 50: Listar atributos de tipo.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 51: Crear atributo de tipo.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 52: Editar atributo de tipo.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 53: Eliminar atributo de tipo.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 54: Listar informas de mal uso.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 55: Banear animaniaco.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+!!!	Caso de uso 56: Borrar del sistema a un animaniaco baneado.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 57: Editar tiempo de cache.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+	Caso de uso 58: Cambiar fee.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
