@@ -113,6 +113,19 @@ public class PetTest extends AbstractTest {
 		this.templateEditPet("animaniac2", "pet7Animaniac1", "testEdit", "female", 20.0, IllegalArgumentException.class);
 	}
 
+	//Caso de uso de borrar una pet:
+	//test positivo
+	@Test
+	public void deletePetTest1() {
+		this.templateDeletePet("animaniac1", "pet7Animaniac1", null);
+	}
+
+	//test negativo pet en una request activa
+	@Test
+	public void deletePetTest2() {
+		this.templateDeletePet("animaniac1", "pet1Animaniac1", IllegalArgumentException.class);
+	}
+
 	// Ancillary methods ------------------------------------------------------
 
 	protected void templateRegisterPet(final String animaniacBean, final String typeBean, final String petName, final String petGenre, final Double weigth, final String link, final Class<?> expected) {
@@ -158,5 +171,20 @@ public class PetTest extends AbstractTest {
 		}
 		this.checkExceptions(expected, caught);
 
+	}
+
+	protected void templateDeletePet(final String animaniacBean, final String petBean, final Class<?> expected) {
+		Class<?> caught = null;
+		Pet pet;
+		try {
+			this.authenticate(animaniacBean);
+			pet = this.petService.findOne(this.extract(petBean));
+			this.petService.delete(pet);
+			this.petService.flush();
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
 	}
 }
