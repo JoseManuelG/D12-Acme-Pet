@@ -33,7 +33,7 @@ public class CommentAnimaniacController extends AbstractController {
 	@Autowired
 	private AnimaniacController		animaniacController;
 	@Autowired
-	private AnimaniacPetController	petController;
+	private PetAnimaniacController	petController;
 
 
 	// List --------------------------------------------------------------------

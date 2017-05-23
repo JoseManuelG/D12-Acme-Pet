@@ -38,7 +38,7 @@ import forms.PetForm;
 
 @Controller
 @RequestMapping("/pet/animaniac")
-public class AnimaniacPetController extends AbstractController { //TODO el nombre es al reves
+public class PetAnimaniacController extends AbstractController { //TODO el nombre es al reves
 
 	// Services ---------------------------------------------------------------
 
@@ -66,7 +66,7 @@ public class AnimaniacPetController extends AbstractController { //TODO el nombr
 
 	// Constructors -----------------------------------------------------------
 
-	public AnimaniacPetController() {
+	public PetAnimaniacController() {
 		super();
 	}
 
