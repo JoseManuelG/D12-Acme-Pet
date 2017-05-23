@@ -1,4 +1,7 @@
 ﻿-------------- POR HACER --------------
+- Borrado de animaniac baneado por admin.
+- Añadir a los requisitos spamwords (funcional y no funcional) y buscador (funcional)
+- Internacionalizar genero para pets (esta hecho para animaniacos)
 - Sacar pdfs de requirements.
 - Poner imagenes correctas en los banners del populate
 - B+Tree
