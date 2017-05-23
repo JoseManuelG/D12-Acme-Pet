@@ -128,6 +128,10 @@ public class PetService {
 		return result;
 	}
 
+	public void flush() {
+		this.petRepository.flush();
+	}
+
 	// other business methods --------------------------------------
 
 	public Pet reconstruct(final PetForm petForm, final BindingResult binding) {
