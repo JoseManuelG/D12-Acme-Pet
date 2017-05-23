@@ -3,15 +3,15 @@
 - Poner imagenes correctas en los banners del populate
 - B+Tree
 - Informe costes
-- Sacar PDFs de los astah ya que se ha cambiado el nombre de attribute name
 - Propiedad de pet certificateBy deberia ser certificatedBy?
-- Formulario de pet, attribute value si se ponen todos cambiar para que si esta en blanco no cree el attribute value
-- Cambiar mensajes de folder.
-- Crear carpetas de un actor al crear el actor.
-- Filtro de Spam de mensajeria
 - Cambiar el about y el terminos y condiciones
 
 ---------------- HECHO ----------------
+- Sacar PDFs de los astah ya que se ha cambiado el nombre de attribute name
+- Cambiar mensajes de folder.
+- Filtro de Spam de mensajeria
+- Crear carpetas de un actor al crear el actor.
+- Formulario de pet, attribute value si se ponen todos cambiar para que si esta en blanco no cree el attribute value
 - Meter reunión y tareas iniciales en redmine (javi).
 - Revisar en modelos multiplicidad 1 en actores (detectado en abusereport y mensajeria) (¿no debe ser 0..1 por si borran la cuenta?)
 	->Pensandolo, mi opinion es que si el reportador se borra la cuenta el reporte se quede, pero si el reportado se borra la cuenta se borre el reporte.
