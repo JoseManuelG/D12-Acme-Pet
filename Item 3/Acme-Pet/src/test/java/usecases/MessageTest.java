@@ -20,6 +20,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import services.ActorService;
+import services.AnimaniacService;
 import services.FolderService;
 import services.MessageService;
 import utilities.AbstractTest;
@@ -38,11 +39,13 @@ public class MessageTest extends AbstractTest {
 	// System under test ------------------------------------------------------
 
 	@Autowired
-	private MessageService	messageService;
+	private MessageService		messageService;
 	@Autowired
-	private ActorService	actorService;
+	private ActorService		actorService;
 	@Autowired
-	private FolderService	folderService;
+	private FolderService		folderService;
+	@Autowired
+	private AnimaniacService	animaniacService;
 
 
 	// Tests ------------------------------------------------------------------
@@ -136,6 +139,29 @@ public class MessageTest extends AbstractTest {
 		this.templateForwardMessage("", "noExist", IllegalArgumentException.class);
 	}
 
+	//Caso de uso de alertar animaniacos cuando un animaniaco es baneado:
+	//final String administratorBean, final String bannedAnimaniacBean, final Class<?> expected
+	//test positivo
+	@Test
+	public void AlertAnimaniacsTest1() {
+		this.templateAlertAnimaniacs("admin", "animaniac1", null);
+	}
+	//veterinario baneado
+	@Test
+	public void AlertAnimaniacsTest2() {
+		this.templateAlertAnimaniacs("admin", "vetvet6", NumberFormatException.class);
+	}
+	//sin usuario de login
+	@Test
+	public void AlertAnimaniacsTest3() {
+		this.templateAlertAnimaniacs(null, "animaniac1", IllegalArgumentException.class);
+	}
+	//logeado como no administrador
+	@Test
+	public void AlertAnimaniacsTest4() {
+		this.templateAlertAnimaniacs("animaniac1", "animaniac1", NullPointerException.class);
+	}
+
 	// Ancillary methods ------------------------------------------------------
 
 	protected void templateSendMessage(final String actorSenderBean, final String actorRecipientBean, final String subject, final String text, final Class<?> expected) {
@@ -205,6 +231,19 @@ public class MessageTest extends AbstractTest {
 
 			//message = this.messageService.reconstruct(form, this.bindingResult);
 			//no se como sacar el BindingResult
+			this.messageService.flush();
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
+	protected void templateAlertAnimaniacs(final String administratorBean, final String bannedAnimaniacBean, final Class<?> expected) {
+		Class<?> caught;
+		caught = null;
+		try {
+			this.authenticate(administratorBean);
+			this.messageService.alertAnimaniacs(this.extract(bannedAnimaniacBean));
 			this.messageService.flush();
 			this.unauthenticate();
 		} catch (final Throwable oops) {

@@ -31,25 +31,27 @@ public class MessageService {
 
 	//Managed Repository--------------------------------------------------------------------
 	@Autowired
-	private MessageRepository	messageRepository;
+	private MessageRepository		messageRepository;
 
 	//Supported Services--------------------------------------------------------------------
 	@Autowired
-	private ActorService		actorService;
+	private ActorService			actorService;
 	@Autowired
-	private FolderService		folderService;
+	private FolderService			folderService;
 	@Autowired
-	private AttachmentService	attachmentService;
+	private AttachmentService		attachmentService;
 	@Autowired
-	private RequestService		requestService;
+	private RequestService			requestService;
 	@Autowired
-	private ApplicationService	applicationService;
+	private ApplicationService		applicationService;
 	@Autowired
-	private AnimaniacService	animaniacService;
+	private AnimaniacService		animaniacService;
 	@Autowired
-	private Validator			validator;
+	private Validator				validator;
 	@Autowired
-	private SpamWordService		spamWordService;
+	private SpamWordService			spamWordService;
+	@Autowired
+	private AdministratorService	administratorService;
 
 
 	//Simple CRUD methods------------------------------------------------------------------
@@ -269,7 +271,6 @@ public class MessageService {
 		return result;
 	}
 	public MessageForm writeTo(final int actorId) {
-
 		final MessageForm result = new MessageForm();
 		result.setAction(1);
 
@@ -302,8 +303,11 @@ public class MessageService {
 	public void alertAnimaniacs(final int animaniacId) {
 		final Collection<Request> requests;
 		Collection<Animaniac> animaniacs;
-		final Animaniac bannedAnimaniac = this.animaniacService.findOne(animaniacId);
+		final Animaniac bannedAnimaniac;
 
+		Assert.isTrue(this.administratorService.findAdministratorByPrincipal().getClass().equals(Administrator.class), "message.error.notadmin");
+
+		bannedAnimaniac = this.animaniacService.findOne(animaniacId);
 		requests = this.requestService.findAllFromAnimaniac(animaniacId);
 		animaniacs = this.applicationService.findAnimaniacsWithAcceptedApplicationOfRequest(requests);
 
