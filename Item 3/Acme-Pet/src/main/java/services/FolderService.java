@@ -47,6 +47,9 @@ public class FolderService {
 		Assert.notNull(folder, "SAVE: El folder ha de ser NO nulo");
 		Assert.notNull(folder.getActor(), "El actor no puede ser nulo");
 		Assert.isTrue(principal.equals(folder.getActor()), "SAVE: UserAccount no valido");
+		Assert.isTrue(!folder.getName().isEmpty(), "El nombre no puede estar vacio");
+		Assert.isTrue(!folder.getReadOnly() || folder.getId() == 0, "No se puede editar un folder onlyRead");
+
 		final Folder result = this.folderRepository.save(folder);
 		return result;
 	}
@@ -64,10 +67,11 @@ public class FolderService {
 	}
 
 	public Folder findOne(final Integer folderId) {
+		Assert.notNull(folderId, "la id no puede ser nula");
+		Assert.isTrue(folderId != 0, "la id no puede ser 0");
 		final Folder result = this.folderRepository.findOne(folderId);
 		return result;
 	}
-
 	public void delete(final Folder folder) {
 		final Actor principal = this.actorService.findActorByPrincipal();
 		Collection<Message> messages;
@@ -121,5 +125,10 @@ public class FolderService {
 	public Folder findFolderOfActor(final Actor actor, final String folderName) {
 		final Folder result = this.folderRepository.findAFolderOfActor(actor.getId(), folderName);
 		return result;
+	}
+
+	public void flush() {
+		this.folderRepository.flush();
+
 	}
 }
