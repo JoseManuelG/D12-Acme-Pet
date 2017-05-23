@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.AnimaniacService;
 import services.PetService;
 import services.PhotoService;
 import utilities.AbstractTest;
@@ -38,11 +37,9 @@ public class PetTest extends AbstractTest {
 	// System under test ------------------------------------------------------
 
 	@Autowired
-	private PetService			petService;
+	private PetService		petService;
 	@Autowired
-	private AnimaniacService	animaniacService;
-	@Autowired
-	private PhotoService		photoService;
+	private PhotoService	photoService;
 
 
 	// Tests ------------------------------------------------------------------
