@@ -33,13 +33,20 @@
 				<security:authorize access="isAuthenticated()">
 					<li><a href="partner/list.do"><spring:message code="master.page.list.partner" /></a></li>
 				</security:authorize>
-				<security:authorize access="hasAnyRole('ANIMANIAC','VET')">
-					<li><a href="pet/listAll.do"><spring:message code="master.page.pet.list" /></a></li>
-						
-				</security:authorize>
-				
 			</ul>
-			
+		</li>
+		
+		<li>
+			<a class="fNiv"> 
+				<spring:message code="master.page.pets" /> 
+			</a>
+			<ul>
+				<li class="arrow"></li>
+				<li><a href="pet/listAll.do"><spring:message code="master.page.pet.list" /></a></li>
+				<security:authorize access="hasRole('ANIMANIAC')">
+					<li><a href="pet/animaniac/myPets.do"><spring:message code="master.page.pet.myPets" /></a></li>
+				</security:authorize>
+			</ul>
 		</li>
 		<security:authorize access="isAuthenticated()">
 			<li>
@@ -76,10 +83,6 @@
 					<li><a href="folder/list.do"><spring:message code="master.page.folders" /></a></li>
 					<security:authorize access="hasRole('ANIMANIAC')">
 					<li><a href="searchEngine/animaniac/search.do"><spring:message code="master.page.searchEngine" /></a></li>
-					</security:authorize>
-					
-					<security:authorize access="hasRole('ANIMANIAC')">
-					<li><a href="pet/animaniac/myPets.do"><spring:message code="master.page.pet.myPets" /></a></li>
 					</security:authorize>
 					
 					<security:authorize access="hasRole('VET')">

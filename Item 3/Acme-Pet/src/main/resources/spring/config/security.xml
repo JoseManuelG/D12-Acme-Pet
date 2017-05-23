@@ -54,6 +54,8 @@
 		
 		<security:intercept-url pattern="/vet/list.do" access="permitAll" />
 		
+		<security:intercept-url pattern="/pet/listAll.do" access="permitAll" />
+		
 		
 		<!-- Actor -->			
 <!-- 	<security:intercept-url pattern="" access="isAuthenticated()" /> -->
@@ -128,7 +130,6 @@
 		<security:intercept-url pattern="/pet/animaniac/view.do" access="hasAnyRole('ANIMANIAC','VET')" />
 		<security:intercept-url pattern="/pet/animaniac/list.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/pet/animaniac/myPets.do" access="hasRole('ANIMANIAC')" />
-		<security:intercept-url pattern="/pet/listAll.do" access="hasAnyRole('ANIMANIAC','VET')" />
 
 		<security:intercept-url pattern="/request/animaniac/list.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/request/animaniac/create.do" access="hasRole('ANIMANIAC')" />
