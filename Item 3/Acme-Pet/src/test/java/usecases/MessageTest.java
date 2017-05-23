@@ -20,10 +20,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import services.ActorService;
+import services.FolderService;
 import services.MessageService;
 import utilities.AbstractTest;
 import domain.Attachment;
+import domain.Folder;
 import domain.Message;
+import forms.MessageForm;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
@@ -38,95 +41,100 @@ public class MessageTest extends AbstractTest {
 	private MessageService	messageService;
 	@Autowired
 	private ActorService	actorService;
+	@Autowired
+	private FolderService	folderService;
 
 
 	// Tests ------------------------------------------------------------------
 
-	//Caso de uso de crear un vet:
+	//Caso de uso de enviar un mensaje:
 	//final String actorBean, final String folderName, final Class<?> expected
 	//test positivo
 	@Test
 	public void createFolderTest1() {
 		this.templateSendMessage("animaniac1", "animaniac1", "FunctionalTestSubject", "FunctionalTestText", null);
 	}
-	//	//blank folderName
-	//	@Test
-	//	public void createFolderTest2() {
-	//		this.templateCreateFolder("animaniac1", "", IllegalArgumentException.class);
-	//	}
-	//
-	//	//sin loguearse
-	//	@Test
-	//	public void createFolderTest3() {
-	//		this.templateCreateFolder(null, "FunctionalTestFolder", IllegalArgumentException.class);
-	//	}
-	//
-	//	//Caso de uso de editar un vet:
-	//	//final String actorBean, final String folderBean, final String folderName, final Class<?> expected
-	//	//test positivo
-	//	@Test
-	//	public void editFolderTest1() {
-	//		this.templateEditFolder("animaniac1", "folder5Animaniac1", "FunctionalTestFolder", null);
-	//	}
-	//	//folderName ya existente
-	//	@Test
-	//	public void editFolderTest3() {
-	//		this.templateEditFolder("animaniac1", "folder5Animaniac1", "spambox", DataIntegrityViolationException.class);
-	//	}
-	//	//sin loguearse
-	//	@Test
-	//	public void editFolderTest2() {
-	//		this.templateEditFolder(null, "folder5Animaniac1", "FunctionalTestFolder", IllegalArgumentException.class);
-	//	}
-	//
-	//	//no se el dueño del folder
-	//	@Test
-	//	public void editFolderTest4() {
-	//		this.templateEditFolder("animaniac2", "folder5Animaniac1", "FunctionalTestFolder", IllegalArgumentException.class);
-	//	}
-	//	//blanks
-	//	@Test
-	//	public void editFolderTest5() {
-	//		this.templateEditFolder("animaniac1", "folder5Animaniac1", "", IllegalArgumentException.class);
-	//	}
-	//	//noEsxist
-	//	@Test
-	//	public void editFolderTest6() {
-	//		this.templateEditFolder("animaniac1", "noExist", "FunctionalTestFolder", IllegalArgumentException.class);
-	//	}
-	//	//OnlyRead
-	//	@Test
-	//	public void editFolderTest7() {
-	//		this.templateEditFolder("animaniac1", "folder4Animaniac1", "FunctionalTestFolder", IllegalArgumentException.class);
-	//	}
-	//
-	//	//Caso de uso de borrar un vet:
-	//	//final String actorBean, final String folderBean, final Class<?> expected
-	//	//test positivo
-	//	@Test
-	//	public void deleteFolderTest1() {
-	//		this.templateDeleteFolder("animaniac1", "folder5Animaniac1", null);
-	//	}
-	//	//sin loguearse
-	//	@Test
-	//	public void deleteVetTest2() {
-	//		this.templateDeleteFolder(null, "folder5Animaniac1", IllegalArgumentException.class);
-	//	}
-	//	//no es tu folder
-	//	@Test
-	//	public void deleteVetTest3() {
-	//		this.templateDeleteFolder("animaniac2", "folder5Animaniac1", IllegalArgumentException.class);
-	//	}
-	//	//noExist
-	//	@Test
-	//	public void deleteVetTest4() {
-	//		this.templateDeleteFolder("animaniac2", "noExist", IllegalArgumentException.class);
-	//	}
-	//	//onlyRead
-	//	@Test
-	//	public void deleteVetTest5() {
-	//		this.templateDeleteFolder("animaniac2", "folder4Animaniac1", IllegalArgumentException.class);
-	//	}
+	//blank subject
+	@Test
+	public void createFolderTest2() {
+		this.templateSendMessage("animaniac1", "animaniac1", "", "FunctionalTestText", IllegalArgumentException.class);
+	}
+	//blank text
+	@Test
+	public void createFolderTest3() {
+		this.templateSendMessage("animaniac1", "animaniac1", "FunctionalTestSubject", "", IllegalArgumentException.class);
+	}
+	//sin loguearse
+	@Test
+	public void createFolderTest4() {
+		this.templateSendMessage("", "animaniac1", "FunctionalTestSubject", "FunctionalTestText", IllegalArgumentException.class);
+	}
+
+	//RecipientNoExist
+	@Test
+	public void createFolderTest5() {
+		this.templateSendMessage("animaniac1", "noExist", "FunctionalTestSubject", "FunctionalTestText", IllegalArgumentException.class);
+	}
+
+	//Caso de uso de mover a un mensaje:
+	//final String actorBean, final String messageBean, final String FolderBean, final Class<?> expected
+	//test positivo
+	@Test
+	public void MoveMessageTest1() {
+		this.templateMoveMessage("animaniac1", "message1Animaniac1", "folder5Animaniac1", null);
+	}
+	//notLoged
+	@Test
+	public void MoveMessageTest2() {
+		this.templateMoveMessage(null, "message1Animaniac1", "folder5Animaniac1", IllegalArgumentException.class);
+	}
+	//NullMessage
+	@Test
+	public void MoveMessageTest3() {
+		this.templateMoveMessage("animaniac1", "noExist", "folder5Animaniac1", IllegalArgumentException.class);
+	}
+	//NullFolder
+	@Test
+	public void MoveMessageTest4() {
+		this.templateMoveMessage("animaniac1", "message1Animaniac1", "noExist", IllegalArgumentException.class);
+	}
+	//NotMyFolder
+	@Test
+	public void MoveMessageTest5() {
+		this.templateMoveMessage("animaniac1", "message1Animaniac1", "folder2Animaniac2", IllegalArgumentException.class);
+	}
+
+	//Caso de uso de responder un mensaje:
+	//final String actorBean, final String messageBean, final String subject, final String text, final Class<?> expected
+	//test positivo
+	@Test
+	public void ReplyMessageTest1() {
+		this.templateReplyMessage("animaniac1", "message1Animaniac1", null);
+	}
+	@Test
+	public void ReplyMessageTest2() {
+		this.templateReplyMessage("", "message1Animaniac1", IllegalArgumentException.class);
+	}
+	@Test
+	public void ReplyMessageTest3() {
+		this.templateReplyMessage("", "noExist", IllegalArgumentException.class);
+	}
+
+	//Caso de uso de reenviar un mensaje:
+	//final String actorBean, final String messageBean, final String subject, final String text, final Class<?> expected
+	//test positivo
+	@Test
+	public void ForwardMessageTest1() {
+		this.templateForwardMessage("animaniac1", "message1Animaniac1", null);
+	}
+	@Test
+	public void ForwardMessageTest2() {
+		this.templateForwardMessage("", "message1Animaniac1", IllegalArgumentException.class);
+	}
+	@Test
+	public void ForwardMessageTest3() {
+		this.templateForwardMessage("", "noExist", IllegalArgumentException.class);
+	}
 
 	// Ancillary methods ------------------------------------------------------
 
@@ -134,11 +142,12 @@ public class MessageTest extends AbstractTest {
 		Class<?> caught;
 		final Message message;
 		caught = null;
+		Integer recipientId = null;
 		final List<Attachment> attachments = new ArrayList<Attachment>();
 		try {
 			this.authenticate(actorSenderBean);
-
-			message = this.messageService.create(this.extract(actorRecipientBean));
+			recipientId = this.extract(actorRecipientBean);
+			message = this.messageService.create(recipientId);
 			message.setSubject(subject);
 			message.setText(text);
 
@@ -150,5 +159,57 @@ public class MessageTest extends AbstractTest {
 		}
 		this.checkExceptions(expected, caught);
 	}
+	protected void templateMoveMessage(final String actorBean, final String messageBean, final String FolderBean, final Class<?> expected) {
+		Class<?> caught;
+		final Message message;
+		caught = null;
+		final Folder folder;
+		try {
+			this.authenticate(actorBean);
+			message = this.messageService.findOne(this.extract(messageBean));
+			folder = this.folderService.findOne(this.extract(FolderBean));
+			message.setFolder(folder);
+			this.messageService.moveMessage(message);
+			this.messageService.flush();
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
 
+	protected void templateReplyMessage(final String actorBean, final String messageBean, final Class<?> expected) {
+		Class<?> caught;
+		caught = null;
+		final MessageForm form;
+		try {
+			this.authenticate(actorBean);
+			form = this.messageService.replyMessage(this.extract(messageBean));
+
+			//message = this.messageService.reconstruct(form, this.bindingResult);
+			//no se como sacar el BindingResult
+			this.messageService.flush();
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
+	protected void templateForwardMessage(final String actorBean, final String messageBean, final Class<?> expected) {
+		Class<?> caught;
+		caught = null;
+		final MessageForm form;
+		try {
+			this.authenticate(actorBean);
+			form = this.messageService.forwardMessage(this.extract(messageBean));
+
+			//message = this.messageService.reconstruct(form, this.bindingResult);
+			//no se como sacar el BindingResult
+			this.messageService.flush();
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
 }

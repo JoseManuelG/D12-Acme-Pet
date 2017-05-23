@@ -53,7 +53,9 @@ public class MessageService {
 
 
 	//Simple CRUD methods------------------------------------------------------------------
-	public Message create(final int recipientId) {
+	public Message create(final Integer recipientId) {
+		Assert.notNull(recipientId, "no puedes crear un mensaje con un recipient nulo");
+		Assert.isTrue(recipientId != 0, "La Id no puede ser nula");
 		final Message result = new Message();
 		Actor recipient;
 		final Actor sender;
@@ -99,6 +101,8 @@ public class MessageService {
 	public Message save(final Message message, final Collection<Attachment> attachments) {
 		Message result, copyMessage, savedCopyMessage;
 		Actor sender;
+		Assert.isTrue(!message.getSubject().isEmpty(), "el subject no puede estar vacio");
+		Assert.isTrue(!message.getText().isEmpty(), "el texto no puede estar vacio");
 
 		Assert.notNull(message.getRecipient(), "El mensaje debe tener un destinatario");
 
@@ -245,7 +249,7 @@ public class MessageService {
 
 		final MessageForm result = new MessageForm();
 		result.setAction(1);
-
+		Assert.notNull(messageId);
 		final Message message = this.findOne(messageId);
 		Assert.notNull(message.getSender());
 
