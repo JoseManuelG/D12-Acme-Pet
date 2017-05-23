@@ -145,6 +145,11 @@ public class SearchEngineService {
 		return result;
 
 	}
+
+	public void flush() {
+		this.searchEngineRepository.flush();
+	}
+
 	//Other Business methods-------------------------------------------------------------------
 
 	public void deleteFromAnimaniac(final Animaniac animaniac) {
