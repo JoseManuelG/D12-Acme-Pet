@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ import domain.Attachment;
 import domain.Folder;
 import domain.Message;
 import domain.Request;
+import domain.SpamWord;
 import forms.MessageForm;
 
 @Service
@@ -46,6 +48,8 @@ public class MessageService {
 	private AnimaniacService	animaniacService;
 	@Autowired
 	private Validator			validator;
+	@Autowired
+	private SpamWordService		spamWordService;
 
 
 	//Simple CRUD methods------------------------------------------------------------------
@@ -124,8 +128,11 @@ public class MessageService {
 	private Message copyMessage(final Message message) {
 		final Message result = new Message();
 		Folder folder;
-		folder = this.folderService.findFolderOfActor(message.getRecipient(), "inbox");
 
+		if (!this.isSpam(message))
+			folder = this.folderService.findFolderOfActor(message.getRecipient(), "inbox");
+		else
+			folder = this.folderService.findFolderOfActor(message.getRecipient(), "spambox");
 		result.setFolder(folder);
 
 		result.setSender(message.getSender());
@@ -141,7 +148,19 @@ public class MessageService {
 
 		return result;
 	}
+	private boolean isSpam(final Message message) {
+		final String body = message.getText();
+		final String subject = message.getSubject();
+		Boolean result = false;
+		for (final SpamWord SpamWord : this.spamWordService.findAll())
+			if (StringUtils.containsIgnoreCase(body, SpamWord.getWord())
 
+			|| StringUtils.containsIgnoreCase(subject, SpamWord.getWord())) {
+				result = true;
+				break;
+			}
+		return result;
+	}
 	public void delete(final int messageId) {
 		final Message message;
 		final Actor actor;

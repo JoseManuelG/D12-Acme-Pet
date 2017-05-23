@@ -92,6 +92,7 @@
 					<li><a href="vet/administrator/register.do"><spring:message code="master.page.register.vet" /></a></li>
 					<li><a href="dashboard/administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
 					<li><a href="abuseReport/administrator/list.do"><spring:message code="master.page.administrator.abuseReport" /></a></li>
+						<li><a href="spamword/administrator/list.do"><spring:message code="master.page.administrator.spamword" /></a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('PARTNER')">
 					<li><a href="banner/partner/list.do"><spring:message code="master.page.partner.banner" /></a></li>

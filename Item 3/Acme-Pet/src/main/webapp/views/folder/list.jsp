@@ -42,3 +42,7 @@
 <a href="folder/edit.do?folderId=">
 	<spring:message	code="folder.create" />
 </a>
+
+|<a href="message/write.do">
+	<spring:message code="message.write"/>
+</a>
