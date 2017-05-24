@@ -19,8 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.ActorService;
-import services.AnimaniacService;
 import services.FolderService;
 import services.MessageService;
 import utilities.AbstractTest;
@@ -39,13 +37,10 @@ public class MessageTest extends AbstractTest {
 	// System under test ------------------------------------------------------
 
 	@Autowired
-	private MessageService		messageService;
+	private MessageService	messageService;
+
 	@Autowired
-	private ActorService		actorService;
-	@Autowired
-	private FolderService		folderService;
-	@Autowired
-	private AnimaniacService	animaniacService;
+	private FolderService	folderService;
 
 
 	// Tests ------------------------------------------------------------------

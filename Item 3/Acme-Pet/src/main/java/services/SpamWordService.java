@@ -41,11 +41,13 @@ public class SpamWordService {
 	public SpamWord findOne(final int spamWordId) {
 		SpamWord result;
 		result = this.spamWordRepository.findOne(spamWordId);
+		Assert.notNull(result, "no se ha encontrado el objeto");
 		return result;
 	}
 
 	public void delete(final int spamWordId) {
-
+		Assert.isTrue(this.actorService.findActorByPrincipal().getClass().equals(Administrator.class), "Debes ser un administrador para hacer esta acccion");
+		Assert.isTrue(spamWordId != 0, "La palabra de spam debe existir");
 		this.spamWordRepository.delete(spamWordId);
 	}
 
@@ -57,6 +59,7 @@ public class SpamWordService {
 		Assert.notNull(spamWord, "spamWord.error.nullSpamWord");
 		Assert.isTrue(Administrator.class.equals(actor.getClass()), "spamWord.error.notAdmin");
 		Assert.notNull(spamWord.getWord(), "spamWord.error.nullWord");
+		Assert.isTrue(!spamWord.getWord().isEmpty(), "La palabra no debe estar vacia");
 		existing = this.spamWordRepository.findByWord(spamWord.getWord());
 		if (existing != null)
 			Assert.isTrue(!existing.getWord().equals(spamWord.getWord()), "spamWord.error.alreadyExists");
@@ -65,6 +68,11 @@ public class SpamWordService {
 		return result;
 	}
 	//Simple CRUD methods-------------------------------------------------------------------
+
+	public void flush() {
+		this.spamWordRepository.flush();
+
+	}
 
 	// other business methods --------------------------------------
 
