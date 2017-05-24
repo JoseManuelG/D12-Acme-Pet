@@ -1528,6 +1528,16 @@ No autenticado
 
 		Test <#7>
 		Descripción
+			Comprobar el formato de los datos. Para las fechas se sigue el formato año-mes-dia hora:minuto:segundo, para la coleccion de mascotas se muestra como una lista viñetada con los nombres de las mascotas.
+		Salida esperada
+			Los formatos son adecuados.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#8>
+		Descripción
 			Comprobar el acceso. Entra como cada tipo de actor con las credenciales "vetvet1", "partner1" y "admin" para verificar que todos los actores pueden entrar.
 		Salida esperada
 			Todos los actores pueden acceder.
@@ -1536,7 +1546,7 @@ No autenticado
 		Notas del tester
 			Añade notas si es necesario.
 
-		Test <#8>
+		Test <#9>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
@@ -1548,169 +1558,341 @@ No autenticado
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 14: Crear petición sobre sus mascotas.
+	Caso de uso 21: Crear petición sobre sus mascotas.
+		Descripción
+			En este caso de uso vamos a crear una petición para que cuiden nuestras mascotas. Lo haremos autenticados como animaniac1.
+		Acceso
+			Autenticados como animaniac, seleccionamos "Peticiones" en la barra de navegación y pulsamos sobre "Listar todas" o bien sobre "Mis peticiones". Al pie de la tabla hay un enlace para crear una nueva petición.
+		Tests
+		Test <#1>
+		Descripción
+			Comprobamos que la información que aparece de la petición es la esperada. Una petición debe tener un fecha de comienzo, fecha fin, dirección, descripción y mascotas. Las posibles mascotas a añadir a la petición son las que el animaniaco que esta haciendo la petición tiene y no están ya en una petición cuya fecha fin este en el futuro. En nuestro caso concreto, el animaniac1 tiene una petición activa para su primera mascota, por lo que no debe aparecer.
+		Salida esperada
+			Se muestran campos para todos los datos necesarios y las mascotas adecuadas.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2>
+		Descripción
+			Comprobamos que el botón de cancelar nos devuelve correctamente a la lista de peticiones del animaniac1, que dispone de 6 peticiones.
+		Salida esperada
+			Redirige correctamente.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobamos que pasa al intentar guardar con todos los campos vacíos. Para ello borra la dirección, que se completa automáticamente con la que el animaniaco tiene registrada en su perfil.
+		Salida esperada
+			Se muestran errores en todos los campos, excepto en la descripción, que es opcional.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#4>
+		Descripción
+			Comprobamos a rellenar los campos con datos erróneos o hace XSS. Usa los siguientes datos:
+				Fecha de comienzo: 10 de Mayo
+				Fecha fin: 31-02-2014 10:45 
+				Direccion: Calle test
+				Ninguna mascota seleccionada.
+		Salida esperada
+			Se esperan los siguientes errores:
+				Fecha de comienzo: Momento inválido
+				Fecha fin: Momento inválido
+				Mascotas: No debe estar vacío
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#5>
+		Descripción
+			Comprobamos a rellenar los campos con datos fechas en el pasado:
+				Fecha de comienzo: 10/05/2013 20:50
+				Fecha fin: 20/05/2013 20:50
+				Direccion: Calle test
+				Todas las mascotas seleccionadas
+		Salida esperada
+			Se esperan un error que indique que las fechas deben ser en el futuro.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#6>
+		Descripción
+			Comprobamos a rellenar los campos con datos fechas en el pasado:
+				Fecha de comienzo: 20/06/2017 20:50
+				Fecha fin: 10/06/2017 20:50
+				Direccion: Calle test
+				Todas las mascotas seleccionadas
+		Salida esperada
+			Se esperan un error que indique la fecha fin debe ser posterior a la de comienzo.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#7>
+		Descripción
+			Usamos datos válidos
+				Fecha de comienzo: 10/06/2017 20:50
+				Fecha fin: 20/06/2017 20:50
+				Direccion: Calle test
+				Todas las mascotas seleccionadas
+		Salida esperada
+			Redirige a la lista de mis peticiones. Debe aparecer en último lugar.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#8>
+		Descripción
+			Intentamos hacer otra petición, ahora que no tenemos mascotas disponibles.
+		Salida esperada
+			Se espera un error a pie de página que indique que no puede realizar más peticiones.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#9>
+		Descripción
+			Repite los test anteriores en inglés
+		Salida esperada
+			Todos los elementos que no persistentes han sido traducidos al ingles.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 15: Listar mis peticiones.
+	Caso de uso 22: Buscar peticiones. [WIP]
+		Descripción
+			En este caso de uso vamos a buscar peticiones de otros animaniacos, de esta forma podemos hacer solicitudes sobre esas peticiones y cuidar las mascotas de los demas. Debemos estar autenticados como animaniac para poder hacer busquedas.
+		Acceso
+			Autenticados como animaniac2, seleccionamos "Peticiones" en la barra de navegación y pulsamos sobre "Buscar.
+		Tests
+		Test <#1>
+		Descripción
+			Comprobamos que la información que aparece de la busqueda es la esperada. Una busqueda debe tener un fecha de comienzo, fecha fin, dirección, descripción y mascotas. Las posibles mascotas a añadir a la petición son las que el animaniaco que esta haciendo la petición tiene y no están ya en una petición cuya fecha fin este en el futuro. En nuestro caso concreto, el animaniac1 tiene una petición activa para su primera mascota, por lo que no debe aparecer.
+		Salida esperada
+			Se muestran campos para todos los datos necesarios y las mascotas adecuadas.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2>
+		Descripción
+			Comprobamos que el botón de cancelar nos devuelve correctamente a la lista de peticiones del animaniac1, que dispone de 6 peticiones.
+		Salida esperada
+			Redirige correctamente.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3> 
+		Descripción
+			Comprobamos que pasa al intentar guardar con todos los campos vacíos. Para ello borra la dirección, que se completa automáticamente con la que el animaniaco tiene registrada en su perfil.
+		Salida esperada
+			Se muestran errores en todos los campos, excepto en la descripción, que es opcional.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#4>
+		Descripción
+			Comprobamos a rellenar los campos con datos erróneos o hace XSS. Usa los siguientes datos:
+				Fecha de comienzo: 10 de Mayo
+				Fecha fin: 31-02-2014 10:45 
+				Direccion: Calle test
+				Ninguna mascota seleccionada.
+		Salida esperada
+			Se esperan los siguientes errores:
+				Fecha de comienzo: Momento inválido
+				Fecha fin: Momento inválido
+				Mascotas: No debe estar vacío
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#5>
+		Descripción
+			Comprobamos a rellenar los campos con datos fechas en el pasado:
+				Fecha de comienzo: 10/05/2013 20:50
+				Fecha fin: 20/05/2013 20:50
+				Direccion: Calle test
+				Todas las mascotas seleccionadas
+		Salida esperada
+			Se esperan un error que indique que las fechas deben ser en el futuro.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#6>
+		Descripción
+			Comprobamos a rellenar los campos con datos fechas en el pasado:
+				Fecha de comienzo: 20/06/2017 20:50
+				Fecha fin: 10/06/2017 20:50
+				Direccion: Calle test
+				Todas las mascotas seleccionadas
+		Salida esperada
+			Se esperan un error que indique la fecha fin debe ser posterior a la de comienzo.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#7>
+		Descripción
+			Usamos datos válidos
+				Fecha de comienzo: 10/06/2017 20:50
+				Fecha fin: 20/06/2017 20:50
+				Direccion: Calle test
+				Todas las mascotas seleccionadas
+		Salida esperada
+			Redirige a la lista de mis peticiones. Debe aparecer en último lugar.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#8>
+		Descripción
+			Intentamos hacer otra petición, ahora que no tenemos mascotas disponibles.
+		Salida esperada
+			Se espera un error a pie de página que indique que no puede realizar más peticiones.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#9>
+		Descripción
+			Repite los test anteriores en inglés
+		Salida esperada
+			Todos los elementos que no persistentes han sido traducidos al ingles.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 16: Rechazar solicitud.
+	Caso de uso 23: Hacer solicitud.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 17: Aceptar solicitud.
+	Caso de uso 24: Rechazar solicitud.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 18: Borrar petición.
+	Caso de uso 25: Aceptar solicitud.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 19: Buscar peticiones.
+	Caso de uso 26: Borrar petición.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 20: Hacer solicitud.
+	Caso de uso 27: Comentar
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 21: Comentar en otro animaniaco.
+	Caso de uso 28: Puntuar
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 22: Comentar en una mascota.
+	Caso de uso 29: Informar sobre el mal comportamiento de un animaniaco.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 23: Puntuar en un animaniaco.
+	Caso de uso 30: Enviar mensaje
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 24: Informar sobre el mal comportamiento de un animaniaco.
+	Caso de uso 31: Responder mensaje.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 27: Enviar mensaje a ese veterinario.
+	Caso de uso 32: Reenviar mensaje.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 28: Crear carpeta.
+	Caso de uso 33: Crear carpeta.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 29: Mover mensaje.
+	Caso de uso 34: Eliminar mensaje.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 30: Eliminar mensaje.
+	Caso de uso 35: Mover mensaje.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 31: Eliminar definitivamente mensaje.
+	Caso de uso 36: Eliminar carpeta.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 32: Eliminar carpeta.
+	Caso de uso 37: Eliminar definitivamente mensaje.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-
-Partner
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 36: Registrar banner.
+	Caso de uso 38: Registrar banner y modificar banner.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 37: modificar banner.
+	Caso de uso 39: Certificar mascota.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 38: Eliminar banner.
+	Caso de uso 40: Listar tipos de mascota.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-
-Vet
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 40: Certificar mascota.
+	Caso de uso 41: Crear y editar tipo de mascota .
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 41: Responder mensaje.
+	Caso de uso 42: Listar atributos de tipo.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 42: Reenviar mensaje.
+	Caso de uso 43: Crear y editar atributo de tipo.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-
-Admin
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 44: Registrar anunciante.
+	Caso de uso 44: Listar informas de mal uso.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 45: Registrar veterinario.
+	Caso de uso 45: Banear animaniaco.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 46: Listar tipos de mascota.
+	Caso de uso 46: Borrar del sistema a un animaniaco baneado.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 47: Crear tipo de mascota.
+	Caso de uso 47: Editar tiempo de cache.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 48: editar tipo de mascota.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 49: Eliminar tipo de mascota.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 50: Listar atributos de tipo.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 51: Crear atributo de tipo.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 52: Editar atributo de tipo.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 53: Eliminar atributo de tipo.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 54: Listar informas de mal uso.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 55: Banear animaniaco.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 56: Borrar del sistema a un animaniaco baneado.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 57: Editar tiempo de cache.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 58: Cambiar fee.
+	Caso de uso 48: Cambiar fee.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
