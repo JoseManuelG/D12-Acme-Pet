@@ -106,22 +106,22 @@ public class FolderTest extends AbstractTest {
 	}
 	//sin loguearse
 	@Test
-	public void deleteVetTest2() {
+	public void deleteFolderTest2() {
 		this.templateDeleteFolder(null, "folder5Animaniac1", IllegalArgumentException.class);
 	}
 	//no es tu folder
 	@Test
-	public void deleteVetTest3() {
+	public void deleteFolderTest3() {
 		this.templateDeleteFolder("animaniac2", "folder5Animaniac1", IllegalArgumentException.class);
 	}
 	//noExist
 	@Test
-	public void deleteVetTest4() {
+	public void deleteFolderTest4() {
 		this.templateDeleteFolder("animaniac2", "noExist", IllegalArgumentException.class);
 	}
 	//onlyRead
 	@Test
-	public void deleteVetTest5() {
+	public void deleteFolderTest5() {
 		this.templateDeleteFolder("animaniac2", "folder4Animaniac1", IllegalArgumentException.class);
 	}
 
