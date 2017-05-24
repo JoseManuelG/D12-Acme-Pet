@@ -29,7 +29,14 @@
 	<form:hidden path="type"/>
 	<form:hidden path="attributes"/>
 	<acme:textbox code="pet.name" path="name" />
-	<acme:textbox code="pet.genre" path="genre" />
+	<form:label path="genre">
+		<spring:message code="pet.genre" />
+	</form:label>
+	<form:select id="genre" name="genre" path="genre">
+    	<form:option value="male"><spring:message code="pet.male" /></form:option>
+    	<form:option value="female"><spring:message code="pet.female" /></form:option>
+    </form:select>
+	<br/>
 	<acme:textbox code="pet.weigth" path="weigth" />
 
 	<br />

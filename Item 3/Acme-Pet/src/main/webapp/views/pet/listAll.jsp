@@ -31,7 +31,14 @@
 	   	  </a>
 	    </display:column>
 		<!-- Attributes -->
-		<acme:column sorteable="true" code="pet.genre" path="genre" />
+		<jstl:if test="${row.genre eq 'male'}">
+			<spring:message var="gender" code="pet.male" />
+		</jstl:if>
+		<jstl:if test="${row.genre eq 'female'}">
+			<spring:message var="gender" code="pet.female" />
+		</jstl:if><br/>
+		
+		<acme:maskedColumn sorteable="true" code="animaniac.genre" text="${gender}"/>
 
 		<acme:column sorteable="true" code="pet.weigth" path="weigth" />
 		
