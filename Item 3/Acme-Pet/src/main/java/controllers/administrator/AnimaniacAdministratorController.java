@@ -47,5 +47,15 @@ public class AnimaniacAdministratorController extends AbstractController {
 			result = new ModelAndView("redirect:/animaniac/list.do");
 		return result;
 	}
+	// delete 	-------------------------------------------------------------------
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView deleteBanned(@RequestParam final int animaniacId) {
+		ModelAndView result;
+
+		this.animaniacService.deleteBanned(animaniacId);
+
+		result = new ModelAndView("redirect:/abuseReport/administrator/list.do");
+		return result;
+	}
 
 }

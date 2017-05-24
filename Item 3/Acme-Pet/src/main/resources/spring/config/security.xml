@@ -91,6 +91,7 @@
 
 		<security:intercept-url pattern="/animaniac/administrator/ban.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/animaniac/administrator/unban.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/animaniac/administrator/delete.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/configuration/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/configuration/administrator/view.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/partner/administrator/register.do" access="hasRole('ADMINISTRATOR')" />

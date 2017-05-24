@@ -60,4 +60,16 @@
 		</jstl:choose>
 	</security:authorize>
 
+
+<security:authorize access="hasRole('ADMINISTRATOR')">
+		 <display:column>
+		    <jstl:if test="${row.reported.banned == true}">
+		       
+					<a href="animaniac/administrator/delete.do?animaniacId=${row.reported.id}">
+						<spring:message code="animaniac.delete"/>
+					</a>
+				
+		    </jstl:if>    
+		   </display:column>
+	</security:authorize>
 </display:table>

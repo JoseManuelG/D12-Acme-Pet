@@ -17,6 +17,7 @@ import repositories.AnimaniacRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Administrator;
 import domain.Animaniac;
 import domain.SearchEngine;
 import forms.AnimaniacForm;
@@ -205,6 +206,28 @@ public class AnimaniacService {
 
 	public void saveRate(final Animaniac animaniac) {
 		this.animaniacRepository.save(animaniac);
+	}
+
+	public void deleteBanned(final int animaniacId) {
+		Animaniac animaniac;
+		Assert.isTrue(this.actorService.findActorByPrincipal().getClass().equals(Administrator.class), "Debes ser administrador para esta acción");
+		Assert.isTrue(animaniacId != 0);
+		animaniac = this.findOne(animaniacId);
+		Assert.isTrue(animaniac.getBanned(), "El animaniaco debe estar banneado");
+		this.delete(animaniacId);
+	}
+	private void delete(final int animaniacId) {
+		Animaniac animaniac;
+		animaniac = this.findOne(animaniacId);
+		this.reportService.deleteFromAnimaniac(animaniac);
+		this.curriculumService.deleteFromAnimaniac(animaniac);
+		this.petService.deleteFromAnimaniac(animaniac);
+		this.searchEngineService.deleteFromAnimaniac(animaniac);
+		this.applicationService.deleteFromAnimaniac(animaniac);
+		this.actorService.deleteFromActor(animaniac);
+		this.commentService.deleteAllCommentsOfAnimaniac(animaniac);
+		this.animaniacRepository.delete(animaniac);
+		this.accountService.delete(animaniac.getUserAccount().getId());
 	}
 
 }
