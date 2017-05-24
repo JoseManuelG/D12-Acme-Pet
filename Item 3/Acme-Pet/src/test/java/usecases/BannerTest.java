@@ -82,7 +82,7 @@ public class BannerTest extends AbstractTest {
 	public void createBannerTest8() {
 		this.templateCreateBanner("partner1", "http://link.com", null, ConstraintViolationException.class);
 	}
-	//logeado como no asociado
+	//logeado como no anunciante
 	@Test
 	public void createBannerTest9() {
 		this.templateCreateBanner("animaniac1", "http://link.com", "http://image.com", NullPointerException.class);
@@ -129,12 +129,12 @@ public class BannerTest extends AbstractTest {
 	public void editBannerTest8() {
 		this.templateEditBanner("partner1", "Banner1Partner1", "http://link.com", null, ConstraintViolationException.class);
 	}
-	//el banner no pertenece al asociado
+	//el banner no pertenece al anunciante
 	@Test
 	public void editBannerTest9() {
 		this.templateEditBanner("partner2", "Banner1Partner1", "http://link.com", "http://image.com", IllegalArgumentException.class);
 	}
-	//logeado como no asociado
+	//logeado como no anunciante
 	@Test
 	public void editBannerTest10() {
 		this.templateEditBanner("animaniac1", "Banner1Partner1", "http://link.com", "http://image.com", NullPointerException.class);
@@ -151,7 +151,7 @@ public class BannerTest extends AbstractTest {
 	public void deleteBannerTest2() {
 		this.templateDeleteBanner(null, "Banner1Partner1", IllegalArgumentException.class);
 	}
-	//logeado como no asociado
+	//logeado como no anunciante
 	@Test
 	public void deleteBannerTest3() {
 		this.templateDeleteBanner("animaniac1", "Banner1Partner1", NullPointerException.class);
@@ -161,7 +161,7 @@ public class BannerTest extends AbstractTest {
 	public void deleteBannerTest4() {
 		this.templateDeleteBanner("partner1", "noExist", IllegalArgumentException.class);
 	}
-	//el banner no pertenece al asociado
+	//el banner no pertenece al anunciante
 	@Test
 	public void deleteBannerTest5() {
 		this.templateDeleteBanner("partner2", "Banner1Partner1", IllegalArgumentException.class);
