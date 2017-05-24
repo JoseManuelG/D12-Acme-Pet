@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.BannerService;
 import services.SearchEngineService;
 import services.TypeService;
 import controllers.AbstractController;
+import domain.Banner;
 import domain.Request;
 import domain.SearchEngine;
 import domain.Type;
@@ -26,23 +28,27 @@ public class SearchEngineAnimaniacController extends AbstractController {
 	private SearchEngineService	searchEngineService;
 	@Autowired
 	private TypeService			typeService;
+	@Autowired
+	private BannerService		bannerService;
 
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public ModelAndView search() {
-
 		ModelAndView result;
 		final Collection<Request> results;
 		SearchEngine search;
+		final Banner banner;
 		final Collection<Type> types = this.typeService.findAll();
 		search = this.searchEngineService.findByPrincipal();
 		results = search.getRequests();
+		banner = this.bannerService.randomBanner();
 
 		result = new ModelAndView("searchEngine/animaniac/search.do");
 		result.addObject("results", results);
 		result.addObject("search", search);
 		result.addObject("requestURI", "searchEngine/animaniac/search.do");
 		result.addObject("types", types);
+		result.addObject("banner", banner);
 
 		return result;
 	}
@@ -51,7 +57,9 @@ public class SearchEngineAnimaniacController extends AbstractController {
 	public ModelAndView search(final SearchEngine search, final BindingResult binding) {
 		ModelAndView result;
 		SearchEngine res;
+		final Banner banner;
 
+		banner = this.bannerService.randomBanner();
 		res = this.searchEngineService.reconstruct(search, binding);
 		Collection<Request> results;
 		if (binding.hasErrors()) {
@@ -61,6 +69,7 @@ public class SearchEngineAnimaniacController extends AbstractController {
 			result.addObject("search", search);
 			result.addObject("requestURI", "searchEngine/animaniac/search.do");
 			result.addObject("results", results);
+			result.addObject("banner", banner);
 
 		} else
 			try {
@@ -75,6 +84,7 @@ public class SearchEngineAnimaniacController extends AbstractController {
 				result.addObject("requestURI", "searchEngine/animaniac/search.do");
 				result.addObject("results", results);
 				result.addObject("message", e.getMessage());
+				result.addObject("banner", banner);
 			}
 		final Collection<Type> types = this.typeService.findAll();
 		result.addObject("types", types);

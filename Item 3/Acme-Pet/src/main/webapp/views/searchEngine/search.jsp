@@ -33,6 +33,8 @@
 </fieldset>
 
 <br/>
+<p><a href="${banner.link}"><img class="banner" src="${banner.picture}" /></a></p> 
+<br/>
 
 <jstl:if test="${!results.isEmpty()}">
 
