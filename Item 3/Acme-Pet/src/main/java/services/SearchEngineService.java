@@ -98,7 +98,7 @@ public class SearchEngineService {
 				endDate = new DateTime(System.currentTimeMillis()).plusYears(1).toDate();
 
 			//Busqueda en base de Datos
-			if ((searchEngine.getType() != null))
+			if ((!searchEngine.getType().equals("0")))
 
 				requests = this.requestService.searchRequest(searchEngine.getAddress(), Integer.parseInt(searchEngine.getType()), startDate, endDate);
 

@@ -38,7 +38,13 @@ public class SearchEngineAnimaniacController extends AbstractController {
 		final Collection<Request> results;
 		SearchEngine search;
 		final Banner banner;
-		final Collection<Type> types = this.typeService.findAll();
+
+		final Collection<Type> types = new ArrayList<Type>();
+		final Type type = this.typeService.create();
+		type.setTypeName("All");
+		types.add(type);
+
+		types.addAll(this.typeService.findAll());
 		search = this.searchEngineService.findByPrincipal();
 		results = search.getRequests();
 		banner = this.bannerService.randomBanner();
@@ -52,7 +58,6 @@ public class SearchEngineAnimaniacController extends AbstractController {
 
 		return result;
 	}
-
 	@RequestMapping(value = "/search", method = RequestMethod.POST, params = "save")
 	public ModelAndView search(final SearchEngine search, final BindingResult binding) {
 		ModelAndView result;
@@ -86,7 +91,13 @@ public class SearchEngineAnimaniacController extends AbstractController {
 				result.addObject("message", e.getMessage());
 				result.addObject("banner", banner);
 			}
-		final Collection<Type> types = this.typeService.findAll();
+		final Collection<Type> types = new ArrayList<Type>();
+		final Type type = this.typeService.create();
+		type.setTypeName("All");
+		types.add(type);
+
+		types.addAll(this.typeService.findAll());
+
 		result.addObject("types", types);
 		return result;
 	}
