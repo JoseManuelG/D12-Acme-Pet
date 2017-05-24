@@ -1440,21 +1440,19 @@ No autenticado
 
 		Test <#7>
 		Descripción
-			Usamos el botón editar del perfil y pulsamos en borrar mascotas
-				Nombre: Dakota
-				PPP: No
+			Usamos el botón editar del perfil y pulsamos en borrar mascota.
 		Salida esperada
-			Han cambiado correctamente los campos en el perfil.
+			Nos redirige a la lista de Mis mascotas, donde ya no aparece la que habíamos creado.
 		Salida obtenida
 			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
 		Notas del tester
 			Añade notas si es necesario.
 
-		Test <#7>
+		Test <#8>
 		Descripción
 			Repite los test anteriores en inglés
 		Salida esperada
-			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés.
+			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés, a excepción del tipo y las características del mismo.
 		Salida obtenida
 			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
 		Notas del tester
@@ -1462,7 +1460,91 @@ No autenticado
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 13: Listar peticiones
+	Caso de uso 20: Listar peticiones
+		Descripción
+			En este caso de uso vamos a ver la lista de todas las peticiones de acogida hechas en el sistema.
+		Acceso
+			En la barra de navegación, seleccionamos peticiones y pulsamos sobre listar todas. Es necesario estar autenticado.
+		Tests
+		Test <#1>
+		Descripción
+			Comprobar que la información sobre las peticiones que aparece en lista es la esperada. La lista de peticiones debe tener las siguientes columnas: propietario (que es un enlace a su perfil), fecha de comienzo, fecha fin, dirección, descripción y mascotas. Además, debe tener disponible un enlace para solicitar, si no es el que ha hecho la petición, o enlaces para borrar y ver solicitudes en el caso de ser el que ha hecho la petición. Por último, si cumple ciertas reglas de negocio debe aparecer la opción puntuar. Autenticate como animaniac1 para hacer este test.
+		Salida esperada
+			 Las columnas se corresponden con las esperadas
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#2>
+		Descripción
+			Comprobar todos los enlaces de paginación.
+		Salida esperada
+			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#3>
+		Descripción
+			Comprobar que los enlaces de los nombres de los propietarios funcionan correctamente.
+		Salida esperada
+			Todos los enlaces llevan al perfil de cada animaniaco.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#4>
+		Descripción
+			Comprobar que los enlaces para solicitar funcionan correctamente.
+		Salida esperada
+			El único enlace que hay lleva correctamente al formulario para hacer una solicitud.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#5>
+		Descripción
+			Comprobar que los enlaces para ver las solicitudes funcionan correctamente.
+		Salida esperada
+			Los enlaces llevan a la lista de solicitudes hechas a esa petición.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#6>
+		Descripción
+			Comprobar que los enlaces para puntuar funcionan correctamente. Para poder puntuar se tienen que cumplir ciertos requisitos. Si la fecha de fin no ha pasado no se muestra el enlace, pero aunque haya pasado, si la petición no tuvo ninguna solicitud aceptada, no será posible puntuar. La primera solicitud de la lista que te permite puntuar es la única con solicitudes aceptadas que ha terminado.
+		Salida esperada
+			El enlace de la petición con solicitudes aceptadas lleva al formulario para puntuar. El resto muestra un mensaje explicando porqué no es posible puntuarla a pie de página.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#7>
+		Descripción
+			Comprobar el acceso. Entra como cada tipo de actor con las credenciales "vetvet1", "partner1" y "admin" para verificar que todos los actores pueden entrar.
+		Salida esperada
+			Todos los actores pueden acceder.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
+
+		Test <#8>
+		Descripción
+			Realiza de nuevo todos los test en inglés.
+		Salida esperada
+			Se han traducido todos los elementos no persistentes.
+		Salida obtenida
+			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
+		Notas del tester
+			Añade notas si es necesario.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 

@@ -7,15 +7,15 @@ MASCOTAS
 	- En la lista el genero no se traduce (aunque en el perfil si se ha hecho)
 
 - Añadir a los requisitos spamwords (funcional y no funcional) y buscador (funcional)
-- Internacionalizar genero para pets (esta hecho para animaniacos)
 - Sacar pdfs de requirements.
-- Poner imagenes correctas en los banners del populate
-- B+Tree
 - Informe costes
 - Propiedad de pet certificateBy deberia ser certificatedBy?
 - Cambiar el about y el terminos y condiciones
 
 ---------------- HECHO ----------------
+- Poner imagenes correctas en los banners del populate
+- Internacionalizar genero para pets (esta hecho para animaniacos)
+- B+Tree
 - Borrado de animaniac baneado por admin.
 - Añadir a los requisitos spamwords (funcional y no funcional) y buscador (funcional)
 - Cambiar toda referencia a "asociado" por "anunciante".

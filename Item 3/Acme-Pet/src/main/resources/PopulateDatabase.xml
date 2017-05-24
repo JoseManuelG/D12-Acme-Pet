@@ -1731,43 +1731,43 @@
 	
 	<bean id="Banner1Partner1" class="domain.Banner">
 		<property name="link" value="http://www.webPartner1.com"/>
-		<property name="picture" value="http://foto1.png"/>
+		<property name="picture" value="http://i.imgur.com/7Ijjree.jpg"/>
 		<property name="partner" ref="partner1"/>
 	</bean>
 	
 	<bean id="Banner2Partner1" class="domain.Banner">
 		<property name="link" value="http://www.webPartner1.com"/>
-		<property name="picture" value="http://foto2.png"/>
+		<property name="picture" value="http://i.imgur.com/QxmD35H.gif"/>
 		<property name="partner" ref="partner1"/>
 	</bean>
 	
 	<bean id="Banner3Partner1" class="domain.Banner">
 		<property name="link" value="http://www.webPartner1.com"/>
-		<property name="picture" value="http://foto3.png"/>
+		<property name="picture" value="http://i.imgur.com/rWMhQlw.jpg"/>
 		<property name="partner" ref="partner1"/>
 	</bean>
 	
 	<bean id="Banner4Partner1" class="domain.Banner">
 		<property name="link" value="http://www.webPartner1.com"/>
-		<property name="picture" value="http://foto4.png"/>
+		<property name="picture" value="http://i.imgur.com/xf1TZt7.jpg"/>
 		<property name="partner" ref="partner1"/>
 	</bean>
 	
 	<bean id="Banner5Partner1" class="domain.Banner">
 		<property name="link" value="http://www.webPartner1.com"/>
-		<property name="picture" value="http://foto5.png"/>
+		<property name="picture" value="http://i.imgur.com/RnkWuON.jpg"/>
 		<property name="partner" ref="partner1"/>
 	</bean>
 	
 	<bean id="Banner6Partner1" class="domain.Banner">
-		<property name="link" value="http://www.webPartner1.com"/>
+		<property name="link" value="http://i.imgur.com/Q2Wfdfz.jpg"/>
 		<property name="picture" value="http://foto6.png"/>
 		<property name="partner" ref="partner1"/>
 	</bean>
 	
 	<bean id="Banner1Partner2" class="domain.Banner">
 		<property name="link" value="http://www.webPartner2.com"/>
-		<property name="picture" value="http://foto1b.png"/>
+		<property name="picture" value="http://i.imgur.com/TDUqtbC.jpg"/>
 		<property name="partner" ref="partner2"/>
 	</bean>
 	
