@@ -1,5 +1,10 @@
 ﻿-------------- POR HACER --------------
-- Enlace a lista de pets desde el perfil de un usuario falla como partner y supongo que para admin (o se pone para que solo aparezca para vet y animaniac el enlace o se pone en security permitAll)
+MASCOTAS
+	- Enlace a lista de pets desde el perfil de un usuario falla como partner, veterinario y supongo que para admin (o se pone para que solo aparezca para animaniac el enlace o se pone en security permitAll)
+	- Fallos tontos de formato (como que las cajas de los foreach no aparecen al lado de las etiquetas)
+	- El cancel no te lleva a la lista de mis mascotas, que es desde donde se crean, si no a la pagina principal
+	- El genero no esta puesto como un desplegable, tienes que adivinar que encaja en el patron
+	- En la lista el genero no se traduce (aunque en el perfil si se ha hecho)
 
 - Añadir a los requisitos spamwords (funcional y no funcional) y buscador (funcional)
 - Internacionalizar genero para pets (esta hecho para animaniacos)
