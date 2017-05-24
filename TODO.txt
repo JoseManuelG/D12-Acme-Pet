@@ -1,14 +1,14 @@
 ﻿-------------- POR HACER --------------
 - Enlace a lista de pets desde el perfil de un usuario falla como partner y supongo que para admin (o se pone para que solo aparezca para vet y animaniac el enlace o se pone en security permitAll)
 - Añadir a los requisitos spamwords (funcional y no funcional) y buscador (funcional)
-- Internacionalizar genero para pets (esta hecho para animaniacos)
 - Sacar pdfs de requirements.
-- Poner imagenes correctas en los banners del populate
 - Informe costes
 - Propiedad de pet certificateBy deberia ser certificatedBy?
 - Cambiar el about y el terminos y condiciones
 
 ---------------- HECHO ----------------
+- Poner imagenes correctas en los banners del populate
+- Internacionalizar genero para pets (esta hecho para animaniacos)
 - B+Tree
 - Borrado de animaniac baneado por admin.
 - Añadir a los requisitos spamwords (funcional y no funcional) y buscador (funcional)
