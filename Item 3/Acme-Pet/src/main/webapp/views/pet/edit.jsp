@@ -28,6 +28,7 @@
 	<form:hidden path="id"/>
 	<form:hidden path="type"/>
 	<form:hidden path="attributes"/>
+	<fieldset>
 	<acme:textbox code="pet.name" path="name" />
 	<form:label path="genre">
 		<spring:message code="pet.genre" />
@@ -38,19 +39,19 @@
     </form:select>
 	<br/>
 	<acme:textbox code="pet.weigth" path="weigth" />
-
+	</fieldset>
 	<br />
+	<fieldset>
 	<jstl:forEach items="${petForm.attributeValues}" var="attributeValue"
 		varStatus="j">
-		<jstl:out value="${petForm.attributes[j.index].name}"/>:
-		<acme:textbox code="pet.nada" path="attributeValues[${j.index}].value" />
+		<jstl:out value="${petForm.attributes[j.index].name}"/>: <acme:textbox code="pet.nada" path="attributeValues[${j.index}].value" />
 		<%-- 
 		<jstl:if test="${errorValue eq j.index}">
 			<form:errors <form:errors cssClass="error" path="errorValue" />/>
 		</jstl:if>
 		--%>
 	</jstl:forEach>
-
+	</fieldset>
 	<br />
 	<jstl:forEach items="${petForm.photos}" var="photo"
 		varStatus="i">
