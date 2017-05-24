@@ -73,5 +73,5 @@
 		<acme:submit code="pet.removePhoto" name="removePhoto" />
 	</jstl:if>
 
-	<acme:cancel code="pet.cancel" url="" />
+	<acme:cancel code="pet.cancel" url="pet/animaniac/myPets.do" />
 </form:form>
