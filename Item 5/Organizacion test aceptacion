@@ -1589,20 +1589,85 @@
 
 		Test <#3>
 		Descripción
+			Editamos el tipo dog y le cambiamos el nombre a crocodile.
+		Salida esperada
+			Aparece un error explicandonos que el tipo esta siendo usado por alguna mascota.
+
+		Test <#4>
+		Descripción
 			Editamos el tipo dog y lo borramos.
 		Salida esperada
 			Aparece un error explicandonos que el tipo esta siendo usado por alguna mascota.
 
-		Test <#3>
+		Test <#5>
 		Descripción
-			Editamos el tipo rabbit y lo borramos.
+			Editamos el tipo rabbit y le cambiamos el nombre a crocodile.
 		Salida esperada
-			Aparece un error explicandonos que el tipo esta siendo usado por alguna mascota.
+			Nos devuelve a la lista y aparece crocodile en el lugar donde estaba rabbit.
+
+		Test <#6>
+		Descripción
+			Editamos el tipo crocodile y lo borramos.
+		Salida esperada
+			Nos devuelve a la lista y crocodile ya no aparece.
+
+		Test <#7>
+		Descripción
+			Repetimos los test en ingles, con ant en vez de snake y bird en vez de rabbit.
+		Salida esperada
+			Todos los campos se traducen adecuadamente.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 36: Crear y editar atributo de tipo.
+	Caso de uso 36: Crear y editar atributo de tipo. [WIP]
+		Descripción
+			Como administrador podemos crear nuevos tipos de mascotas para el sistema.
+		Acceso
+			Autenticados como admin, usamos la "Perfil/Tipos" para ver los tipos actuales.
+
+		Tests
+		Test <#1>
+		Descripción
+			Intentamos crear el tipo dog.
+		Salida esperada
+			Aparece un error explicandonos que ya existe.
+
+		Test <#2>
+		Descripción
+			Intentamos crear el tipo snake.
+		Salida esperada
+			Nos devuelve a la lista y snake esta en última posición.
+
+		Test <#3>
+		Descripción
+			Editamos el tipo dog y le cambiamos el nombre a crocodile.
+		Salida esperada
+			Aparece un error explicandonos que el tipo esta siendo usado por alguna mascota.
+
+		Test <#4>
+		Descripción
+			Editamos el tipo dog y lo borramos.
+		Salida esperada
+			Aparece un error explicandonos que el tipo esta siendo usado por alguna mascota.
+
+		Test <#5>
+		Descripción
+			Editamos el tipo rabbit y le cambiamos el nombre a crocodile.
+		Salida esperada
+			Nos devuelve a la lista y aparece crocodile en el lugar donde estaba rabbit.
+
+		Test <#6>
+		Descripción
+			Editamos el tipo crocodile y lo borramos.
+		Salida esperada
+			Nos devuelve a la lista y crocodile ya no aparece.
+
+		Test <#7>
+		Descripción
+			Repetimos los test en ingles, con ant en vez de snake y bird en vez de rabbit.
+		Salida esperada
+			Todos los campos se traducen adecuadamente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
