@@ -1103,7 +1103,7 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 22: Buscar peticiones. [WIP]
+	Caso de uso 22: Buscar peticiones.
 		Descripción
 			En este caso de uso vamos a buscar peticiones de otros animaniacos, de esta forma podemos hacer solicitudes sobre esas peticiones y cuidar las mascotas de los demas. Debemos estar autenticados como animaniac para poder hacer busquedas.
 		Acceso
@@ -1111,51 +1111,26 @@
 		Tests
 		Test <#1>
 		Descripción
-			Comprobamos que la información que aparece de la busqueda es la esperada. Una busqueda debe tener un fecha de comienzo, fecha fin, dirección, descripción y mascotas. Las posibles mascotas a añadir a la petición son las que el animaniaco que esta haciendo la petición tiene y no están ya en una petición cuya fecha fin este en el futuro. En nuestro caso concreto, el animaniac1 tiene una petición activa para su primera mascota, por lo que no debe aparecer.
+			Comprobamos que la información que aparece de la busqueda es la esperada. Una busqueda debe tener un fecha de comienzo, fecha fin, dirección y tipo.
 		Salida esperada
-			Se muestran campos para todos los datos necesarios y las mascotas adecuadas.
+			Se muestran campos para todos los datos necesarios.
 
 
-		Test <#2>
+		Test <#2> 
 		Descripción
-			Comprobamos que el botón de cancelar nos devuelve correctamente a la lista de peticiones del animaniac1, que dispone de 6 peticiones.
+			Hacemos una busqueda con todos los campos vacíos y tipo "All"
 		Salida esperada
-			Redirige correctamente.
+			Nos da una lista de peticiones, que coindice con la lista de todas las peticiosnes (Peticiones/Listar todas)
 
 
-		Test <#3> 
+		Test <#3>
 		Descripción
-			Comprobamos que pasa al intentar guardar con todos los campos vacíos. Para ello borra la dirección, que se completa automáticamente con la que el animaniaco tiene registrada en su perfil.
+			Comprobamos a rellenar los campos fecha de comienzo con la fecha actual.
 		Salida esperada
-			Se muestran errores en todos los campos, excepto en la descripción, que es opcional.
+			Muestran dos solicitudes, una del animaniac1 y otra del animaniac2
 
 
 		Test <#4>
-		Descripción
-			Comprobamos a rellenar los campos con datos erróneos o hace XSS. Usa los siguientes datos:
-				Fecha de comienzo: 10 de Mayo
-				Fecha fin: 31-02-2014 10:45 
-				Direccion: Calle test
-				Ninguna mascota seleccionada.
-		Salida esperada
-			Se esperan los siguientes errores:
-				Fecha de comienzo: Momento inválido
-				Fecha fin: Momento inválido
-				Mascotas: No debe estar vacío
-
-
-		Test <#5>
-		Descripción
-			Comprobamos a rellenar los campos con datos fechas en el pasado:
-				Fecha de comienzo: 10/05/2013 20:50
-				Fecha fin: 20/05/2013 20:50
-				Direccion: Calle test
-				Todas las mascotas seleccionadas
-		Salida esperada
-			Se esperan un error que indique que las fechas deben ser en el futuro.
-
-
-		Test <#6>
 		Descripción
 			Comprobamos a rellenar los campos con datos fechas en el pasado:
 				Fecha de comienzo: 20/06/2017 20:50
@@ -1166,25 +1141,7 @@
 			Se esperan un error que indique la fecha fin debe ser posterior a la de comienzo.
 
 
-		Test <#7>
-		Descripción
-			Usamos datos válidos
-				Fecha de comienzo: 10/06/2017 20:50
-				Fecha fin: 20/06/2017 20:50
-				Direccion: Calle test
-				Todas las mascotas seleccionadas
-		Salida esperada
-			Redirige a la lista de mis peticiones. Debe aparecer en último lugar.
-
-
-		Test <#8>
-		Descripción
-			Intentamos hacer otra petición, ahora que no tenemos mascotas disponibles.
-		Salida esperada
-			Se espera un error a pie de página que indique que no puede realizar más peticiones.
-
-
-		Test <#9>
+		Test <#5>
 		Descripción
 			Repite los test anteriores en inglés
 		Salida esperada
@@ -1195,22 +1152,136 @@
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 	Caso de uso 23: Hacer solicitud.
+		Descripción
+			Para hacer una solicitud primero debemos buscar la petición a la que se la vamos a hacer, bien por la lista de todas las peticiones o bien por el buscador.
+		Acceso
+			Autenticados como animaniac1, seleccionamos "Peticiones" en la barra de navegación y pulsamos sobre "Listar todas". En la lista, usamos el botón solicitar de la última columna.
+
+		Tests
+		Test <#1>
+		Descripción
+			Autenticados como animaniac1 podemos solicitar solo en una petición de la última página. Comprobamos que el formulario contiene todos los datos necesarios para hacer una solicitud, que es tan solo una descripcion.
+		Salida esperada
+			Tiene los campos necesarios.
+
+
+		Test <#2>
+		Descripción
+			Solicitando la misma petición, dejamos el campo sin rellenar.
+		Salida esperada
+			Se muestra un error al lado del campo descripción.
+
+
+		Test <#3>
+		Descripción
+			Solicitando la misma petición, rellenamos el campo con "Quiero cuidar tu mascota".
+		Salida esperada
+			El sistema nos devuelve correctamente a una vista con todas las solicitudes que hemos realizado.
+
+
+		Test <#4>
+		Descripción
+			Intentamos repetir el test anterior.
+		Salida esperada
+			Se muestra un error, explicandonos que ya hemos hecho una solicitud para esa petición.
+
+
+		Test <#5>
+		Descripción
+			Como animaniac2, intentamos solicitar en la primera petición que podemos (en la página 2).
+		Salida esperada
+			Se muestra un error, explicándonos que ya se ha aceptado una solicitud para esa petición.
+
+
+		Test <#6>
+		Descripción
+			Repetimos los test en ingles. Usa el animaniac3 para solicitar en la petición del animaniac2 en esta ocasión, para que nos se produzca error en el primer intento.
+		Salida esperada
+			Todos los campos se han traducido correctamente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 	Caso de uso 24: Rechazar solicitud.
+		Descripción
+			Para rechazar una solicitud primero tenemos que buscar la petición a la que se ha hecho la solicitud. En esta ocasión nos autenticamos como animaniac2 para rechazar una de las solicitudes hechas anteriormente.
+		Acceso
+			Autenticados como animaniac2, seleccionamos "Peticiones" en la barra de navegación y pulsamos sobre "Mis peticiones". En la única petición existente, pulsamos sobre "Ver solicitudes".
+
+		Tests
+		Test <#1>
+		Descripción
+			Pulsamos sobre rechazar sobre la petición del animaniac1.
+		Salida esperada
+			La solicitud cambia de estado: de pendiente a rechazada.
+
+		Tests
+		Test <#2>
+		Descripción
+			Cambiamos el idioma y pulsamos sobre rechazar sobre la petición del animaniac3.
+		Salida esperada
+			Los campos se han traducido correctamente.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 	Caso de uso 25: Aceptar solicitud.
+		Descripción
+			Para aceptar una solicitud primero tenemos que buscar la petición a la que se ha hecho la solicitud. En esta ocasión nos autenticamos como animaniac2 para aceptar una de las solicitudes que su peticion.
+		Acceso
+			Autenticados como animaniac2, seleccionamos "Peticiones" en la barra de navegación y pulsamos sobre "Mis peticiones". En la única petición existente, pulsamos sobre "Ver solicitudes".
+
+		Tests
+		Test <#1>
+		Descripción
+			Pulsamos sobre aceptar en la petición del animaniac5.
+		Salida esperada
+			La solicitud cambia de estado: de pendiente a aceptada. Además, el resto de peticiones se rechaza automáticamente.
+
+		Tests
+		Test <#2>
+		Descripción
+			Cambiamos el idioma y vemos las solicitudes.
+		Salida esperada
+			Los campos se han traducido correctamente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 	Caso de uso 26: Borrar petición.
+		Descripción
+			Para borrar una petición primero tenemos que buscar la petición. En esta ocasión nos autenticamos como animaniac1 para borrar sus peticiones.
+		Acceso
+			Autenticados como animaniac1, seleccionamos "Peticiones" en la barra de navegación y pulsamos sobre "Mis peticiones".
+
+		Tests
+		Test <#1>
+		Descripción
+			Pulsamos borrar en la primera petición de la lista.
+		Salida esperada
+			La petición desaparece de la lista.
+
+		Tests
+		Test <#2>
+		Descripción
+			Pulsamos borrar en la última petición de la lista.
+		Salida esperada
+			El sistema nos muestra un error, ya que no podemos borrar peticiones activas.
+
+		Tests
+		Test <#2>
+		Descripción
+			Repetimos los test anteriores en inglés.
+		Salida esperada
+			Los campos se han traducido correctamente.
+ 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 	Caso de uso 27: Comentar
+		Descripción
+			En este sistema se puede comentar tanto en perfiles de animaniacos como en perfiles de mascotas. Para ellos es necesario estar autenticado como animaniac.
+		Acceso
+			Nos autenticamos como animaniac1 y usamos la lista 
+		
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 

@@ -1727,6 +1727,41 @@
 		<property name="request" ref="request6Animaniac1" />
 	</bean>
 	
+	<bean id="application1Request6Animaniac2" class="domain.Application">
+		<property name="description" value="application description" />
+		<property name="state" value="Pending" />
+		<property name="animaniac" ref="animaniac4" />
+		<property name="request" ref="request1Animaniac2" />
+	</bean>
+	
+	<bean id="application2Request6Animaniac2" class="domain.Application">
+		<property name="description" value="application description" />
+		<property name="state" value="Pending" />
+		<property name="animaniac" ref="animaniac5" />
+		<property name="request" ref="request1Animaniac2" />
+	</bean>
+	
+	<bean id="application3Request6Animaniac2" class="domain.Application">
+		<property name="description" value="application description" />
+		<property name="state" value="Pending" />
+		<property name="animaniac" ref="animaniac6" />
+		<property name="request" ref="request1Animaniac2" />
+	</bean>
+	
+	<bean id="application4Request6Animaniac2" class="domain.Application">
+		<property name="description" value="application description" />
+		<property name="state" value="Pending" />
+		<property name="animaniac" ref="animaniac7" />
+		<property name="request" ref="request1Animaniac2" />
+	</bean>
+	
+	<bean id="application5Request6Animaniac2" class="domain.Application">
+		<property name="description" value="application description" />
+		<property name="state" value="Pending" />
+		<property name="animaniac" ref="animaniac8" />
+		<property name="request" ref="request1Animaniac2" />
+	</bean>
+	
 	<!-- Banner	-->
 	
 	<bean id="Banner1Partner1" class="domain.Banner">
