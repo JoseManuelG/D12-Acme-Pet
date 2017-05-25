@@ -23,8 +23,8 @@
 		<acme:select items="${types}" itemLabel="typeName" code="searchEngine.type" path="type"/>
 		<acme:textbox code="searchEngine.address" path="address"/>
 		   
-		<acme:textbox code="searchEngine.startDate" path="startDate"/>
-		<acme:textbox code="searchEngine.endDate" path="endDate"/>
+		<acme:textbox code="searchEngine.startDate" path="startDate" placeholder="dd/mm/yyyy hh:MM"/>
+		<acme:textbox code="searchEngine.endDate" path="endDate" placeholder="dd/mm/yyyy hh:MM"/>
 		
 		
 		
