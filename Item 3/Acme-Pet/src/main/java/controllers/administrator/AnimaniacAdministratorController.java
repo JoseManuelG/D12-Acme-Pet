@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.AnimaniacService;
 import controllers.AbstractController;
+import controllers.AnimaniacController;
 
 @Controller
 @RequestMapping("/animaniac/administrator")
@@ -17,6 +18,8 @@ public class AnimaniacAdministratorController extends AbstractController {
 
 	@Autowired
 	private AnimaniacService	animaniacService;
+	@Autowired
+	private AnimaniacController	animaniacController;
 
 
 	// Ban 	-------------------------------------------------------------------
@@ -51,10 +54,14 @@ public class AnimaniacAdministratorController extends AbstractController {
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView deleteBanned(@RequestParam final int animaniacId) {
 		ModelAndView result;
+		result = this.animaniacController.list();
+		try {
+			this.animaniacService.deleteBanned(animaniacId);
 
-		this.animaniacService.deleteBanned(animaniacId);
+		} catch (final Exception e) {
+			result.addObject("message", e.getMessage());
+		}
 
-		result = new ModelAndView("redirect:/abuseReport/administrator/list.do");
 		return result;
 	}
 

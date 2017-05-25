@@ -214,14 +214,15 @@ public class AnimaniacService {
 		Assert.isTrue(animaniacId != 0);
 		animaniac = this.findOne(animaniacId);
 		Assert.isTrue(animaniac.getBanned(), "El animaniaco debe estar banneado");
-		this.delete(animaniacId);
+
+		this.deleteByAdmin(animaniacId);
 	}
-	private void delete(final int animaniacId) {
+	private void deleteByAdmin(final int animaniacId) {
 		Animaniac animaniac;
 		animaniac = this.findOne(animaniacId);
 		this.reportService.deleteFromAnimaniac(animaniac);
 		this.curriculumService.deleteFromAnimaniac(animaniac);
-		this.petService.deleteFromAnimaniac(animaniac);
+		this.petService.deleteFromAnimaniacByAdmin(animaniac);
 		this.searchEngineService.deleteFromAnimaniac(animaniac);
 		this.applicationService.deleteFromAnimaniac(animaniac);
 		this.actorService.deleteFromActor(animaniac);
