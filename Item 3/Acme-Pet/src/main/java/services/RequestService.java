@@ -182,6 +182,19 @@ public class RequestService {
 
 		}
 	}
+	public void deleteFromPetFromAnimaniacByAdmin(final Pet pet) {
+		Collection<Request> requests;
+
+		requests = this.requestRepository.findByPet(pet.getId());
+
+		for (final Request request : requests) {
+
+			this.applicationService.deleteFromRequest(request);
+			this.searchEngineService.deleteFromRequest(request);
+			this.requestRepository.delete(request);
+
+		}
+	}
 
 	public Collection<Request> searchRequest(final String address, final int type, final Date startDate, final Date endDate) {
 		return this.requestRepository.searchRequest(address, type, startDate, endDate);

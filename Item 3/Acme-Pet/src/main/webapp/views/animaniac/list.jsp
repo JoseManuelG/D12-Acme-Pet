@@ -68,7 +68,19 @@
 	</jstl:if><br/>
 	
 	<acme:maskedColumn sorteable="true" code="animaniac.genre" text="${gender}" highlight="${style}" />
-	
+	<security:authorize access="hasRole('ADMINISTRATOR')">
+		 <display:column>
+		   
+		    
+		  <jstl:if test="${ row.banned}">
+		       <form method="get" action="animaniac/administrator/delete.do">
+    				<button type="submit" name="animaniacId" value="${row.id}" class="btn btn-primary" onclick="return confirm('<spring:message code="confirm.delete" />')">
+						<spring:message code="animaniac.delete" />
+					</button>
+				</form>
+		</jstl:if>
+		   </display:column>
+	</security:authorize>
 </display:table>
 
 <p><spring:message  code="animaniac.bantip" /></p>

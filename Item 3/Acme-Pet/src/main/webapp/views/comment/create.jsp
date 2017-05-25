@@ -19,7 +19,7 @@
 		
 	<acme:submit name="save" code="comment.save"/>
 	
-	<acme:cancel url='${requestURI}' code="comment.cancel"/>
+	<acme:cancel url='${cancelURI}' code="comment.cancel"/>
 	
 	<br>
 </form:form>

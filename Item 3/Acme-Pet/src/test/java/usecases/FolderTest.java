@@ -13,7 +13,6 @@ import javax.transaction.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -63,12 +62,12 @@ public class FolderTest extends AbstractTest {
 	//test positivo
 	@Test
 	public void editFolderTest1() {
-		this.templateEditFolder("animaniac1", "folder5Animaniac1", "FunctionalTestFolder", null);
+		this.templateEditFolder("animaniac1", "folder5Animaniac1", "aaaa", null);
 	}
 	//folderName ya existente
 	@Test
 	public void editFolderTest3() {
-		this.templateEditFolder("animaniac1", "folder5Animaniac1", "spambox", DataIntegrityViolationException.class);
+		this.templateEditFolder("animaniac1", "folder5Animaniac1", "spambox", IllegalArgumentException.class);
 	}
 	//sin loguearse
 	@Test
@@ -149,16 +148,20 @@ public class FolderTest extends AbstractTest {
 	}
 	protected void templateEditFolder(final String actorBean, final String folderBean, final String folderName, final Class<?> expected) {
 		Class<?> caught;
-		final Folder folder;
+		final Folder folder, folder2;
 		final int folderId;
 		caught = null;
 		try {
 			this.authenticate(actorBean);
 			folderId = this.extract(folderBean);
 			folder = this.folderService.findOne(folderId);
-			folder.setName(folderName);
-
-			this.folderService.save(folder);
+			folder2 = new Folder();
+			folder2.setName(folderName);
+			folder2.setId(folder.getId());
+			folder2.setActor(folder.getActor());
+			folder2.setVersion(folder.getVersion());
+			folder2.setReadOnly(folder.getReadOnly());
+			this.folderService.save(folder2);
 			this.folderService.flush();
 			this.unauthenticate();
 		} catch (final Throwable oops) {

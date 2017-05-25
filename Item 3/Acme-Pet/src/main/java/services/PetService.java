@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.PetRepository;
+import domain.Administrator;
 import domain.Animaniac;
 import domain.AttributeValue;
 import domain.Pet;
@@ -54,6 +55,8 @@ public class PetService {
 
 	@Autowired
 	private Validator				validator;
+	@Autowired
+	private ActorService			actorService;
 
 
 	//Simple CRUD methods-------------------------------------------------------------------
@@ -83,7 +86,18 @@ public class PetService {
 		Assert.notNull(pet);
 		Assert.isTrue(pet.getId() != 0);
 		Assert.notNull(pet.getAnimaniac());
-		Assert.isTrue(pet.getAnimaniac() == this.animaniacService.findAnimaniacByPrincipal());
+		Assert.isTrue(pet.getAnimaniac() == this.actorService.findActorByPrincipal() || Administrator.class.equals(this.actorService.findActorByPrincipal().getClass()));
+		this.requestService.deleteFromPet(pet);
+		this.attributeValueService.deleteFromPet(pet);
+		this.commentService.deleteAllCommentsOfPet(pet);
+		this.photoService.deleteFromPet(pet);
+		this.petRepository.delete(pet.getId());
+	}
+	public void AdminDelete(final Pet pet) {
+		Assert.notNull(pet);
+		Assert.isTrue(pet.getId() != 0);
+		Assert.notNull(pet.getAnimaniac());
+		Assert.isTrue(Administrator.class.equals(this.actorService.findActorByPrincipal().getClass()));
 		this.requestService.deleteFromPet(pet);
 		this.attributeValueService.deleteFromPet(pet);
 		this.commentService.deleteAllCommentsOfPet(pet);
@@ -197,6 +211,16 @@ public class PetService {
 
 		for (final Pet pet : pets) {
 			this.requestService.deleteFromPetFromAnimaniac(pet);
+			this.delete(pet);
+		}
+	}
+	public void deleteFromAnimaniacByAdmin(final Animaniac animaniac) {
+		Collection<Pet> pets;
+
+		pets = this.petRepository.findPetsByAnimaniac(animaniac.getId());
+
+		for (final Pet pet : pets) {
+			this.requestService.deleteFromPetFromAnimaniacByAdmin(pet);
 			this.delete(pet);
 		}
 	}
