@@ -57,13 +57,15 @@ public class ApplicationService {
 	}
 
 	public Application save(final Application application) {
-		Application result, existing;
+		Application result, existing, accepted;
 		Animaniac principal;
 
 		principal = this.animaniacService.findAnimaniacByPrincipal();
 		existing = this.applicationRepository.findApplicationsByAnimaniacAndRequest(principal.getId(), application.getRequest().getId());
+		accepted = this.applicationRepository.findAcceptedApplicationForRequest(application.getRequest().getId());
 
 		Assert.isNull(existing, "application.error.already.applied");
+		Assert.isNull(accepted, "application.error.already.accepted");
 		Assert.isTrue(!this.checkRequestOwner(application.getRequest().getId()));
 		Assert.isTrue(application.getRequest().getStartDate().after(new Date()), "application.error.start.date");
 
