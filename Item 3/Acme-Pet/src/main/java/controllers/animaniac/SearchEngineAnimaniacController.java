@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.BannerService;
 import services.SearchEngineService;
 import services.TypeService;
 import controllers.AbstractController;
+import domain.Actor;
 import domain.Banner;
 import domain.Request;
 import domain.SearchEngine;
@@ -30,6 +32,8 @@ public class SearchEngineAnimaniacController extends AbstractController {
 	private TypeService			typeService;
 	@Autowired
 	private BannerService		bannerService;
+	@Autowired
+	private ActorService		actorService;
 
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -38,7 +42,7 @@ public class SearchEngineAnimaniacController extends AbstractController {
 		final Collection<Request> results;
 		SearchEngine search;
 		final Banner banner;
-
+		Actor principal;
 		final Collection<Type> types = new ArrayList<Type>();
 		final Type type = this.typeService.create();
 		type.setTypeName("All");
@@ -55,7 +59,9 @@ public class SearchEngineAnimaniacController extends AbstractController {
 		result.addObject("requestURI", "searchEngine/animaniac/search.do");
 		result.addObject("types", types);
 		result.addObject("banner", banner);
+		principal = this.actorService.findActorByPrincipal();
 
+		result.addObject("principal", principal);
 		return result;
 	}
 	@RequestMapping(value = "/search", method = RequestMethod.POST, params = "save")
@@ -63,6 +69,7 @@ public class SearchEngineAnimaniacController extends AbstractController {
 		ModelAndView result;
 		SearchEngine res;
 		final Banner banner;
+		Actor principal;
 
 		banner = this.bannerService.randomBanner();
 		res = this.searchEngineService.reconstruct(search, binding);
@@ -99,6 +106,9 @@ public class SearchEngineAnimaniacController extends AbstractController {
 		types.addAll(this.typeService.findAll());
 
 		result.addObject("types", types);
+		principal = this.actorService.findActorByPrincipal();
+
+		result.addObject("principal", principal);
 		return result;
 	}
 }

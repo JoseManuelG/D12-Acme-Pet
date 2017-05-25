@@ -64,11 +64,13 @@
 <security:authorize access="hasRole('ADMINISTRATOR')">
 		 <display:column>
 		    <jstl:if test="${row.reported.banned == true}">
-		       
-					<a href="animaniac/administrator/delete.do?animaniacId=${row.reported.id}">
-						<spring:message code="animaniac.delete"/>
-					</a>
-				
+		    
+		    <jstl:set var="reported" value="${row.reported.id}"/>
+		       <form method="get" action="animaniac/administrator/delete.do">
+    				<button type="submit" name="animaniacId" value="${reported}" class="btn btn-primary" onclick="return confirm('<spring:message code="confirm.delete" />')">
+						<spring:message code="animaniac.delete" />
+					</button>
+				</form>
 		    </jstl:if>    
 		   </display:column>
 	</security:authorize>

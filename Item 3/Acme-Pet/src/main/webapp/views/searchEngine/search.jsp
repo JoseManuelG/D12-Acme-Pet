@@ -40,7 +40,7 @@
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
 	name="search.requests" requestURI="${requestURI}" id="row">
-	
+	<jstl:set var="owner" value="${row.pets[0].animaniac}"/>
 	
 	<!-- Attributes -->
 	<spring:message code="request.owner" var="codeName" />
@@ -66,7 +66,16 @@
 	</display:column>
 	
 	<!-- Action links -->
-	
+	<security:authorize access="hasRole('ANIMANIAC')">
+		<display:column>
+			
+			<jstl:if test="${!(owner eq principal)}">
+				<a href="application/animaniac/create.do?requestId=${row.id}">
+					<spring:message	code="request.apply" />
+				</a>
+			</jstl:if>
+		</display:column>
+	</security:authorize>	
 	
 </display:table>
 
