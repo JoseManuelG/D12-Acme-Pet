@@ -21,7 +21,7 @@ import domain.Type;
 public class PetForm {
 
 	private String					name;
-	private Double					weigth;
+	private double					weigth;
 	private String					genre;
 	private List<AttributeValue>	attributeValues;
 	private List<Attribute>			attributes;
@@ -43,11 +43,11 @@ public class PetForm {
 	}
 
 	@Min(0)
-	public Double getWeigth() {
+	public double getWeigth() {
 		return this.weigth;
 	}
 
-	public void setWeigth(final Double weigth) {
+	public void setWeigth(final double weigth) {
 		this.weigth = weigth;
 	}
 

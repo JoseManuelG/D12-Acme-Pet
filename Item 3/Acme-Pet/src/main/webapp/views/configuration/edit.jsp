@@ -18,10 +18,12 @@
 
 <form:form action="configuration/administrator/edit.do" modelAttribute="configurationForm">
 
+<fieldset>
+<legend><spring:message code="configuration.cache.legend"/></legend>
 	<acme:textbox code="configuration.hours" path="hours"/>
 	<acme:textbox code="configuration.minutes" path="minutes"/>
 	<acme:textbox code="configuration.seconds" path="seconds"/>
-	
+</fieldset>
 	<acme:textbox code="configuration.PatnerFee" path="patnerFee"/>
 
 	

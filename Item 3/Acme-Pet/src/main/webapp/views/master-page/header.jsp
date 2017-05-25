@@ -55,6 +55,9 @@
 				</a>
 				<ul>
 					<li class="arrow"></li>
+					<security:authorize access="hasRole('ANIMANIAC')">
+					<li><a href="searchEngine/animaniac/search.do"><spring:message code="master.page.searchEngine" /></a></li>
+					</security:authorize>
 					<li><a href="request/actor/list.do"><spring:message code="master.page.list.all.request" /></a></li>
 					<security:authorize access="hasRole('ANIMANIAC')">
 						<li><a href="request/animaniac/list.do"><spring:message code="master.page.list.my.request" /></a></li>
@@ -81,9 +84,6 @@
 					<li class="arrow"></li>
 					<li><a href="actor/myProfile.do"><spring:message code="master.page.my.profile" /></a></li>
 					<li><a href="folder/list.do"><spring:message code="master.page.folders" /></a></li>
-					<security:authorize access="hasRole('ANIMANIAC')">
-					<li><a href="searchEngine/animaniac/search.do"><spring:message code="master.page.searchEngine" /></a></li>
-					</security:authorize>
 					
 					<security:authorize access="hasRole('VET')">
 						
@@ -95,6 +95,7 @@
 					<li><a href="vet/administrator/register.do"><spring:message code="master.page.register.vet" /></a></li>
 					<li><a href="dashboard/administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
 					<li><a href="abuseReport/administrator/list.do"><spring:message code="master.page.administrator.abuseReport" /></a></li>
+						<li><a href="configuration/administrator/view.do"><spring:message code="master.page.administrator.configuration" /></a></li>
 						<li><a href="spamword/administrator/list.do"><spring:message code="master.page.administrator.spamword" /></a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('PARTNER')">

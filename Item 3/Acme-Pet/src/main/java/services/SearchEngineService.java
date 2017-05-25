@@ -90,12 +90,12 @@ public class SearchEngineService {
 			if (searchEngine.getStartDate() != null)
 				startDate = searchEngine.getStartDate();
 			else
-				startDate = new DateTime(System.currentTimeMillis()).minusYears(10).toDate();
+				startDate = new DateTime(System.currentTimeMillis()).minusYears(100).toDate();
 
 			if (searchEngine.getEndDate() != null)
 				endDate = searchEngine.getEndDate();
 			else
-				endDate = new DateTime(System.currentTimeMillis()).plusYears(1).toDate();
+				endDate = new DateTime(System.currentTimeMillis()).plusYears(100).toDate();
 
 			//Busqueda en base de Datos
 			if ((!searchEngine.getType().equals("0")))
