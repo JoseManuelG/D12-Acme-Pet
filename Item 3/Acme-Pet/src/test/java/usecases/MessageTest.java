@@ -202,6 +202,7 @@ public class MessageTest extends AbstractTest {
 	protected void templateReplyMessage(final String actorBean, final String messageBean, final Class<?> expected) {
 		Class<?> caught;
 		caught = null;
+		@SuppressWarnings("unused")
 		final MessageForm form;
 		try {
 			this.authenticate(actorBean);
@@ -219,6 +220,7 @@ public class MessageTest extends AbstractTest {
 	protected void templateForwardMessage(final String actorBean, final String messageBean, final Class<?> expected) {
 		Class<?> caught;
 		caught = null;
+		@SuppressWarnings("unused")
 		final MessageForm form;
 		try {
 			this.authenticate(actorBean);

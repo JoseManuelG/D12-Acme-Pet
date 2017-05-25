@@ -38,6 +38,7 @@ public class CommentService {
 		Comment result;
 		Animaniac principal;
 		Assert.notNull(commentable, "El commentable no debe ser nulo");
+		Assert.isTrue(commentable.getId() != 0);
 		principal = this.animaniacService.findAnimaniacByPrincipal();
 
 		result = new Comment();
