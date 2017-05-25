@@ -1,6 +1,5 @@
 ﻿-------------- POR HACER --------------
 MASCOTAS
-	-Revisar no poder aplicar a un request que ya ha empezado
 	-Añadir texto explicativo al puntuar
 	-Enlace mis mascotas
 	- Fallos tontos de formato (como que las cajas de los foreach no aparecen al lado de las etiquetas)
@@ -11,6 +10,7 @@ MASCOTAS
 - Cambiar el about y el terminos y condiciones
 
 ---------------- HECHO ----------------
+-Revisar no poder aplicar a un request que ya ha empezado
 - Enlace a lista de pets desde el perfil de un usuario falla como partner, veterinario y supongo que para admin [Cambiar security a isAuthenticated]
 - Cambiar genre por gender en los message.properties
 - Propiedad de pet certificateBy deberia ser certificatedBy?

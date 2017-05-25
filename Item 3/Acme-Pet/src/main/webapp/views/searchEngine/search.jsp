@@ -11,6 +11,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jsp:useBean id="now" class="java.util.Date" />
+
 <fieldset>
 	<form:form action="searchEngine/animaniac/search.do" modelAttribute="search">
 		<form:hidden path="id" />
@@ -69,7 +71,7 @@
 	<security:authorize access="hasRole('ANIMANIAC')">
 		<display:column>
 			
-			<jstl:if test="${!(owner eq principal)}">
+			<jstl:if test="${!(owner eq principal) and row.endDate>now}">
 				<a href="application/animaniac/create.do?requestId=${row.id}">
 					<spring:message	code="request.apply" />
 				</a>

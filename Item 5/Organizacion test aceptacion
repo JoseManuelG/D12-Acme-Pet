@@ -4,40 +4,24 @@
 			Comprobar que la información sobre los anunciantes que aparece en lista es la esperada. Lo haremos autenticados como "animaniac1".
 		Salida esperada
 			La lista de anunciantes tiene las siguientes columnas: Nombre, Apellidos Teléfono. Además se proporciona un enlace para ver el perfil de cada anunciante.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
 
 		Test <#2>
 		Descripción
 			Repetir el test anterior autenticado como "admin". Deben aparecer las columnas cuota total y banners mostrados
 		Salida esperada
 			La lista de anunciantes tiene las siguientes columnas: Nombre, Apellidos Teléfono. Además se proporciona un enlace para ver el perfil de cada anunciante.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
 
 		Test <#3>
 		Descripción
 			Comprobar los enlaces de paginación. Lo haremos autenticados como "animaniac1".
 		Salida esperada
 			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
 
 		Test <#4>
 		Descripción
 			Repetir el test anterior autenticado como "admin". 
 		Salida esperada
 			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
 
 		Test <#5>
 		Descripción
@@ -46,10 +30,6 @@
 			Los tres ordenan correctamente para cada página.
 		Notas del diseñador
 			El orden global no funciona con este componente, es un error conocido, compruébalo solo para cada página por separado sin tener en cuenta las demás.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
 
 		Test <#6>
 		Descripción
@@ -58,10 +38,7 @@
 			Todos los criterios funcionan correctamente para cada página.
 		Notas del diseñador
 			El orden global no funciona con este componente, es un error conocido, compruébalo solo para cada página por separado sin tener en cuenta las demás.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
@@ -70,30 +47,21 @@
 			Todos los enlaces llevan al perfil de cada anunciante.
 		Notas del diseñador
 			Para ver el perfil es necesario autenticarse. Usa los credenciales de "animaniac1".
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#8>
 		Descripción
 			Comprobar el acceso. Entra como cada tipo de actor con las credenciales "vetvet1" y "partner1" para verificar que todos los actores pueden entrar.
 		Salida esperada
 			Todos los actores pueden acceder.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#9>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
 			Se han traducido todos los elementos menos el nombre, apellido y teléfono de cada anunciante.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -108,30 +76,21 @@
 			Comprobamos que la información de registro que aparece para un animaniaco es la esperada. Un animaniaco debe tener un nombre de usuario, una contraseña, un nombre, apellidos, email, teléfono, género, dirección y, opcionalmente, una foto.
 		Salida esperada
 			Se muestran campos para todos los datos necesarios.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente a la página principal.
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacios.
 		Salida esperada
 			Se muestran errores en todos los campos, excepto en el de foto, que es opcional, en el de confirmar contraseña, ya que al estar las dos en blanco coinciden, y en el de género, que hay uno seleccionado.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -153,10 +112,7 @@
 				Email: No encaja en el patrón
 				Teléfono: No encaja en el patrón
 				Foto: URL incorrecta
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -174,10 +130,7 @@
 			Podemos comprobar sus datos llendo a la lista de todos los animaniacos (Gente/Listar animaniacos). Estará en la última posición.
 		Salida esperada
 			Se crea el usuario test1 con el apellido usado.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
@@ -195,10 +148,7 @@
 			Podemos comprobar sus datos llendo a la lista de todos los animaniacos (Gente/Listar animaniacos). Estará en la última posición.
 		Salida esperada
 			Se crea el usuario test2 correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
@@ -207,10 +157,7 @@
 			No es válido crear dos usuarios con el mismo nombre. Usa test3 y test 4 en lugar de test1 y test2 respectivamente.
 		Salida esperada
 			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -225,30 +172,21 @@
 			Comprobamos que la información de registro que aparece para un veterinario es la esperada. Un veterinario debe tener un nombre de usuario, una contraseña, un nombre, apellidos, email, teléfono y dirección.
 		Salida esperada
 			Se muestran campos para todos los datos necesarios.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente a la página principal.
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacios.
 		Salida esperada
 			Se muestran errores en todos los campos, excepto en el de confirmar contraseña, ya que al estar las dos en blanco coinciden.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -267,10 +205,7 @@
 				Nombre: HTML inseguro
 				Email: No encaja en el patrón
 				Teléfono: No encaja en el patrón
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -287,10 +222,7 @@
 		Salida esperada
 			Se esperan los siguientes errores:
 				Teléfono: No encaja en el patrón
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
@@ -307,10 +239,7 @@
 			Podemos comprobar sus datos llendo a la lista de todos los animaniacos (Gente/Listar veterinarios). Estará en la última posición.
 		Salida esperada
 			Se crea el usuario testVeterinario correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
@@ -319,10 +248,7 @@
 			No es válido crear dos usuarios con el mismo nombre. Usa testVeterinario2 en lugar de testVeterinario.
 		Salida esperada
 			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -337,30 +263,21 @@
 			Comprobamos que la información de registro que aparece para un anunciante es la esperada. Un anunciante debe tener un nombre de usuario, una contraseña, un nombre, apellidos, email, teléfono, enlace, dirección y descripción.
 		Salida esperada
 			Se muestran campos para todos los datos necesarios.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente a la página principal.
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacios.
 		Salida esperada
 			Se muestran errores en todos los campos, excepto en el de confirmar contraseña, ya que al estar las dos en blanco coinciden.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -378,10 +295,7 @@
 				Confirmar contraseña: La contraseña no coincide
 				Email: No encaja en el patrón
 				Teléfono: No encaja en el patrón
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -398,10 +312,7 @@
 		Salida esperada
 			Se esperan los siguientes errores:
 				Email: No encaja en el patrón
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
@@ -418,10 +329,7 @@
 			Podemos comprobar sus datos llendo a la lista de todos los animaniacos (Gente/Listar anunciantes). Estará en la última posición.
 		Salida esperada
 			Se crea el usuario testAnunciante correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
@@ -430,10 +338,7 @@
 			No es válido crear dos usuarios con el mismo nombre. Usa testAnunciante2 lugar de testAnunciante.
 		Salida esperada
 			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -449,40 +354,28 @@
 			Comprobamos que al entrar en el perfil del usuario los datos que aparecen son los esperados por el cliente. Para un animaniaco debe aparecer la siguiente información: foto de perfil, nombre de usuario, puntuación, nombre, apellido, email, teléfono, género y dirección. Además debe aparecer su curriculum con los campos sección de educacion, sección de experiencia y sección de aficiones, y una lista de los comentarios hechos sobre su perfil. También debe contar un enlaces para mandarle un mensaje, comentar en su perfil, ver sus mascotas y, si estas conectado como otro animaniaco, informar sobre su mal uso de la aplicación. Autenticate como "animaniac2" y entra en el perfil del animaniac1.
 		Salida esperada
 			Se muestran todos los datos necesario, así como el curriculum, la lista de comentarios y los enlaces pertinentes.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que los distintos enlaces funcionan.
 		Salida esperada
 			Mandar un mensaje nos lleva al formulario para crear un mensaje, comentar, al formulario para crear un comentario, reportar, al formulario para crear un informe de mal uso, y lista de mascotas, a las mascotas del animaniaco.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos los enlaces de edicion en el perfil del propio animaniaco. Para ello vamos a "mi perfil". Además de todo lo anterior, deben aparecer los enlaces "editar" y "editar curriculum". Pulsamos sobre ellos para comprobarlos.
 		Salida esperada
 			Editar lleva al formulario de edición y editar curriculum al de editar curriculum.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
 			Se han traducido todos los elementos no persistentes y las costantes persistentes.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -497,20 +390,14 @@
 			Comprobar que la información sobre los comentarios que aparece en lista es la esperada.
 		Salida esperada
 			La lista de comentarios tiene las siguientes columnas: momento de publicación, título y cuerpo, asi como un enlace a su autor.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobar los enlaces de paginación.
 		Salida esperada
 			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
@@ -519,40 +406,28 @@
 			Los tres ordenan correctamente para cada página.
 		Notas del diseñador
 			El orden global no funciona con este componente, es un error conocido, compruébalo solo para cada página por separado sin tener en cuenta las demás.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
 			Comprobar que los enlaces de para ver perfil funcionan correctamente.
 		Salida esperada
 			Todos los enlaces llevan al perfil de cada animaniaco.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
 			Comprobar el formato. La fecha debe seguir el formato año-mes-día hora:minuto:segundo.
 		Salida esperada
 			La fecha tiene el formato esperado.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
 			Se han traducido todos los elementos menos el nombre, apellido, dirección y teléfono de cada veterinario.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -568,40 +443,28 @@
 			Comprobamos que al entrar en el perfil del usuario los datos que aparecen son los esperados por el cliente. Para un veterinario debe aparecer la siguiente información: nombre de usuario, nombre, apellido, email, teléfono, y dirección. También debe contar con un enlace para mandarle un mensaje. Autenticate como "vetvet2" y entra en el perfil de vetvet1.
 		Salida esperada
 			Se muestran todos los datos necesario, así como el enlace para mandar mensaje.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el enlace de mandar mensaje funciona.
 		Salida esperada
 			Mandar un mensaje nos lleva al formulario para crear un mensaje con destino el veterinario elegido.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos el enlace de edición en el perfil del propio veterinario. Para ello vamos a "mi perfil". Además de todo lo anterior, debe aparecer el enlace de "editar". Pulsamos sobre ellos para comprobarlos.
 		Salida esperada
 			Editar lleva al formulario de edición del veterinario.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
 			Se han traducido todos los elementos no persistentes y las costantes persistentes.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -617,40 +480,28 @@
 			Comprobamos que al entrar en el perfil del usuario los datos que aparecen son los esperados por el cliente. Para un anunciante debe aparecer la siguiente información: nombre de usuario, nombre, apellido, email, teléfono, enlace, dirección y una descripción de la empresa anunciante. También debe contar con un enlace para mandarle un mensaje. Autenticate como "partner2" y entra en el perfil de partner1.
 		Salida esperada
 			Se muestran todos los datos necesario, así como el enlace para mandar mensaje.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el enlace de mandar mensaje funciona.
 		Salida esperada
 			Mandar un mensaje nos lleva al formulario para crear un mensaje con destino el anunciante elegido.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos el enlace de edición en el perfil del propio anunciante. Para ello vamos a "mi perfil". Además de todo lo anterior, debe aparecer el enlace de "editar". Pulsamos sobre ellos para comprobarlos.
 		Salida esperada
 			Editar lleva al formulario de edición del anunciante.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
 			Se han traducido todos los elementos no persistentes y las costantes persistentes.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -665,30 +516,21 @@
 			Comprobamos que la información que aparece del animaniaco es la esperada. Un animaniaco debe tener un nombre de usuario, una contraseña, un nombre, apellidos, email, teléfono, género, dirección y, opcionalmente, una foto. Concretamente, el animaniac1 tiene "animaniac1" en varios campos, por lo que es fácil identificar que se está accediendo a los datos del animaniaco correcto.
 		Salida esperada
 			Se muestran campos para todos los datos necesarios y la información rellena con los datos del animaniac1.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente al perfil del animaniac1.
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacios. Borralo todo y pulsa guardar. Puedes volver a rellenar los datos cambiados más adelante pulsando cancelar y editar.
 		Salida esperada
 			Se muestran errores en todos los campos, excepto en el de foto, que es opcional, en el de confirmar contraseña, ya que al estar las dos en blanco coinciden, y en el de género, que hay uno seleccionado.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -700,10 +542,7 @@
 			Se esperan los siguientes errores:
 				Confirmar contraseña: La contraseña no coincide
 				Dirección: HTML inseguro
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -713,30 +552,21 @@
 		Salida esperada
 			Se esperan los siguientes errores:
 				Confirmar contraseña: La contraseña no coincide
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
 			Comprobamos que todos los campos de la lista de género funcionen correctamente. Probamos primero a dejarlo como está, rellenando la contraseña como "animaniac1" y confirmandola  y guardamos. Después probamos con femenino, rellenando con la misma contraseña.
 		Salida esperada
 			En primer lugar el perfil se queda igual, en segundo lugar vemos que ha cambiado el género en el perfil.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
 			Repite los test anteriores en inglés
 		Salida esperada
 			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -751,30 +581,21 @@
 			Comprobamos que la información que aparece para un curriculum es la esperada. Un curriculum debe tener una sección de educacion, sección de experiencia y una sección de aficiones.
 		Salida esperada
 			Se muestran campos para todos los datos necesarios.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente al pefil del animaniac3.
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacios.
 		Salida esperada
 			Se muestran errores en todos los campos.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -785,10 +606,7 @@
 		Salida esperada
 			Se esperan los siguientes errores:
 				Sección de aficiones: HTML inseguro
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -798,10 +616,7 @@
 				Sección de aficiones: ' or 'A' = 'A
 		Salida esperada
 			Se devuelve al perfil donde podemos ver el curriculum creado.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
@@ -809,20 +624,14 @@
 				Sección de aficiones: Pasear perros
 		Salida esperada
 			Se devuelve al perfil donde podemos ver el curriculum creado.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
 			Pulsando de nuevo en editar curriculum, prueba a usar el botón de borrado. Confirma el mensaje de borrado.
 		Salida esperada
 			Se devuelve al perfil donde ya no aparece curriculum ninguno.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#8>
 		Descripción
@@ -831,10 +640,7 @@
 			Usa 
 		Salida esperada
 			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -849,30 +655,21 @@
 			Comprobamos que la información que aparece del veterinario es la esperada. Un veterinario debe tener un nombre de usuario, una contraseña, un nombre, apellidos, email, teléfono y una dirección. Concretamente, el vetvet1 tiene "vet1" en varios campos, por lo que es fácil identificar que se está accediendo a los datos del veterinario correcto.
 		Salida esperada
 			Se muestran campos para todos los datos necesarios y la información rellena con los datos del vetvet1.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente al perfil del vetvet1.
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacios. Borralo todo y pulsa guardar. Puedes volver a rellenar los datos cambiados más adelante pulsando cancelar y editar.
 		Salida esperada
 			Se muestran errores en todos los campos, excepto en el de  confirmar contraseña, ya que al estar las dos en blanco coinciden.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -884,10 +681,7 @@
 			Se esperan los siguientes errores:
 				Confirmar contraseña: La contraseña no coincide
 				Nombre: HTML inseguro
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -897,10 +691,7 @@
 		Salida esperada
 			Se esperan los siguientes errores:
 				Confirmar contraseña: La contraseña no coincide
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
@@ -908,20 +699,14 @@
 				Dirección: Calle falsa 123
 		Salida esperada
 			Ha cambiado la dirección en el perfil.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
 			Repite los test anteriores en inglés
 		Salida esperada
 			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -936,30 +721,21 @@
 			Comprobamos que la información que aparece del anunciante es la esperada. Un anunciante debe tener un nombre de usuario, una contraseña, un nombre, apellidos, email, teléfono, un enlace, una dirección y una descripción. Concretamente, el partner1 tiene "partner1" en varios campos, por lo que es fácil identificar que se está accediendo a los datos del anunciante correcto.
 		Salida esperada
 			Se muestran campos para todos los datos necesarios y la información rellena con los datos del partner1.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente al perfil del partner1.
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacios. Borralo todo y pulsa guardar. Puedes volver a rellenar los datos cambiados más adelante pulsando cancelar y editar.
 		Salida esperada
 			Se muestran errores en todos los campos, excepto en el de  confirmar contraseña, ya que al estar las dos en blanco coinciden.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -971,10 +747,7 @@
 			Se esperan los siguientes errores:
 				Confirmar contraseña: La contraseña no coincide
 				Nombre: HTML inseguro
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -984,10 +757,7 @@
 		Salida esperada
 			Se esperan los siguientes errores:
 				Confirmar contraseña: La contraseña no coincide
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
@@ -995,20 +765,14 @@
 				Descripción: Nada que resaltar
 		Salida esperada
 			Ha cambiado la descripción en el perfil.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
 			Repite los test anteriores en inglés
 		Salida esperada
 			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1025,20 +789,14 @@
 			La lista de mascotas tiene las siguientes columnas: Nombre (que además será un enlace al perfil de la mascota), género y peso.
 		Notas del diseñador
 			Si intentas acceder al perfil de la mascota, el sistema te pedirá que te autentiques. Es el comportamiento normal del sistema.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobar todos los enlaces de paginación.
 		Salida esperada
 			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
@@ -1047,10 +805,7 @@
 			Los dos ordenan correctamente para cada página.
 		Notas del diseñador
 			El orden global no funciona con este componente, es un error conocido, compruébalo solo para cada página por separado sin tener en cuenta las demás.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -1059,30 +814,21 @@
 			Todos los enlaces llevan al perfil de cada mascota.
 		Notas del diseñador
 			Para ver el perfil es necesario autenticarse. Usa los credenciales de "animaniac1".
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
 			Comprobar el enlace a crear nueva mascota. Usa el acceso de Mis mascotas para llegar a la lista de las mascotas del animaniaco autenticado. 
 		Salida esperada
 			El enlace lleva al formulario para crear nuevas mascotas.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
 			Se han traducido todos los elementos menos el nombre de cada mascota.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1098,40 +844,28 @@
 			Comprobamos que al entrar en el perfil de la mascota los datos que aparecen son los esperados por el cliente. Para una mascota debe aparecer la siguiente información: nombre, peso, por quien ha sido certificada, en caso de haberlo sido, y su género. Además, se mostrará su tipo y características específicas de este tipo, así como una colección de fotos y comentarios sobre su perfil.
 		Salida esperada
 			Se muestran todos los datos necesarios.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos el enlace de edición en el perfil de una mascota. Para ello vamos a "Mis mascotas" y pulsamos en la primera. Además de todo lo anterior, debe aparecer el enlace de "editar". Pulsamos sobre este para comprobarlo.
 		Salida esperada
 			Editar lleva al formulario de edición de la mascota.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
 			Se han traducido todos los elementos no persistentes y las costantes persistentes.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
 			Se han traducido todos los elementos no persistentes y las costantes persistentes.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1146,30 +880,21 @@
 			Comprobamos que la información que aparece de la mascota es la esperada. Una mascota debe tener un nombre, peso y su género. Además, como es de tipo "Dog", debe tener también las características "PPP", "castrated" y "breed". 
 		Salida esperada
 			Se muestran campos para todos los datos necesarios.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2> [Bug intencionado, redirige a la principal]
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente a la lista de mascotas del animaniac2 (que solo contiene una mascota).
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3> [Bug intencionado, nullPointerException al dejar en blanco el peso]
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacios.
 		Salida esperada
 			Se muestran errores en todos los campos, excepto en las características "PPP", "castrated" y "breed", que son opcionales.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -1180,10 +905,7 @@
 		Salida esperada
 			Se esperan los siguientes errores:
 				Nombre: HTML inseguro
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -1193,10 +915,7 @@
 				Peso: 5
 		Salida esperada
 			Se crea la mascota con nombre ' or 'A' = 'A. Al crear nos redirige correctamente al perfil de la mascota.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
@@ -1205,30 +924,21 @@
 				PPP: No
 		Salida esperada
 			Han cambiado correctamente los campos en el perfil.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
 			Usamos el botón editar del perfil y pulsamos en borrar mascota.
 		Salida esperada
 			Nos redirige a la lista de Mis mascotas, donde ya no aparece la que habíamos creado.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#8>
 		Descripción
 			Repite los test anteriores en inglés
 		Salida esperada
 			Todos los elementos que no han sido introducidos manualmente se han traducido al inglés, a excepción del tipo y las características del mismo.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1243,90 +953,63 @@
 			Comprobar que la información sobre las peticiones que aparece en lista es la esperada. La lista de peticiones debe tener las siguientes columnas: propietario (que es un enlace a su perfil), fecha de comienzo, fecha fin, dirección, descripción y mascotas. Además, debe tener disponible un enlace para solicitar, si no es el que ha hecho la petición, o enlaces para borrar y ver solicitudes en el caso de ser el que ha hecho la petición. Por último, si cumple ciertas reglas de negocio debe aparecer la opción puntuar. Autenticate como animaniac1 para hacer este test.
 		Salida esperada
 			 Las columnas se corresponden con las esperadas
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobar todos los enlaces de paginación.
 		Salida esperada
 			Los enlaces "2", "Siguiente" y "Último" llevan correctamente a la página 2, mientras que los enlaces "1", "Anterior" y "Primero" llevan correctamente a la página 1.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3>
 		Descripción
 			Comprobar que los enlaces de los nombres de los propietarios funcionan correctamente.
 		Salida esperada
 			Todos los enlaces llevan al perfil de cada animaniaco.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
 			Comprobar que los enlaces para solicitar funcionan correctamente.
 		Salida esperada
 			El único enlace que hay lleva correctamente al formulario para hacer una solicitud.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
 			Comprobar que los enlaces para ver las solicitudes funcionan correctamente.
 		Salida esperada
 			Los enlaces llevan a la lista de solicitudes hechas a esa petición.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
 			Comprobar que los enlaces para puntuar funcionan correctamente. Para poder puntuar se tienen que cumplir ciertos requisitos. Si la fecha de fin no ha pasado no se muestra el enlace, pero aunque haya pasado, si la petición no tuvo ninguna solicitud aceptada, no será posible puntuar. La primera solicitud de la lista que te permite puntuar es la única con solicitudes aceptadas que ha terminado.
 		Salida esperada
 			El enlace de la petición con solicitudes aceptadas lleva al formulario para puntuar. El resto muestra un mensaje explicando porqué no es posible puntuarla a pie de página.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
 			Comprobar el formato de los datos. Para las fechas se sigue el formato año-mes-dia hora:minuto:segundo, para la coleccion de mascotas se muestra como una lista viñetada con los nombres de las mascotas.
 		Salida esperada
 			Los formatos son adecuados.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#8>
 		Descripción
 			Comprobar el acceso. Entra como cada tipo de actor con las credenciales "vetvet1", "partner1" y "admin" para verificar que todos los actores pueden entrar.
 		Salida esperada
 			Todos los actores pueden acceder.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#9>
 		Descripción
 			Realiza de nuevo todos los test en inglés.
 		Salida esperada
 			Se han traducido todos los elementos no persistentes.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1341,30 +1024,21 @@
 			Comprobamos que la información que aparece de la petición es la esperada. Una petición debe tener un fecha de comienzo, fecha fin, dirección, descripción y mascotas. Las posibles mascotas a añadir a la petición son las que el animaniaco que esta haciendo la petición tiene y no están ya en una petición cuya fecha fin este en el futuro. En nuestro caso concreto, el animaniac1 tiene una petición activa para su primera mascota, por lo que no debe aparecer.
 		Salida esperada
 			Se muestran campos para todos los datos necesarios y las mascotas adecuadas.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente a la lista de peticiones del animaniac1, que dispone de 6 peticiones.
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3> 
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacíos. Para ello borra la dirección, que se completa automáticamente con la que el animaniaco tiene registrada en su perfil.
 		Salida esperada
 			Se muestran errores en todos los campos, excepto en la descripción, que es opcional.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -1378,10 +1052,7 @@
 				Fecha de comienzo: Momento inválido
 				Fecha fin: Momento inválido
 				Mascotas: No debe estar vacío
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -1392,10 +1063,7 @@
 				Todas las mascotas seleccionadas
 		Salida esperada
 			Se esperan un error que indique que las fechas deben ser en el futuro.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
@@ -1406,10 +1074,7 @@
 				Todas las mascotas seleccionadas
 		Salida esperada
 			Se esperan un error que indique la fecha fin debe ser posterior a la de comienzo.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
@@ -1420,30 +1085,21 @@
 				Todas las mascotas seleccionadas
 		Salida esperada
 			Redirige a la lista de mis peticiones. Debe aparecer en último lugar.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#8>
 		Descripción
 			Intentamos hacer otra petición, ahora que no tenemos mascotas disponibles.
 		Salida esperada
 			Se espera un error a pie de página que indique que no puede realizar más peticiones.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#9>
 		Descripción
 			Repite los test anteriores en inglés
 		Salida esperada
 			Todos los elementos que no persistentes han sido traducidos al ingles.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1458,30 +1114,21 @@
 			Comprobamos que la información que aparece de la busqueda es la esperada. Una busqueda debe tener un fecha de comienzo, fecha fin, dirección, descripción y mascotas. Las posibles mascotas a añadir a la petición son las que el animaniaco que esta haciendo la petición tiene y no están ya en una petición cuya fecha fin este en el futuro. En nuestro caso concreto, el animaniac1 tiene una petición activa para su primera mascota, por lo que no debe aparecer.
 		Salida esperada
 			Se muestran campos para todos los datos necesarios y las mascotas adecuadas.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#2>
 		Descripción
 			Comprobamos que el botón de cancelar nos devuelve correctamente a la lista de peticiones del animaniac1, que dispone de 6 peticiones.
 		Salida esperada
 			Redirige correctamente.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#3> 
 		Descripción
 			Comprobamos que pasa al intentar guardar con todos los campos vacíos. Para ello borra la dirección, que se completa automáticamente con la que el animaniaco tiene registrada en su perfil.
 		Salida esperada
 			Se muestran errores en todos los campos, excepto en la descripción, que es opcional.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#4>
 		Descripción
@@ -1495,10 +1142,7 @@
 				Fecha de comienzo: Momento inválido
 				Fecha fin: Momento inválido
 				Mascotas: No debe estar vacío
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#5>
 		Descripción
@@ -1509,10 +1153,7 @@
 				Todas las mascotas seleccionadas
 		Salida esperada
 			Se esperan un error que indique que las fechas deben ser en el futuro.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#6>
 		Descripción
@@ -1523,10 +1164,7 @@
 				Todas las mascotas seleccionadas
 		Salida esperada
 			Se esperan un error que indique la fecha fin debe ser posterior a la de comienzo.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#7>
 		Descripción
@@ -1537,30 +1175,21 @@
 				Todas las mascotas seleccionadas
 		Salida esperada
 			Redirige a la lista de mis peticiones. Debe aparecer en último lugar.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#8>
 		Descripción
 			Intentamos hacer otra petición, ahora que no tenemos mascotas disponibles.
 		Salida esperada
 			Se espera un error a pie de página que indique que no puede realizar más peticiones.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 		Test <#9>
 		Descripción
 			Repite los test anteriores en inglés
 		Salida esperada
 			Todos los elementos que no persistentes han sido traducidos al ingles.
-		Salida obtenida
-			Describe qué has obtenido al realizar este test. Añade capturas de pantalla si es necesario. Por favor, asegúrate de que la descripción sea suficiente para que el desarrollador pueda repetir lo que has hecho, y así corregir el problema.
-		Notas del tester
-			Añade notas si es necesario.
+
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------

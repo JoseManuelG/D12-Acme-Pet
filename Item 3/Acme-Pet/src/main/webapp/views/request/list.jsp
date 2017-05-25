@@ -59,7 +59,7 @@
 					</a>
 				</jstl:if>
 			</jstl:if>
-			<jstl:if test="${!(owner eq principal)}">
+			<jstl:if test="${!(owner eq principal) and row.endDate>now}">
 				<a href="application/animaniac/create.do?requestId=${row.id}">
 					<spring:message	code="request.apply" />
 				</a>
