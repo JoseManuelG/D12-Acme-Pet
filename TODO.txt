@@ -1,14 +1,18 @@
 ﻿-------------- POR HACER --------------
 MASCOTAS
-	- Enlace a lista de pets desde el perfil de un usuario falla como partner, veterinario y supongo que para admin [Cambiar security a isAuthenticated]
+	-Revisar no poder aplicar a un request que ya ha empezado
+	-Añadir texto explicativo al puntuar
+	-Enlace mis mascotas
 	- Fallos tontos de formato (como que las cajas de los foreach no aparecen al lado de las etiquetas)
+	
 
-- Cambiar genre por gender en los message.properties
 - Sacar pdfs de requirements.
 - Informe costes
 - Cambiar el about y el terminos y condiciones
 
 ---------------- HECHO ----------------
+- Enlace a lista de pets desde el perfil de un usuario falla como partner, veterinario y supongo que para admin [Cambiar security a isAuthenticated]
+- Cambiar genre por gender en los message.properties
 - Propiedad de pet certificateBy deberia ser certificatedBy?
 - Añadir a los requisitos spamwords (funcional y no funcional) y buscador (funcional)
 - En la lista el genero no se traduce (aunque en el perfil si se ha hecho)

@@ -112,7 +112,7 @@
     		<spring:message  code="animaniac.edit.curr" />
 		</jstl:if>
 	</a>
-	
+	|
 </jstl:if>
 
 <a href="pet/animaniac/list.do?animaniacId=${animaniac.id}">
