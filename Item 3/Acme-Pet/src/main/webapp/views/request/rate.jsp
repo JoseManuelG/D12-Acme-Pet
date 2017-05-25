@@ -15,6 +15,12 @@
 <form:form action="request/animaniac/rate.do" modelAttribute="rateForm">
 
 	<form:hidden path="requestId"/>
+	<i><spring:message code="request.rate.msg"/> 
+		<a href="animaniac/view.do?animaniacId=${animaniac.id}">
+				<acme:mask text="${animaniac.userAccount.username}"/>
+		</a>
+	</i>
+	
 	<acme:textbox code="request.rate.label" path="rate"/>
 	
 	<acme:submit name="save" code="request.rate"/>

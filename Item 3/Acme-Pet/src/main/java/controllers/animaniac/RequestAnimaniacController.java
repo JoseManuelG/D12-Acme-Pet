@@ -24,10 +24,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.AnimaniacService;
+import services.ApplicationService;
 import services.PetService;
 import services.RequestService;
 import controllers.AbstractController;
 import domain.Animaniac;
+import domain.Application;
 import domain.Pet;
 import domain.Request;
 import forms.RateForm;
@@ -39,6 +41,9 @@ public class RequestAnimaniacController extends AbstractController {
 	// Services ---------------------------------------------------------------
 	@Autowired
 	private AnimaniacService	animaniacService;
+
+	@Autowired
+	private ApplicationService	applicationService;
 
 	@Autowired
 	private RequestService		requestService;
@@ -204,8 +209,16 @@ public class RequestAnimaniacController extends AbstractController {
 
 	protected ModelAndView createRateModelAndView(final RateForm rateForm, final String message) {
 		ModelAndView result;
+		Animaniac animaniac;
+		Request request;
+		Application application;
+
+		request = this.requestService.findOne(rateForm.getRequestId());
+		application = this.applicationService.findAcceptedApplicationForRequest(request);
+		animaniac = application.getAnimaniac();
 
 		result = new ModelAndView("request/animaniac/rate");
+		result.addObject("animaniac", animaniac);
 		result.addObject("rateForm", rateForm);
 		result.addObject("message", message);
 

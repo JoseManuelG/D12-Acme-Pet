@@ -1,15 +1,19 @@
 ﻿-------------- POR HACER --------------
 MASCOTAS
-	-Añadir texto explicativo al puntuar
-	-Enlace mis mascotas
-	- Fallos tontos de formato (como que las cajas de los foreach no aparecen al lado de las etiquetas)
-	
+	- Enlace mis mascotas (que pasa con este enlace?)
+	- Cajas de foreach no se ponen adecuadamente. (pero se puede queda asi)
+
+- Los cancel de comentar no funcionan (ni en perfil de mascota ni en perfil de animaniaco)
+- Al comentar en perfil de mascota, ni se guarda el comentario ni da error.
+- Dos carpetas no se pueden llamar igual por unique constraint, pero al no controlarse peta un panic.
+- Al crear carpeta da la opcion de borrarla, pero todavia no existe. Quitar boton en creacion.
 
 - Sacar pdfs de requirements.
 - Informe costes
 - Cambiar el about y el terminos y condiciones
 
 ---------------- HECHO ----------------
+	-Añadir texto explicativo al puntuar
 -Revisar no poder aplicar a un request que ya ha empezado
 - Enlace a lista de pets desde el perfil de un usuario falla como partner, veterinario y supongo que para admin [Cambiar security a isAuthenticated]
 - Cambiar genre por gender en los message.properties
