@@ -1,4 +1,6 @@
-﻿-------------- POR HACER --------------
+﻿
+
+-------------- POR HACER --------------
 MASCOTAS
 	- Enlace mis mascotas (que pasa con este enlace?)
 	- Cajas de foreach no se ponen adecuadamente. (pero se puede queda asi)
@@ -8,6 +10,10 @@ MASCOTAS
 - Al comentar en perfil de mascota, ni se guarda el comentario ni da error.
 - Dos carpetas no se pueden llamar igual por unique constraint, pero al no controlarse peta un panic.
 - Al crear carpeta da la opcion de borrarla, pero todavia no existe. Quitar boton en creacion.
+- El boton de borrar animaniaco para el admin deberia estar tambien en la lista de todos los animaniacos. (Si no no podra borrar a un animaniaco no reportado, y esto no es asi).
+- El borrado desde admin no funciona si tiene peticiones activas, salta la excepcion adecuada pero no esta controlada en try/catch.
+- El borrado desde admin no funciona si tiene pets, el borrado de pet que usa comprueba que sea el principal.
+		Una vez corregidos estos problemas del borrar, habria que volver a probar, porque puede que otros metodos tambien comprueben el principal.
 
 - Sacar pdfs de requirements.
 - Informe costes
