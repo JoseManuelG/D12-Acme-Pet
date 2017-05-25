@@ -2,6 +2,7 @@
 MASCOTAS
 	- Enlace mis mascotas (que pasa con este enlace?)
 	- Cajas de foreach no se ponen adecuadamente. (pero se puede queda asi)
+	- Si no esta certificada, quitar del perfil este campo.
 
 - Los cancel de comentar no funcionan (ni en perfil de mascota ni en perfil de animaniaco)
 - Al comentar en perfil de mascota, ni se guarda el comentario ni da error.

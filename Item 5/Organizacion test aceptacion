@@ -1259,17 +1259,15 @@
 		Salida esperada
 			La petición desaparece de la lista.
 
-		Tests
 		Test <#2>
 		Descripción
 			Pulsamos borrar en la última petición de la lista.
 		Salida esperada
 			El sistema nos muestra un error, ya que no podemos borrar peticiones activas.
 
-		Tests
-		Test <#2>
+		Test <#3>
 		Descripción
-			Repetimos los test anteriores en inglés.
+			Repetimos los test anteriores en inglés. IMPORTANTE: en esta ocasión no borres la primera que te aparece, si no la segunda. Necesitamos esa petición (que originalmente era la segunda) para un test posterior (caso de uso 28).
 		Salida esperada
 			Los campos se han traducido correctamente.
  
@@ -1280,91 +1278,346 @@
 		Descripción
 			En este sistema se puede comentar tanto en perfiles de animaniacos como en perfiles de mascotas. Para ellos es necesario estar autenticado como animaniac.
 		Acceso
-			Nos autenticamos como animaniac1 y usamos la lista 
-		
+			Nos autenticamos como animaniac1. Para comentar en una mascota, nos dirigimos a "Mascotas/Listar todas" y seleccionamos la mascota en la que queramos dejar un comentario. Para comentar en un animaniaco, usamos "Gente/Listar aniamiacos" y seleccionamos el animaniaco en el que queramos comentar. Después, en el perfil se muestra un recuadro con los comentarios, si los hay. En ese recuadro también se encuentra un enlace que nos permite comentar.
+
+		Tests
+		Test <#1>
+		Descripción
+			En la lista de mascotas, seleccionamos la primera. Usamos el enlace de comentar para llegar al formulario. Comprobamos que aparecen los campos adecuados, que son un titulo y un cuerpo del comentario.
+		Salida esperada
+			Los campos son los apropiados.
+
+		Test <#2>
+		Descripción
+			Pulsamos el boton cancelar y nos lleva al perfil de la mascota.
+		Salida esperada
+			Redirige adecuadamente.
+
+		Test <#3>
+		Descripción
+			Dejamos los campos en blanco.
+		Salida esperada
+			Errores en los dos campos.
+
+		Test <#4>
+		Descripción
+			Comentamos con titulo "test" y cuerpo "hola"
+		Salida esperada
+			El comentario aparece en el perfil de la mascota.
+
+		Test <#5>
+		Descripción
+			Repetimos los test anteriores en el perfil del animaniac1.
+		Salida esperada
+			Todos los resultados coinciden con los esperados, pero en el perfil del animaniaco.
+
+		Test <#6>
+		Descripción
+			Repetimos los test anteriores en inglés.
+		Salida esperada
+			Todos los campos se traducen adecuadamente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 	Caso de uso 28: Puntuar
+		Descripción
+			Para puntuar primero tenemos que elegir que petición puntuar. Esta debe haber tenido solicitud, haber sido aceptada y haber pasado su fecha fin.
+		Acceso
+			Nos autenticamos como animaniac1 y vamos a "Peticiones/"Mis peticiones".
+
+		Tests
+		Test <#1>
+		Descripción
+			Puntuar la primera petición que podemos con un 5. Antes de enviar el resultado, abrimos en una nueva pestaña el animanaico al que vamos a puntuar y nos fijamos en que tiene una puntuación igual a 4.
+		Salida esperada
+			Al puntuar nos devuelve a la lista de nuestras peticiones y al actualizar el perfil del animaniac2 vemos que su puntuación ahora es de 9.
+
+		Test <#2>
+		Descripción
+			Puntuar la primera petición que podemos con un 5. Antes de enviar el resultado, abrimos en una nueva pestaña el animanaico al que vamos a puntuar y nos fijamos en que tiene una puntuación igual a 4.
+		Salida esperada
+			Al puntuar nos devuelve a la lista de nuestras peticiones y al actualizar el perfil del animaniac2 vemos que su puntuación ahora es de 9.
+
+		Test <#3>
+		Descripción
+			Intentamos puntuar la segunda petición en la que aparece el enlace. 
+		Salida esperada
+			El sistema nos da un error explicandonos que no se aceptó ninguna solicitud para esa petición.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 	Caso de uso 29: Informar sobre el mal comportamiento de un animaniaco.
+		Descripción
+			Esta acción se hace desde el perfil de un animaniaco al que queremos reportar. Para comprobar que se han hecho correctamente, luego accederemos a la lista de reportes que le llega al administrador.
+		Acceso
+			Nos autenticamos como animaniac1. Usamos "Gente/Listar animaniacos" y seleccionamos el animaniaco en al que queramos reportar. Después, al pie de perfil hay un enlace para reportar.
+			Para ver la lista de reportes, nos autenticamos como admin, seleccionamos Perfil en la barra de navegación y pulsamos sobre "Lista de reportes".
+
+		Tests
+		Test <#1>
+		Descripción
+			Autenticados como animaniac1 vamos al perfil del animaniac5 y reportamos dejando la descripcion vacía.
+		Salida esperada
+			Nos devuelve un error.
+
+		Test <#2>
+		Descripción
+			Autenticados como animaniac1 vamos al perfil del animaniac5 y reportamos con la siguiente descripción: "Siempre acepta mis solicitudes pero cuando me pongo en contacto con él no responde, y después me puntua negativamente"
+		Salida esperada
+			Nos devuelve un error.
+
+		Test <#3>
+		Descripción
+			Nos autenticamos como admin y comprobamos que el nuevo reporte aparece el primero en la lista.
+		Salida esperada
+			Vemos el reporte en la lista.
+
+		Test <#4>
+		Descripción
+			Repetimos los test anteriores en inglés
+		Salida esperada
+			Todo se traduce correctamente.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 30: Enviar mensaje
+	Caso de uso 30: Enviar, responder y reenviar mensajes.
+		Descripción
+			En este sistema hay dos formas de enviar un mensaje a otro usuario. Podemos hacerlo desde su perfil, pulsando en el enlace escribir mensaje, o podemos hacerlo desde el sistema de mensajería, pulsando escribir nuevo mensaje y eligiendo a que usuario mandarlo. Para responderlo o reenviarlo tenemos que estar en la vista del mensaje.
+		Acceso
+			Usamos "Gente/Listar animaniacos", "Gente/Listar veterinarios" o "Gente/Listar anunciantes" y seleccionamos el usuario en al que queramos enviar un mensaje o bien usamos "Perfil/Mensajería" y pulsamos sobre "escribir mensaje", según se especifique en los test.
+			Para responder o reenviar un mensaje tenemos que acceder mediante "Perfil/Mensajería", elegir la carpeta donde se encuentra el mensaje y elegir el mensaje. En esa pantalla estarán los enlaces adecuados.
+
+		Tests
+		Test <#1>
+		Descripción
+			Autenticados como animaniac1 vamos al perfil del vetvet1 y pulsamos en mandar mensaje. Probamos a dejar los campos vacíos.
+		Salida esperada
+			Nos devuelve error en ambos campos.
+
+		Tests
+		Test <#2>
+		Descripción
+			Desde el mismo formulario escribimos titulo "Hola" y cuerpo "¿Qué tal?" y enviamos.
+		Salida esperada
+			Nos devuelve a la carpeta otubox del animaniac1. En la segunda pagina se encuentra el mensaje.
+
+		Test <#3>
+		Descripción
+			Autenticados como vetvet1 vamos a la carpeta inbox y pulsamos en ver mensaje. Abajo pulsamos en reenviar y selecionamos al vetvet2.
+		Salida esperada
+			Nos devuelve a la carpeta otubox del vetvet1. Vemos el mensaje reenviado.
+
+		Test <#4>
+		Descripción
+			Vamos a la carpeta inbox y pulsamos en ver mensaje. Abajo pulsamos en responder y rellenamos con titulo "hola" y con cuerpo "muy bien". 
+		Salida esperada
+			Nos devuelve a la carpeta otubox del vetvet1. Vemos el mensaje enviado.
+
+		Test <#5>
+		Descripción
+			Pulsamos en el último mensaje enviado y le damos a borrar. Confirmamos y vamos a la carpeta trashbox.
+		Salida esperada
+			Vemos el mensaje en la carpeta trashbox.
+
+		Test <#6>
+		Descripción
+			Vamos a la carpeta trashbox y pulsamos en el último mensaje. Lo borramos y vamos de nuevo a la carpeta trashbox.
+		Salida esperada
+			El mensaje se ha eliminado por completo.
+
+		Test <#7>
+		Descripción
+			Repetimos los test anteriores en inglés
+		Salida esperada
+			Todo se traduce correctamente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 31: Responder mensaje.
+	Caso de uso 31: Gestión de mensajes.
+		Descripción
+			Podemos crear carpetas nuevas, mover entre carpetas nuestros mensajes o eliminar las carpetas que hemos creado, pero no las predeterminadas.
+		Acceso
+			Usamos  "Perfil/Mensajería", donde podemos ver las carpetas existentes.
+
+		Tests
+		Test <#1>
+		Descripción
+			Autenticados como animaniac1, vamos a la mensajería. Creamos una carpeta nueva llamada "Importantes".
+		Salida esperada
+			Nos devuelve a la lista de carpetas
+
+		Tests
+		Test <#2>
+		Descripción
+			Desde la carpeta inbox, acceder al primer mensaje y mover a Importantes usando el desplegable de carpetas.
+		Salida esperada
+			Nos devuelve a la carpeta importantes
+
+		Test <#3>
+		Descripción
+			Volvemos a la lista de carpetas y pulsamos en editar la carpeta Importantes. Pulsamos en borrar. Vamos a trashbox.
+		Salida esperada
+			El mensaje que habiamos guardado en Importantes se encuentra ahora en trashbox.
+
+		Test <#4>
+		Descripción
+			Repetimos los test en inglés.
+		Salida esperada
+			Todos los elementos se traducen adecuadamente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 32: Reenviar mensaje.
+	Caso de uso 32: Registrar banner y modificar banner.
+		Descripción
+			Los anunciantes pueden registrar y modificar sus banners.
+		Acceso
+			Autenticados como anunciante, usamos  "Perfil/Administrar banners", donde podemos ver la lista de banners disponibles. Haremos los test como partner1
+
+		Tests
+		Test <#1> [Bug intencionado]
+		Descripción
+			Vemos que los datos tienen el formato adecuado. Los enlaces llevan a la página del anuncio y las imagenes se muestran.
+		Salida esperada
+			Los datos tienen el formato adecuado.
+
+		Test <#2>
+		Descripción
+			Registramos un nuevo banner. Dejamos los campos en blanco.
+		Salida esperada
+			Nos devuelve errores en todos los campos.
+
+		Test <#3>
+		Descripción
+			Registramos un nuevo banner. Rellenamos ambos campos con http://www.test1.com.
+		Salida esperada
+			Se crea el banner correctamente. Podemos verlo en la última página.
+
+		Test <#4>
+		Descripción
+			Editamos el primer banner de la lista y lo borramos.
+		Salida esperada
+			Desaparece de la lista.
+
+		Test <#5>
+		Descripción
+			Editamos el primer banner de la lista. Cambiamos ambos campos con http://www.test1.com.
+		Salida esperada
+			El banner aparece con los nuevos campos en la lista.
+
+		Test <#6>
+		Descripción
+			Repetimos los test en inglés.
+		Salida esperada
+			Todos los elementos se traducen adecuadamente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 33: Crear carpeta.
+	Caso de uso 33: Certificar mascota.
+		Descripción
+			Podemos crear carpetas nuevas, mover entre carpetas nuestros mensajes o eliminar las carpetas que hemos creado, pero no las predeterminadas.
+		Acceso
+			Usamos  "Perfil/Mensajería", donde podemos ver las carpetas existentes.
+
+		Tests
+		Test <#1>
+		Descripción
+			Autenticados como animaniac1, vamos a la mensajería. Creamos una carpeta nueva llamada "Importantes".
+		Salida esperada
+			Nos devuelve a la lista de carpetas
+
+		Tests
+		Test <#2>
+		Descripción
+			Desde la carpeta inbox, acceder al primer mensaje y mover a Importantes usando el desplegable de carpetas.
+		Salida esperada
+			Nos devuelve a la carpeta importantes
+
+		Test <#3>
+		Descripción
+			Volvemos a la lista de carpetas y pulsamos en editar la carpeta Importantes. Pulsamos en borrar. Vamos a trashbox.
+		Salida esperada
+			El mensaje que habiamos guardado en Importantes se encuentra ahora en trashbox.
+
+		Test <#4>
+		Descripción
+			Repetimos los test en inglés.
+		Salida esperada
+			Todos los elementos se traducen adecuadamente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 34: Eliminar mensaje.
+	Caso de uso 34: Registrar banner y modificar banner.
+		Descripción
+			Los veterinarios pueden certificar mascotas
+		Acceso
+			Autenticados como veterinario, usamos la "Mascotas/Listar todas" para ver las mascotas y seleccionar una para certificarla, previo acuerdo contactando por mensajes o por otro medio (como puede ser una llamada telefónica).
+
+		Tests
+		Test <#1>
+		Descripción
+			Autenticados como vetvet1, pulsamos en la últoma mascota de la lista. Vemos que en su perfil aparece la opción de certificar. Lo usamos.
+		Salida esperada
+			Aparece nuestro nombre demostrando que la hemos certificado.
+
+		Test <#2>
+		Descripción
+			Repetir en ingles con la penultima mascota de la lista.
+		Salida esperada
+			Se traduce adecuadamente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 35: Mover mensaje.
+	Caso de uso 35: Crear y editar tipo de mascota .
+		Descripción
+			Como administrador podemos crear nuevos tipos de mascotas para el sistema.
+		Acceso
+			Autenticados como admin, usamos la "Perfil/Tipos" para ver los tipos actuales.
+
+		Tests
+		Test <#1>
+		Descripción
+			Intentamos crear el tipo dog.
+		Salida esperada
+			Aparece un error explicandonos que ya existe.
+
+		Test <#2>
+		Descripción
+			Intentamos crear el tipo snake.
+		Salida esperada
+			Nos devuelve a la lista y snake esta en última posición.
+
+		Test <#3>
+		Descripción
+			Editamos el tipo dog y lo borramos.
+		Salida esperada
+			Aparece un error explicandonos que el tipo esta siendo usado por alguna mascota.
+
+		Test <#3>
+		Descripción
+			Editamos el tipo rabbit y lo borramos.
+		Salida esperada
+			Aparece un error explicandonos que el tipo esta siendo usado por alguna mascota.
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 36: Eliminar carpeta.
+	Caso de uso 36: Crear y editar atributo de tipo.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 37: Eliminar definitivamente mensaje.
+	Caso de uso 37: Banear animaniaco.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 38: Registrar banner y modificar banner.
+	Caso de uso 38: Borrar del sistema a un animaniaco baneado.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 39: Certificar mascota.
+	Caso de uso 39: Editar tiempo de cache.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-	Caso de uso 40: Listar tipos de mascota.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 41: Crear y editar tipo de mascota .
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 42: Listar atributos de tipo.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 43: Crear y editar atributo de tipo.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 44: Listar informas de mal uso.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 45: Banear animaniaco.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 46: Borrar del sistema a un animaniaco baneado.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 47: Editar tiempo de cache.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-	Caso de uso 48: Cambiar fee.
+	Caso de uso 40: Cambiar fee.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
