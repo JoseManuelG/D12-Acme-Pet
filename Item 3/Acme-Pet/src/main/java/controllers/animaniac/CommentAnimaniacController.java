@@ -45,6 +45,7 @@ public class CommentAnimaniacController extends AbstractController {
 		ModelAndView result;
 		Comment comment;
 		String requestURI = "";
+		String cancelURI = "";
 
 		commentable = this.commentableService.findOne(commentableId);
 
@@ -53,7 +54,11 @@ public class CommentAnimaniacController extends AbstractController {
 		result = this.createEditModelAndView(comment);
 
 		requestURI = "comment/animaniac/create.do?animaniacId=" + comment.getCommentable().getId();
-
+		if (Animaniac.class.equals(comment.getCommentable().getClass()))
+			cancelURI = "animaniac/view.do?animaniacId=" + comment.getCommentable().getId();
+		if (Pet.class.equals(comment.getCommentable().getClass()))
+			cancelURI = "pet/animaniac/view.do?petId=" + comment.getCommentable().getId();
+		result.addObject("cancelURI", cancelURI);
 		result.addObject("requestURI", requestURI);
 		result.addObject("comment", comment);
 		return result;

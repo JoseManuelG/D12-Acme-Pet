@@ -48,6 +48,7 @@ public class FolderService {
 		Assert.notNull(folder.getActor(), "El actor no puede ser nulo");
 		Assert.isTrue(principal.equals(folder.getActor()), "SAVE: UserAccount no valido");
 		Assert.isTrue(!folder.getName().isEmpty(), "El nombre no puede estar vacio");
+		Assert.isTrue(null == this.folderRepository.findAFolderOfActor(principal.getId(), folder.getName()), "folder.error.nameUsed");
 		Assert.isTrue(!folder.getReadOnly() || folder.getId() == 0, "No se puede editar un folder onlyRead");
 
 		final Folder result = this.folderRepository.save(folder);

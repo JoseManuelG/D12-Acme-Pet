@@ -22,8 +22,9 @@
 
 
 	<acme:submit code="folder.save" name="save" />
+	<jstl:if test="${folder.id != 0}">
 	<acme:submit code="folder.delete" name="delete" />
-		
+		</jstl:if>
 	
 	<acme:cancel code="folder.cancel" url="folder/list.do" />
 		

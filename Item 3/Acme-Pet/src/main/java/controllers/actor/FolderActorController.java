@@ -104,12 +104,14 @@ public class FolderActorController extends AbstractController {
 
 		} else if (folder.getReadOnly())
 			result = new ModelAndView("redirect:list.do");
-		else {
+		else
+			try {
+				this.folderService.save(folder);
+				result = new ModelAndView("redirect:list.do");
 
-			this.folderService.save(folder);
-			result = new ModelAndView("redirect:list.do");
-
-		}
+			} catch (final IllegalArgumentException e) {
+				result = this.createEditModelAndView(folder, e.getMessage());
+			}
 
 		return result;
 	}
