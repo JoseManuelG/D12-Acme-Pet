@@ -1795,8 +1795,8 @@
 	</bean>
 	
 	<bean id="Banner6Partner1" class="domain.Banner">
-		<property name="link" value="http://i.imgur.com/Q2Wfdfz.jpg"/>
-		<property name="picture" value="http://foto6.png"/>
+		<property name="link" value="http://www.webPartner1.com"/>
+		<property name="picture" value="http://i.imgur.com/Q2Wfdfz.jpg"/>
 		<property name="partner" ref="partner1"/>
 	</bean>
 	
