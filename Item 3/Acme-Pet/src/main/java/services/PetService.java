@@ -116,7 +116,6 @@ public class PetService {
 	public Pet saveCertificateByVet(final int petId) {
 		Vet vet;
 		Pet pet;
-
 		pet = this.findOne(petId);
 		Assert.notNull(pet);
 		vet = this.vetService.findVetByPrincipal();
