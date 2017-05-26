@@ -23,9 +23,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import security.Authority;
 import security.UserAccount;
+import services.PetService;
 import services.UserAccountService;
 import services.VetService;
 import utilities.AbstractTest;
+import domain.Pet;
 import domain.Vet;
 
 @ContextConfiguration(locations = {
@@ -41,6 +43,8 @@ public class VetTest extends AbstractTest {
 	private VetService			vetService;
 	@Autowired
 	private UserAccountService	userAccountService;
+	@Autowired
+	private PetService			petService;
 
 
 	// Tests ------------------------------------------------------------------
@@ -146,6 +150,29 @@ public class VetTest extends AbstractTest {
 		this.templateDeleteVet("admin", NullPointerException.class);
 	}
 
+	//Test de certificar una mascote
+	//Test positivo
+	@Test
+	public void certificatePetByVetTest1() {
+		this.templateCertificateVet("vetvet1", "pet7Animaniac1", null);
+	}
+	//Test negativo, pet ya certificada
+	@Test
+	public void certificatePetByVetTest2() {
+		this.templateCertificateVet("vetvet1", "pet1Animaniac1", IllegalArgumentException.class);
+	}
+	//Test negativo, no autenticado como vet sino como animaniaco
+	@Test
+	public void certificatePetByVetTest3() {
+		this.templateCertificateVet("animaniac1", "pet1Animaniac1", NullPointerException.class);
+	}
+
+	//Test negativo, no autenticado 
+	@Test
+	public void certificatePetByVetTest4() {
+		this.templateCertificateVet("vetvet1", "noExist", NullPointerException.class);
+	}
+
 	// Ancillary methods ------------------------------------------------------
 
 	protected void templateRegisterVet(final String administratorBean, final String userName, final String password, final String name, final String surname, final String email, final String phone, final String address, final Class<?> expected) {
@@ -221,6 +248,22 @@ public class VetTest extends AbstractTest {
 
 			this.vetService.delete();
 			this.vetService.flush();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
+
+	//Template
+	protected void templateCertificateVet(final String vetBean, final String petBean, final Class<?> expected) {
+		Class<?> caught;
+		caught = null;
+		Pet pet;
+		try {
+			this.authenticate(vetBean);
+			pet = this.petService.findOne(this.extract(petBean));
+			this.petService.saveCertificateByVet(pet.getId());
+			this.petService.flush();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
