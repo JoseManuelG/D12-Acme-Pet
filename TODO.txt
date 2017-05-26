@@ -1,14 +1,12 @@
-﻿
-
 -------------- POR HACER --------------
-MASCOTAS
 
-
-
-
+- Cambiar formato de links e imagenes en la lista de banners de un partner.
 - Sacar pdfs de requirements.
 - Informe costes
 - Cambiar el about y el terminos y condiciones
+
+
+
 
 ---------------- HECHO ----------------- 
 	- Enlace mis mascotas (que pasa con este enlace?)
