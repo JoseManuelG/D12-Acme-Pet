@@ -2,9 +2,7 @@
 
 -------------- POR HACER --------------
 MASCOTAS
-	- Enlace mis mascotas (que pasa con este enlace?)
-	- Cajas de foreach no se ponen adecuadamente. (pero se puede queda asi)
-	- Si no esta certificada, quitar del perfil este campo.
+
 
 
 
@@ -13,6 +11,9 @@ MASCOTAS
 - Cambiar el about y el terminos y condiciones
 
 ---------------- HECHO ----------------- 
+	- Enlace mis mascotas (que pasa con este enlace?)
+	- Cajas de foreach no se ponen adecuadamente. (pero se puede queda asi)
+	- Si no esta certificada, quitar del perfil este campo.
 El boton de borrar animaniaco para el admin deberia estar tambien en la lista de todos los animaniacos. (Si no no podra borrar a un animaniaco no reportado, y esto no es asi).
 - El borrado desde admin no funciona si tiene peticiones activas, salta la excepcion adecuada pero no esta controlada en try/catch.
 - El borrado desde admin no funciona si tiene pets, el borrado de pet que usa comprueba que sea el principal.

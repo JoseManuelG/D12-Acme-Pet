@@ -25,10 +25,10 @@
 
 <b><spring:message code="pet.weigth"/>:</b>
 <acme:mask text="${pet.weigth}"/><br/>
-
+<jstl:if test="${pet.certificateBy ne null}">
 <b><spring:message code="pet.certificatedBy"/>:</b>
 <acme:mask text="${pet.certificateBy}"/><br/>
-
+</jstl:if>
 <security:authorize access="hasRole('VET')">
 <jstl:if test="${pet.certificateBy eq null}">
 	<a href="pet/vet/certificate.do?petId=${pet.id}">
