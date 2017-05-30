@@ -45,6 +45,7 @@ public class TypeController extends AbstractController {
 		final Collection<Type> types = this.typeService.findAll();
 		result = new ModelAndView("type/select");
 		result.addObject("types", types);
+		result.addObject("requestURI", "type/animaniac/select.do");
 		return result;
 	}
 }

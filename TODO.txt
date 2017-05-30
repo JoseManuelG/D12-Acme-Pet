@@ -1,9 +1,5 @@
--------------- POR HACER --------------
--Edicion de mascotas cuando tiene fotos.
--Ultima query de la dashboard.
--Separar las acciones del perfil de animaniac <Abajo del todo>
--Paginación de seleccionar tipo de mascota cuando vayas a seleccionar una mascota
--poner "(KG)" en los mensajes de peso
+﻿-------------- POR HACER --------------
+- Ultima query de la dashboard.
 - Cambiar formato de links e imagenes en la lista de banners de un partner.
 - Sacar pdfs de requirements.
 - Informe costes
@@ -57,3 +53,7 @@ El boton de borrar animaniaco para el admin deberia estar tambien en la lista de
 - Falta NotBlank o opcional en UML description en Petition, puesto notBlank en java (comprobar en requisitos).DONE
 - ¿Poner patron para el género? (en animaniacs y en pet)DONE
 - A typeName en Type le falta ser único.no se puede poner, pork no podrias poner castrado para gato y para perro por ejemplo
+- Edicion de mascotas cuando tiene fotos.
+- Separar las acciones del perfil de animaniac <Abajo del todo>
+- Poner "(KG)" en los mensajes de peso
+- Paginación de seleccionar tipo de mascota cuando vayas a seleccionar una mascota

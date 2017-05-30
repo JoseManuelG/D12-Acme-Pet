@@ -121,6 +121,7 @@
 
 <security:authorize access="hasRole('ANIMANIAC')">
 	<jstl:if test="${!owner}">
+	|
 	<a href="abuseReport/animaniac/edit.do?reportedId=${animaniac.id}">
     	<spring:message  code="animaniac.report" />
 	</a>
