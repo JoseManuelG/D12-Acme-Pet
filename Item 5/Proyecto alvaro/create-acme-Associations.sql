@@ -1,9 +1,9 @@
 start transaction;
 
-drop database if exists `Acme-BnB`;
-create database `Acme-BnB`;
+drop database if exists `Acme-Associations`;
+create database `Acme-Associations`;
 
-use `Acme-BnB`;
+use `Acme-Associations`;
 
 create user 'acme-user'@'%' identified by password '*4F10007AADA9EE3DBB2CC36575DFC6F4FDE27577';
 create user 'acme-manager'@'%' identified by password '*FDB8CD304EB2317D10C95D797A4BD7492560F55F';
@@ -11,12 +11,12 @@ create user 'acme-manager'@'%' identified by password '*FDB8CD304EB2317D10C95D79
 
 
 grant select, insert, update, delete 
-  on `Acme-BnB`.* to 'acme-user'@'%';
+  on `Acme-Associations`.* to 'acme-user'@'%';
 
 grant select, insert, update, delete, create, drop, references, index, alter, 
         create temporary tables, lock tables, create view, create routine, 
         alter routine, execute, trigger, show view
-    on `Acme-BnB`.* to 'acme-manager'@'%';
+    on `Acme-Associations`.* to 'acme-manager'@'%';
 
 	
 	
@@ -24,7 +24,7 @@ grant select, insert, update, delete, create, drop, references, index, alter,
 	
 -- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
 --
--- Host: localhost    Database: mylooks
+-- Host: localhost    Database: acme-associations
 -- ------------------------------------------------------
 -- Server version	5.5.29
 
@@ -40,6 +40,75 @@ grant select, insert, update, delete, create, drop, references, index, alter,
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `activity`
+--
+
+DROP TABLE IF EXISTS `activity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `activity` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `endMoment` datetime DEFAULT NULL,
+  `maximumAttendants` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `publicActivity` bit(1) DEFAULT NULL,
+  `startMoment` datetime DEFAULT NULL,
+  `association_id` int(11) NOT NULL,
+  `item_id` int(11) DEFAULT NULL,
+  `place_id` int(11) DEFAULT NULL,
+  `winner_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_75o8nmi0x1db25q6knsv41egi` (`association_id`),
+  KEY `FK_av7iu1b4d89c33sr5njtwxqeu` (`item_id`),
+  KEY `FK_nwnclsj1gw2rujw59fo9p03vi` (`place_id`),
+  KEY `FK_9gyowqbt5c30aa2ss4vrxjc7o` (`winner_id`),
+  CONSTRAINT `FK_9gyowqbt5c30aa2ss4vrxjc7o` FOREIGN KEY (`winner_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_75o8nmi0x1db25q6knsv41egi` FOREIGN KEY (`association_id`) REFERENCES `association` (`id`),
+  CONSTRAINT `FK_av7iu1b4d89c33sr5njtwxqeu` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`),
+  CONSTRAINT `FK_nwnclsj1gw2rujw59fo9p03vi` FOREIGN KEY (`place_id`) REFERENCES `place` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `activity`
+--
+
+LOCK TABLES `activity` WRITE;
+/*!40000 ALTER TABLE `activity` DISABLE KEYS */;
+INSERT INTO `activity` VALUES (221,0,'asgf','2017-07-23 22:00:00',14,'Activity1','','2017-07-23 15:00:00',188,NULL,NULL,NULL),(222,0,'asgf','2017-07-26 22:00:00',21,'Activity2','\0','2017-07-25 15:00:00',188,NULL,NULL,NULL),(223,0,'asgf','2017-04-23 22:00:00',10,'Activity3','','2017-04-23 15:00:00',188,NULL,216,153),(224,0,'asgf','2017-07-31 23:59:00',14,'Activity4','','2017-07-28 15:00:00',188,NULL,217,NULL),(225,0,'asgf','2018-07-23 22:00:00',2,'Activity5','\0','2018-07-23 15:00:00',188,NULL,220,NULL),(226,0,'asgf','2017-07-23 22:00:00',12,'Activity6','','2017-07-23 15:00:00',188,NULL,219,NULL);
+/*!40000 ALTER TABLE `activity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `activity_user`
+--
+
+DROP TABLE IF EXISTS `activity_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `activity_user` (
+  `Activity_id` int(11) NOT NULL,
+  `attendants_id` int(11) NOT NULL,
+  KEY `FK_17a44jww9wn6wrgwy709hxsss` (`attendants_id`),
+  KEY `FK_lnb4gaokoado2tehxgo31n641` (`Activity_id`),
+  CONSTRAINT `FK_lnb4gaokoado2tehxgo31n641` FOREIGN KEY (`Activity_id`) REFERENCES `activity` (`id`),
+  CONSTRAINT `FK_17a44jww9wn6wrgwy709hxsss` FOREIGN KEY (`attendants_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `activity_user`
+--
+
+LOCK TABLES `activity_user` WRITE;
+/*!40000 ALTER TABLE `activity_user` DISABLE KEYS */;
+INSERT INTO `activity_user` VALUES (221,148),(221,150),(222,149),(222,152),(222,151),(223,148),(223,150),(223,153),(223,151),(223,149),(225,148),(225,150),(226,148),(226,150);
+/*!40000 ALTER TABLE `activity_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `administrator`
 --
 
@@ -50,13 +119,16 @@ CREATE TABLE `administrator` (
   `id` int(11) NOT NULL,
   `version` int(11) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `idNumber` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `picture` varchar(255) DEFAULT NULL,
+  `phoneNumber` varchar(255) DEFAULT NULL,
+  `postalAddress` varchar(255) DEFAULT NULL,
   `surname` varchar(255) DEFAULT NULL,
   `userAccount_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_idt4b4u259p6vs4pyr9lax4eg` (`userAccount_id`),
+  KEY `AdministratorUK_a99onpf5vqpr7eas9f06dihm0` (`name`),
+  KEY `AdministratorUK_hn5atmqw0ai39935ekgv39gsu` (`surname`),
   CONSTRAINT `FK_idt4b4u259p6vs4pyr9lax4eg` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -67,144 +139,41 @@ CREATE TABLE `administrator` (
 
 LOCK TABLES `administrator` WRITE;
 /*!40000 ALTER TABLE `administrator` DISABLE KEYS */;
-INSERT INTO `administrator` VALUES (248,0,'admin@admin.com','Admin','660709934','https://i.imgur.com/qYy3Kxa.png','Smith',247);
+INSERT INTO `administrator` VALUES (146,0,'admin@gmail.com','2345','Administrator','2345','casa','admin',136),(147,0,'system@gmail.com','2345','System','2345','casa','administrator',137);
 /*!40000 ALTER TABLE `administrator` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `bill`
+-- Table structure for table `association`
 --
 
-DROP TABLE IF EXISTS `bill`;
+DROP TABLE IF EXISTS `association`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bill` (
+CREATE TABLE `association` (
   `id` int(11) NOT NULL,
   `version` int(11) NOT NULL,
-  `creationMoment` datetime DEFAULT NULL,
-  `endDate` datetime DEFAULT NULL,
-  `initialDate` datetime DEFAULT NULL,
-  `summary` varchar(255) DEFAULT NULL,
-  `totalCost` double NOT NULL,
-  `owner_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_8fv49f77h0espprqid0b5e65s` (`owner_id`),
-  CONSTRAINT `FK_8fv49f77h0espprqid0b5e65s` FOREIGN KEY (`owner_id`) REFERENCES `owner` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `bill`
---
-
-LOCK TABLES `bill` WRITE;
-/*!40000 ALTER TABLE `bill` DISABLE KEYS */;
-INSERT INTO `bill` VALUES (299,0,'2017-01-01 12:00:00','2017-01-03 12:00:00','2017-01-02 12:00:00','Summary 1',50,259),(300,0,'2017-02-01 12:00:00','2017-02-03 12:00:00','2017-02-02 12:00:00','Summary 2',25,259),(301,0,'2016-10-10 12:00:00','2016-10-12 12:00:00','2016-10-11 12:00:00','Summary 3',20,259),(302,0,'2017-01-11 12:00:00','2017-01-13 12:00:00','2017-01-12 12:00:00','Summary 4',15,259),(303,0,'2017-03-01 12:00:00','2017-03-03 12:00:00','2017-03-02 12:00:00','Summary 5',32,259),(304,0,'2017-03-01 12:00:00','2017-03-03 12:00:00','2017-03-02 12:00:00','Summary 6',44,259),(305,0,'2017-03-10 12:00:00','2017-03-13 12:00:00','2017-03-12 12:00:00','Summary 7',15,259),(306,0,'2017-03-02 12:00:00','2017-03-04 12:00:00','2017-03-03 12:00:00','Summary 8',16.99,259),(307,0,'2017-03-01 12:00:00','2017-03-03 12:00:00','2017-03-02 12:00:00','Summary 9',27.4,259),(308,0,'2017-03-01 12:00:00','2017-03-03 12:00:00','2017-03-02 12:00:00','Summary 10',25.99,259),(309,0,'2016-12-01 12:00:00','2016-12-03 12:00:00','2016-12-02 12:00:00','Summary 11',25.99,260),(310,0,'2017-03-01 12:00:00','2017-03-03 12:00:00','2017-03-02 12:00:00','Summary 12',60,260);
-/*!40000 ALTER TABLE `bill` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `bill_booking`
---
-
-DROP TABLE IF EXISTS `bill_booking`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bill_booking` (
-  `Bill_id` int(11) NOT NULL,
-  `bookings_id` int(11) NOT NULL,
-  UNIQUE KEY `UK_93smy0iswd2kdc6ienht9l5rm` (`bookings_id`),
-  KEY `FK_l9cv8em9472mff075e1y3l71t` (`Bill_id`),
-  CONSTRAINT `FK_l9cv8em9472mff075e1y3l71t` FOREIGN KEY (`Bill_id`) REFERENCES `bill` (`id`),
-  CONSTRAINT `FK_93smy0iswd2kdc6ienht9l5rm` FOREIGN KEY (`bookings_id`) REFERENCES `booking` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `bill_booking`
---
-
-LOCK TABLES `bill_booking` WRITE;
-/*!40000 ALTER TABLE `bill_booking` DISABLE KEYS */;
-INSERT INTO `bill_booking` VALUES (299,311),(300,312),(301,313),(302,314),(303,315),(304,316),(305,317),(306,318),(307,319),(308,320),(309,321);
-/*!40000 ALTER TABLE `bill_booking` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `booking`
---
-
-DROP TABLE IF EXISTS `booking`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `booking` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `bookingFee` double NOT NULL,
-  `endMoment` datetime DEFAULT NULL,
-  `hidden` bit(1) NOT NULL,
-  `moment` datetime DEFAULT NULL,
-  `state` varchar(255) DEFAULT NULL,
-  `totalPrice` double NOT NULL,
-  `bill_id` int(11) DEFAULT NULL,
-  `client_id` int(11) DEFAULT NULL,
-  `schedule_id` int(11) DEFAULT NULL,
-  `service_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_dk8j4tnk77dijxv2g69x4rknx` (`bill_id`),
-  KEY `FK_j0agih7xap2ja71am2p5obvyp` (`client_id`),
-  KEY `FK_5nwxglfpy69da55wsd5k4he3u` (`schedule_id`),
-  KEY `FK_luj2rr6jrlywrksmvjsvnvrbg` (`service_id`),
-  CONSTRAINT `FK_luj2rr6jrlywrksmvjsvnvrbg` FOREIGN KEY (`service_id`) REFERENCES `service` (`id`),
-  CONSTRAINT `FK_5nwxglfpy69da55wsd5k4he3u` FOREIGN KEY (`schedule_id`) REFERENCES `schedule` (`id`),
-  CONSTRAINT `FK_dk8j4tnk77dijxv2g69x4rknx` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`id`),
-  CONSTRAINT `FK_j0agih7xap2ja71am2p5obvyp` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `booking`
---
-
-LOCK TABLES `booking` WRITE;
-/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-INSERT INTO `booking` VALUES (311,1,2.5,'2017-05-09 12:45:00','\0','2017-05-09 12:00:00','PENDING',25,299,263,322,278),(312,1,1.5,'2017-05-09 16:45:00','\0','2017-05-09 16:00:00','PENDING',15,300,264,322,278),(313,1,5,'2017-02-11 12:45:00','','2017-02-11 12:00:00','COMPLETED',30,301,265,322,278),(314,1,5,'2017-06-10 13:00:00','\0','2017-06-10 12:00:00','PENDING',50,302,263,322,279),(315,1,2.5,'2017-02-01 19:00:00','','2017-02-01 18:00:00','COMPLETED',25,303,263,322,279),(316,1,1,'2017-03-01 17:30:00','','2017-03-01 17:00:00','CANCELLED',8,304,264,330,280),(317,1,1,'2017-07-11 13:30:00','\0','2017-07-11 12:00:00','PENDING',10,305,264,322,281),(318,1,2,'2017-07-11 12:30:00','\0','2017-07-11 12:00:00','PENDING',20,306,263,322,282),(319,1,2,'2017-02-11 12:15:00','','2017-02-11 11:00:00','CANCELLED',20,307,264,338,283),(320,1,1.5,'2017-02-03 13:15:00','','2017-02-03 12:00:00','COMPLETED',15,308,263,338,283),(321,1,2,'2017-06-11 17:45:00','\0','2017-06-11 17:00:00','CANCELLED',20,309,263,338,284);
-/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `client`
---
-
-DROP TABLE IF EXISTS `client`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `client` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `adminClosed` bit(1) DEFAULT NULL,
+  `announcements` varchar(255) DEFAULT NULL,
+  `closedAssociation` bit(1) DEFAULT NULL,
+  `creationDate` datetime DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
-  `surname` varchar(255) DEFAULT NULL,
-  `userAccount_id` int(11) NOT NULL,
-  `creditCard_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_9r9na2usnb9ylnvevarrssfdf` (`userAccount_id`),
-  KEY `FK_evuckwrwy6vkpl06rslo9592h` (`creditCard_id`),
-  CONSTRAINT `FK_9r9na2usnb9ylnvevarrssfdf` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`),
-  CONSTRAINT `FK_evuckwrwy6vkpl06rslo9592h` FOREIGN KEY (`creditCard_id`) REFERENCES `creditcard` (`id`)
+  `statutes` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `client`
+-- Dumping data for table `association`
 --
 
-LOCK TABLES `client` WRITE;
-/*!40000 ALTER TABLE `client` DISABLE KEYS */;
-INSERT INTO `client` VALUES (263,0,'liasmith@gmail.com','Lia','611587853','https://i.imgur.com/qYy3Kxa.png','Smith',231,249),(264,0,'kevinownes@gmail.com','Kevin','602587853','https://s-media-cache-ak0.pinimg.com/736x/53/bd/28/53bd2829c72f5d67f6af953cadeaa6ce.jpg','Steen',232,253),(265,0,'sashabanks@gmail.com','Mercedes','636598744','https://s-media-cache-ak0.pinimg.com/736x/71/6c/e7/716ce7109294eaf39c922d2bda5ae502.jpg','Banks',233,254),(266,0,'chrisjericho@gmail.com','Alexis','689587853','https://2.bp.blogspot.com/-4Uwx9DUil2c/WIka081thHI/AAAAAAAAIjc/jZ-c8PxlTDkIf_9jP288lOUp34y2D0_PgCLcB/s1600/alexa_bliss.jpg','Kaufman',234,NULL),(267,0,'Areyes@gmail.com','Angel','6893587853','https://2.bp.blogspot.com/-4Uwx9DUil2c/WIka081thHI/AAAAAAAAIjc/jZ-c8PxlTDkIf_9jP288lOUp34y2D0_PgCLcB/s1600/alexa_bliss.jpg','Reyes',244,256),(268,0,'chrisjericho@gmail.com','Alex','6895872853','https://2.bp.blogspot.com/-4Uwx9DUil2c/WIka081thHI/AAAAAAAAIjc/jZ-c8PxlTDkIf_9jP288lOUp34y2D0_PgCLcB/s1600/alexa_bliss.jpg','Garrido',245,257),(269,0,'chrisjericho@gmail.com','José María','6895878513','https://2.bp.blogspot.com/-4Uwx9DUil2c/WIka081thHI/AAAAAAAAIjc/jZ-c8PxlTDkIf_9jP288lOUp34y2D0_PgCLcB/s1600/alexa_bliss.jpg','Cotan',246,258);
-/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+LOCK TABLES `association` WRITE;
+/*!40000 ALTER TABLE `association` DISABLE KEYS */;
+INSERT INTO `association` VALUES (188,0,'address','\0','Announcements','\0','2017-03-30 00:00:00','description','Asociacion1','http://www.zoonewengland.org/media/813822/redpanda_gallery10.jpg','http://www.lmgtfy.com'),(189,0,'address','\0','Announcements','\0','2017-03-30 00:00:00','description','Asociacion2','http://www.zoonewengland.org/media/813822/redpanda_gallery10.jpg','http://www.lmgtfy.com'),(190,0,'address','\0','Announcements','\0','2017-03-30 00:00:00','description','Asociacion3','http://www.zoonewengland.org/media/813822/redpanda_gallery10.jpg','http://www.lmgtfy.com'),(191,0,'address','\0','Announcements','\0','2017-03-30 00:00:00','description','Asociacion4','http://www.zoonewengland.org/media/813822/redpanda_gallery10.jpg','http://www.lmgtfy.com'),(192,0,'address','','Announcements','\0','2017-03-30 00:00:00','description','Asociacion5','http://www.zoonewengland.org/media/813822/redpanda_gallery10.jpg','http://www.lmgtfy.com'),(193,0,'address','\0','Announcements','','2017-03-30 00:00:00','description','Asociacion6','http://www.zoonewengland.org/media/813822/redpanda_gallery10.jpg','http://www.lmgtfy.com');
+/*!40000 ALTER TABLE `association` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -218,14 +187,13 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `version` int(11) NOT NULL,
   `moment` datetime DEFAULT NULL,
-  `rating` double NOT NULL,
   `text` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `client_id` int(11) DEFAULT NULL,
-  `commentable_id` int(11) DEFAULT NULL,
+  `commentable_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_p1tbi23tek6dxa5qp4iurx1p6` (`client_id`,`commentable_id`),
-  CONSTRAINT `FK_sijaneofedb7fkcuhro1lc3n` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`)
+  KEY `FK_jhvt6d9ap8gxv67ftrmshdfhj` (`user_id`),
+  CONSTRAINT `FK_jhvt6d9ap8gxv67ftrmshdfhj` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -235,147 +203,59 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (450,0,'2017-03-11 17:32:00',3,'I had to wait a lot of time to be attended, but the work was fine.','Nice work',264,270),(451,0,'2017-03-02 11:32:00',4,'I have never had a better result in any hairdressing.','Awesome establishment',265,270),(452,0,'2017-02-22 12:45:00',1,'Nothing good to say, the establishment wasn\'t clean, there was hair all over the floor, the workers\' hands were as black as soot, it was disgusting when they touched me. Do yourselves a favour and get away from that establishment.','I will never come back',264,271),(453,0,'2017-03-11 15:47:00',2.5,'It\'s a good choice if you don\'t want to expend a lot of money.','As simple as expected',264,272),(454,0,'2017-01-10 20:03:00',3.5,'Cheap services, fast and nice work. They should improve the decoration of the establishment, it would give a better impression to the clients.','Acceptable',263,272);
+INSERT INTO `comment` VALUES (233,0,'2017-04-28 15:00:00','text','title',188,148),(234,0,'2017-04-28 15:00:00','text','title',188,149),(235,0,'2017-04-28 15:00:00','text','title',188,150),(236,0,'2017-04-28 15:00:00','text','title',188,151),(237,0,'2017-04-28 15:00:00','text','title',188,152),(238,0,'2017-04-28 15:00:00','text','title',188,153);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `creditcard`
+-- Table structure for table `commentable`
 --
 
-DROP TABLE IF EXISTS `creditcard`;
+DROP TABLE IF EXISTS `commentable`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `creditcard` (
+CREATE TABLE `commentable` (
   `id` int(11) NOT NULL,
   `version` int(11) NOT NULL,
-  `CVV` int(11) NOT NULL,
-  `brandName` varchar(255) DEFAULT NULL,
-  `creditCardNumber` varchar(16) DEFAULT NULL,
-  `expirationMonth` int(11) NOT NULL,
-  `expirationYear` int(11) NOT NULL,
-  `holderName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `creditcard`
+-- Dumping data for table `commentable`
 --
 
-LOCK TABLES `creditcard` WRITE;
-/*!40000 ALTER TABLE `creditcard` DISABLE KEYS */;
-INSERT INTO `creditcard` VALUES (249,0,100,'VISA','4111111111111111',6,19,'Nombre1'),(250,0,112,'VISA','340252042596177',9,21,'Nombre2'),(251,0,178,'VISA','4916205200889947',3,19,'Nombre3'),(252,0,120,'VISA','4485598661423946',1,20,'Nombre4'),(253,0,231,'VISA','4916509563156475',2,24,'Nombre5'),(254,0,342,'VISA','4532056300104875',3,18,'Nombre6'),(255,0,342,'VISA','4532056300104875',12,20,'Jacinto'),(256,0,342,'VISA','4532056300104875',12,20,'Angel'),(257,0,342,'VISA','4532056300104875',12,20,'Alex'),(258,0,342,'VISA','4532056300104875',12,20,'José María');
-/*!40000 ALTER TABLE `creditcard` ENABLE KEYS */;
+LOCK TABLES `commentable` WRITE;
+/*!40000 ALTER TABLE `commentable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `commentable` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `day`
+-- Table structure for table `folder`
 --
 
-DROP TABLE IF EXISTS `day`;
+DROP TABLE IF EXISTS `folder`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `day` (
+CREATE TABLE `folder` (
   `id` int(11) NOT NULL,
   `version` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `schedule_id` int(11) DEFAULT NULL,
+  `actor_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_sjfst4b7lwdnkssg91oavu9be` (`schedule_id`),
-  CONSTRAINT `FK_sjfst4b7lwdnkssg91oavu9be` FOREIGN KEY (`schedule_id`) REFERENCES `schedule` (`id`)
+  KEY `UK_n7ijwwfqlsb8pm0npu8uko9h8` (`actor_id`),
+  KEY `UK_l1kp977466ddsv762wign7kdh` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `day`
+-- Dumping data for table `folder`
 --
 
-LOCK TABLES `day` WRITE;
-/*!40000 ALTER TABLE `day` DISABLE KEYS */;
-INSERT INTO `day` VALUES (323,0,'MONDAY',322),(324,0,'TUESDAY',322),(325,0,'WEDNESDAY',322),(326,0,'THURSDAY',322),(327,0,'FRIDAY',322),(328,0,'SATURDAY',322),(329,0,'SUNDAY',322),(331,0,'MONDAY',330),(332,0,'TUESDAY',330),(333,0,'WEDNESDAY',330),(334,0,'THURSDAY',330),(335,0,'FRIDAY',330),(336,0,'SATURDAY',330),(337,0,'SUNDAY',330),(339,0,'MONDAY',338),(340,0,'TUESDAY',338),(341,0,'WEDNESDAY',338),(342,0,'THURSDAY',338),(343,0,'FRIDAY',338),(344,0,'SATURDAY',338),(345,0,'SUNDAY',338),(347,0,'MONDAY',346),(348,0,'TUESDAY',346),(349,0,'WEDNESDAY',346),(350,0,'THURSDAY',346),(351,0,'FRIDAY',346),(352,0,'SATURDAY',346),(353,0,'SUNDAY',346),(355,0,'MONDAY',354),(356,0,'TUESDAY',354),(357,0,'WEDNESDAY',354),(358,0,'THURSDAY',354),(359,0,'FRIDAY',354),(360,0,'SATURDAY',354),(361,0,'SUNDAY',354),(363,0,'MONDAY',362),(364,0,'TUESDAY',362),(365,0,'WEDNESDAY',362),(366,0,'THURSDAY',362),(367,0,'FRIDAY',362),(368,0,'SATURDAY',362),(369,0,'SUNDAY',362),(371,0,'MONDAY',370),(372,0,'TUESDAY',370),(373,0,'WEDNESDAY',370),(374,0,'THURSDAY',370),(375,0,'FRIDAY',370),(376,0,'SATURDAY',370),(377,0,'SUNDAY',370),(379,0,'MONDAY',378),(380,0,'TUESDAY',378),(381,0,'WEDNESDAY',378),(382,0,'THURSDAY',378),(383,0,'FRIDAY',378),(384,0,'SATURDAY',378),(385,0,'SUNDAY',378),(387,0,'MONDAY',386),(388,0,'TUESDAY',386),(389,0,'WEDNESDAY',386),(390,0,'THURSDAY',386),(391,0,'FRIDAY',386),(392,0,'SATURDAY',386),(393,0,'SUNDAY',386),(395,0,'MONDAY',394),(396,0,'TUESDAY',394),(397,0,'WEDNESDAY',394),(398,0,'THURSDAY',394),(399,0,'FRIDAY',394),(400,0,'SATURDAY',394),(401,0,'SUNDAY',394),(403,0,'MONDAY',402),(404,0,'TUESDAY',402),(405,0,'WEDNESDAY',402),(406,0,'THURSDAY',402),(407,0,'FRIDAY',402),(408,0,'SATURDAY',402),(409,0,'SUNDAY',402),(411,0,'MONDAY',410),(412,0,'TUESDAY',410),(413,0,'WEDNESDAY',410),(414,0,'THURSDAY',410),(415,0,'FRIDAY',410),(416,0,'SATURDAY',410),(417,0,'SUNDAY',410),(419,0,'MONDAY',418),(420,0,'TUESDAY',418),(421,0,'WEDNESDAY',418),(422,0,'THURSDAY',418),(423,0,'FRIDAY',418),(424,0,'SATURDAY',418),(425,0,'SUNDAY',418),(427,0,'MONDAY',426),(428,0,'TUESDAY',426),(429,0,'WEDNESDAY',426),(430,0,'THURSDAY',426),(431,0,'FRIDAY',426),(432,0,'SATURDAY',426),(433,0,'SUNDAY',426),(435,0,'MONDAY',434),(436,0,'TUESDAY',434),(437,0,'WEDNESDAY',434),(438,0,'THURSDAY',434),(439,0,'FRIDAY',434),(440,0,'SATURDAY',434),(441,0,'SUNDAY',434),(443,0,'MONDAY',442),(444,0,'TUESDAY',442),(445,0,'WEDNESDAY',442),(446,0,'THURSDAY',442),(447,0,'FRIDAY',442),(448,0,'SATURDAY',442),(449,0,'SUNDAY',442);
-/*!40000 ALTER TABLE `day` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `day_workinghours`
---
-
-DROP TABLE IF EXISTS `day_workinghours`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `day_workinghours` (
-  `Day_id` int(11) NOT NULL,
-  `workingHours` time DEFAULT NULL,
-  KEY `FK_ll13vboygrgmb7gqcma6b6hlt` (`Day_id`),
-  CONSTRAINT `FK_ll13vboygrgmb7gqcma6b6hlt` FOREIGN KEY (`Day_id`) REFERENCES `day` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `day_workinghours`
---
-
-LOCK TABLES `day_workinghours` WRITE;
-/*!40000 ALTER TABLE `day_workinghours` DISABLE KEYS */;
-INSERT INTO `day_workinghours` VALUES (323,'10:00:00'),(323,'14:00:00'),(323,'16:00:00'),(323,'20:00:00'),(324,'10:00:00'),(324,'14:00:00'),(324,'16:00:00'),(324,'20:00:00'),(325,'10:00:00'),(325,'14:00:00'),(325,'16:00:00'),(325,'20:00:00'),(326,'10:00:00'),(326,'14:00:00'),(326,'16:00:00'),(326,'20:00:00'),(327,'10:00:00'),(327,'14:00:00'),(327,'16:00:00'),(327,'20:00:00'),(328,'10:00:00'),(328,'14:00:00'),(328,'16:00:00'),(328,'20:00:00'),(329,'10:00:00'),(329,'14:00:00'),(329,'16:00:00'),(329,'20:00:00'),(331,'10:00:00'),(331,'14:00:00'),(331,'16:00:00'),(331,'20:00:00'),(332,'10:00:00'),(332,'14:00:00'),(332,'16:00:00'),(332,'20:00:00'),(333,'10:00:00'),(333,'14:00:00'),(333,'16:00:00'),(333,'20:00:00'),(334,'10:00:00'),(334,'14:00:00'),(334,'16:00:00'),(334,'20:00:00'),(335,'10:00:00'),(335,'14:00:00'),(335,'16:00:00'),(335,'20:00:00'),(336,'10:00:00'),(336,'14:00:00'),(337,'10:00:00'),(337,'14:00:00'),(337,'16:00:00'),(337,'20:00:00'),(339,'09:00:00'),(339,'14:00:00'),(339,'16:00:00'),(339,'20:00:00'),(340,'09:00:00'),(340,'14:00:00'),(340,'16:00:00'),(340,'20:00:00'),(341,'09:00:00'),(341,'14:00:00'),(341,'16:00:00'),(341,'20:00:00'),(342,'09:00:00'),(342,'14:00:00'),(342,'16:00:00'),(342,'20:00:00'),(343,'09:00:00'),(343,'14:00:00'),(343,'16:00:00'),(343,'20:00:00'),(344,'10:00:00'),(344,'14:00:00'),(345,'10:00:00'),(345,'14:00:00'),(347,'10:00:00'),(347,'14:00:00'),(347,'16:00:00'),(347,'21:00:00'),(348,'10:00:00'),(348,'14:00:00'),(348,'16:00:00'),(348,'21:00:00'),(349,'10:00:00'),(349,'14:00:00'),(349,'16:00:00'),(349,'21:00:00'),(350,'10:00:00'),(350,'14:00:00'),(350,'16:00:00'),(350,'21:00:00'),(351,'10:00:00'),(351,'14:00:00'),(351,'16:00:00'),(351,'21:00:00'),(352,'10:00:00'),(352,'14:00:00'),(352,'16:00:00'),(352,'21:00:00'),(353,'10:00:00'),(353,'14:00:00'),(353,'16:00:00'),(353,'20:00:00'),(355,'10:00:00'),(355,'14:00:00'),(355,'16:00:00'),(355,'20:00:00'),(356,'10:00:00'),(356,'14:00:00'),(356,'16:00:00'),(356,'20:00:00'),(357,'10:00:00'),(357,'14:00:00'),(357,'16:00:00'),(357,'20:00:00'),(358,'10:00:00'),(358,'14:00:00'),(358,'16:00:00'),(358,'20:00:00'),(359,'10:00:00'),(359,'14:00:00'),(359,'16:00:00'),(359,'20:00:00'),(360,'10:00:00'),(360,'14:00:00'),(361,'10:00:00'),(361,'14:00:00'),(363,'10:00:00'),(363,'13:00:00'),(363,'15:00:00'),(363,'20:00:00'),(364,'10:00:00'),(364,'13:00:00'),(364,'15:00:00'),(364,'20:00:00'),(365,'10:00:00'),(365,'13:00:00'),(365,'15:00:00'),(365,'20:00:00'),(366,'10:00:00'),(366,'13:00:00'),(366,'15:00:00'),(366,'20:00:00'),(367,'10:00:00'),(367,'13:00:00'),(367,'15:00:00'),(367,'20:00:00'),(368,'10:00:00'),(368,'14:00:00'),(369,'10:00:00'),(369,'14:00:00'),(369,'16:00:00'),(369,'20:00:00'),(371,'10:00:00'),(371,'14:00:00'),(371,'16:00:00'),(371,'20:00:00'),(372,'10:00:00'),(372,'14:00:00'),(372,'16:00:00'),(372,'20:00:00'),(373,'10:00:00'),(373,'14:00:00'),(373,'16:00:00'),(373,'20:00:00'),(374,'10:00:00'),(374,'14:00:00'),(374,'16:00:00'),(374,'20:00:00'),(375,'10:00:00'),(375,'14:00:00'),(375,'16:00:00'),(375,'20:00:00'),(376,'10:00:00'),(376,'14:00:00'),(376,'16:00:00'),(376,'20:00:00'),(377,'10:00:00'),(377,'14:00:00'),(379,'10:00:00'),(379,'14:00:00'),(379,'16:00:00'),(379,'20:00:00'),(380,'10:00:00'),(380,'14:00:00'),(380,'16:00:00'),(380,'20:00:00'),(381,'10:00:00'),(381,'14:00:00'),(381,'16:00:00'),(381,'20:00:00'),(382,'10:00:00'),(382,'14:00:00'),(382,'16:00:00'),(382,'20:00:00'),(383,'10:00:00'),(383,'14:00:00'),(383,'16:00:00'),(383,'20:00:00'),(384,'10:00:00'),(384,'14:00:00'),(384,'16:00:00'),(384,'20:00:00'),(385,'10:00:00'),(385,'14:00:00'),(387,'10:00:00'),(387,'14:00:00'),(387,'16:00:00'),(387,'20:00:00'),(388,'10:00:00'),(388,'14:00:00'),(388,'16:00:00'),(388,'20:00:00'),(389,'10:00:00'),(389,'14:00:00'),(389,'16:00:00'),(389,'20:00:00'),(390,'10:00:00'),(390,'14:00:00'),(390,'16:00:00'),(390,'20:00:00'),(391,'10:00:00'),(391,'14:00:00'),(391,'16:00:00'),(391,'20:00:00'),(392,'10:00:00'),(392,'14:00:00'),(392,'16:00:00'),(392,'20:00:00'),(393,'10:00:00'),(393,'14:00:00'),(395,'10:00:00'),(395,'14:00:00'),(395,'16:00:00'),(395,'20:00:00'),(396,'10:00:00'),(396,'14:00:00'),(396,'16:00:00'),(396,'20:00:00'),(397,'10:00:00'),(397,'14:00:00'),(397,'16:00:00'),(397,'20:00:00'),(398,'10:00:00'),(398,'14:00:00'),(398,'16:00:00'),(398,'20:00:00'),(399,'10:00:00'),(399,'14:00:00'),(399,'16:00:00'),(399,'20:00:00'),(400,'10:00:00'),(400,'14:00:00'),(400,'16:00:00'),(400,'20:00:00'),(401,'10:00:00'),(401,'14:00:00'),(401,'16:00:00'),(401,'20:00:00'),(403,'10:00:00'),(403,'12:00:00'),(403,'18:00:00'),(403,'20:00:00'),(404,'10:00:00'),(404,'12:00:00'),(404,'18:00:00'),(404,'20:00:00'),(405,'10:00:00'),(405,'12:00:00'),(405,'18:00:00'),(405,'20:00:00'),(406,'10:00:00'),(406,'12:00:00'),(406,'18:00:00'),(406,'20:00:00'),(407,'10:00:00'),(407,'12:00:00'),(407,'18:00:00'),(407,'20:00:00'),(408,'10:00:00'),(408,'12:00:00'),(409,'10:00:00'),(409,'14:00:00'),(409,'16:00:00'),(409,'20:00:00'),(411,'10:00:00'),(411,'14:00:00'),(411,'16:00:00'),(411,'20:00:00'),(412,'10:00:00'),(412,'14:00:00'),(412,'16:00:00'),(412,'20:00:00'),(413,'10:00:00'),(413,'14:00:00'),(413,'16:00:00'),(413,'20:00:00'),(414,'10:00:00'),(414,'14:00:00'),(414,'16:00:00'),(414,'20:00:00'),(415,'10:00:00'),(415,'14:00:00'),(415,'16:00:00'),(415,'20:00:00'),(416,'10:00:00'),(416,'14:00:00'),(417,'10:00:00'),(417,'14:00:00'),(417,'16:00:00'),(417,'20:00:00'),(419,'10:00:00'),(419,'14:00:00'),(419,'16:00:00'),(419,'20:00:00'),(420,'10:00:00'),(420,'14:00:00'),(420,'16:00:00'),(420,'20:00:00'),(421,'10:00:00'),(421,'14:00:00'),(421,'16:00:00'),(421,'20:00:00'),(422,'10:00:00'),(422,'14:00:00'),(422,'16:00:00'),(422,'20:00:00'),(423,'10:00:00'),(423,'14:00:00'),(423,'16:00:00'),(423,'20:00:00'),(424,'10:00:00'),(424,'14:00:00'),(425,'10:00:00'),(425,'14:00:00'),(425,'16:00:00'),(425,'20:00:00'),(427,'09:00:00'),(427,'14:00:00'),(427,'16:00:00'),(427,'20:00:00'),(428,'09:00:00'),(428,'14:00:00'),(428,'16:00:00'),(428,'20:00:00'),(429,'09:00:00'),(429,'14:00:00'),(429,'16:00:00'),(429,'20:00:00'),(430,'09:00:00'),(430,'14:00:00'),(430,'16:00:00'),(430,'20:00:00'),(431,'09:00:00'),(431,'14:00:00'),(431,'16:00:00'),(431,'20:00:00'),(432,'10:00:00'),(432,'14:00:00'),(433,'10:00:00'),(433,'14:00:00'),(435,'10:00:00'),(435,'14:00:00'),(435,'16:00:00'),(435,'21:00:00'),(436,'10:00:00'),(436,'14:00:00'),(436,'16:00:00'),(436,'21:00:00'),(437,'10:00:00'),(437,'14:00:00'),(437,'16:00:00'),(437,'21:00:00'),(438,'10:00:00'),(438,'14:00:00'),(438,'16:00:00'),(438,'21:00:00'),(439,'10:00:00'),(439,'14:00:00'),(439,'16:00:00'),(439,'21:00:00'),(440,'10:00:00'),(440,'14:00:00'),(440,'16:00:00'),(440,'21:00:00'),(441,'10:00:00'),(441,'14:00:00'),(443,'10:00:00'),(443,'14:00:00'),(443,'16:00:00'),(443,'20:00:00'),(444,'10:00:00'),(444,'14:00:00'),(444,'16:00:00'),(444,'20:00:00'),(445,'10:00:00'),(445,'14:00:00'),(445,'16:00:00'),(445,'20:00:00'),(446,'10:00:00'),(446,'14:00:00'),(446,'16:00:00'),(446,'20:00:00'),(447,'10:00:00'),(447,'14:00:00'),(447,'16:00:00'),(447,'20:00:00'),(448,'10:00:00'),(448,'14:00:00'),(448,'16:00:00'),(448,'20:00:00'),(449,'10:00:00'),(449,'14:00:00'),(449,'16:00:00'),(449,'20:00:00');
-/*!40000 ALTER TABLE `day_workinghours` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `establishment`
---
-
-DROP TABLE IF EXISTS `establishment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `establishment` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `average` double DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `owner_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_lv0f7w9o02i8rlq6gck4os9qx` (`owner_id`),
-  CONSTRAINT `FK_lv0f7w9o02i8rlq6gck4os9qx` FOREIGN KEY (`owner_id`) REFERENCES `owner` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `establishment`
---
-
-LOCK TABLES `establishment` WRITE;
-/*!40000 ALTER TABLE `establishment` DISABLE KEYS */;
-INSERT INTO `establishment` VALUES (270,0,0,'Calle Cervantes, 67, 41100 Coria del Río, Sevilla','Peluquería unisex','Peluquería Rafael Bizcocho',259),(271,0,0,'Av de Alemania, Local 4','Peluquería unisex','Peluquería Lyonele',259),(272,0,0,'Av. José Laguillo, 3','Peluquería SevillaPeluquería SevillaPeluquería SevillaPeluquería SevillaPeluquería SevillaPeluquería Sea SevillaPeluquería SevillaPeluquería SevillaPeluquería SevillaPeluquería SevillaPeluquería SevillaPeluquería Sevilla','Lebrón Peluqueros',260),(273,0,0,'Calle Castilla, 146','Pelados para todos','La Peluquería',261),(274,0,0,'Calle Castilla, 146','Pelados para todos','Peluqueria Los Pelos',261),(275,0,0,'Calle Castilla, 146','Pelados para todos','Peluqueria Rizos',261),(276,0,0,'Calle Castilla, 146','Pelados para todos','La Peluquería',261),(277,0,0,'Calle Juan Carlos I, 54, Villanueva del Ariscal','Piloting','Jacinto Peña',262);
-/*!40000 ALTER TABLE `establishment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `establishment_pictures`
---
-
-DROP TABLE IF EXISTS `establishment_pictures`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `establishment_pictures` (
-  `Establishment_id` int(11) NOT NULL,
-  `pictures` varchar(255) DEFAULT NULL,
-  KEY `FK_1xd0md42u46mmuwupur7dhcum` (`Establishment_id`),
-  CONSTRAINT `FK_1xd0md42u46mmuwupur7dhcum` FOREIGN KEY (`Establishment_id`) REFERENCES `establishment` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `establishment_pictures`
---
-
-LOCK TABLES `establishment_pictures` WRITE;
-/*!40000 ALTER TABLE `establishment_pictures` DISABLE KEYS */;
-INSERT INTO `establishment_pictures` VALUES (270,'http://www.comerciotalavera.com/wp-content/uploads/2015/05/peluqueriaxenia3.jpg'),(270,'http://www.aartperruquers.com/html/10325_ROSA_MARIA_SaNCHEZ_RODRiGUEZ/img/big_143903_151373_salon_peluqueria_mataro_aart_perruquers.jpg'),(271,'http://img.bezzia.com/wp-content/uploads/2010/12/salon-de-peluqueria.jpg'),(272,'http://www.mariasuinaga.com/img/salon/01_DSC_2286_800x467.jpg'),(273,'http://www.mariasuinaga.com/img/salon/01_DSC_2286_800x467.jpg'),(274,'https://i.ytimg.com/vi/g42E_qYLRlI/hqdefault.jpg'),(275,'http://www.mariasuinaga.com/img/salon/01_DSC_2286_800x467.jpg'),(276,'http://www.mariasuinaga.com/img/salon/01_DSC_2286_800x467.jpg'),(276,'http://media.salir-static.net/_images_/verticales/7/e/6/a/34505-rizos_rodriguez_san_pedro_rodriguez_san_pedro_pv.jpg/ebs95m'),(277,'http://www.mariasuinaga.com/img/salon/01_DSC_2286_800x467.jpg'),(277,'http://media.salir-static.net/_images_/verticales/7/e/6/a/34505-rizos_rodriguez_san_pedro_rodriguez_san_pedro_pv.jpg/ebs95m');
-/*!40000 ALTER TABLE `establishment_pictures` ENABLE KEYS */;
+LOCK TABLES `folder` WRITE;
+/*!40000 ALTER TABLE `folder` DISABLE KEYS */;
+INSERT INTO `folder` VALUES (156,0,'Sent',148),(157,0,'Received',148),(158,0,'Sent',149),(159,0,'Received',149),(160,0,'Sent',150),(161,0,'Received',150),(162,0,'Sent',151),(163,0,'Received',151),(164,0,'Sent',152),(165,0,'Received',152),(166,0,'Sent',153),(167,0,'Received',153),(168,0,'Sent',154),(169,0,'Received',154),(170,0,'Sent',155),(171,0,'Received',155),(172,0,'Sent',146),(173,0,'Received',146),(174,0,'Sent',147),(175,0,'Received',147);
+/*!40000 ALTER TABLE `folder` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -402,127 +282,378 @@ INSERT INTO `hibernate_sequences` VALUES ('DomainEntity',1);
 UNLOCK TABLES;
 
 --
--- Table structure for table `owner`
+-- Table structure for table `item`
 --
 
-DROP TABLE IF EXISTS `owner`;
+DROP TABLE IF EXISTS `item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `owner` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `picture` varchar(255) DEFAULT NULL,
-  `surname` varchar(255) DEFAULT NULL,
-  `userAccount_id` int(11) NOT NULL,
-  `nif` varchar(255) DEFAULT NULL,
-  `creditCard_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_lite1cn1118a8epvp6k4rnb8j` (`userAccount_id`),
-  KEY `FK_fml9yaruu8e90kyx4xkfgpmhr` (`creditCard_id`),
-  CONSTRAINT `FK_lite1cn1118a8epvp6k4rnb8j` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`),
-  CONSTRAINT `FK_fml9yaruu8e90kyx4xkfgpmhr` FOREIGN KEY (`creditCard_id`) REFERENCES `creditcard` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `owner`
---
-
-LOCK TABLES `owner` WRITE;
-/*!40000 ALTER TABLE `owner` DISABLE KEYS */;
-INSERT INTO `owner` VALUES (259,0,'calbetgonzalez@gmail.com','Juan','692397853','http://weknowyourdreams.com/image.php?pic=/images/woman/woman-06.jpg','Garcia González',228,'84516928R',252),(260,0,'deanambrose@gmail.com','Jonathan','600397853','https://static.pexels.com/photos/52648/pexels-photo-52648.jpeg','Good',229,'47430852E',250),(261,0,'sethrollins@gmail.com','Colby','611237853','http://cdn-01.belfasttelegraph.co.uk/opinion/columnists/jane-graham/article34424816.ece/5c02f/AUTOCROP/w620/2016-02-05_opi_16642636_I1.JPG','Lopez',230,'26197420Y',251),(262,0,'jacinto@peña.com','Jacinto','6666666666','http://cdn-01.belfasttelegraph.co.uk/opinion/columnists/jane-graham/article34424816.ece/5c02f/AUTOCROP/w620/2016-02-05_opi_16642636_I1.JPG','Peña',243,'26197420Y',255);
-/*!40000 ALTER TABLE `owner` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `schedule`
---
-
-DROP TABLE IF EXISTS `schedule`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `schedule` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `establishment_id` int(11) DEFAULT NULL,
-  `worker_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_49ivv3k84cg138hhkaanjrjyx` (`establishment_id`),
-  KEY `FK_98fbh1s90pu4mykjh9o8cdgqa` (`worker_id`),
-  CONSTRAINT `FK_98fbh1s90pu4mykjh9o8cdgqa` FOREIGN KEY (`worker_id`) REFERENCES `worker` (`id`),
-  CONSTRAINT `FK_49ivv3k84cg138hhkaanjrjyx` FOREIGN KEY (`establishment_id`) REFERENCES `establishment` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `schedule`
---
-
-LOCK TABLES `schedule` WRITE;
-/*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
-INSERT INTO `schedule` VALUES (322,0,270,NULL),(330,0,271,NULL),(338,0,272,NULL),(346,0,273,NULL),(354,0,274,NULL),(362,0,275,NULL),(370,0,276,NULL),(378,0,270,291),(386,0,270,292),(394,0,270,293),(402,0,271,294),(410,0,271,295),(418,0,272,296),(426,0,272,297),(434,0,273,298),(442,0,277,NULL);
-/*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `schedule_freedays`
---
-
-DROP TABLE IF EXISTS `schedule_freedays`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `schedule_freedays` (
-  `Schedule_id` int(11) NOT NULL,
-  `freeDays` date DEFAULT NULL,
-  KEY `FK_5red2kt64hvso4x17h7qjkxtn` (`Schedule_id`),
-  CONSTRAINT `FK_5red2kt64hvso4x17h7qjkxtn` FOREIGN KEY (`Schedule_id`) REFERENCES `schedule` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `schedule_freedays`
---
-
-LOCK TABLES `schedule_freedays` WRITE;
-/*!40000 ALTER TABLE `schedule_freedays` DISABLE KEYS */;
-INSERT INTO `schedule_freedays` VALUES (322,'2017-02-11'),(330,'2017-02-11'),(330,'2017-03-11'),(330,'2017-04-11'),(338,'2017-02-01'),(338,'2017-02-02'),(338,'2017-02-03'),(338,'2017-02-04'),(346,'2017-02-10'),(354,'2017-02-11'),(354,'2017-02-09'),(354,'2017-02-07'),(362,'2017-05-02'),(370,'2017-02-11'),(378,'2017-02-11'),(378,'2017-12-05'),(378,'2017-03-11'),(386,'2017-02-11'),(386,'2017-01-01'),(394,'2017-02-11'),(394,'2017-02-01'),(394,'2017-02-03'),(402,'2017-02-11'),(402,'2017-07-07'),(402,'2017-02-09'),(410,'2017-02-11'),(410,'2017-12-12'),(418,'2017-02-11'),(418,'2017-01-01'),(418,'2017-01-02'),(426,'2017-02-11'),(434,'2017-02-11'),(442,'2017-02-11');
-/*!40000 ALTER TABLE `schedule_freedays` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `service`
---
-
-DROP TABLE IF EXISTS `service`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `service` (
+CREATE TABLE `item` (
   `id` int(11) NOT NULL,
   `version` int(11) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `duration` int(11) NOT NULL,
-  `fee` double NOT NULL,
+  `identifier` varchar(255) DEFAULT NULL,
+  `itemCondition` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
-  `price` double NOT NULL,
-  `establishment_id` int(11) DEFAULT NULL,
+  `section_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_ps1b83wifcfe9kfi8quomf8b7` (`establishment_id`),
-  CONSTRAINT `FK_ps1b83wifcfe9kfi8quomf8b7` FOREIGN KEY (`establishment_id`) REFERENCES `establishment` (`id`)
+  UNIQUE KEY `UK_cgfptydfsws0h617pcmjklpm1` (`identifier`),
+  KEY `FK_7wdvuycddn7tubqhxid3jfsji` (`section_id`),
+  CONSTRAINT `FK_7wdvuycddn7tubqhxid3jfsji` FOREIGN KEY (`section_id`) REFERENCES `section` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `service`
+-- Dumping data for table `item`
 --
 
-LOCK TABLES `service` WRITE;
-/*!40000 ALTER TABLE `service` DISABLE KEYS */;
-INSERT INTO `service` VALUES (278,0,'Corte de pelo',45,2,'Corte','http://hbz.h-cdn.co/assets/16/01/980x490/landscape-1452279902-gettyimages-145083553-copy.jpg',12.5,270),(279,0,'Tinte para mujer',60,1.5,'Tinte','http://www.loreal-paris.es/_es/_es/articles/articles_tendencias/tendencias/images/950x440/bi-color-tinte.jpg',15,270),(280,0,'Corte de pelo para hombre',30,1,'Corte hombre','https://s-media-cache-ak0.pinimg.com/736x/e6/38/b7/e638b79b351920a66cdc458879de8d01.jpg',8,271),(281,0,'Mechas para mujer',90,4,'Mechas','http://www.mujeresfemeninas.com/imagenes/belleza/Mechas-californianas-hechas-en-casa.jpg',25,270),(282,0,'Corte de pelo para niño',30,1.5,'Corte niño','http://static.ellahoy.es/ellahoy/fotogallery/1200X0/187297/corte-de-pelo-estilo-moderno-nino.jpg',10,270),(283,0,'Permanente',75,3,'Permanente','http://static.ellahoy.es/r/845X0/www.ellahoy.es/img/permanente-del-pelo.jpg',30,272),(284,0,'Peinado para mujer',45,1.5,'Peinado','http://www.analasa.es/fotografias/files/imagenes/peinado-a-un-lado-2014-verano-peluqueria-gijon.jpeg',15,272),(285,0,'Corte y peinado para mujer',60,2,'Corte y peinado','https://img.grouponcdn.com/deal/jU8QXafvHKojpSYYVdFJ/Ey-1000x600/v1/c700x420.jpg',20,272),(286,0,'Corte de pelo',45,1.6,'Corte','http://s1.dmcdn.net/H8ZF3/1280x720-Xlg.jpg',16.5,272),(287,0,'Permanente',30,3,'Arreglo de barba','https://marinalia.es/318-thickbox_default/corte-de-pelo-para-hombre-y-de-arreglo-de-barba-en-barber-nour-javea.jpg',30,277),(288,0,'Tinte para hombre',60,1.5,'Tinte','http://susanariveratorres.com/wp-content/uploads/2013/09/reflejos-flequillo-hombre.jpg',15,277),(289,0,'Corte y lavado de pelo',30,2,'Corte y lavado de pelo','http://cortesdepelo2017.com/wp-content/uploads/2016/04/cortes-de-pelo-corto-2017-hombres-tupe-rapado-lados.jpg',20,277),(290,0,'Corte de pelo',30,1.6,'Corte','http://cortesdepelo2017.com/wp-content/uploads/2016/04/cortes-de-pelo-corto-2017-hombres-tupe-rapado-lados.jpg',16.5,277);
-/*!40000 ALTER TABLE `service` ENABLE KEYS */;
+LOCK TABLES `item` WRITE;
+/*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES (253,0,'description','20170521-b73','GOOD','name','',206),(254,0,'description','20170521-b72','GOOD','name','http://www.zoonewengland.org/media/813822/redpanda_gallery10.jpg',206),(255,0,'description','20170521-b71','GOOD','name','',206),(256,0,'description','20170521-b70','BAD','name','',206),(257,0,'description','20170521-b79','LOAN','name','',206),(258,0,'description','20170521-b78','EXCELENT','name','http://www.zoonewengland.org/media/813822/redpanda_gallery10.jpg',206);
+/*!40000 ALTER TABLE `item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `loan`
+--
+
+DROP TABLE IF EXISTS `loan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `loan` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `expectedDate` date DEFAULT NULL,
+  `finalDate` date DEFAULT NULL,
+  `startDate` date DEFAULT NULL,
+  `borrower_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `lender_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_gyy6d0pwoufi07e5cck66wai1` (`borrower_id`),
+  KEY `FK_klokjqmpincit3nt92uungba4` (`item_id`),
+  KEY `FK_23og9282aafg8lgai314leoto` (`lender_id`),
+  CONSTRAINT `FK_23og9282aafg8lgai314leoto` FOREIGN KEY (`lender_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_gyy6d0pwoufi07e5cck66wai1` FOREIGN KEY (`borrower_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_klokjqmpincit3nt92uungba4` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `loan`
+--
+
+LOCK TABLES `loan` WRITE;
+/*!40000 ALTER TABLE `loan` DISABLE KEYS */;
+INSERT INTO `loan` VALUES (259,0,'2017-03-24','2017-04-23','2017-03-21',149,253,148),(260,0,'2017-03-24','2017-04-23','2017-03-21',149,254,148),(261,0,'2017-03-24','2017-04-23','2017-03-21',149,255,148),(262,0,'2017-03-24',NULL,'2017-03-21',149,256,148),(263,0,'2017-03-24',NULL,'2017-03-21',149,257,148),(264,0,'2017-03-24',NULL,'2017-03-21',149,258,148);
+/*!40000 ALTER TABLE `loan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `meeting`
+--
+
+DROP TABLE IF EXISTS `meeting`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `meeting` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `agenda` varchar(255) DEFAULT NULL,
+  `issue` varchar(255) DEFAULT NULL,
+  `moment` datetime DEFAULT NULL,
+  `association_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_3tb327byug89axw7o25tb2n9e` (`association_id`),
+  CONSTRAINT `FK_3tb327byug89axw7o25tb2n9e` FOREIGN KEY (`association_id`) REFERENCES `association` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `meeting`
+--
+
+LOCK TABLES `meeting` WRITE;
+/*!40000 ALTER TABLE `meeting` DISABLE KEYS */;
+INSERT INTO `meeting` VALUES (247,0,'address','http://www.google.com','issue','2017-07-21 16:00:00',188),(248,0,'address','http://www.google.com','issue','2017-05-21 16:00:00',188),(249,0,'address','http://www.google.com','issue','2017-05-22 16:00:00',188),(250,0,'address','http://www.google.com','issue','2017-05-23 16:00:00',188),(251,0,'address','http://www.google.com','issue','2017-05-24 16:00:00',188),(252,0,'address','http://www.google.com','issue','2017-05-25 16:00:00',188);
+/*!40000 ALTER TABLE `meeting` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `moment` datetime DEFAULT NULL,
+  `text` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `folder_id` int(11) NOT NULL,
+  `recipient_id` int(11) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `UK_7t1ls63lqb52igs4ms20cf94t` (`folder_id`),
+  KEY `UK_tbto6hemu447oixxk730el2vx` (`sender_id`),
+  KEY `UK_q55vuhpo0cr2pdrb0rejw3bmi` (`recipient_id`),
+  CONSTRAINT `FK_7t1ls63lqb52igs4ms20cf94t` FOREIGN KEY (`folder_id`) REFERENCES `folder` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `message`
+--
+
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` VALUES (176,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message1',158,148,149),(177,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message1',157,148,149),(178,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message2',164,150,152),(179,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message2',161,150,152),(180,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message3',162,148,151),(181,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message3',157,148,151),(182,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message4',158,148,149),(183,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message4',157,148,149),(184,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message5',166,149,153),(185,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message5',159,149,153),(186,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message6',156,150,148),(187,0,'2017-03-03 23:49:00','Estoy jugando a la Play','Message6',161,150,148);
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `minutes`
+--
+
+DROP TABLE IF EXISTS `minutes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `minutes` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `document` varchar(255) DEFAULT NULL,
+  `meeting_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_kb0essj880i8a9fcdq0pr6cjo` (`meeting_id`),
+  CONSTRAINT `FK_kb0essj880i8a9fcdq0pr6cjo` FOREIGN KEY (`meeting_id`) REFERENCES `meeting` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `minutes`
+--
+
+LOCK TABLES `minutes` WRITE;
+/*!40000 ALTER TABLE `minutes` DISABLE KEYS */;
+INSERT INTO `minutes` VALUES (265,0,'http://http://www.google.es',247),(266,0,'http://www.google.es',248),(267,0,'http://www.google.es',249),(268,0,'http://www.google.es',250),(269,0,'http://www.google.es',251),(270,0,'http://www.google.es',252);
+/*!40000 ALTER TABLE `minutes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `minutes_user`
+--
+
+DROP TABLE IF EXISTS `minutes_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `minutes_user` (
+  `Minutes_id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL,
+  KEY `FK_9rf2yjgrej8y0k40qmn9uj88l` (`users_id`),
+  KEY `FK_hfvrkwtefkt9yxcw42mfvy6ks` (`Minutes_id`),
+  CONSTRAINT `FK_hfvrkwtefkt9yxcw42mfvy6ks` FOREIGN KEY (`Minutes_id`) REFERENCES `minutes` (`id`),
+  CONSTRAINT `FK_9rf2yjgrej8y0k40qmn9uj88l` FOREIGN KEY (`users_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `minutes_user`
+--
+
+LOCK TABLES `minutes_user` WRITE;
+/*!40000 ALTER TABLE `minutes_user` DISABLE KEYS */;
+INSERT INTO `minutes_user` VALUES (265,149),(265,150),(266,149),(266,150),(267,149),(267,150),(268,149),(268,150),(269,149),(269,150),(270,149),(270,150);
+/*!40000 ALTER TABLE `minutes_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `place`
+--
+
+DROP TABLE IF EXISTS `place`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `place` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `place`
+--
+
+LOCK TABLES `place` WRITE;
+/*!40000 ALTER TABLE `place` DISABLE KEYS */;
+INSERT INTO `place` VALUES (213,0,'Calle gotg',0,0),(214,0,'Calle pesadilla',10,80),(215,0,'Calle barbacoa',40,-120),(216,0,'Calle patata',-10,10),(217,0,'Calle chorizo',0,-20),(218,0,'Calle melon',-20,0),(219,0,'Calle vida',-45,150),(220,0,'Calle ',30,20);
+/*!40000 ALTER TABLE `place` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `request`
+--
+
+DROP TABLE IF EXISTS `request`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `request` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `association_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_30yi2hpb1abvdanf728mptov4` (`association_id`),
+  KEY `FK_lsq6snl5hdbnrqo9cm8n40ssh` (`user_id`),
+  CONSTRAINT `FK_lsq6snl5hdbnrqo9cm8n40ssh` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_30yi2hpb1abvdanf728mptov4` FOREIGN KEY (`association_id`) REFERENCES `association` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `request`
+--
+
+LOCK TABLES `request` WRITE;
+/*!40000 ALTER TABLE `request` DISABLE KEYS */;
+INSERT INTO `request` VALUES (227,0,189,148),(228,0,189,150),(229,0,189,151),(230,0,189,152),(231,0,189,153),(232,0,189,154);
+/*!40000 ALTER TABLE `request` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `association_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_o8kjt21gy7wv9k332iox7p4qe` (`association_id`),
+  KEY `FK_q60kd0m349k45ov57gya3mb3w` (`user_id`),
+  CONSTRAINT `FK_q60kd0m349k45ov57gya3mb3w` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_o8kjt21gy7wv9k332iox7p4qe` FOREIGN KEY (`association_id`) REFERENCES `association` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (194,0,'MANAGER',188,148),(195,0,'MANAGER',189,149),(196,0,'MANAGER',190,150),(197,0,'MANAGER',191,151),(198,0,'MANAGER',192,152),(199,0,'MANAGER',193,153),(200,0,'COLLABORATOR',188,149),(201,0,'COLLABORATOR',188,150),(202,0,'COLLABORATOR',188,151),(203,0,'COLLABORATOR',188,152),(204,0,'COLLABORATOR',188,153),(205,0,'ASSOCIATE',188,155);
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sanction`
+--
+
+DROP TABLE IF EXISTS `sanction`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sanction` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `endDate` datetime DEFAULT NULL,
+  `motiff` varchar(255) DEFAULT NULL,
+  `association_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_esuv8eteltyuvrc4d6l4ygkyk` (`association_id`),
+  KEY `FK_gs3si4qdjv7gkjeufgj7goiyk` (`user_id`),
+  CONSTRAINT `FK_gs3si4qdjv7gkjeufgj7goiyk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_esuv8eteltyuvrc4d6l4ygkyk` FOREIGN KEY (`association_id`) REFERENCES `association` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sanction`
+--
+
+LOCK TABLES `sanction` WRITE;
+/*!40000 ALTER TABLE `sanction` DISABLE KEYS */;
+INSERT INTO `sanction` VALUES (239,0,'2017-03-21 15:00:00','motiff',188,150),(240,0,'2017-03-21 15:00:00','motiff',188,149),(241,0,'2017-03-21 15:00:00','motiff',188,151),(242,0,'2017-03-21 15:00:00','motiff',188,152),(243,0,'2017-03-21 15:00:00','motiff',188,153),(244,0,'2017-03-21 15:00:00','motiff',188,148),(245,0,'2017-07-21 14:00:00','motiff',188,150),(246,0,'2017-07-21 16:00:00','motiff',188,151);
+/*!40000 ALTER TABLE `sanction` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `section`
+--
+
+DROP TABLE IF EXISTS `section`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `section` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `association_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_nou5r9h8dy6inqxyn2fw6lfy` (`association_id`),
+  KEY `FK_areids3eh9hc0in0nysc3f65q` (`user_id`),
+  CONSTRAINT `FK_areids3eh9hc0in0nysc3f65q` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_nou5r9h8dy6inqxyn2fw6lfy` FOREIGN KEY (`association_id`) REFERENCES `association` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `section`
+--
+
+LOCK TABLES `section` WRITE;
+/*!40000 ALTER TABLE `section` DISABLE KEYS */;
+INSERT INTO `section` VALUES (206,0,'Section1',188,148),(207,0,'Section1',188,149),(208,0,'Section1',188,150),(209,0,'Section1',188,151),(210,0,'Section1',188,152),(211,0,'Section1',188,153),(212,0,'Section1',189,148);
+/*!40000 ALTER TABLE `section` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `version` int(11) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `idNumber` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phoneNumber` varchar(255) DEFAULT NULL,
+  `postalAddress` varchar(255) DEFAULT NULL,
+  `surname` varchar(255) DEFAULT NULL,
+  `userAccount_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_o6s94d43co03sx067ili5760c` (`userAccount_id`),
+  KEY `UserUK_a99onpf5vqpr7eas9f06dihm0` (`name`),
+  KEY `UserUK_hn5atmqw0ai39935ekgv39gsu` (`surname`),
+  CONSTRAINT `FK_o6s94d43co03sx067ili5760c` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (148,0,'user1@gmail.com','2345','User1','2345','casa','user',138),(149,0,'user2@gmail.com','2345','User2','2345','casa','user',139),(150,0,'user3@gmail.com','2345','User3','2345','casa','user',140),(151,0,'user4@gmail.com','2345','User4','2345','casa','user',141),(152,0,'user5@gmail.com','2345','User5','2345','casa','user',142),(153,0,'user6@gmail.com','2345','User6','2345','casa','user',143),(154,0,'user7@gmail.com','2345','User7','2345','casa','user',144),(155,0,'user8@gmail.com','2345','User8','2345','casa','user',145);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -548,7 +679,7 @@ CREATE TABLE `useraccount` (
 
 LOCK TABLES `useraccount` WRITE;
 /*!40000 ALTER TABLE `useraccount` DISABLE KEYS */;
-INSERT INTO `useraccount` VALUES (228,0,'c26e420fe6f898c68d278174aced4236','JuanGarcia'),(229,0,'810a6e4761738897d23d2abc8755c7e4','RodriguezEsteban'),(230,0,'364a440226e1b575411a0e324e712d17','Eduardo'),(231,0,'dd92740a32b32f254c1f951bb2301750','Fran20'),(232,0,'a61f8198488054c2b55b805d8dc6f9a5','MariaLuisaRamos'),(233,0,'3706f2b676dbb9d2ae5d1bdb5028bbd2','JuanAlberto1982'),(234,0,'de285ec98e0f83211da217a4e1c5923e','client4'),(235,0,'c6f0ae183ba499b9b1be61ab25a0b97d','Lucia93'),(236,0,'87bbc547b4a45ecda91c8a2de9266cf6','SaludGomez'),(237,0,'b504f5a746deafd3e78b9c85c20ca653','worker3'),(238,0,'221393135bcf2a755b8ac9da40365c67','worker4'),(239,0,'6a21db8adb7572cb5d1b15dfaa4469e4','worker5'),(240,0,'16b7e21c964d2e0b98a5a4712a0df241','worker6'),(241,0,'e2954e1abf0b7138d9dd7a3c13f5aaec','worker7'),(242,0,'fc940eab0c998dcac328969e7d921b32','worker8'),(243,0,'c1ca69ea32722905daa8445fce33c285','jpeña'),(244,0,'d009dc9f2cf2698a859dc31ffac57c1e','angelR'),(245,0,'5bb6b76e30db88c0cfcb67ab48067d6e','AGarrido'),(246,0,'1a8465f920e021e1d5e802e3c109ed3d','JMCotan'),(247,0,'671db596883ff63afbe51c4e8fe2041d','Administrador');
+INSERT INTO `useraccount` VALUES (136,0,'21232f297a57a5a743894a0e4a801fc3','admin'),(137,0,'54b53072540eeeb8f8e9343e71f28176','system'),(138,0,'24c9e15e52afc47c225b757e7bee1f9d','user1'),(139,0,'7e58d63b60197ceb55a1c487989a3720','user2'),(140,0,'92877af70a45fd6a2ed7fe81e1236b78','user3'),(141,0,'3f02ebe3d7929b091e3d8ccfde2f3bc6','user4'),(142,0,'0a791842f52a0acfbb3a783378c066b8','user5'),(143,0,'affec3b64cf90492377a8114c86fc093','user6'),(144,0,'3e0469fb134991f8f75a2760e409c6ed','user7'),(145,0,'7668f673d5669995175ef91b5d171945','user8');
 /*!40000 ALTER TABLE `useraccount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -573,44 +704,8 @@ CREATE TABLE `useraccount_authorities` (
 
 LOCK TABLES `useraccount_authorities` WRITE;
 /*!40000 ALTER TABLE `useraccount_authorities` DISABLE KEYS */;
-INSERT INTO `useraccount_authorities` VALUES (228,'OWNER'),(229,'OWNER'),(230,'OWNER'),(231,'CLIENT'),(232,'CLIENT'),(233,'CLIENT'),(234,'CLIENT'),(235,'WORKER'),(236,'WORKER'),(237,'WORKER'),(238,'WORKER'),(239,'WORKER'),(240,'WORKER'),(241,'WORKER'),(242,'WORKER'),(243,'OWNER'),(244,'CLIENT'),(245,'CLIENT'),(246,'CLIENT'),(247,'ADMIN');
+INSERT INTO `useraccount_authorities` VALUES (136,'ADMIN'),(137,'ADMIN'),(138,'USER'),(139,'USER'),(140,'USER'),(141,'USER'),(142,'USER'),(143,'USER'),(144,'USER'),(145,'USER');
 /*!40000 ALTER TABLE `useraccount_authorities` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `worker`
---
-
-DROP TABLE IF EXISTS `worker`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `worker` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `picture` varchar(255) DEFAULT NULL,
-  `surname` varchar(255) DEFAULT NULL,
-  `userAccount_id` int(11) NOT NULL,
-  `nif` varchar(255) DEFAULT NULL,
-  `establishment_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_e7rogu7ammlrb70qkl4uouhs6` (`userAccount_id`),
-  KEY `FK_ipkkqflc6pbxq5bdpsd58r2qo` (`establishment_id`),
-  CONSTRAINT `FK_e7rogu7ammlrb70qkl4uouhs6` FOREIGN KEY (`userAccount_id`) REFERENCES `useraccount` (`id`),
-  CONSTRAINT `FK_ipkkqflc6pbxq5bdpsd58r2qo` FOREIGN KEY (`establishment_id`) REFERENCES `establishment` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `worker`
---
-
-LOCK TABLES `worker` WRITE;
-/*!40000 ALTER TABLE `worker` DISABLE KEYS */;
-INSERT INTO `worker` VALUES (291,0,'romanreigns@gmail.com','Joseph','699547711','https://image.freepik.com/free-photo/smiling-young-man-with-crossed-arms-outdoors_1140-255.jpg','Reigns',235,'34043699L',270),(292,0,'stephanie@gmail.com','Stephanie','987445321','https://www.gentlemenhood.com/wp-content/uploads/2014/05/134247814-Happy-woman.jpg','Smith',236,'40809958T',270),(293,0,'nikkibella@gmail.com','Nicole','658997411','https://placeit.net/uploads/stage/stage_image/2486/default_a3819.png','Gates',237,'43676917D',270),(294,0,'charlotte@gmail.com','Charlotte','656425587','http://www.lbbc.org/sites/default/files/styles/image_callout/public/images/callouts/2015%20YWI%20Button%20Woman%20in%20Teal%20Shirt.jpg?itok=mNVB98CF','Evanson',238,'15833491S',271),(295,0,'cesaro@gmail.com','John','645771258','http://orig08.deviantart.net/fce8/f/2008/128/5/9/young_man_smiling_by_jfschmit.jpg','Black',239,'65396745V',271),(296,0,'neville@gmail.com','Adrian','654778622','http://archived.naccho.org/communications/blog/H1N1/Posts/images/young-man-370-px_1.JPG','Neville',240,'94660397X',272),(297,0,'bayley@gmail.com','Rose','636574122','http://voilanatural.com/wp-content/uploads/2013/09/depositphotos_1327129_original.jpg','Martinez',241,'31336075R',272),(298,0,'themiz@gmail.com','Michael','656478811','https://upload.wikimedia.org/wikipedia/commons/8/83/Young_man_with_dimples.jpg','Mizanin',242,'64561465M',273);
-/*!40000 ALTER TABLE `worker` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -622,7 +717,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-26 20:25:36
+-- Dump completed on 2017-05-30 12:52:10
 	
 	
 	
