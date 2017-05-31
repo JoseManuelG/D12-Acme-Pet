@@ -1,4 +1,8 @@
 ﻿-------------- POR HACER --------------
+-Cambiar los items del entregable, no hay item para tests de rendimiento
+-separador de acciones de un perfil de un animaniaco cuando no es tu perfil
+-el cancelar de spamword lleva a la lista de folders
+- en my request, traducir el nueva peticion al inglés
 -cancel de reportanimaniac
 - quitar criterios de ordenación de banners
 
