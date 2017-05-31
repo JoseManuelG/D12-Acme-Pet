@@ -97,7 +97,7 @@ public class ConfigurationAdministratorController extends AbstractController {
 				result = new ModelAndView("redirect:view.do");
 
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(configurationForm, "configuration.commit.error");
+				result = this.createEditModelAndView(configurationForm, oops.getMessage());
 			}
 		return result;
 	}

@@ -35,6 +35,7 @@ public class ConfigurationService {
 
 		Assert.notNull(configuration, "configuration.error.null");
 		Assert.isTrue(this.administratorService.findAdministratorByPrincipal().getUserAccount().getAuthorities().iterator().next().getAuthority().equals("ADMINISTRATOR"), "configuration.error.notadmin");
+		Assert.isTrue(configuration.getPartnerFee() >= 0, "configuration.error.feevalue");
 		result = this.configurationRepository.save(configuration);
 		return result;
 	}

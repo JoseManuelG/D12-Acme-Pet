@@ -1,4 +1,7 @@
 ﻿-------------- POR HACER --------------
+-cancel de reportanimaniac
+- quitar criterios de ordenación de banners
+- ver peerfil de una mascota siendo patner y como admin.
 - Ultima query de la dashboard.
 - Cambiar formato de links e imagenes en la lista de banners de un partner.
 - Sacar pdfs de requirements.
@@ -9,6 +12,9 @@
 
 
 ---------------- HECHO ----------------- 
+
+-error en systemConfiguration fee-> el problema es de hibernate el min 0 no funciona correctamente SOLUCIONADO
+-en el search que nos puedas poner endDate antes que startDate(no procede)
 -plugin para auto rellenar los formularios:https://chrome.google.com/webstore/detail/form-save-and-restore/jknhanfpdjpnkfjjkpofcpegcbhpigcd
 
 	- Enlace mis mascotas (que pasa con este enlace?)

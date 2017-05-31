@@ -45,7 +45,7 @@ public class ConfigurationForm {
 	public void setSeconds(final int seconds) {
 		this.seconds = seconds;
 	}
-
+	@Min(0)
 	public double getPatnerFee() {
 		return this.patnerFee;
 	}
