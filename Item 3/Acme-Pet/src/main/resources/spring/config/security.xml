@@ -84,6 +84,7 @@
 
 		<security:intercept-url pattern="/vet/view.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/pet/animaniac/list.do" access="isAuthenticated()" />
+				<security:intercept-url pattern="/pet/animaniac/view.do" access="isAuthenticated()" />
 		
 		<!-- Administrator -->		
 <!-- 		<security:intercept-url pattern="" access="hasRole('ADMINISTRATOR')" /> -->
@@ -129,7 +130,6 @@
 		
 		<security:intercept-url pattern="/pet/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
 		<security:intercept-url pattern="/pet/animaniac/create.do" access="hasRole('ANIMANIAC')" />
-		<security:intercept-url pattern="/pet/animaniac/view.do" access="hasAnyRole('ANIMANIAC','VET')" />
 		<security:intercept-url pattern="/pet/animaniac/myPets.do" access="hasRole('ANIMANIAC')" />
 
 		<security:intercept-url pattern="/request/animaniac/list.do" access="hasRole('ANIMANIAC')" />

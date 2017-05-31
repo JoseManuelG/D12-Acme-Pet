@@ -35,7 +35,9 @@
 	<!-- Attributes -->
 	
 	<acme:column sorteable="false" code="banner.link" path="link"/>
-	<acme:column sorteable="false" code="banner.picture" path="picture"/>
+	<display:column>
+		<img src="${row.picture }" >
+	</display:column>
 	
 </display:table>
 
