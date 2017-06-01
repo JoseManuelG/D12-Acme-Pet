@@ -1,7 +1,7 @@
 ﻿-------------- POR HACER --------------
 -Cambiar los items del entregable, no hay item para tests de rendimiento
 
-- Ultima query de la dashboard.
+
 
 - Sacar pdfs de requirements.
 - Informe costes
@@ -11,7 +11,7 @@
 
 
 ---------------- HECHO ----------------- 
-
+- Ultima query de la dashboard.	- Están revisadas todas las queries. No he sido capaz de reproducir el error que apareció en la presentación.
 -separador de acciones de un perfil de un animaniaco cuando no es tu perfil-NO PROCEDE
 -el cancelar de spamword lleva a la lista de folders
 - en my request, traducir el nueva peticion al inglés-NO PROCEDE
