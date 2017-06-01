@@ -22,7 +22,7 @@
 	
 	<acme:submit name="save" code="abuseReport.save"/>
 	
-	<acme:cancel url="animaniac/view.do.do?animaniacId=${abuseReport.reported.id}" code="abuseReport.cancel"/>
+	<acme:cancel url="animaniac/view.do?animaniacId=${abuseReport.reported.id}" code="abuseReport.cancel"/>
 
 
 </form:form>

@@ -22,7 +22,7 @@
 
 	<acme:submit code="spamWord.save" name="save" />
 	
-	<acme:cancel code="spamWord.cancel" url="folder/list.do" />
+	<acme:cancel code="spamWord.cancel" url="spamword/administrator/list.do" />
 		
 	<br />
 

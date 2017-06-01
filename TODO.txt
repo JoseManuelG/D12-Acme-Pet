@@ -1,10 +1,5 @@
 ﻿-------------- POR HACER --------------
 -Cambiar los items del entregable, no hay item para tests de rendimiento
--separador de acciones de un perfil de un animaniaco cuando no es tu perfil
--el cancelar de spamword lleva a la lista de folders
-- en my request, traducir el nueva peticion al inglés
--cancel de reportanimaniac
-- quitar criterios de ordenación de banners
 
 - Ultima query de la dashboard.
 
@@ -16,6 +11,12 @@
 
 
 ---------------- HECHO ----------------- 
+
+-separador de acciones de un perfil de un animaniaco cuando no es tu perfil-NO PROCEDE
+-el cancelar de spamword lleva a la lista de folders
+- en my request, traducir el nueva peticion al inglés-NO PROCEDE
+-cancel de reportanimaniac
+- quitar criterios de ordenación de banners-NO PROCEDE
 - ver peerfil de una mascota siendo patner y como admin.
 - Cambiar formato de links e imagenes en la lista de banners de un partner.
 -error en systemConfiguration fee-> el problema es de hibernate el min 0 no funciona correctamente SOLUCIONADO
