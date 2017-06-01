@@ -220,7 +220,7 @@ public class MessageService {
 
 	}
 	public Message reconstruct(final Message message, final BindingResult binding) {
-		final Message messageDB, result;
+		final Message messageDB;
 		messageDB = this.messageRepository.findOne(message.getId());
 		messageDB.setFolder(message.getFolder());
 
@@ -244,9 +244,6 @@ public class MessageService {
 		return result;
 	}
 
-	//Para responder el mensaje
-	//Lo he cambiado para que pida chirpId en vez de chorbiId para no tener que
-	//hacer en controlador cosas de servicios
 	public MessageForm replyMessage(final int messageId) {
 
 		final MessageForm result = new MessageForm();

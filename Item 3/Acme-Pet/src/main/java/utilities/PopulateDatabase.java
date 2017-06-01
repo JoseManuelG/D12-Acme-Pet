@@ -141,7 +141,7 @@ public class PopulateDatabase {
 				System.out.printf("> %s", name);
 				databaseUtil.persist(entity);
 				System.out.printf(": %s%n", entity.toString());
-				// TODO: print the entity using SchemaPrinter.  This should get a map in which 
+				// print the entity using SchemaPrinter.  This should get a map in which 
 				// every persisted entity is mapped onto the corresponding bean name in the 
 				// PopulateDatabase.xml file; otherwise traceability will be a nightmare.
 

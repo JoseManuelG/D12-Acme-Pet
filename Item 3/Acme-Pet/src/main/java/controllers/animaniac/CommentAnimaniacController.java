@@ -1,8 +1,6 @@
 
 package controllers.animaniac;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -95,7 +93,6 @@ public class CommentAnimaniacController extends AbstractController {
 	public ModelAndView delete(@RequestParam final int commentId) {
 		ModelAndView result = null;
 		Comment comment;
-		final Collection<Comment> res;
 
 		comment = this.commentService.findOne(commentId);
 

@@ -124,18 +124,14 @@ public class SearchEngineService {
 
 		|| !(searchEngine.getType().equals(old.getType()));
 
-		if (searchEngine.getEndDate() == null && old.getEndDate() == null)
-			result = result;
-		else if (searchEngine.getEndDate() != null && old.getEndDate() == null)
+		if (searchEngine.getEndDate() != null && old.getEndDate() == null)
 			result = true;
 		else if (searchEngine.getEndDate() == null && old.getEndDate() != null)
 			result = true;
 		else
 			result = result || !searchEngine.getEndDate().equals(old.getEndDate());
 
-		if (searchEngine.getStartDate() == null && old.getStartDate() == null)
-			result = result;
-		else if (searchEngine.getStartDate() != null && old.getStartDate() == null)
+		if (searchEngine.getStartDate() != null && old.getStartDate() == null)
 			result = true;
 		else if (searchEngine.getStartDate() == null && old.getStartDate() != null)
 			result = true;

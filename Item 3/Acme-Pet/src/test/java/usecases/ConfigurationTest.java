@@ -50,17 +50,17 @@ public class ConfigurationTest extends AbstractTest {
 	//no logeado como admin
 	@Test
 	public void editConfigurationTest3() {
-		this.templateEditConfiguration("chorbi1", 360000000, 1.0, IllegalArgumentException.class);
+		this.templateEditConfiguration("animaniac1", 360000000, 1.0, IllegalArgumentException.class);
 	}
 	//tiempo negativo
 	@Test
 	public void editConfigurationTest4() {
 		this.templateEditConfiguration("admin", -360000000, 1.0, ConstraintViolationException.class);
 	}
-	//chorbiFee negativa
+	//PartnerFee negativa
 	@Test
 	public void editConfigurationTest5() {
-		this.templateEditConfiguration("admin", 360000000, -1.0, ConstraintViolationException.class);
+		this.templateEditConfiguration("admin", 360000000, -1.0, IllegalArgumentException.class);
 	}
 
 	// Ancillary methods ------------------------------------------------------

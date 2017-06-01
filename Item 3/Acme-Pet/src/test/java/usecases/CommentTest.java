@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.ActorService;
 import services.AnimaniacService;
 import services.CommentService;
 import services.CommentableService;
@@ -40,8 +39,6 @@ public class CommentTest extends AbstractTest {
 	private CommentableService	commentableService;
 	@Autowired
 	private AnimaniacService	animaniacService;
-	@Autowired
-	private ActorService		actorService;
 
 
 	// Tests ------------------------------------------------------------------

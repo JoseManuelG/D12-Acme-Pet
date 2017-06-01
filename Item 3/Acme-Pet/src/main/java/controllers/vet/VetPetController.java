@@ -13,7 +13,7 @@ import domain.Pet;
 
 @Controller
 @RequestMapping("/pet/vet")
-public class VetPetController extends AbstractController { //TODO el nombre es al reves
+public class VetPetController extends AbstractController {
 
 	@Autowired
 	private PetService	petService;

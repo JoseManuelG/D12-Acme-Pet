@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.ConfigurationRepository;
+import domain.Administrator;
 import domain.Configuration;
 import forms.ConfigurationForm;
 
@@ -25,7 +26,7 @@ public class ConfigurationService {
 	private Validator				validator;
 
 	@Autowired
-	private AdministratorService	administratorService;
+	private ActorService			actorService;
 
 
 	// Simple CRUD methods-------------------------------------------------------------------
@@ -34,7 +35,7 @@ public class ConfigurationService {
 		Configuration result;
 
 		Assert.notNull(configuration, "configuration.error.null");
-		Assert.isTrue(this.administratorService.findAdministratorByPrincipal().getUserAccount().getAuthorities().iterator().next().getAuthority().equals("ADMINISTRATOR"), "configuration.error.notadmin");
+		Assert.isTrue(Administrator.class.equals(this.actorService.findActorByPrincipal().getClass()), "configuration.error.notadmin");
 		Assert.isTrue(configuration.getPartnerFee() >= 0, "configuration.error.feevalue");
 		result = this.configurationRepository.save(configuration);
 		return result;

@@ -121,13 +121,11 @@ public class MessageActorController extends AbstractController {
 	public ModelAndView move(final Message message, final BindingResult bindingResult) {
 		ModelAndView result;
 		Message messageReconstructed;
-		String error;
+
 		Actor actor;
 		messageReconstructed = this.messageService.reconstruct(message, bindingResult);
 		if (bindingResult.hasErrors()) {
-			error = null;
-			if (bindingResult.hasFieldErrors("url"))
-				error = "message.url.error";
+
 			result = this.move(message.getId());
 			result.addObject("message", null);
 		} else
