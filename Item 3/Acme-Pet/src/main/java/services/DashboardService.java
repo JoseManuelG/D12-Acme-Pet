@@ -149,7 +149,7 @@ public class DashboardService {
 		Double res;
 
 		actors = (double) this.actorRepository.count();
-		comments = (double) this.commentableRepository.count();
+		comments = (double) this.commentRepository.count();
 
 		if (actors > 0)
 			res = (comments / actors);

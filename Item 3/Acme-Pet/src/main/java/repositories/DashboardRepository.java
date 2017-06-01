@@ -59,7 +59,7 @@ public interface DashboardRepository extends JpaRepository<DomainEntity, Integer
 	public List<Integer> reportsByAnimaniac();
 
 	//Dashboard - 06
-	@Query("select distinct a.reported from AbuseReport a, in (a.reported) rep group by rep")
+	@Query("select distinct a.reported from AbuseReport a, in (a.reported) rep group by rep order by rep desc")
 	public List<Animaniac> animaniacsByReports();
 
 	//Dashboard - 07
