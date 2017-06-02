@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * security.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"	
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+    ">
+
+	<!-- Security infrastructure -->
+
+	<bean id="loginService" class="security.LoginService" />
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<!-- Access control -->
+
+	<security:http auto-config="true" use-expressions="true">
+	
+		<!-- permitAll -->
+		<security:intercept-url pattern="/" access="permitAll" /> 
+
+		<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
+		<security:intercept-url pattern="/images/**" access="permitAll" /> 
+		<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
+		<security:intercept-url pattern="/styles/**" access="permitAll" /> 
+
+		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
+
+		
+		<security:intercept-url pattern="/about/about.do" access="permitAll" />
+		
+		<security:intercept-url pattern="/law/terms-conditions.do" access="permitAll" /> 
+
+		<security:intercept-url pattern="/security/login.do" access="isAnonymous()" /> 
+		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" />
+		 
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
+		
+		<security:intercept-url pattern="/animaniac/register.do" access="permitAll" />
+		
+		<security:intercept-url pattern="/animaniac/list.do" access="permitAll" />
+		
+		<security:intercept-url pattern="/vet/list.do" access="permitAll" />
+		
+		<security:intercept-url pattern="/pet/listAll.do" access="permitAll" />
+		
+		
+		<!-- Actor -->			
+<!-- 	<security:intercept-url pattern="" access="isAuthenticated()" /> -->
+
+		<security:intercept-url pattern="/actor/myProfile.do" access="isAuthenticated()" />
+		
+		<security:intercept-url pattern="/administrator/view.do" access="isAuthenticated()" />
+		
+		<security:intercept-url pattern="/animaniac/view.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/folder/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/folder/view.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/folder/edit.do" access="isAuthenticated()" />
+	
+		<security:intercept-url pattern="/message/view.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/write.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/reply.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/forward.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/delete.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/move.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/partner/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/partner/view.do" access="isAuthenticated()" />
+		
+		<security:intercept-url pattern="/request/actor/list.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/vet/view.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/pet/animaniac/list.do" access="isAuthenticated()" />
+				<security:intercept-url pattern="/pet/animaniac/view.do" access="isAuthenticated()" />
+		
+		<!-- Administrator -->		
+<!-- 		<security:intercept-url pattern="" access="hasRole('ADMINISTRATOR')" /> -->
+		
+		<security:intercept-url pattern="/administrator/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+
+		<security:intercept-url pattern="/animaniac/administrator/ban.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/animaniac/administrator/unban.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/animaniac/administrator/delete.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/configuration/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/configuration/administrator/view.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/partner/administrator/register.do" access="hasRole('ADMINISTRATOR')" />
+
+		<security:intercept-url pattern="/type/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/type/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+		
+		<security:intercept-url pattern="/attribute/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/attribute/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+	
+		<security:intercept-url pattern="/vet/administrator/register.do" access="hasRole('ADMINISTRATOR')" />
+		
+		<security:intercept-url pattern="/dashboard/administrator/dashboard.do" access="hasRole('ADMINISTRATOR')" />
+		
+		<security:intercept-url pattern="/abuseReport/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
+		
+		<security:intercept-url pattern="/spamword/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/spamword/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/spamword/administrator/delete.do" access="hasRole('ADMINISTRATOR')" />
+		
+		
+		<!-- Animaniac -->
+<!-- 		<security:intercept-url pattern="" access="hasRole('ANIMANIAC')" /> -->
+		<security:intercept-url pattern="/abuseReport/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
+
+		<security:intercept-url pattern="/animaniac/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
+		
+		<security:intercept-url pattern="/application/animaniac/create.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/application/animaniac/list.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/application/animaniac/accept.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/application/animaniac/deny.do" access="hasRole('ANIMANIAC')" />
+		
+		<security:intercept-url pattern="/comment/animaniac/create.do" access="hasRole('ANIMANIAC')" />
+		
+		<security:intercept-url pattern="/pet/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/pet/animaniac/create.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/pet/animaniac/myPets.do" access="hasRole('ANIMANIAC')" />
+
+		<security:intercept-url pattern="/request/animaniac/list.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/request/animaniac/create.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/request/animaniac/delete.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/request/animaniac/rate.do" access="hasRole('ANIMANIAC')" />
+		
+		<security:intercept-url pattern="/type/animaniac/select.do" access="hasRole('ANIMANIAC')" />
+		<security:intercept-url pattern="/curriculum/animaniac/edit.do" access="hasRole('ANIMANIAC')" />
+		
+		<security:intercept-url pattern="/searchEngine/animaniac/search.do" access="hasRole('ANIMANIAC')" />
+
+		<!-- Partner -->
+<!-- 		<security:intercept-url pattern="" access="hasRole('PARTNER')" /> -->
+		<security:intercept-url pattern="/partner/partner/edit.do" access="hasRole('PARTNER')" />
+		<security:intercept-url pattern="/banner/partner/create.do" access="hasRole('PARTNER')" />
+		<security:intercept-url pattern="/banner/partner/edit.do" access="hasRole('PARTNER')" />
+		<security:intercept-url pattern="/banner/partner/view.do" access="hasRole('PARTNER')" />
+		<security:intercept-url pattern="/banner/partner/list.do" access="hasRole('PARTNER')" />
+		
+		<!-- Vet -->
+<!-- 		<security:intercept-url pattern="" access="hasRole('VET')" /> -->
+		<security:intercept-url pattern="/vet/vet/edit.do" access="hasRole('VET')" />
+		<security:intercept-url pattern="/pet/vet/certificate.do" access="hasRole('VET')" />
+		
+		<!--NONE -->
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+		
+		
+		<security:form-login 
+			login-page="/security/login.do"
+			password-parameter="password" 
+			username-parameter="username"
+			authentication-failure-url="/security/loginFailure.do" />
+
+		<security:logout 
+			logout-success-url="/" 
+			invalidate-session="true" />
+	</security:http>
+
+</beans>
