@@ -1,16 +1,9 @@
 ﻿-------------- POR HACER --------------
--Cambiar los items del entregable, no hay item para tests de rendimiento
-
-
-
-- Sacar pdfs de requirements.
 - Informe costes
-- Cambiar el about y el terminos y condiciones
-
-
-
-
 ---------------- HECHO ----------------- 
+- Sacar pdfs de requirements.
+- Cambiar el about y el terminos y condiciones
+-Cambiar los items del entregable, no hay item para tests de rendimiento
 - Ultima query de la dashboard.	- Están revisadas todas las queries. No he sido capaz de reproducir el error que apareció en la presentación.
 -separador de acciones de un perfil de un animaniaco cuando no es tu perfil-NO PROCEDE
 -el cancelar de spamword lleva a la lista de folders

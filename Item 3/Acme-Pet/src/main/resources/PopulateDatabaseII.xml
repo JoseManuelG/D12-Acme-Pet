@@ -51,6 +51,83 @@
 		<property name="partnerFee" value="0.25"/>
 	</bean>
 
+	<!-- Type -->
+	
+	<bean id="type1" class="domain.Type">
+		<property name="typeName" value="Dog" />
+	</bean>	
+	
+	<bean id="type2" class="domain.Type">
+		<property name="typeName" value="Cat" />
+	</bean>	
+	
+	<bean id="type3" class="domain.Type">
+		<property name="typeName" value="Other" />
+	</bean>	
+
+
+<!-- Attribute -->
+	
+	<bean id="attribute1Type1" class="domain.Attribute">
+		<property name="name" value="PPP" />
+		<property name="type" ref="type1" />
+	</bean>	
+	
+	<bean id="attribute1Type2" class="domain.Attribute">
+		<property name="name" value="stressed" />
+		<property name="type" ref="type2" />
+	</bean>	
+	
+		<bean id="attribute3Type2" class="domain.Attribute">
+		<property name="name" value="kind" />
+		<property name="type" ref="type3" />
+	</bean>	
 	
 	
+	<!-- SpamWord	-->
+	
+	<bean id="spamWord1" class="domain.SpamWord">
+		<property name="word" value="sex"/>
+	</bean>
+	
+	<bean id="spamWord2" class="domain.SpamWord">
+		<property name="word" value="love"/>
+	</bean>
+	
+	<bean id="spamWord3" class="domain.SpamWord">
+		<property name="word" value="cocaine"/>
+	</bean>
+	
+	<bean id="spamWord4" class="domain.SpamWord">
+		<property name="word" value="erotic"/>
+	</bean>
+	
+	<bean id="spamWord5" class="domain.SpamWord">
+		<property name="word" value="porn"/>
+	</bean>
+	
+	<bean id="spamWord6" class="domain.SpamWord">
+		<property name="word" value="idiot"/>
+	</bean>
+		<!-- Folder	-->
+	<bean id="folder1Administrator1" class="domain.Folder">
+		<property name="readOnly" value="true" />
+		<property name="name" value="inbox" />
+		<property name="actor" ref="administrator1" />
+	</bean>
+	<bean id="folder2Administrator1" class="domain.Folder">
+		<property name="readOnly" value="true" />
+		<property name="name" value="outbox" />
+		<property name="actor" ref="administrator1" />
+	</bean>
+	<bean id="folder3Administrator1" class="domain.Folder">
+		<property name="readOnly" value="true" />
+		<property name="name" value="trashbox" />
+		<property name="actor" ref="administrator1" />
+	</bean>
+	<bean id="folder4Administrator1" class="domain.Folder">
+		<property name="readOnly" value="true" />
+		<property name="name" value="spambox" />
+		<property name="actor" ref="administrator1" />
+	</bean>
 </beans>

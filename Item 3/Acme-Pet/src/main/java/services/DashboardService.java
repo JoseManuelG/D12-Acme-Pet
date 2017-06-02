@@ -281,12 +281,12 @@ public class DashboardService {
 
 	//Dashboard - 11
 	public Partner partnerWithMoreBanners() {
-		final Partner res;
+		Partner res = null;
 		List<Partner> partners;
 
 		partners = this.dashboardRepository.partnersSortedByBannerNumberDesc();
-		res = partners.get(0);
-
+		if (!partners.isEmpty())
+			res = partners.get(0);
 		return res;
 	}
 

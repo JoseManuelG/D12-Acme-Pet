@@ -121,8 +121,9 @@ public class BannerService {
 			final Random randomIndex = new Random();
 			final Integer index = randomIndex.nextInt(banners.size());
 			result = banners.get(index);
+			this.updatePartnerFee(result);
 		}
-		this.updatePartnerFee(result);
+
 		return result;
 	}
 
