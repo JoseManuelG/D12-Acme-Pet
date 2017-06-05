@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 
+import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -147,27 +148,32 @@ public class AnimaniacService {
 		final List<Authority> auths = new ArrayList<Authority>(this.actorService.findActorByPrincipal().getUserAccount().getAuthorities());
 		final Authority auth = auths.get(0);
 		Assert.isTrue(auth.getAuthority().equals("ADMINISTRATOR"), "animaniac.error.notadmin");
-		final UserAccount ua = this.animaniacRepository.findOne(animaniacId).getUserAccount();
-		ua.setEnabled(false);
-		this.accountService.save(ua);
-		this.messageService.alertAnimaniacs(animaniacId);
 		final Animaniac animaniac = this.findOne(animaniacId);
-		this.sendEMail(animaniac.getEmail(), animaniac.getName(), "your account has been banned for a misuse of it.", "Account Info.");
+		final int i = this.sendEMail(animaniac.getEmail(), animaniac.getName(), "your account has been banned for a misuse of it.\n Su cuenta ha sido baneada por un mal uso de la misma.", "Account Info.");
+		if (i == 0) {
+			final UserAccount ua = this.animaniacRepository.findOne(animaniacId).getUserAccount();
+			ua.setEnabled(false);
+			this.accountService.save(ua);
+			this.messageService.alertAnimaniacs(animaniacId);
+		}
 	}
 
 	public void unban(final int animaniacId) {
 		final List<Authority> auths = new ArrayList<Authority>(this.actorService.findActorByPrincipal().getUserAccount().getAuthorities());
 		final Authority auth = auths.get(0);
 		Assert.isTrue(auth.getAuthority().equals("ADMINISTRATOR"), "animaniac.error.notadmin");
-		final UserAccount ua = this.animaniacRepository.findOne(animaniacId).getUserAccount();
-		ua.setEnabled(true);
-		this.accountService.save(ua);
 		final Animaniac animaniac = this.findOne(animaniacId);
-		this.sendEMail(animaniac.getEmail(), animaniac.getName(), "your account has been enabled again.", "Account Info.");
+		final int i = this.sendEMail(animaniac.getEmail(), animaniac.getName(), "your account has been re-enabled.\n Su cuenta ha sido habilitada de nuevo", "Account Info.");
+		if (i == 0) {
+			final UserAccount ua = this.animaniacRepository.findOne(animaniacId).getUserAccount();
+			ua.setEnabled(true);
+			this.accountService.save(ua);
+		}
 
 	}
 
-	public void sendEMail(final String to, final String name, final String text, final String subject) {
+	public int sendEMail(final String to, final String name, final String text, final String subject) {
+		int i = 0;
 		final Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
@@ -185,14 +191,17 @@ public class AnimaniacService {
 
 		final MimeMessage message = new MimeMessage(session);
 		final MimeMessageHelper helper = new MimeMessageHelper(message);
+
 		try {
 			helper.setTo(to);
 			helper.setSubject(subject);
 			helper.setText(name + ", " + text);
 			Transport.send(message);
-		} catch (final Exception e) {
-			System.out.print(e.getMessage());
+		} catch (final MessagingException e) {
+			System.out.println(e.getMessage());
+			i = 1;
 		}
+		return i;
 	}
 
 	public Animaniac findAnimaniacByPrincipal() {
