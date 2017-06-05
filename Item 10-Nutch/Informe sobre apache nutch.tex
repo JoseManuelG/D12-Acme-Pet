@@ -75,7 +75,7 @@ Vamos a realizar un pequeño ejemplo controlado. Hemos elegido la web http://www
 \$./bin/nutch readseg -list -dir piensoCrawl/segments
 
 
-Como vemos en la figura~\ref{fig:lista} solo han hecho falta 5 iteraciones para completar la búsqueda. Ahora que ya tenemos la información, podemos utilizar any23 para extraer los esquemas Microdata. Hemos hecho un pequeño ejemplo en el que simplemente filtramos los que son de tipo Product y los hemos contado, dando un total de 402 productos.
+Como vemos en la figura~\ref{fig:lista} solo han hecho falta 5 iteraciones para completar la búsqueda. Ahora que ya tenemos la información, podemos utilizar any23 para extraer los esquemas Microdata. Hemos hecho un pequeño ejemplo en el que simplemente filtramos los que son de tipo Product y los hemos contado, dando un total de 402 productos. Desgraciadamente, al pasar el proyecto a la maquina de desarrollo hemos tenido dos problemas. La versión any23 que estábamos usando requería java 8, así que hemos tenido que bajar la versión de 2.0 a 1.1. Por otro lado, el rendimiento ha bajado mucho, y lo que antes hacía en cuestión de 5 a 10 segundos, ahora parece que puede tardar horas. Hemos reducido a 8 páginas de las que extraer Microdata, encontrando ahora 5 productos.
 
 \section{Consideraciones}
 Podríamos haber ampliado el proyecto introduciendo el esquema producto en la base de datos mysql de Acme-Pet y volcando los ItemScope de este esquema en nuestra base de datos, y así poder mostrarla fácilmente en nuestra aplicación, pero el tiempo a jugado en nuestra contra y hemos preferido centrarnos en ampliar conocimientos sobre la tecnología que estábamos usando.

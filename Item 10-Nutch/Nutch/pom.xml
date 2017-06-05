@@ -8,18 +8,41 @@
   <packaging>jar</packaging>
 
   <name>Nutch</name>
-  <url>http://maven.apache.org</url>
+  <url></url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  </properties>	
+	<!-- Build commands -->
+
+	<build>
+		<plugins>
+
+			<!-- Java compiler -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<showWarnings>true</showWarnings>
+					<compilerArguments>
+						<Xlint />
+					</compilerArguments>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
 
   <dependencies>
   
   	<dependency>
 	  <groupId>org.apache.any23</groupId>
 	  <artifactId>apache-any23-core</artifactId>
-	  <version>2.0</version>
+	  <version>1.1</version>
 	</dependency>
   
     <dependency>
